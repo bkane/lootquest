@@ -8,7 +8,10 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    public class LootBoxViewController : MonoBehaviour
+    /// <summary>
+    /// Debug view controller that will generate labels and buttons for all unit types
+    /// </summary>
+    public class DebugViewController : MonoBehaviour
     {
         public LootBoxModel Model;
 
@@ -18,14 +21,9 @@ namespace Assets.Scripts
 
         protected Dictionary<Units, TextMeshProUGUI> labels;
 
-        public Button ClickButton;
-
-
         private void Awake()
         {
             GenerateUI();
-
-            ClickButton.onClick.AddListener(() => { Model.Click(1); });
         }
 
         protected void GenerateUI()
@@ -48,7 +46,7 @@ namespace Assets.Scripts
             {
                 Units type = unitTypes[i];
                 Button button = Instantiate(ButtonPrefab, LayoutParent.transform);
-                button.name = "label_" + type;
+                button.name = "button_" + type;
                 button.GetComponentInChildren<Text>().text = string.Format("Add {0}", type);
                 button.onClick.AddListener(() => Model.Add(type, 1));
             }

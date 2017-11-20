@@ -10,7 +10,19 @@ namespace Assets.Scripts.Model
     /// </summary>
     public class MacGuffinQuest
     {
-        public BigNum LootBoxes { get; protected set; }
+        public LootBoxModel Model;
 
+        public MacGuffinQuest(LootBoxModel model)
+        {
+            this.Model = model;
+        }
+
+        public void BuyLootBox()
+        {
+            if (Model.Consume(Units.Money, 10))
+            {
+                Model.Add(Units.LootBox, 1);
+            }
+        }
     }
 }
