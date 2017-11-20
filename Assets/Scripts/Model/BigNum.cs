@@ -6,7 +6,9 @@ namespace Assets.Scripts.Model
     [Serializable]
     public struct BigNum
     {
+        //public Units Type;
         public float value; //maybe double?
+
 
         public BigNum(float d)
         {
@@ -22,6 +24,37 @@ namespace Assets.Scripts.Model
         {
             return b.value;
         }
+
+
+        //public BigNum(Units type, float d)
+        //{
+        //    Type = type;
+        //    value = d;
+        //}
+
+        //public static BigNum operator +(BigNum a, BigNum b)
+        //{
+        //    if (a.Type == b.Type)
+        //    {
+        //        return new BigNum(a.Type, a.value + b.value);
+        //    }
+        //    else
+        //    {
+        //        throw new InvalidOperationException();
+        //    }
+        //}
+
+        //public static BigNum operator *(BigNum a, BigNum b)
+        //{
+        //    if (a.Type == b.Type)
+        //    {
+        //        return new BigNum(a.Type, a.value * b.value);
+        //    }
+        //    else
+        //    {
+        //        throw new InvalidOperationException();
+        //    }
+        //}
 
         public override string ToString()
         {
