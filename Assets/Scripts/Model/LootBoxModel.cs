@@ -14,12 +14,16 @@ public class LootBoxModel : MonoBehaviour
     public MacGuffinQuest MacGuffinQuest { get; protected set; }
 
     //Short-hand
+    //Life
+    public BigNum Energy            { get { return Resources[Units.Energy]; }           protected set { Resources[Units.Energy] = value; } }
+
+    //Job
     public BigNum Money             { get { return Resources[Units.Money]; }            protected set { Resources[Units.Money] = value; } }
     public BigNum MoneyPerClick     { get { return Resources[Units.MoneyPerClick]; }    protected set { Resources[Units.MoneyPerClick] = value; } }
     public BigNum AutoClickers      { get { return Resources[Units.AutoClicker]; }      protected set { Resources[Units.AutoClicker] = value; } }
 
     //MacGuffin Quest
-    public BigNum LootBoxes         { get { return Resources[Units.LootBox]; } protected set { Resources[Units.LootBox] = value; } }
+    public BigNum LootBoxes         { get { return Resources[Units.LootBox]; }          protected set { Resources[Units.LootBox] = value; } }
 
 
     public int TicksPerAutoClick = 30;
@@ -45,6 +49,12 @@ public class LootBoxModel : MonoBehaviour
     protected void SetInitialState()
     {
         MoneyPerClick = 1;
+        Energy = 16;
+    }
+
+    public bool Consume(Resource resource)
+    {
+        return Consume(resource.Type, resource.Amount);
     }
 
     public bool Consume(Units type, BigNum amount)
@@ -58,6 +68,47 @@ public class LootBoxModel : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public bool Convert(List<Resource> costs, List<Resource> products)
+    {
+        bool canAfford = true;
+        for(int i = 0; i < costs.Count; i++)
+        {
+            Resource cost = costs[i];
+            if (Resources[cost.Type] < cost.Amount)
+            {
+                canAfford = false;
+                break;
+            }
+        }
+
+        if (canAfford)
+        {
+            //All necessary costs can be paid, so consume them all now
+            for (int i = 0; i < costs.Count; i++)
+            {
+                Consume(costs[i]);
+            }
+
+            //Then produce all the products
+            for(int i = 0; i < products.Count; i++)
+            {
+                Add(products[i]);
+            }
+
+            return true;
+        }
+        else
+        {
+            //Not enough resources to fulfill all requirements
+            return false;
+        }
+    }
+
+    public void Add(Resource resource)
+    {
+        Add(resource.Type, resource.Amount);
     }
 
     public void Add(Units type, BigNum amount)

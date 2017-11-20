@@ -2,9 +2,16 @@
 {
     public enum Units
     {
+        //Life
+        Energy,
+        Caffeine,
+
+        //Job
         Money,
         MoneyPerClick,
-        LootBox,
         AutoClicker,
+
+        //MacGuffin Quest
+        LootBox
     }
 }

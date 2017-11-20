@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using Assets.Scripts.Model;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,11 +14,19 @@ namespace Assets.Scripts.ViewControllers
         public TextMeshProUGUI MoneyText;
 
         //Buttons
-        public Button MakeMoneyButton;
+        public Button DoJobButton;
 
         private void Awake()
         {
-            MakeMoneyButton.onClick.AddListener(() => { Model.Click(1); });
+            DoJobButton.onClick.AddListener(DoJob);
+        }
+
+        private void DoJob()
+        {
+            if (Model.Consume(Units.Energy, 1))
+            {
+                Model.Click(1);
+            }
         }
 
         private void Update()
