@@ -69,7 +69,14 @@ namespace Assets.Scripts.Model
                 int place = Mathf.FloorToInt(Mathf.Log(value, 1000));
                 double val = Math.Round(value / Mathf.Pow(1000, place), 2);
 
-                return val.ToString("N2") + suffixes[place];
+                if (place < 2)
+                {
+                    return val.ToString("0");
+                }
+                else
+                {
+                    return val.ToString("0.00") + suffixes[place];
+                }
             }
         }
     }
