@@ -12,6 +12,7 @@
 *.suo
 *.VC.db
 logs/*.*
+/.vs/
 
 /*.booproj
 
