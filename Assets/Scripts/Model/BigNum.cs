@@ -3,9 +3,10 @@ using UnityEngine;
 
 namespace Assets.Scripts.Model
 {
+    [Serializable]
     public struct BigNum
     {
-        private float value; //maybe double?
+        public float value; //maybe double?
 
         public BigNum(float d)
         {
