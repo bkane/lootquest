@@ -47,35 +47,6 @@ public class LootBoxModel : MonoBehaviour
         MoneyPerClick = 1;
     }
 
-    //public bool Consume(params BigNum[] list)
-    //{
-    //    bool canAfford = true;
-    //    for(int i = 0; i < list.Length; i++)
-    //    {
-    //        if (Resources[list[i].Type].value < list[i].value)
-    //        {
-    //            canAfford = false;
-    //            break;
-    //        }
-    //    }
-
-    //    if (canAfford)
-    //    {
-    //        //Yep, we can afford this list. Do the consuming!
-    //        for (int i = 0; i < list.Length; i++)
-    //        {
-    //            Units type = list[i].Type;
-    //            BigNum newValue = new BigNum(list[i].Type, Resources[type].value - list[i].value);
-    //            Resources[type] = newValue;
-    //        }
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }
-    //}
-
     public bool Consume(Units type, BigNum amount)
     {
         if (Resources[type] >= amount)
