@@ -11,7 +11,8 @@ public class LootBoxModel : MonoBehaviour
 {
     public Dictionary<Units, BigNum> Resources { get; protected set; }
 
-    public MacGuffinQuest MacGuffinQuest { get; protected set; }
+    public TimeModel Time                   { get; protected set; }
+    public MacGuffinQuest MacGuffinQuest    { get; protected set; }
 
     //Short-hand
     //Life
@@ -41,6 +42,7 @@ public class LootBoxModel : MonoBehaviour
             Resources.Add(type, 0);
         }
 
+        Time = new TimeModel(this);
         MacGuffinQuest = new MacGuffinQuest(this);
 
         SetInitialState();
@@ -62,6 +64,16 @@ public class LootBoxModel : MonoBehaviour
         if (Resources[type] >= amount)
         {
             Resources[type] -= amount;
+
+            switch(type)
+            {
+                case Units.Energy:
+                    {
+                        Tick((int)amount * 30);
+                    }
+                    break;
+            }
+
             return true;
         }
         else
@@ -123,11 +135,13 @@ public class LootBoxModel : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        Tick();
+        Tick(1);
     }
 
-    protected void Tick()
+    protected void Tick(int tickCount)
     {
+        Time.Tick(tickCount);
+
         if (AutoClickers.value > 0)
         {
             ticksTilAutoClick--;

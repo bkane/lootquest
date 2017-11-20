@@ -10,6 +10,7 @@ namespace Assets.Scripts.ViewControllers
         public LootBoxModel Model;
 
         //Labels
+        public TextMeshProUGUI TimeText;
         public TextMeshProUGUI EnergyText;
 
         //Buttons
@@ -39,6 +40,7 @@ namespace Assets.Scripts.ViewControllers
 
         private void Update()
         {
+            TimeText.text = string.Format("Time: {0}", Model.Time.GetTimeString());
             EnergyText.text = string.Format("Energy: {0}", Model.Energy);
         }
     }
