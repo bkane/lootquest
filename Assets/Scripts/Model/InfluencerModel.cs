@@ -31,9 +31,14 @@ namespace Assets.Scripts.Model
             }
         }
 
+        public BigNum AdRevenuePerTick()
+        {
+            return model.PublishedVideos * model.Followers * MoneyPerFollowerPerVideoPerTick;
+        }
+
         public void Tick()
         {
-            model.Add(Units.Money, model.PublishedVideos * model.Followers * MoneyPerFollowerPerVideoPerTick);
+            model.Add(Units.Money, AdRevenuePerTick());
 
             if (model.TickCount % TicksPerVideoEditor == 0 &&
                 model.UpgradeManager.IsActive(Upgrade.EUpgradeType.HireVideoEditor))
