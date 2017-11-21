@@ -27,7 +27,9 @@ public class LootBoxModel : MonoBehaviour
     public BigNum AutoClickers      { get { return Resources[Units.AutoClicker].Amount; } }
 
     //MacGuffin Quest
+    public BigNum GrindProgress     { get { return Resources[Units.GrindProgress].Amount; } }
     public BigNum LootBoxes         { get { return Resources[Units.LootBox].Amount; } }
+    public BigNum TrashItems        { get { return Resources[Units.TrashItems].Amount; } }
 
 
     public int TicksPerAutoClick = 30;

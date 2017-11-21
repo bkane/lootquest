@@ -12,6 +12,8 @@
         AutoClicker,
 
         //MacGuffin Quest
-        LootBox
+        GrindProgress,
+        LootBox,
+        TrashItems
     }
 }
