@@ -11,6 +11,7 @@ public class LootBoxModel : MonoBehaviour
 {
     public Dictionary<Units, BigNum> Resources { get; protected set; }
 
+    public UpgradeManager UpgradeManager    { get; protected set; }
     public TimeModel Time                   { get; protected set; }
     public MacGuffinQuest MacGuffinQuest    { get; protected set; }
 
@@ -42,6 +43,7 @@ public class LootBoxModel : MonoBehaviour
             Resources.Add(type, 0);
         }
 
+        UpgradeManager = new UpgradeManager(this);
         Time = new TimeModel(this);
         MacGuffinQuest = new MacGuffinQuest(this);
 
@@ -82,10 +84,10 @@ public class LootBoxModel : MonoBehaviour
         }
     }
 
-    public bool Convert(List<Resource> costs, List<Resource> products)
+    public bool Consume(List<Resource> costs)
     {
         bool canAfford = true;
-        for(int i = 0; i < costs.Count; i++)
+        for (int i = 0; i < costs.Count; i++)
         {
             Resource cost = costs[i];
             if (Resources[cost.Type] < cost.Amount)
@@ -103,6 +105,19 @@ public class LootBoxModel : MonoBehaviour
                 Consume(costs[i]);
             }
 
+            return true;
+        }
+        else
+        {
+            //Not enough resources to fulfill all requirements
+            return false;
+        }
+    }
+
+    public bool Convert(List<Resource> costs, List<Resource> products)
+    {
+        if (Consume(costs))
+        { 
             //Then produce all the products
             for(int i = 0; i < products.Count; i++)
             {
