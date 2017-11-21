@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 public class LootBoxModel : MonoBehaviour
 {
-    public Dictionary<Units, BigNum> Resources { get; protected set; }
+    public Dictionary<Units, Resource> Resources { get; protected set; }
 
     public UpgradeManager UpgradeManager    { get; protected set; }
     public TimeModel Time                   { get; protected set; }
@@ -19,15 +19,15 @@ public class LootBoxModel : MonoBehaviour
 
     //Short-hand
     //Life
-    public BigNum Energy            { get { return Resources[Units.Energy]; }           protected set { Resources[Units.Energy] = value; } }
+    public BigNum Energy            { get { return Resources[Units.Energy].Amount; } }
 
     //Job
-    public BigNum Money             { get { return Resources[Units.Money]; }            protected set { Resources[Units.Money] = value; } }
-    public BigNum MoneyPerClick     { get { return Resources[Units.MoneyPerClick]; }    protected set { Resources[Units.MoneyPerClick] = value; } }
-    public BigNum AutoClickers      { get { return Resources[Units.AutoClicker]; }      protected set { Resources[Units.AutoClicker] = value; } }
+    public BigNum Money             { get { return Resources[Units.Money].Amount; } }
+    public BigNum MoneyPerClick     { get { return Resources[Units.MoneyPerClick].Amount; } }
+    public BigNum AutoClickers      { get { return Resources[Units.AutoClicker].Amount; } }
 
     //MacGuffin Quest
-    public BigNum LootBoxes         { get { return Resources[Units.LootBox]; }          protected set { Resources[Units.LootBox] = value; } }
+    public BigNum LootBoxes         { get { return Resources[Units.LootBox].Amount; } }
 
 
     public int TicksPerAutoClick = 30;
@@ -38,11 +38,11 @@ public class LootBoxModel : MonoBehaviour
     {
         List<Units> unitTypes = Enum.GetValues(typeof(Units)).Cast<Units>().ToList();
 
-        Resources = new Dictionary<Units, BigNum>();
+        Resources = new Dictionary<Units, Resource>();
         for (int i = 0; i < unitTypes.Count; i++)
         {
             Units type = unitTypes[i];
-            Resources.Add(type, 0);
+            Resources.Add(type, new Resource(type, 0));
         }
 
         UpgradeManager = new UpgradeManager(this);
@@ -56,8 +56,20 @@ public class LootBoxModel : MonoBehaviour
 
     protected void SetInitialState()
     {
-        MoneyPerClick = 1;
-        Energy = 16;
+        Resources[Units.Energy].MaxValue = 30;
+
+        SetResource(Units.MoneyPerClick, 1);
+        SetResource(Units.Energy, 16);
+    }
+
+    private void SetResource(Units type, BigNum value)
+    {
+        Resources[type].Amount = value;
+
+        if (Resources[type].MaxValue > 0)
+        {
+            Resources[type].Amount = Mathf.Min(Resources[type].Amount, Resources[type].MaxValue);
+        }
     }
 
     public bool Consume(Resource resource)
@@ -67,9 +79,9 @@ public class LootBoxModel : MonoBehaviour
 
     public bool Consume(Units type, BigNum amount)
     {
-        if (Resources[type] >= amount)
+        if (Resources[type].Amount >= amount)
         {
-            Resources[type] -= amount;
+            Resources[type].Amount -= amount;
 
             switch(type)
             {
@@ -94,7 +106,7 @@ public class LootBoxModel : MonoBehaviour
         for (int i = 0; i < costs.Count; i++)
         {
             Resource cost = costs[i];
-            if (Resources[cost.Type] < cost.Amount)
+            if (Resources[cost.Type].Amount < cost.Amount)
             {
                 canAfford = false;
                 break;
@@ -144,7 +156,12 @@ public class LootBoxModel : MonoBehaviour
 
     public void Add(Units type, BigNum amount)
     {
-        Resources[type] = Resources[type] + amount;
+        Resources[type].Amount = Resources[type].Amount + amount;
+
+        if (Resources[type].MaxValue > 0)
+        {
+            Resources[type].Amount = Mathf.Min(Resources[type].Amount, Resources[type].MaxValue);
+        }
     }
 
     public void Click(BigNum numClicks)

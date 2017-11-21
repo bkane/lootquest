@@ -37,7 +37,7 @@ namespace Assets.Scripts
                 Units type = unitTypes[i];
                 TextMeshProUGUI label = Instantiate(TextPrefab, LayoutParent.transform);
                 label.name = "label_" + type;
-                label.text = string.Format("{0}: {1}", type, Model.Resources[type].value);
+                label.text = string.Format("{0}: {1}", type, Model.Resources[type].Amount);
                 labels.Add(type, label);
             }
 
@@ -57,7 +57,7 @@ namespace Assets.Scripts
             foreach(var kvp in labels)
             {
                 Units type = kvp.Key;
-                kvp.Value.text = string.Format("{0}: {1}", type, Model.Resources[type].value);
+                kvp.Value.text = string.Format("{0}: {1}", type, Model.Resources[type].Amount);
             }
         }
     }

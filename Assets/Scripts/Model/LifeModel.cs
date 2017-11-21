@@ -28,7 +28,7 @@
         {
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SleepApp))
             {
-                if (model.Resources[Units.Energy] == 0)
+                if (model.Resources[Units.Energy].Amount == 0)
                 {
                     DoSleep();
                     DoSleep();

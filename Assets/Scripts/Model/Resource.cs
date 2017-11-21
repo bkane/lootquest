@@ -1,19 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Assets.Scripts.Model
+﻿namespace Assets.Scripts.Model
 {
-    public struct Resource
+    public class Resource
     {
         public Units Type;
         public BigNum Amount;
+        public BigNum MaxValue;
 
         public Resource(Units type, BigNum amount)
+            : this(type, amount, 0)
+        {
+        }
+
+        public Resource(Units type, BigNum amount, BigNum maxValue)
         {
             Type = type;
             Amount = amount;
+            MaxValue = maxValue;
         }
 
         public override string ToString()
