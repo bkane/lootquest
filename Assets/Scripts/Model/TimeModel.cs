@@ -7,7 +7,7 @@ namespace Assets.Scripts.Model
     /// </summary>
     public class TimeModel
     {
-        public LootBoxModel Model;
+        private LootBoxModel model;
 
         protected DateTime startTime;
         protected float hoursPerTick = 1/30f; //initially zero
@@ -15,13 +15,13 @@ namespace Assets.Scripts.Model
 
         public TimeModel(LootBoxModel model)
         {
-            this.Model = model;
+            this.model = model;
             startTime = DateTime.Now;
         }
 
-        public void Tick(int tickCount)
+        public void Tick()
         {
-            hoursSinceEpoch += (hoursPerTick * tickCount);
+            hoursSinceEpoch += hoursPerTick;
         }
 
         public string GetTimeString()

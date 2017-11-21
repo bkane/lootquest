@@ -27,9 +27,9 @@ namespace Assets.Scripts.ViewControllers
 
         private void RefreshEntries()
         {
-            for(int i = 0; i < Model.UpgradeManager.Upgrades.Count; i++)
+            foreach(var kvp in Model.UpgradeManager.Upgrades)
             {
-                Upgrade upgrade = Model.UpgradeManager.Upgrades[i];
+                Upgrade upgrade = kvp.Value;
 
                 if ((upgrade.State != Upgrade.EState.Hidden) && 
                     !entries.ContainsKey(upgrade))

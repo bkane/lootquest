@@ -6,7 +6,8 @@ namespace Assets.Scripts.Model
     {
         public enum EUpgradeType
         {
-            EnergyDrinks
+            EnergyDrinks,
+            SleepApp
         }
 
         public enum EState

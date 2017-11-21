@@ -6,13 +6,13 @@ namespace Assets.Scripts.Model
     public class UpgradeManager
     {
         public LootBoxModel Model;
-        public List<Upgrade> Upgrades;
+        public Dictionary<Upgrade.EUpgradeType, Upgrade> Upgrades;
 
         public UpgradeManager(LootBoxModel model)
         {
             this.Model = model;
-            Upgrades = new List<Upgrade>();
-            Upgrades.Add(new Upgrade()
+            Upgrades = new Dictionary<Upgrade.EUpgradeType, Upgrade>();
+            Upgrades.Add(Upgrade.EUpgradeType.EnergyDrinks, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.EnergyDrinks,
                 Name = "Switch to Energy Drinks",
@@ -23,6 +23,23 @@ namespace Assets.Scripts.Model
                 },
                 State = Upgrade.EState.Visible
             });
+
+            Upgrades.Add(Upgrade.EUpgradeType.SleepApp, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.SleepApp,
+                Name = "Buy Sleep App",
+                Description = "Never miss out on sleep again with this sleep scheduler!",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                State = Upgrade.EState.Visible
+            });
+        }
+
+        public bool IsActive(Upgrade.EUpgradeType type)
+        {
+            return Upgrades[type].State == Upgrade.EState.Purchased;
         }
 
         public bool PurchaseUpgrade(Upgrade upgrade)
@@ -45,13 +62,14 @@ namespace Assets.Scripts.Model
 
         protected void DoUpgrade(Upgrade upgrade)
         {
+            Debug.LogFormat("Activated upgrade: {0}", upgrade.Name);
             upgrade.State = Upgrade.EState.Purchased;
 
             switch(upgrade.Type)
             {
                 case Upgrade.EUpgradeType.EnergyDrinks:
                     {
-                        Debug.Log("Energy drink upgrade purchased");
+                        //do something
                     }
                     break;
             }

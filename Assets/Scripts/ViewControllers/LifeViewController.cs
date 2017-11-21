@@ -19,23 +19,8 @@ namespace Assets.Scripts.ViewControllers
 
         private void Awake()
         {
-            SleepButton.onClick.AddListener(DoSleep);
-            BuyCoffeeButton.onClick.AddListener(DoBuyCoffee);
-        }
-
-        private void DoSleep()
-        {
-            Model.Add(Units.Energy, 2);
-        }
-
-        private void DoBuyCoffee()
-        {
-            if (Model.Consume(Units.Money, 2))
-            {
-                Model.Add(Units.Energy, 5);
-                Model.Add(Units.Caffeine, 1);
-                Stats.Instance.CoffeeConsumed++;
-            }
+            SleepButton.onClick.AddListener(Model.Life.DoSleep);
+            BuyCoffeeButton.onClick.AddListener(Model.Life.DoBuyCoffee);
         }
 
         private void Update()

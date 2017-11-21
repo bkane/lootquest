@@ -13,6 +13,8 @@ public class LootBoxModel : MonoBehaviour
 
     public UpgradeManager UpgradeManager    { get; protected set; }
     public TimeModel Time                   { get; protected set; }
+    public LifeModel Life                   { get; protected set; }
+    public JobModel Job                     { get; protected set; }
     public MacGuffinQuest MacGuffinQuest    { get; protected set; }
 
     //Short-hand
@@ -45,6 +47,8 @@ public class LootBoxModel : MonoBehaviour
 
         UpgradeManager = new UpgradeManager(this);
         Time = new TimeModel(this);
+        Life = new LifeModel(this);
+        Job = new JobModel(this);
         MacGuffinQuest = new MacGuffinQuest(this);
 
         SetInitialState();
@@ -71,7 +75,7 @@ public class LootBoxModel : MonoBehaviour
             {
                 case Units.Energy:
                     {
-                        Tick((int)amount * 30);
+                        Tick();
                     }
                     break;
             }
@@ -150,12 +154,13 @@ public class LootBoxModel : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        Tick(1);
+        //Tick();
     }
 
-    protected void Tick(int tickCount)
+    protected void Tick()
     {
-        Time.Tick(tickCount);
+        Time.Tick();
+        Life.Tick();
 
         if (AutoClickers.value > 0)
         {
