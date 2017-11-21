@@ -36,6 +36,7 @@ public class LootBoxModel : MonoBehaviour
     public BigNum GrindProgress     { get { return Resources[Units.GrindProgress].Amount; } }
     public BigNum GrindsCompleted   { get { return Resources[Units.GrindCompleted].Amount; } }
     public BigNum LootBoxes         { get { return Resources[Units.LootBox].Amount; } }
+    public BigNum LootBoxesOpened   { get { return Resources[Units.LootBoxOpened].Amount; } }
     public BigNum TrashItems        { get { return Resources[Units.TrashItem].Amount; } }
     public BigNum TrashItemsSold    { get { return Resources[Units.TrashItemSold].Amount; } }
 

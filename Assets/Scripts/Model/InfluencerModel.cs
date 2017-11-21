@@ -6,7 +6,7 @@ namespace Assets.Scripts.Model
     {
         public bool IsActive { get; set; }
 
-        public BigNum VideoProgressPerMakeVideoClick = 2;
+        public BigNum VideoProgressPerMakeVideoClick = 50;
         public int TicksPerVideoEditor = 30;
         public BigNum MoneyPerFollowerPerVideoPerTick = 0.001f;
 

@@ -105,6 +105,21 @@ namespace Assets.Scripts.Model
 
             #region Influencer Upgrades
 
+            Upgrades.Add(Upgrade.EUpgradeType.UnlockInfluencerCareer, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.UnlockInfluencerCareer,
+                Name = "Buy a Capture Card",
+                Description = "Hey I bet people would watch me opening all these loot boxes.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.LootBoxOpened, 5)
+                }
+            });
+
             Upgrades.Add(Upgrade.EUpgradeType.HireVideoEditor, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.HireVideoEditor,
@@ -113,6 +128,10 @@ namespace Assets.Scripts.Model
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.PublishedVideo, 1)
                 }
             });
 
@@ -161,6 +180,11 @@ namespace Assets.Scripts.Model
                 case Upgrade.EUpgradeType.PurchaseMacGuffinQuest:
                     {
                         Model.MacGuffinQuest.IsActive = true;
+                    }
+                    break;
+                case Upgrade.EUpgradeType.UnlockInfluencerCareer:
+                    {
+                        Model.Influencer.IsActive = true;
                     }
                     break;
             }

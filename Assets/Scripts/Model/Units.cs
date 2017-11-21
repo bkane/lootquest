@@ -14,6 +14,7 @@
         GrindProgress,
         GrindCompleted,
         LootBox,
+        LootBoxOpened,
         TrashItem,
         TrashItemSold,
 

@@ -19,6 +19,7 @@ namespace Assets.Scripts.Model
             //pc upgrades, water cooling, gpu sli, etc
 
             //Influencer
+            UnlockInfluencerCareer,
             HireVideoEditor
         }
 

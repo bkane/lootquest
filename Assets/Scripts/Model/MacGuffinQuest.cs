@@ -47,6 +47,7 @@
             {
                 //TODO: this is opening a lootbox! This will be exciting!
                 Model.Add(Units.TrashItem, 1);
+                Model.Add(Units.LootBoxOpened, 1);
 
                 if (Model.Influencer.IsActive)
                 {
