@@ -39,8 +39,20 @@ namespace Assets.Scripts.Model
             Upgrades.Add(Upgrade.EUpgradeType.AutoGrinder, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.AutoGrinder,
-                Name = "Write Auto-grind Script",
+                Name = "Write Auto-Grind Script",
                 Description = "Use your newfound scripting talents to have your computer play MacGuffin Quest for you! Automatic fun!",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                State = Upgrade.EState.Visible
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.AutoSellTrashItems, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.AutoSellTrashItems,
+                Name = "Write Auto-Auction Script",
+                Description = "Selling items on the auction house feels like work and 'round here? We automate work. Gets the job done but doesn't get as good a return.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 10)

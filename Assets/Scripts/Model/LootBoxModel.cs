@@ -11,6 +11,8 @@ public class LootBoxModel : MonoBehaviour
 {
     public Dictionary<Units, Resource> Resources { get; protected set; }
 
+    public long TickCount { get; protected set; }
+
     public UpgradeManager UpgradeManager    { get; protected set; }
     public TimeModel Time                   { get; protected set; }
     public LifeModel Life                   { get; protected set; }
@@ -34,7 +36,7 @@ public class LootBoxModel : MonoBehaviour
 
     public int TicksPerAutoClick = 30;
     protected int ticksTilAutoClick;
-
+    
 
     private void Awake()
     {
@@ -84,15 +86,6 @@ public class LootBoxModel : MonoBehaviour
         if (Resources[type].Amount >= amount)
         {
             Resources[type].Amount -= amount;
-
-            switch(type)
-            {
-                case Units.Energy:
-                    {
-                        Tick();
-                    }
-                    break;
-            }
 
             return true;
         }
@@ -192,5 +185,7 @@ public class LootBoxModel : MonoBehaviour
                 ticksTilAutoClick = TicksPerAutoClick;
             }
         }
+
+        TickCount++;
     }
 }

@@ -9,6 +9,7 @@ namespace Assets.Scripts.Model
             EnergyDrinks,
             SleepApp,
             AutoGrinder,
+            AutoSellTrashItems,
             //pc upgrades, water cooling, gpu sli, etc
         }
 

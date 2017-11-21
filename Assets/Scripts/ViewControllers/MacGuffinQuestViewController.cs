@@ -15,12 +15,15 @@ namespace Assets.Scripts.ViewControllers
 
         //Buttons
         public Button GrindButton;
+        public Button SellTrashItemButton;
         public Button BuyLootBoxButton;
         public Button OpenLootBoxButton;
+
 
         private void Awake()
         {
             GrindButton.onClick.AddListener(() => { Model.MacGuffinQuest.DoGrind(1); });
+            SellTrashItemButton.onClick.AddListener(() => { Model.MacGuffinQuest.SellTrash(true); });
             BuyLootBoxButton.onClick.AddListener(() => { Model.MacGuffinQuest.BuyLootBox(); });
             OpenLootBoxButton.onClick.AddListener(() => { Model.MacGuffinQuest.OpenLootBox(); });
         }

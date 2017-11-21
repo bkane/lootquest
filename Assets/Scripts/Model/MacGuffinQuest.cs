@@ -10,6 +10,11 @@
         public int MoneyPerLootBox = 5;
         public int GrindProgressPerLootBox = 10;
 
+        //Selling TrashItems
+        public int AutoSellTicks = 60;
+        public BigNum ManualSellTrashEfficiency = 1;
+        public BigNum AutoSellTrashEfficiency = 0.5f;
+
         public MacGuffinQuest(LootBoxModel model)
         {
             this.Model = model;
@@ -42,11 +47,36 @@
             }
         }
 
+        public void SellTrash(bool isManualAction)
+        {
+            if (Model.Consume(Units.TrashItems, 1))
+            {
+                BigNum salePrice = 1;
+
+                if (isManualAction)
+                {
+                    salePrice *= ManualSellTrashEfficiency;
+                }
+                else
+                {
+                    salePrice *= AutoSellTrashEfficiency;
+                }
+
+                Model.Add(Units.Money, salePrice);
+            }
+        }
+
         public void Tick()
         {
             if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder))
             {
                 DoGrind(0.1f);
+            }
+
+            if (Model.TickCount % AutoSellTicks == 0 &&
+                Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoSellTrashItems))
+            {
+                SellTrash(false);
             }
         }
     }
