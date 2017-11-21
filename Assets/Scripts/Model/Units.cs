@@ -20,8 +20,7 @@
         //Influencer Career
         VideoContent,
         Follower,
-        Video,
-
-        //Influence
+        VideoProgress,
+        PublishedVideo,
     }
 }

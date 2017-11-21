@@ -10,6 +10,7 @@ namespace Assets.Scripts.ViewControllers
 
         //Labels
         public TextMeshProUGUI VideoContentText;
+        public TextMeshProUGUI VideoProgressText;
         public TextMeshProUGUI FollowersText;
         public TextMeshProUGUI VideosText;
 
@@ -23,9 +24,10 @@ namespace Assets.Scripts.ViewControllers
 
         private void Update()
         {
-            VideoContentText.text = string.Format("Video Content: {0}", Model.VideoContent);
+            VideoContentText.text = string.Format("Unboxing Footage: {0}", Model.VideoContent);
+            VideoProgressText.text = string.Format("Video Progress: {0}%", Model.VideoProgress);
             FollowersText.text = string.Format("Followers: {0}", Model.Followers);
-            VideosText.text = string.Format("Published Videos: {0}", Model.Videos);
+            VideosText.text = string.Format("Published Videos: {0}", Model.PublishedVideos);
         }
     }
 }

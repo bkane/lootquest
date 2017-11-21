@@ -22,7 +22,7 @@ namespace Assets.Scripts.ViewControllers
 
         private void Awake()
         {
-            GrindButton.onClick.AddListener(() => { Model.MacGuffinQuest.DoGrind(1); });
+            GrindButton.onClick.AddListener(() => { Model.MacGuffinQuest.DoGrind(10); });
             SellTrashItemButton.onClick.AddListener(() => { Model.MacGuffinQuest.SellTrash(true); });
             BuyLootBoxButton.onClick.AddListener(() => { Model.MacGuffinQuest.BuyLootBox(); });
             OpenLootBoxButton.onClick.AddListener(() => { Model.MacGuffinQuest.OpenLootBox(); });
@@ -30,7 +30,7 @@ namespace Assets.Scripts.ViewControllers
 
         private void Update()
         {
-            GrindProgressText.text = string.Format("Grind: {0}", Model.GrindProgress);
+            GrindProgressText.text = string.Format("Grind: {0}%", Model.GrindProgress);
             LootBoxText.text = string.Format("Loot Boxes: {0}", Model.LootBoxes);
             ItemsText.text = string.Format("Trash Items: {0}", Model.TrashItems);
         }

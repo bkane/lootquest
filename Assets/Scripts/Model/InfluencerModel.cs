@@ -6,7 +6,7 @@ namespace Assets.Scripts.Model
     {
         public bool IsActive { get; set; }
 
-        public BigNum VideoContentPerVideo = 50;
+        public BigNum VideoProgressPerMakeVideoClick = 2;
         public BigNum MoneyPerFollowerPerVideoPerTick = 0.001f;
 
         protected LootBoxModel model;
@@ -18,16 +18,21 @@ namespace Assets.Scripts.Model
 
         public void DoMakeVideo()
         {
-            if (model.Consume(Units.VideoContent, VideoContentPerVideo))
+            if (model.Consume(Units.VideoContent, 1))
             {
-                model.Add(Units.Video, 1);
-                model.Add(Units.Follower, Mathf.Max(1, model.Followers * 0.1f));
+                model.Add(Units.VideoProgress, VideoProgressPerMakeVideoClick);
+
+                if (model.Consume(Units.VideoProgress, 100))
+                {
+                    model.Add(Units.PublishedVideo, 1);
+                    model.Add(Units.Follower, Mathf.Max(1, model.Followers * 0.1f));
+                }
             }
         }
 
         public void Tick()
         {
-            model.Add(Units.Money, model.Videos * model.Followers * MoneyPerFollowerPerVideoPerTick);
+            model.Add(Units.Money, model.PublishedVideos * model.Followers * MoneyPerFollowerPerVideoPerTick);
         }
     }
 }

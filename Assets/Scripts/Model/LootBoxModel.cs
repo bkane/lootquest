@@ -40,8 +40,9 @@ public class LootBoxModel : MonoBehaviour
 
     //Influencer
     public BigNum VideoContent      { get { return Resources[Units.VideoContent].Amount; } }
+    public BigNum VideoProgress     { get { return Resources[Units.VideoProgress].Amount; } }
     public BigNum Followers         { get { return Resources[Units.Follower].Amount; } }
-    public BigNum Videos            { get { return Resources[Units.Video].Amount; } }
+    public BigNum PublishedVideos   { get { return Resources[Units.PublishedVideo].Amount; } }
 
 
     public int TicksPerAutoClick = 30;
@@ -73,6 +74,8 @@ public class LootBoxModel : MonoBehaviour
     protected void SetInitialState()
     {
         Resources[Units.Energy].MaxValue = 30;
+        Resources[Units.GrindProgress].MaxValue = 100;
+        Resources[Units.VideoProgress].MaxValue = 100;
 
         SetResource(Units.MoneyPerClick, 1);
         SetResource(Units.Energy, 16);

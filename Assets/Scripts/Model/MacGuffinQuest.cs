@@ -8,7 +8,7 @@
         public LootBoxModel Model;
 
         public int MoneyPerLootBox = 5;
-        public int GrindProgressPerLootBox = 10;
+        public int GrindProgressPerLootBox = 100;
 
         //Selling TrashItems
         public int AutoSellTicks = 60;
@@ -75,7 +75,7 @@
         {
             if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder))
             {
-                DoGrind(0.1f);
+                DoGrind(1f);
             }
 
             if (Model.TickCount % AutoSellTicks == 0 &&
