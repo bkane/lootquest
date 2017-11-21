@@ -14,6 +14,14 @@
         //MacGuffin Quest
         GrindProgress,
         LootBox,
-        TrashItems
+        TrashItem,
+
+
+        //Influencer Career
+        VideoContent,
+        Follower,
+        Video,
+
+        //Influence
     }
 }

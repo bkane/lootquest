@@ -11,6 +11,10 @@ public class LootBoxModel : MonoBehaviour
 {
     public Dictionary<Units, Resource> Resources { get; protected set; }
 
+#if DEBUG
+    public bool DollarBuys = false; //DEBUG
+#endif
+
     public long TickCount { get; protected set; }
 
     public UpgradeManager UpgradeManager    { get; protected set; }
@@ -18,6 +22,7 @@ public class LootBoxModel : MonoBehaviour
     public LifeModel Life                   { get; protected set; }
     public JobModel Job                     { get; protected set; }
     public MacGuffinQuest MacGuffinQuest    { get; protected set; }
+    public InfluencerModel Influencer       { get; protected set; }
 
     //Short-hand
     //Life
@@ -31,7 +36,12 @@ public class LootBoxModel : MonoBehaviour
     //MacGuffin Quest
     public BigNum GrindProgress     { get { return Resources[Units.GrindProgress].Amount; } }
     public BigNum LootBoxes         { get { return Resources[Units.LootBox].Amount; } }
-    public BigNum TrashItems        { get { return Resources[Units.TrashItems].Amount; } }
+    public BigNum TrashItems        { get { return Resources[Units.TrashItem].Amount; } }
+
+    //Influencer
+    public BigNum VideoContent      { get { return Resources[Units.VideoContent].Amount; } }
+    public BigNum Followers         { get { return Resources[Units.Follower].Amount; } }
+    public BigNum Videos            { get { return Resources[Units.Video].Amount; } }
 
 
     public int TicksPerAutoClick = 30;
@@ -54,6 +64,8 @@ public class LootBoxModel : MonoBehaviour
         Life = new LifeModel(this);
         Job = new JobModel(this);
         MacGuffinQuest = new MacGuffinQuest(this);
+        Influencer = new InfluencerModel(this);
+        Influencer.IsActive = true; //TODO: not always!
 
         SetInitialState();
     }
@@ -83,6 +95,8 @@ public class LootBoxModel : MonoBehaviour
 
     public bool Consume(Units type, BigNum amount)
     {
+        if (DollarBuys) { amount = 1; }
+
         if (Resources[type].Amount >= amount)
         {
             Resources[type].Amount -= amount;

@@ -43,13 +43,18 @@
             if (Model.Consume(Units.LootBox, 1))
             {
                 //TODO: this is opening a lootbox! This will be exciting!
-                Model.Add(Units.TrashItems, 1);
+                Model.Add(Units.TrashItem, 1);
+
+                if (Model.Influencer.IsActive)
+                {
+                    Model.Add(Units.VideoContent, 1);
+                }
             }
         }
 
         public void SellTrash(bool isManualAction)
         {
-            if (Model.Consume(Units.TrashItems, 1))
+            if (Model.Consume(Units.TrashItem, 1))
             {
                 BigNum salePrice = 1;
 
