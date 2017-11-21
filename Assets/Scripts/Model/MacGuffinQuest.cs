@@ -76,11 +76,19 @@
             }
         }
 
+        public void BuyBotAccount()
+        {
+            if (Model.Consume(Units.Money, 10))
+            {
+                Model.Add(Units.BotAccount, 1);
+            }
+        }
+
         public void Tick()
         {
             if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder))
             {
-                DoGrind(1f);
+                DoGrind(Model.NumBotAccounts);
             }
 
             if (Model.TickCount % AutoSellTicks == 0 &&

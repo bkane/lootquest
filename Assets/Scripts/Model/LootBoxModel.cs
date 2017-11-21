@@ -39,6 +39,7 @@ public class LootBoxModel : MonoBehaviour
     public BigNum LootBoxesOpened   { get { return Resources[Units.LootBoxOpened].Amount; } }
     public BigNum TrashItems        { get { return Resources[Units.TrashItem].Amount; } }
     public BigNum TrashItemsSold    { get { return Resources[Units.TrashItemSold].Amount; } }
+    public BigNum NumBotAccounts    { get { return Resources[Units.BotAccount].Amount; } }
 
     //Influencer
     public BigNum VideoContent      { get { return Resources[Units.VideoContent].Amount; } }

@@ -187,6 +187,11 @@ namespace Assets.Scripts.Model
                         Model.Influencer.IsActive = true;
                     }
                     break;
+                case Upgrade.EUpgradeType.AutoGrinder:
+                    {
+                        Model.Add(Units.BotAccount, 1);
+                    }
+                    break;
             }
         }
 

@@ -17,6 +17,7 @@
         LootBoxOpened,
         TrashItem,
         TrashItemSold,
+        BotAccount,
 
 
         //Influencer Career
