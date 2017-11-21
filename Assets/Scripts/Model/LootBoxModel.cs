@@ -13,6 +13,7 @@ public class LootBoxModel : MonoBehaviour
 
 #if DEBUG
     public bool DollarBuys = false; //DEBUG
+    public bool UnlockAllViews = false; //DEBUG
 #endif
 
     public long TickCount { get; protected set; }
@@ -75,6 +76,14 @@ public class LootBoxModel : MonoBehaviour
         Influencer.IsActive = false;
 
         SetInitialState();
+
+        if (UnlockAllViews)
+        {
+            Life.IsActive = true;
+            Job.IsActive = true;
+            MacGuffinQuest.IsActive = true;
+            Influencer.IsActive = true;
+        }
     }
 
     protected void SetInitialState()

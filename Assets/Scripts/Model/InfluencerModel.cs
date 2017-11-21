@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Assets.Scripts.Model
+﻿namespace Assets.Scripts.Model
 {
     public class InfluencerModel
     {
@@ -8,7 +6,9 @@ namespace Assets.Scripts.Model
 
         public BigNum VideoProgressPerMakeVideoClick = 50;
         public int TicksPerVideoEditor = 30;
-        public BigNum MoneyPerFollowerPerVideoPerTick = 0.001f;
+        public BigNum MoneyPerFollowerPerTick = 0.001f;
+
+        public BigNum FollowersPerVideoPerTick = 1/30f;
 
         protected LootBoxModel model;
 
@@ -26,19 +26,20 @@ namespace Assets.Scripts.Model
                 if (model.Consume(Units.VideoProgress, 100))
                 {
                     model.Add(Units.PublishedVideo, 1);
-                    model.Add(Units.Follower, Mathf.Max(1, model.Followers * 0.1f));
                 }
             }
         }
 
         public BigNum AdRevenuePerTick()
         {
-            return model.PublishedVideos * model.Followers * MoneyPerFollowerPerVideoPerTick;
+            return model.Followers * MoneyPerFollowerPerTick;
         }
 
         public void Tick()
         {
             model.Add(Units.Money, AdRevenuePerTick());
+
+            model.Add(Units.Follower, model.PublishedVideos * FollowersPerVideoPerTick);
 
             if (model.TickCount % TicksPerVideoEditor == 0 &&
                 model.UpgradeManager.IsActive(Upgrade.EUpgradeType.HireVideoEditor))

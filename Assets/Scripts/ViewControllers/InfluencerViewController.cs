@@ -29,7 +29,7 @@ namespace Assets.Scripts.ViewControllers
             VideoProgressText.text = string.Format("Video Progress: {0}%", Model.VideoProgress);
             FollowersText.text = string.Format("Followers: {0}", Model.Followers);
             VideosText.text = string.Format("Published Videos: {0}", Model.PublishedVideos);
-            AdRevenuePerSecondText.text = string.Format("Ad Rev: ${0}/s", Model.Influencer.AdRevenuePerTick() / 30);
+            AdRevenuePerSecondText.text = string.Format("Ad Rev: ${0}/s", Model.Influencer.AdRevenuePerTick() * 30);
         }
     }
 }
