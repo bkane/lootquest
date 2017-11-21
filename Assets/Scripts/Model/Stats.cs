@@ -10,5 +10,6 @@ namespace Assets.Scripts.Model
         public static Stats Instance;
 
         public int CoffeeConsumed;
+        public int JobsCompleted;
     }
 }

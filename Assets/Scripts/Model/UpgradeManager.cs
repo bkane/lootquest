@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Model
@@ -12,6 +13,11 @@ namespace Assets.Scripts.Model
         {
             this.Model = model;
             Upgrades = new Dictionary<Upgrade.EUpgradeType, Upgrade>();
+
+
+
+            #region Life upgrades
+            
             Upgrades.Add(Upgrade.EUpgradeType.EnergyDrinks, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.EnergyDrinks,
@@ -23,6 +29,25 @@ namespace Assets.Scripts.Model
                 },
                 State = Upgrade.EState.Visible
             });
+
+            #endregion
+
+
+            #region Job upgrades
+
+            Upgrades.Add(Upgrade.EUpgradeType.JobAutomationScript, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.JobAutomationScript,
+                Name = "Write Script to Automate Job",
+                Description = "It's going to happen anyway. Might as well do it myself while the paycheck still goes to me.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                State = Upgrade.EState.Hidden
+            });
+
+            #endregion
 
 
             #region MacGuffinQuest upgrades
@@ -86,6 +111,15 @@ namespace Assets.Scripts.Model
             });
 
             #endregion
+        }
+
+        public void Unlock(Upgrade.EUpgradeType type)
+        {
+            if (Upgrades[type].State == Upgrade.EState.Hidden)
+            {
+                Upgrades[type].State = Upgrade.EState.Visible;
+                Debug.LogFormat("Upgrade {0} now available", Upgrades[type].Name);
+            }
         }
 
         public bool IsActive(Upgrade.EUpgradeType type)

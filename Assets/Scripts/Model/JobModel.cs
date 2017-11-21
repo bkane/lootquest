@@ -6,18 +6,35 @@
 
         private LootBoxModel model;
 
+        public int TicksPerJobAutomation = 5;
+
         public JobModel(LootBoxModel model)
         {
             this.model = model;
         }
 
-        public void DoJob()
+        public void DoJob(BigNum amount)
         {
-            model.Add(Units.JobProgress, 10);
+            model.Add(Units.JobProgress, amount);
 
             if (model.Consume(Units.JobProgress, 100))
             {
                 model.Add(Units.Money, 5);
+                Stats.Instance.JobsCompleted++;
+
+                if (Stats.Instance.JobsCompleted == 3)
+                {
+                    model.UpgradeManager.Unlock(Upgrade.EUpgradeType.JobAutomationScript);
+                }
+            }
+        }
+
+        public void Tick()
+        {
+            if (model.TickCount % TicksPerJobAutomation == 0 &&
+                model.UpgradeManager.IsActive(Upgrade.EUpgradeType.JobAutomationScript))
+            {
+                DoJob(1);
             }
         }
     }

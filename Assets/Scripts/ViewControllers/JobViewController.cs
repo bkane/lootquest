@@ -19,7 +19,7 @@ namespace Assets.Scripts.ViewControllers
 
         private void Awake()
         {
-            DoJobButton.onClick.AddListener(Model.Job.DoJob);
+            DoJobButton.onClick.AddListener(() => { Model.Job.DoJob(10); });
         }
 
         private void Update()

@@ -6,7 +6,11 @@ namespace Assets.Scripts.Model
     {
         public enum EUpgradeType
         {
+            //Life
             EnergyDrinks,
+
+            //Job
+            JobAutomationScript,
 
             //MacGuffinQuest
             PurchaseMacGuffinQuest,

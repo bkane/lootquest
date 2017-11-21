@@ -182,6 +182,7 @@ public class LootBoxModel : MonoBehaviour
     {
         Time.Tick();
         Life.Tick();
+        Job.Tick();
         MacGuffinQuest.Tick();
         Influencer.Tick();
 
