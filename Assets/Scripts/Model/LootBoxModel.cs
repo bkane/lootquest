@@ -191,6 +191,7 @@ public class LootBoxModel : MonoBehaviour
         Time.Tick();
         Life.Tick();
         MacGuffinQuest.Tick();
+        Influencer.Tick();
 
         if (AutoClickers.value > 0)
         {

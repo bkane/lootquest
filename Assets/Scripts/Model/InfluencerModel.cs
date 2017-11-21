@@ -7,6 +7,7 @@ namespace Assets.Scripts.Model
         public bool IsActive { get; set; }
 
         public BigNum VideoProgressPerMakeVideoClick = 2;
+        public int TicksPerVideoEditor = 30;
         public BigNum MoneyPerFollowerPerVideoPerTick = 0.001f;
 
         protected LootBoxModel model;
@@ -33,6 +34,12 @@ namespace Assets.Scripts.Model
         public void Tick()
         {
             model.Add(Units.Money, model.PublishedVideos * model.Followers * MoneyPerFollowerPerVideoPerTick);
+
+            if (model.TickCount % TicksPerVideoEditor == 0 &&
+                model.UpgradeManager.IsActive(Upgrade.EUpgradeType.HireVideoEditor))
+            {
+                DoMakeVideo();
+            }
         }
     }
 }

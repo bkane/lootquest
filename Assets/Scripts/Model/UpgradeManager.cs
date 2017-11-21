@@ -59,6 +59,23 @@ namespace Assets.Scripts.Model
                 },
                 State = Upgrade.EState.Visible
             });
+
+
+            #region Influencer Upgrades
+
+            Upgrades.Add(Upgrade.EUpgradeType.HireVideoEditor, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.HireVideoEditor,
+                Name = "Hire Video Editor",
+                Description = "Hire an editor to convert your raw footage into compelling content. Your editor assures you they're worth every penny, given what they have to work with.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                State = Upgrade.EState.Visible
+            });
+
+            #endregion
         }
 
         public bool IsActive(Upgrade.EUpgradeType type)

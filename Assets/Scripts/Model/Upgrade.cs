@@ -11,6 +11,9 @@ namespace Assets.Scripts.Model
             AutoGrinder,
             AutoSellTrashItems,
             //pc upgrades, water cooling, gpu sli, etc
+
+            //Influencer
+            HireVideoEditor
         }
 
         public enum EState
