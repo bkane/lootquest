@@ -9,7 +9,6 @@
         //Job
         Money,
         MoneyPerClick,
-        AutoClicker,
 
         //MacGuffin Quest
         GrindProgress,

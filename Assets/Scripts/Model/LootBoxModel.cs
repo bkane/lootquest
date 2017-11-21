@@ -31,7 +31,6 @@ public class LootBoxModel : MonoBehaviour
     //Job
     public BigNum Money             { get { return Resources[Units.Money].Amount; } }
     public BigNum MoneyPerClick     { get { return Resources[Units.MoneyPerClick].Amount; } }
-    public BigNum AutoClickers      { get { return Resources[Units.AutoClicker].Amount; } }
 
     //MacGuffin Quest
     public BigNum GrindProgress     { get { return Resources[Units.GrindProgress].Amount; } }
@@ -43,11 +42,7 @@ public class LootBoxModel : MonoBehaviour
     public BigNum VideoProgress     { get { return Resources[Units.VideoProgress].Amount; } }
     public BigNum Followers         { get { return Resources[Units.Follower].Amount; } }
     public BigNum PublishedVideos   { get { return Resources[Units.PublishedVideo].Amount; } }
-
-
-    public int TicksPerAutoClick = 30;
-    protected int ticksTilAutoClick;
-    
+   
 
     private void Awake()
     {
@@ -192,17 +187,6 @@ public class LootBoxModel : MonoBehaviour
         Life.Tick();
         MacGuffinQuest.Tick();
         Influencer.Tick();
-
-        if (AutoClickers.value > 0)
-        {
-            ticksTilAutoClick--;
-
-            if (ticksTilAutoClick <= 0)
-            {
-                Click(AutoClickers);
-                ticksTilAutoClick = TicksPerAutoClick;
-            }
-        }
 
         TickCount++;
     }
