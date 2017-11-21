@@ -35,6 +35,18 @@ namespace Assets.Scripts.Model
                 },
                 State = Upgrade.EState.Visible
             });
+
+            Upgrades.Add(Upgrade.EUpgradeType.AutoGrinder, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.AutoGrinder,
+                Name = "Write Auto-grind Script",
+                Description = "Use your newfound scripting talents to have your computer play MacGuffin Quest for you! Automatic fun!",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                State = Upgrade.EState.Visible
+            });
         }
 
         public bool IsActive(Upgrade.EUpgradeType type)

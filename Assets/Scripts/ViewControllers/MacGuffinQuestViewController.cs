@@ -20,7 +20,7 @@ namespace Assets.Scripts.ViewControllers
 
         private void Awake()
         {
-            GrindButton.onClick.AddListener(() => { Model.MacGuffinQuest.DoGrind(); });
+            GrindButton.onClick.AddListener(() => { Model.MacGuffinQuest.DoGrind(1); });
             BuyLootBoxButton.onClick.AddListener(() => { Model.MacGuffinQuest.BuyLootBox(); });
             OpenLootBoxButton.onClick.AddListener(() => { Model.MacGuffinQuest.OpenLootBox(); });
         }

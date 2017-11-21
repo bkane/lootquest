@@ -173,13 +173,14 @@ public class LootBoxModel : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        //Tick();
+        Tick();
     }
 
     protected void Tick()
     {
         Time.Tick();
         Life.Tick();
+        MacGuffinQuest.Tick();
 
         if (AutoClickers.value > 0)
         {

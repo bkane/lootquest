@@ -15,9 +15,9 @@
             this.Model = model;
         }
 
-        public void DoGrind()
+        public void DoGrind(BigNum amount)
         {
-            Model.Add(Units.GrindProgress, 1);
+            Model.Add(Units.GrindProgress, amount);
 
             if (Model.Consume(Units.GrindProgress, GrindProgressPerLootBox))
             {
@@ -40,7 +40,14 @@
                 //TODO: this is opening a lootbox! This will be exciting!
                 Model.Add(Units.TrashItems, 1);
             }
-            
+        }
+
+        public void Tick()
+        {
+            if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder))
+            {
+                DoGrind(0.1f);
+            }
         }
     }
 }
