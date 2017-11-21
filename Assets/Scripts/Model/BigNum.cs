@@ -41,7 +41,7 @@ namespace Assets.Scripts.Model
                 {
                     double val = Math.Round(value / Mathf.Pow(1000, place), 2);
 
-                    if (place < 2)
+                    if (place == 0)
                     {
                         return val.ToString("0");
                     }
