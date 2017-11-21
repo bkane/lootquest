@@ -2,6 +2,8 @@
 {
     public class JobModel
     {
+        public bool IsActive { get; set; }
+
         private LootBoxModel model;
 
         public JobModel(LootBoxModel model)
@@ -11,9 +13,11 @@
 
         public void DoJob()
         {
-            if (model.Consume(Units.Energy, 1))
+            model.Add(Units.JobProgress, 10);
+
+            if (model.Consume(Units.JobProgress, 100))
             {
-                model.Click(1);
+                model.Add(Units.Money, 5);
             }
         }
     }

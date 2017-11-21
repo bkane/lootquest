@@ -24,11 +24,14 @@ namespace Assets.Scripts.Model
                 State = Upgrade.EState.Visible
             });
 
-            Upgrades.Add(Upgrade.EUpgradeType.SleepApp, new Upgrade()
+
+            #region MacGuffinQuest upgrades
+
+            Upgrades.Add(Upgrade.EUpgradeType.PurchaseMacGuffinQuest, new Upgrade()
             {
-                Type = Upgrade.EUpgradeType.SleepApp,
-                Name = "Buy Sleep App",
-                Description = "Never miss out on sleep again with this sleep scheduler!",
+                Type = Upgrade.EUpgradeType.PurchaseMacGuffinQuest,
+                Name = "Pre-Order MacGuffin Quest",
+                Description = "Holy crap I can't wait.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 10)
@@ -59,6 +62,13 @@ namespace Assets.Scripts.Model
                 },
                 State = Upgrade.EState.Visible
             });
+
+
+            #endregion
+
+
+
+
 
 
             #region Influencer Upgrades
@@ -108,9 +118,9 @@ namespace Assets.Scripts.Model
 
             switch(upgrade.Type)
             {
-                case Upgrade.EUpgradeType.EnergyDrinks:
+                case Upgrade.EUpgradeType.PurchaseMacGuffinQuest:
                     {
-                        //do something
+                        Model.MacGuffinQuest.IsActive = true;
                     }
                     break;
             }

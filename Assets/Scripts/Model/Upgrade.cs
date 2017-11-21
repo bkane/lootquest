@@ -7,7 +7,9 @@ namespace Assets.Scripts.Model
         public enum EUpgradeType
         {
             EnergyDrinks,
-            SleepApp,
+
+            //MacGuffinQuest
+            PurchaseMacGuffinQuest,
             AutoGrinder,
             AutoSellTrashItems,
             //pc upgrades, water cooling, gpu sli, etc

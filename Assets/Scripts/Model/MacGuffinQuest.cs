@@ -5,6 +5,8 @@
     /// </summary>
     public class MacGuffinQuest
     {
+        public bool IsActive { get; set; }
+
         public LootBoxModel Model;
 
         public int MoneyPerLootBox = 5;

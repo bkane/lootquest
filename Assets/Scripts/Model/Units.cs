@@ -3,12 +3,11 @@
     public enum Units
     {
         //Life
-        Energy,
         Caffeine,
 
         //Job
+        JobProgress,
         Money,
-        MoneyPerClick,
 
         //MacGuffin Quest
         GrindProgress,

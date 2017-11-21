@@ -26,11 +26,10 @@ public class LootBoxModel : MonoBehaviour
 
     //Short-hand
     //Life
-    public BigNum Energy            { get { return Resources[Units.Energy].Amount; } }
 
     //Job
     public BigNum Money             { get { return Resources[Units.Money].Amount; } }
-    public BigNum MoneyPerClick     { get { return Resources[Units.MoneyPerClick].Amount; } }
+    public BigNum JobProgress       { get { return Resources[Units.JobProgress].Amount; } }
 
     //MacGuffin Quest
     public BigNum GrindProgress     { get { return Resources[Units.GrindProgress].Amount; } }
@@ -57,23 +56,26 @@ public class LootBoxModel : MonoBehaviour
 
         UpgradeManager = new UpgradeManager(this);
         Time = new TimeModel(this);
+
         Life = new LifeModel(this);
+        Life.IsActive = true;
+
         Job = new JobModel(this);
+        Job.IsActive = true;
+
         MacGuffinQuest = new MacGuffinQuest(this);
+        MacGuffinQuest.IsActive = false;
+
         Influencer = new InfluencerModel(this);
-        Influencer.IsActive = true; //TODO: not always!
+        Influencer.IsActive = false;
 
         SetInitialState();
     }
 
     protected void SetInitialState()
     {
-        Resources[Units.Energy].MaxValue = 30;
         Resources[Units.GrindProgress].MaxValue = 100;
         Resources[Units.VideoProgress].MaxValue = 100;
-
-        SetResource(Units.MoneyPerClick, 1);
-        SetResource(Units.Energy, 16);
     }
 
     private void SetResource(Units type, BigNum value)
@@ -169,11 +171,6 @@ public class LootBoxModel : MonoBehaviour
         {
             Resources[type].Amount = Mathf.Min(Resources[type].Amount, Resources[type].MaxValue);
         }
-    }
-
-    public void Click(BigNum numClicks)
-    {
-        Add(Units.Money, MoneyPerClick * numClicks);
     }
 
     protected void FixedUpdate()
