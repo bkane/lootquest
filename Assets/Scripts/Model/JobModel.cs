@@ -20,9 +20,9 @@
             if (model.Consume(Units.JobProgress, 100))
             {
                 model.Add(Units.Money, 5);
-                Stats.Instance.JobsCompleted++;
+                model.Add(Units.JobCompleted, 1);
 
-                if (Stats.Instance.JobsCompleted == 3)
+                if (model.JobsCompleted == 3)
                 {
                     model.UpgradeManager.Unlock(Upgrade.EUpgradeType.JobAutomationScript);
                 }

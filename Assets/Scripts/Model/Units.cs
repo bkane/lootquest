@@ -7,12 +7,15 @@
 
         //Job
         JobProgress,
+        JobCompleted,
         Money,
 
         //MacGuffin Quest
         GrindProgress,
+        GrindCompleted,
         LootBox,
         TrashItem,
+        TrashItemSold,
 
 
         //Influencer Career

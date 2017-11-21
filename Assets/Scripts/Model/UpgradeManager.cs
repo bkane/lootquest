@@ -26,8 +26,7 @@ namespace Assets.Scripts.Model
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 10)
-                },
-                State = Upgrade.EState.Visible
+                }
             });
 
             #endregion
@@ -44,7 +43,10 @@ namespace Assets.Scripts.Model
                 {
                     new Resource(Units.Money, 10)
                 },
-                State = Upgrade.EState.Hidden
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.JobCompleted, 3)
+                }
             });
 
             #endregion
@@ -60,8 +62,7 @@ namespace Assets.Scripts.Model
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 10)
-                },
-                State = Upgrade.EState.Visible
+                }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.AutoGrinder, new Upgrade()
@@ -73,7 +74,10 @@ namespace Assets.Scripts.Model
                 {
                     new Resource(Units.Money, 10)
                 },
-                State = Upgrade.EState.Visible
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.GrindCompleted, 3)
+                }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.AutoSellTrashItems, new Upgrade()
@@ -85,7 +89,10 @@ namespace Assets.Scripts.Model
                 {
                     new Resource(Units.Money, 10)
                 },
-                State = Upgrade.EState.Visible
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.TrashItemSold, 3)
+                }
             });
 
 
@@ -106,8 +113,7 @@ namespace Assets.Scripts.Model
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 10)
-                },
-                State = Upgrade.EState.Visible
+                }
             });
 
             #endregion
@@ -158,6 +164,40 @@ namespace Assets.Scripts.Model
                     }
                     break;
             }
+        }
+
+        public void Tick()
+        {
+            foreach(var kvp in Upgrades)
+            {
+                if (kvp.Value.State == Upgrade.EState.Hidden)
+                {
+                    if (IsUnlockThresholdMet(kvp.Value))
+                    {
+                        Unlock(kvp.Value.Type);
+                    }
+                }
+            }
+        }
+
+        protected bool IsUnlockThresholdMet(Upgrade upgrade)
+        {
+            bool unlockThresholdMet = true;
+
+            for (int i = 0; i < upgrade.UnlockThreshold.Count; i++)
+            {
+                Resource resource = upgrade.UnlockThreshold[i];
+
+                if (Model.Resources[resource.Type].Amount < resource.Amount)
+                {
+                    unlockThresholdMet = false;
+                    break;
+                }
+            }
+
+            //TODO: also implement pre-req upgrades
+
+            return unlockThresholdMet;
         }
     }
 }

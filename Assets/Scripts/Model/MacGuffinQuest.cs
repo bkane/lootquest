@@ -29,6 +29,7 @@
             if (Model.Consume(Units.GrindProgress, GrindProgressPerLootBox))
             {
                 Model.Add(Units.LootBox, 1);
+                Model.Add(Units.GrindCompleted, 1);
             }
         }
 
@@ -70,6 +71,7 @@
                 }
 
                 Model.Add(Units.Money, salePrice);
+                Model.Add(Units.TrashItemSold, 1);
             }
         }
 

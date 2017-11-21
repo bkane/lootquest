@@ -32,7 +32,8 @@ namespace Assets.Scripts.Model
         public EUpgradeType Type;
         public string Name;
         public string Description;
-        public List<Resource> Costs;
-        public EState State;
+        public List<Resource> Costs = new List<Resource>();
+        public EState State = Upgrade.EState.Hidden;
+        public List<Resource> UnlockThreshold = new List<Resource>();
     }
 }

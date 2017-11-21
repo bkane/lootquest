@@ -30,11 +30,14 @@ public class LootBoxModel : MonoBehaviour
     //Job
     public BigNum Money             { get { return Resources[Units.Money].Amount; } }
     public BigNum JobProgress       { get { return Resources[Units.JobProgress].Amount; } }
+    public BigNum JobsCompleted     { get { return Resources[Units.JobCompleted].Amount; } }
 
     //MacGuffin Quest
     public BigNum GrindProgress     { get { return Resources[Units.GrindProgress].Amount; } }
+    public BigNum GrindsCompleted   { get { return Resources[Units.GrindCompleted].Amount; } }
     public BigNum LootBoxes         { get { return Resources[Units.LootBox].Amount; } }
     public BigNum TrashItems        { get { return Resources[Units.TrashItem].Amount; } }
+    public BigNum TrashItemsSold    { get { return Resources[Units.TrashItemSold].Amount; } }
 
     //Influencer
     public BigNum VideoContent      { get { return Resources[Units.VideoContent].Amount; } }
@@ -185,6 +188,7 @@ public class LootBoxModel : MonoBehaviour
         Job.Tick();
         MacGuffinQuest.Tick();
         Influencer.Tick();
+        UpgradeManager.Tick();
 
         TickCount++;
     }
