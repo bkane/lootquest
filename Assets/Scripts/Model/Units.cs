@@ -36,6 +36,16 @@
         Hype,
         CopySold,
         Microtransaction,
-        ActivePlayer
+        ActivePlayer,
+
+
+        //Public
+        Customer,
+        Lobbyist,
+        Favor,
+        CPU,
+        Cycle,
+        Bioengineer,
+        GenomeData
     }
 }

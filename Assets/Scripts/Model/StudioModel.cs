@@ -10,10 +10,10 @@ namespace Assets.Scripts.Model
         protected LootBoxModel model;
 
         public BigNum CostPerDeveloperPerTick = 1;
-        public BigNum DevHourPerDeveloperTick = 0.1f;
+        public static BigNum DevHourPerDeveloperTick = 0.1f;
 
         public BigNum CostPerDataAnalystPerTick = 1;
-        public BigNum CustomerDataPerDataAnalystTick = 0.1f;
+        public static BigNum CustomerDataPerDataAnalystTick = 0.1f;
 
         public StudioModel(LootBoxModel model)
         {
@@ -118,7 +118,7 @@ namespace Assets.Scripts.Model
             //Game production
             if (model.Consume(Units.Money, DevCostPerTick()))
             {
-                model.Add(Units.DevHour, model.Developers * DevHourPerDeveloperTick);
+                model.Add(Units.DevHour, model.Developers * DevHourPerDeveloperTick); //warning duplicated in Public
             }
             else
             {
@@ -130,7 +130,7 @@ namespace Assets.Scripts.Model
             //Customer Data production
             if (model.Consume(Units.Money, DataAnalystCostPerTick()))
             {
-                model.Add(Units.CustomerData, model.DataAnalysts * CustomerDataPerDataAnalystTick);
+                model.Add(Units.CustomerData, model.DataAnalysts * CustomerDataPerDataAnalystTick); //warning duplicated in Public
             }
             else
             {

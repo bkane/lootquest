@@ -26,6 +26,7 @@ public class LootBoxModel : MonoBehaviour
     public MacGuffinQuest MacGuffinQuest    { get; protected set; }
     public InfluencerModel Influencer       { get; protected set; }
     public StudioModel Studio               { get; protected set; }
+    public PublicModel Public               { get; protected set; }
 
     //Short-hand
     //Life
@@ -62,6 +63,16 @@ public class LootBoxModel : MonoBehaviour
     public BigNum ActivePlayers     { get { return Resources[Units.ActivePlayer].Amount; } }
 
 
+    //Public
+    public BigNum Customers         { get { return Resources[Units.Customer].Amount; } }
+    public BigNum Lobbyists         { get { return Resources[Units.Lobbyist].Amount; } }
+    public BigNum Favor             { get { return Resources[Units.Favor].Amount; } }
+    public BigNum CPUs              { get { return Resources[Units.CPU].Amount; } }
+    public BigNum Cycles            { get { return Resources[Units.Cycle].Amount; } }
+    public BigNum Bioengineers      { get { return Resources[Units.Bioengineer].Amount; } }
+    public BigNum GenomeData        { get { return Resources[Units.GenomeData].Amount; } }
+
+
     private void Awake()
     {
         List<Units> unitTypes = Enum.GetValues(typeof(Units)).Cast<Units>().ToList();
@@ -91,6 +102,9 @@ public class LootBoxModel : MonoBehaviour
         Studio = new StudioModel(this);
         Studio.IsActive = false;
 
+        Public = new PublicModel(this);
+        Public.IsActive = false;
+
         SetInitialState();
 
         if (UnlockAllViews)
@@ -100,6 +114,7 @@ public class LootBoxModel : MonoBehaviour
             MacGuffinQuest.IsActive = true;
             Influencer.IsActive = true;
             Studio.IsActive = true;
+            Public.IsActive = true;
         }
     }
 
@@ -226,6 +241,7 @@ public class LootBoxModel : MonoBehaviour
         MacGuffinQuest.Tick();
         Influencer.Tick();
         Studio.Tick();
+        Public.Tick();
         UpgradeManager.Tick();
 
         TickCount++;
