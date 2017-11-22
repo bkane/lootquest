@@ -155,6 +155,21 @@ namespace Assets.Scripts.Model
 
             #region Studio Upgrades
 
+            Upgrades.Add(Upgrade.EUpgradeType.StartAStudio, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.StartAStudio,
+                Name = "Start a studio",
+                Description = "You know, I could probably do this myself.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.Follower, 10)
+                }
+            });
+
             Upgrades.Add(Upgrade.EUpgradeType.EnableMicrotransactions, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.EnableMicrotransactions,
@@ -169,6 +184,26 @@ namespace Assets.Scripts.Model
                     new Resource(Units.ReleasedGame, 1)
                 }
             });
+            #endregion
+
+
+            #region Public Upgrades
+
+            Upgrades.Add(Upgrade.EUpgradeType.ExecuteIPO, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.ExecuteIPO,
+                Name = "Execute IPO",
+                Description = "Time to take this to the next level.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ActivePlayer, 10)
+                }
+            });
+
             #endregion
         }
 
@@ -219,6 +254,20 @@ namespace Assets.Scripts.Model
                 case Upgrade.EUpgradeType.UnlockInfluencerCareer:
                     {
                         Model.Influencer.IsActive = true;
+                    }
+                    break;
+
+                case Upgrade.EUpgradeType.StartAStudio:
+                    {
+                        Model.Job.IsActive = false;
+                        Model.Studio.IsActive = true;
+                    }
+                    break;
+                case Upgrade.EUpgradeType.ExecuteIPO:
+                    {
+                        Model.Influencer.IsActive = false;
+                        Model.Studio.IsActive = false;
+                        Model.Public.IsActive = true;
                     }
                     break;
                 case Upgrade.EUpgradeType.AutoGrinder:

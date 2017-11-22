@@ -25,7 +25,12 @@ namespace Assets.Scripts.Model
 
 
             //Studio
-            EnableMicrotransactions
+            StartAStudio,
+            EnableMicrotransactions,
+
+
+            //Public
+            ExecuteIPO
         }
 
         public enum EState

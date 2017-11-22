@@ -37,6 +37,8 @@
 
         public void Tick()
         {
+            if (!IsActive) { return; }
+
             model.Add(Units.Money, AdRevenuePerTick());
 
             model.Add(Units.Follower, model.PublishedVideos * FollowersPerVideoPerTick);

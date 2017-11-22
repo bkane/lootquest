@@ -11,7 +11,6 @@ namespace Assets.Scripts.ViewControllers
         public LootBoxModel Model;
 
         //Labels
-        public TextMeshProUGUI MoneyText;
         public TextMeshProUGUI JobProgressText;
 
         //Buttons
@@ -24,7 +23,6 @@ namespace Assets.Scripts.ViewControllers
 
         private void Update()
         {
-            MoneyText.text = string.Format("Money: ${0}", Model.Money);
             JobProgressText.text = string.Format("Job Progress: {0}%", Model.JobProgress);
         }
     }

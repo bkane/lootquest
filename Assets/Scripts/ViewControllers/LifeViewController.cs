@@ -11,6 +11,7 @@ namespace Assets.Scripts.ViewControllers
 
         //Labels
         public TextMeshProUGUI TimeText;
+        public TextMeshProUGUI MoneyText;
 
         //Buttons
         public Button BuyCoffeeButton;
@@ -23,6 +24,7 @@ namespace Assets.Scripts.ViewControllers
         private void Update()
         {
             TimeText.text = string.Format("Time: {0}", Model.Time.GetTimeString());
+            MoneyText.text = string.Format("Money: ${0}", Model.Money);
         }
     }
 }
