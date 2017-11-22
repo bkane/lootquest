@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts.Model
 {
@@ -9,7 +10,10 @@ namespace Assets.Scripts.Model
         protected LootBoxModel model;
 
         public BigNum CostPerDeveloperPerTick = 1;
-        public BigNum GameProgressPerDeveloperPerTick = 0.1f;
+        public BigNum DevHourPerDeveloperTick = 0.1f;
+
+        public BigNum CostPerDataAnalystPerTick = 1;
+        public BigNum CustomerDataPerDataAnalystTick = 0.1f;
 
         public StudioModel(LootBoxModel model)
         {
@@ -29,9 +33,27 @@ namespace Assets.Scripts.Model
             model.Consume(Units.Developer, 1);
         }
 
+        public void HireDataAnalyst()
+        {
+            if (model.Consume(Units.Money, 10))
+            {
+                model.Add(Units.DataAnalyst, 1);
+            }
+        }
+
+        public void FireDataAnalyst()
+        {
+            model.Consume(Units.DataAnalyst, 1);
+        }
+
         public BigNum DevCostPerTick()
         {
             return model.Developers * CostPerDeveloperPerTick;
+        }
+
+        public BigNum DataAnalystCostPerTick()
+        {
+            return model.DataAnalysts * CostPerDataAnalystPerTick;
         }
 
         public BigNum HypePerRelease()
@@ -39,14 +61,19 @@ namespace Assets.Scripts.Model
             return 100;
         }
 
-        public BigNum HypeDecayPerTick()
+        public BigNum ActivePlayersDecayPerTick()
         {
-            return 0.1f;
+            return model.ActivePlayers * 0.005f / 30f;
+        }
+
+        public BigNum PercentOfPlayersWhoMonetize()
+        {
+            return 0.01f;
         }
 
         public BigNum MicrotransactionsPerTick()
         {
-            return model.CopiesSold / 30f;
+            return model.ActivePlayers * PercentOfPlayersWhoMonetize() / 30f;
         }
 
         public BigNum RevenuePerMicrotransaction()
@@ -59,18 +86,39 @@ namespace Assets.Scripts.Model
             return MicrotransactionsPerTick() * RevenuePerMicrotransaction();
         }
 
+        public BigNum CostOfGameInDevHours()
+        {
+            return 100;
+        }
+
+        public BigNum RevenuePerUnitSold()
+        {
+            return 50;
+        }
+
+        public void ReleaseGame()
+        {
+            if (model.Consume(Units.DevHour, CostOfGameInDevHours()))
+            {
+                model.Add(Units.ReleasedGame, 1);
+                model.Add(Units.Hype, HypePerRelease());
+
+                BigNum unitsSold = model.Hype;
+                BigNum revenue = unitsSold * RevenuePerUnitSold();
+                model.Add(Units.CopySold, unitsSold);
+                model.Add(Units.ActivePlayer, unitsSold);
+                model.Add(Units.Money, revenue);
+
+                Debug.LogFormat("Game {0} released and sold {1} copies for ${2}", model.ReleasedGames, unitsSold, revenue);
+            }
+        }
+
         public void Tick()
         {
             //Game production
             if (model.Consume(Units.Money, DevCostPerTick()))
             {
-                model.Add(Units.GameProgress, model.Developers * GameProgressPerDeveloperPerTick);
-
-                if (model.Consume(Units.GameProgress, 100))
-                {
-                    model.Add(Units.ReleasedGame, 1);
-                    model.Add(Units.Hype, HypePerRelease());
-                }
+                model.Add(Units.DevHour, model.Developers * DevHourPerDeveloperTick);
             }
             else
             {
@@ -79,21 +127,30 @@ namespace Assets.Scripts.Model
                 model.Consume(Units.Money, model.Money);
             }
 
-            //Unit Sales
-            if (model.Hype >= 1)
+            //Customer Data production
+            if (model.Consume(Units.Money, DataAnalystCostPerTick()))
             {
-                model.Add(Units.CopySold, model.Hype);
+                model.Add(Units.CustomerData, model.DataAnalysts * CustomerDataPerDataAnalystTick);
+            }
+            else
+            {
+                //Not enough money to pay everybody!
+                //Drain the bank account but don't accrue any customer data
+                model.Consume(Units.Money, model.Money);
             }
 
             //Microtransactions
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnableMicrotransactions) && model.CopiesSold > 0)
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnableMicrotransactions))
             {
                 model.Add(Units.Microtransaction, MicrotransactionsPerTick());
                 model.Add(Units.Money, MicrotransactionRevenuePerTick());
             }
 
-            //Hype Decay
-            model.Consume(Units.Hype, HypeDecayPerTick());
+            //Playerbase decay
+            if (model.ActivePlayers > 0)
+            {
+                model.Consume(Units.ActivePlayer, ActivePlayersDecayPerTick());
+            }
         }
     }
 }

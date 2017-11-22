@@ -14,6 +14,7 @@ public class LootBoxModel : MonoBehaviour
 #if DEBUG
     public bool DollarBuys = false; //DEBUG
     public bool UnlockAllViews = false; //DEBUG
+    public float StartWithCash = 0;
 #endif
 
     public long TickCount { get; protected set; }
@@ -52,10 +53,13 @@ public class LootBoxModel : MonoBehaviour
 
     //Studio
     public BigNum Developers        { get { return Resources[Units.Developer].Amount; } }
-    public BigNum GameProgress      { get { return Resources[Units.GameProgress].Amount; } }
+    public BigNum DevHours          { get { return Resources[Units.DevHour].Amount; } }
     public BigNum ReleasedGames     { get { return Resources[Units.ReleasedGame].Amount; } }
     public BigNum Hype              { get { return Resources[Units.Hype].Amount; } }
     public BigNum CopiesSold        { get { return Resources[Units.CopySold].Amount; } }
+    public BigNum DataAnalysts      { get { return Resources[Units.DataAnalyst].Amount; } }
+    public BigNum CustomerData      { get { return Resources[Units.CustomerData].Amount; } }
+    public BigNum ActivePlayers     { get { return Resources[Units.ActivePlayer].Amount; } }
 
 
     private void Awake()
@@ -103,7 +107,10 @@ public class LootBoxModel : MonoBehaviour
     {
         Resources[Units.GrindProgress].MaxValue = 100;
         Resources[Units.VideoProgress].MaxValue = 100;
-        Resources[Units.GameProgress].MaxValue = 100;
+
+#if DEBUG
+        Resources[Units.Money].Amount = StartWithCash;
+#endif
     }
 
     private void SetResource(Units type, BigNum value)

@@ -29,10 +29,13 @@
 
         //Studio
         Developer,
-        GameProgress,
+        DevHour,
+        DataAnalyst,
+        CustomerData,
         ReleasedGame,
         Hype,
         CopySold,
-        Microtransaction
+        Microtransaction,
+        ActivePlayer
     }
 }
