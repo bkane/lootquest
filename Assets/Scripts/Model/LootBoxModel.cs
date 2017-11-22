@@ -53,6 +53,7 @@ public class LootBoxModel : MonoBehaviour
     //Studio
     public BigNum Developers        { get { return Resources[Units.Developer].Amount; } }
     public BigNum GameProgress      { get { return Resources[Units.GameProgress].Amount; } }
+    public BigNum ReleasedGames     { get { return Resources[Units.ReleasedGame].Amount; } }
 
 
     private void Awake()

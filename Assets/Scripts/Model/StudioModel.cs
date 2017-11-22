@@ -39,6 +39,11 @@ namespace Assets.Scripts.Model
             if (model.Consume(Units.Money, DevCostPerTick()))
             {
                 model.Add(Units.GameProgress, model.Developers * GameProgressPerDeveloperPerTick);
+
+                if (model.Consume(Units.GameProgress, 100))
+                {
+                    model.Add(Units.ReleasedGame, 1);
+                }
             }
             else
             {

@@ -30,5 +30,6 @@
         //Studio
         Developer,
         GameProgress,
+        ReleasedGame,
     }
 }
