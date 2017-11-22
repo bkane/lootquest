@@ -151,6 +151,25 @@ namespace Assets.Scripts.Model
             });
 
             #endregion
+
+
+            #region Studio Upgrades
+
+            Upgrades.Add(Upgrade.EUpgradeType.EnableMicrotransactions, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.EnableMicrotransactions,
+                Name = "Add Microtransactions",
+                Description = "Just for cosmetic items.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ReleasedGame, 1)
+                }
+            });
+            #endregion
         }
 
         public void Unlock(Upgrade.EUpgradeType type)

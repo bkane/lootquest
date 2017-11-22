@@ -21,7 +21,11 @@ namespace Assets.Scripts.Model
 
             //Influencer
             UnlockInfluencerCareer,
-            HireVideoEditor
+            HireVideoEditor,
+
+
+            //Studio
+            EnableMicrotransactions
         }
 
         public enum EState

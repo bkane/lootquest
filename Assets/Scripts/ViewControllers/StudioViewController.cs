@@ -14,7 +14,8 @@ namespace Assets.Scripts.ViewControllers
         public TextMeshProUGUI GameProgressText;
         public TextMeshProUGUI ReleasedGameText;
         public TextMeshProUGUI HypeText;
-        public TextMeshProUGUI CopiesSold;
+        public TextMeshProUGUI CopiesSoldText;
+        public TextMeshProUGUI MicrotransactionRevenueText;
 
         //Buttons
         public Button HireDeveloper;
@@ -33,7 +34,10 @@ namespace Assets.Scripts.ViewControllers
             GameProgressText.text = string.Format("Game Progress: {0}%", Model.GameProgress);
             ReleasedGameText.text = string.Format("Released Games: {0}", Model.ReleasedGames);
             HypeText.text = string.Format("Hype: {0}", Model.Hype);
-            CopiesSold.text = string.Format("Copies Sold: {0}", Model.CopiesSold);
+            CopiesSoldText.text = string.Format("Copies Sold: {0}", Model.CopiesSold);
+            MicrotransactionRevenueText.text = string.Format("MTXN Rev: ${0}/s", Model.Studio.MicrotransactionRevenuePerTick() * 30);
+
+            MicrotransactionRevenueText.gameObject.SetActive(Model.UpgradeManager.IsActive(Scripts.Model.Upgrade.EUpgradeType.EnableMicrotransactions));
         }
     }
 }

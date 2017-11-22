@@ -44,6 +44,21 @@ namespace Assets.Scripts.Model
             return 0.1f;
         }
 
+        public BigNum MicrotransactionsPerTick()
+        {
+            return model.CopiesSold / 30f;
+        }
+
+        public BigNum RevenuePerMicrotransaction()
+        {
+            return 0.25f;
+        }
+
+        public BigNum MicrotransactionRevenuePerTick()
+        {
+            return MicrotransactionsPerTick() * RevenuePerMicrotransaction();
+        }
+
         public void Tick()
         {
             //Game production
@@ -68,6 +83,13 @@ namespace Assets.Scripts.Model
             if (model.Hype >= 1)
             {
                 model.Add(Units.CopySold, model.Hype);
+            }
+
+            //Microtransactions
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnableMicrotransactions) && model.CopiesSold > 0)
+            {
+                model.Add(Units.Microtransaction, MicrotransactionsPerTick());
+                model.Add(Units.Money, MicrotransactionRevenuePerTick());
             }
 
             //Hype Decay

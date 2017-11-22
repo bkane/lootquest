@@ -32,6 +32,7 @@
         GameProgress,
         ReleasedGame,
         Hype,
-        CopySold
+        CopySold,
+        Microtransaction
     }
 }
