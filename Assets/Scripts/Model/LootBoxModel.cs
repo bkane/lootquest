@@ -52,6 +52,7 @@ public class LootBoxModel : MonoBehaviour
 
     //Studio
     public BigNum Developers        { get { return Resources[Units.Developer].Amount; } }
+    public BigNum GameProgress      { get { return Resources[Units.GameProgress].Amount; } }
 
 
     private void Awake()
@@ -99,6 +100,7 @@ public class LootBoxModel : MonoBehaviour
     {
         Resources[Units.GrindProgress].MaxValue = 100;
         Resources[Units.VideoProgress].MaxValue = 100;
+        Resources[Units.GameProgress].MaxValue = 100;
     }
 
     private void SetResource(Units type, BigNum value)
@@ -160,6 +162,11 @@ public class LootBoxModel : MonoBehaviour
             //Not enough resources to fulfill all requirements
             return false;
         }
+    }
+
+    public bool Convert(Resource cost, Resource product)
+    {
+        return Convert(new List<Resource>() { cost }, new List<Resource>() { product });
     }
 
     public bool Convert(List<Resource> costs, List<Resource> products)

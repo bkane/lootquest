@@ -29,5 +29,6 @@
 
         //Studio
         Developer,
+        GameProgress,
     }
 }
