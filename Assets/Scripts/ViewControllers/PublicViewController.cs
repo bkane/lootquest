@@ -18,6 +18,7 @@ namespace Assets.Scripts.ViewControllers
 
         //Budget Allocation
         public TextMeshProUGUI DevAllocationText;
+        public TextMeshProUGUI MarketerAllocationText;
         public TextMeshProUGUI DataAnalystAllocationText;
         public TextMeshProUGUI LobbyistAllocationText;
         public TextMeshProUGUI CPUAllocationText;
@@ -29,6 +30,9 @@ namespace Assets.Scripts.ViewControllers
 
         public TextMeshProUGUI DataAnalystsText;
         public TextMeshProUGUI CustomerDataText;
+
+        public TextMeshProUGUI MarketersText;
+        public TextMeshProUGUI CustomerAcquisitionRateText;
 
         public TextMeshProUGUI LobbyistsText;
         public TextMeshProUGUI FavorText;
@@ -59,6 +63,7 @@ namespace Assets.Scripts.ViewControllers
 
             //Budget
             DevAllocationText.text = string.Format("DevAllocation: {0}", Model.Public.DevAllocation);
+            MarketerAllocationText.text = string.Format("MarketerAllocation: {0}", Model.Public.MarketerAllocation);
             DataAnalystAllocationText.text = string.Format("DataAnalystAllocation: {0}", Model.Public.DataAnalystAllocation);
             LobbyistAllocationText.text = string.Format("LobbyistAllocation: {0}", Model.Public.LobbyistAllocation);
             CPUAllocationText.text = string.Format("CPUAllocation: {0}", Model.Public.CPUAllocation);
@@ -71,6 +76,9 @@ namespace Assets.Scripts.ViewControllers
 
             DataAnalystsText.text = string.Format("Data Analysts: {0}", Model.DataAnalysts);
             CustomerDataText.text = string.Format("Customer Data: {0} GB", Model.CustomerData);
+
+            MarketersText.text = string.Format("Marketers: {0}", Model.Marketers);
+            CustomerAcquisitionRateText.text = string.Format("Customer Aquisition: {0}/s", Model.Public.CustomerAcquisitionPerTick() * 30);
 
             LobbyistsText.text = string.Format("Lobbyists: {0}", Model.Lobbyists);
             FavorText.text = string.Format("Gov't Favor: {0}", Model.Favor);

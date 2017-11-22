@@ -43,6 +43,8 @@
 
         public void Tick()
         {
+            if (!IsActive) { return; }
+
             if (model.TickCount % TicksPerJobAutomation == 0 &&
                 model.UpgradeManager.IsActive(Upgrade.EUpgradeType.JobAutomationScript))
             {

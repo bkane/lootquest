@@ -86,6 +86,8 @@
 
         public void Tick()
         {
+            if (!IsActive) { return; }
+
             if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder))
             {
                 DoGrind(Model.NumBotAccounts);

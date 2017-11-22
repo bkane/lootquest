@@ -65,6 +65,7 @@ public class LootBoxModel : MonoBehaviour
 
     //Public
     public BigNum Customers         { get { return Resources[Units.Customer].Amount; } }
+    public BigNum Marketers         { get { return Resources[Units.Marketer].Amount; } }
     public BigNum Lobbyists         { get { return Resources[Units.Lobbyist].Amount; } }
     public BigNum Favor             { get { return Resources[Units.Favor].Amount; } }
     public BigNum CPUs              { get { return Resources[Units.CPU].Amount; } }

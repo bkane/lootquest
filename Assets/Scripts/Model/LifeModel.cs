@@ -23,6 +23,7 @@
 
         public void Tick()
         {
+            if (!IsActive) { return; }
 
         }
     }

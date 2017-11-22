@@ -115,6 +115,8 @@ namespace Assets.Scripts.Model
 
         public void Tick()
         {
+            if (!IsActive) { return; }
+
             //Game production
             if (model.Consume(Units.Money, DevCostPerTick()))
             {

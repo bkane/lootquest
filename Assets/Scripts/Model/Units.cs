@@ -41,6 +41,7 @@
 
         //Public
         Customer,
+        Marketer,
         Lobbyist,
         Favor,
         CPU,
