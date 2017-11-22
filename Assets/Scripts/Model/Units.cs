@@ -31,5 +31,6 @@
         Developer,
         GameProgress,
         ReleasedGame,
+        Hype
     }
 }

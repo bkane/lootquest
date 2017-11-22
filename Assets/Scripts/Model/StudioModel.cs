@@ -34,8 +34,19 @@ namespace Assets.Scripts.Model
             return model.Developers * CostPerDeveloperPerTick;
         }
 
+        public BigNum HypePerRelease()
+        {
+            return 100;
+        }
+
+        public BigNum HypeDecayPerTick()
+        {
+            return 0.1f;
+        }
+
         public void Tick()
         {
+            //Game production
             if (model.Consume(Units.Money, DevCostPerTick()))
             {
                 model.Add(Units.GameProgress, model.Developers * GameProgressPerDeveloperPerTick);
@@ -43,6 +54,7 @@ namespace Assets.Scripts.Model
                 if (model.Consume(Units.GameProgress, 100))
                 {
                     model.Add(Units.ReleasedGame, 1);
+                    model.Add(Units.Hype, HypePerRelease());
                 }
             }
             else
@@ -51,6 +63,9 @@ namespace Assets.Scripts.Model
                 //Drain the bank account but don't make any progress on the game
                 model.Consume(Units.Money, model.Money);
             }
+
+            //Hype Decay
+            model.Consume(Units.Hype, HypeDecayPerTick());
         }
     }
 }

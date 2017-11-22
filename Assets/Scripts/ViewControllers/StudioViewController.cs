@@ -13,6 +13,7 @@ namespace Assets.Scripts.ViewControllers
         public TextMeshProUGUI DevCostText;
         public TextMeshProUGUI GameProgressText;
         public TextMeshProUGUI ReleasedGameText;
+        public TextMeshProUGUI HypeText;
 
         //Buttons
         public Button HireDeveloper;
@@ -30,6 +31,7 @@ namespace Assets.Scripts.ViewControllers
             DevCostText.text = string.Format("Dev Cost: ${0}/s", Model.Studio.DevCostPerTick() * 30);
             GameProgressText.text = string.Format("Game Progress: {0}%", Model.GameProgress);
             ReleasedGameText.text = string.Format("Released Games: {0}", Model.ReleasedGames);
+            HypeText.text = string.Format("Hype: {0}", Model.Hype);
         }
     }
 }
