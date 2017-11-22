@@ -55,6 +55,7 @@ public class LootBoxModel : MonoBehaviour
     public BigNum GameProgress      { get { return Resources[Units.GameProgress].Amount; } }
     public BigNum ReleasedGames     { get { return Resources[Units.ReleasedGame].Amount; } }
     public BigNum Hype              { get { return Resources[Units.Hype].Amount; } }
+    public BigNum CopiesSold        { get { return Resources[Units.CopySold].Amount; } }
 
 
     private void Awake()

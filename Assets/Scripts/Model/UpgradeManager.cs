@@ -49,6 +49,21 @@ namespace Assets.Scripts.Model
                 }
             });
 
+            Upgrades.Add(Upgrade.EUpgradeType.SecondJob, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.SecondJob,
+                Name = "Get a second job",
+                Description = "I work from home anyway. Who's going to notice?",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.JobCompleted, 3)
+                }
+            });
+
             #endregion
 
 

@@ -19,7 +19,7 @@
 
             if (model.Consume(Units.JobProgress, 100))
             {
-                model.Add(Units.Money, 5);
+                model.Add(Units.Money, MoneyPerJobCompleted());
                 model.Add(Units.JobCompleted, 1);
 
                 if (model.JobsCompleted == 3)
@@ -27,6 +27,18 @@
                     model.UpgradeManager.Unlock(Upgrade.EUpgradeType.JobAutomationScript);
                 }
             }
+        }
+
+        public BigNum MoneyPerJobCompleted()
+        {
+            BigNum baseValue = 5;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SecondJob))
+            {
+                baseValue += 5;
+            }
+
+            return baseValue;
         }
 
         public void Tick()

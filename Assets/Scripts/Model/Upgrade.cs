@@ -11,6 +11,7 @@ namespace Assets.Scripts.Model
 
             //Job
             JobAutomationScript,
+            SecondJob,
 
             //MacGuffinQuest
             PurchaseMacGuffinQuest,

@@ -9,7 +9,7 @@ namespace Assets.Scripts.Model
         protected LootBoxModel model;
 
         public BigNum CostPerDeveloperPerTick = 1;
-        public BigNum GameProgressPerDeveloperPerTick = 1;
+        public BigNum GameProgressPerDeveloperPerTick = 0.1f;
 
         public StudioModel(LootBoxModel model)
         {
@@ -62,6 +62,12 @@ namespace Assets.Scripts.Model
                 //Not enough money to pay everybody!
                 //Drain the bank account but don't make any progress on the game
                 model.Consume(Units.Money, model.Money);
+            }
+
+            //Unit Sales
+            if (model.Hype >= 1)
+            {
+                model.Add(Units.CopySold, model.Hype);
             }
 
             //Hype Decay

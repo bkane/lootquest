@@ -31,6 +31,7 @@
         Developer,
         GameProgress,
         ReleasedGame,
-        Hype
+        Hype,
+        CopySold
     }
 }
