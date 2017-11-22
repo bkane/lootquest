@@ -25,5 +25,9 @@
         Follower,
         VideoProgress,
         PublishedVideo,
+
+
+        //Studio
+        Developer,
     }
 }

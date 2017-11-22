@@ -24,6 +24,7 @@ public class LootBoxModel : MonoBehaviour
     public JobModel Job                     { get; protected set; }
     public MacGuffinQuest MacGuffinQuest    { get; protected set; }
     public InfluencerModel Influencer       { get; protected set; }
+    public StudioModel Studio               { get; protected set; }
 
     //Short-hand
     //Life
@@ -47,7 +48,11 @@ public class LootBoxModel : MonoBehaviour
     public BigNum VideoProgress     { get { return Resources[Units.VideoProgress].Amount; } }
     public BigNum Followers         { get { return Resources[Units.Follower].Amount; } }
     public BigNum PublishedVideos   { get { return Resources[Units.PublishedVideo].Amount; } }
-   
+
+
+    //Studio
+    public BigNum Developers        { get { return Resources[Units.Developer].Amount; } }
+
 
     private void Awake()
     {
@@ -75,6 +80,9 @@ public class LootBoxModel : MonoBehaviour
         Influencer = new InfluencerModel(this);
         Influencer.IsActive = false;
 
+        Studio = new StudioModel(this);
+        Studio.IsActive = false;
+
         SetInitialState();
 
         if (UnlockAllViews)
@@ -83,6 +91,7 @@ public class LootBoxModel : MonoBehaviour
             Job.IsActive = true;
             MacGuffinQuest.IsActive = true;
             Influencer.IsActive = true;
+            Studio.IsActive = true;
         }
     }
 
@@ -199,6 +208,7 @@ public class LootBoxModel : MonoBehaviour
         Job.Tick();
         MacGuffinQuest.Tick();
         Influencer.Tick();
+        Studio.Tick();
         UpgradeManager.Tick();
 
         TickCount++;

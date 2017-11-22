@@ -12,6 +12,7 @@ namespace Assets.Scripts
         public GameObject JobView;
         public GameObject MacGuffinQuestView;
         public GameObject InfluencerView;
+        public GameObject StudioView;
 
         public void Update()
         {
@@ -22,6 +23,7 @@ namespace Assets.Scripts
             JobView.SetActive(Model.Job.IsActive);
             MacGuffinQuestView.SetActive(Model.MacGuffinQuest.IsActive);
             InfluencerView.SetActive(Model.Influencer.IsActive);
+            StudioView.SetActive(Model.Studio.IsActive);
         }
     }
 }
