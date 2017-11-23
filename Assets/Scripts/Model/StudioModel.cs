@@ -132,7 +132,7 @@ namespace Assets.Scripts.Model
             //Customer Data production
             if (model.ConsumeExactly(Units.Money, DataAnalystCostPerTick()))
             {
-                model.Add(Units.CustomerData, model.DataAnalysts * CustomerDataPerDataAnalystTick); //warning duplicated in Public
+                model.Add(Units.AnalyticsData, model.DataAnalysts * CustomerDataPerDataAnalystTick); //warning duplicated in Public
             }
             else
             {

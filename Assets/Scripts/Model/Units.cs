@@ -15,10 +15,12 @@
         GrindProgress,
         GrindCompleted,
         LootBox,
+        TotalLootBoxes,
         LootBoxOpened,
         TrashItem,
         TrashItemSold,
         BotAccount,
+        MacGuffinUnlocked,
 
 
         //Influencer Career
@@ -32,7 +34,7 @@
         Developer,
         DevHour,
         DataAnalyst,
-        CustomerData,
+        AnalyticsData,
         ReleasedGame,
         Hype,
         CopySold,
@@ -42,6 +44,7 @@
 
         //Public
         Customer,
+        CustomerData,
         Marketer,
         Lobbyist,
         Favor,

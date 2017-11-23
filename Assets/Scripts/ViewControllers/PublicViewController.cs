@@ -109,7 +109,7 @@ namespace Assets.Scripts.ViewControllers
             DevHoursText.text = string.Format("Dev Hours: {0}", Model.DevHours);
 
             DataAnalystsText.text = string.Format("Data Analysts: {0}", Model.DataAnalysts);
-            CustomerDataText.text = string.Format("Customer Data: {0} GB", Model.CustomerData);
+            CustomerDataText.text = string.Format("Customer Data: {0} GB", Model.AnalyticsData);
 
             MarketersText.text = string.Format("Marketers: {0}", Model.Marketers);
             CustomerAcquisitionRateText.text = string.Format("Customer Aquisition: {0}/s", Model.Public.CustomerAcquisitionPerTick() * 30);

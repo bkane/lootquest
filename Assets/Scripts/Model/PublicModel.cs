@@ -89,7 +89,7 @@ namespace Assets.Scripts.Model
             //Generate resources
             model.Add(Units.DevHour, model.Developers * StudioModel.DevHourPerDeveloperTick);
             model.Add(Units.Customer, CustomerAcquisitionPerTick());
-            model.Add(Units.CustomerData, model.DataAnalysts * StudioModel.CustomerDataPerDataAnalystTick);
+            model.Add(Units.CustomerData, model.DataAnalysts * StudioModel.CustomerDataPerDataAnalystTick); //TODO: base on analysts? they make analytics data
             model.Add(Units.Favor, model.Lobbyists);
             model.Add(Units.Cycle, model.CPUs);
             model.Add(Units.GenomeData, model.Bioengineers);

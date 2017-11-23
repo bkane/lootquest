@@ -356,7 +356,7 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "People <i>need</i> mattresses. Why shouldn't I get paid to give my opinion?",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Follower, 10)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
@@ -373,7 +373,7 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Okay, maybe not <i>everybody</i> needs novelty glasses, but I need more money for loot boxes. Feed the beast!",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Follower, 10)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
@@ -588,6 +588,7 @@ namespace Assets.Scripts.Model
                     break;
                 case Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode:
                     {
+                        Model.Add(Units.MacGuffinUnlocked, 1);
                         Debug.Log("Game over!");
                     }
                     break;

@@ -34,14 +34,15 @@ public class LootBoxModel : MonoBehaviour
     public BigNum TotalMoneyEarned  { get { return Resources[Units.TotalMoneyEarned].Amount; } }
 
     //Job
-
     public BigNum JobProgress       { get { return Resources[Units.JobProgress].Amount; } }
     public BigNum JobsCompleted     { get { return Resources[Units.JobCompleted].Amount; } }
 
     //MacGuffin Quest
+    public BigNum MacGuffinUnlocked { get { return Resources[Units.MacGuffinUnlocked].Amount; } }
     public BigNum GrindProgress     { get { return Resources[Units.GrindProgress].Amount; } }
     public BigNum GrindsCompleted   { get { return Resources[Units.GrindCompleted].Amount; } }
     public BigNum LootBoxes         { get { return Resources[Units.LootBox].Amount; } }
+    public BigNum TotalLootBoxes    { get { return Resources[Units.TotalLootBoxes].Amount; } }
     public BigNum LootBoxesOpened   { get { return Resources[Units.LootBoxOpened].Amount; } }
     public BigNum TrashItems        { get { return Resources[Units.TrashItem].Amount; } }
     public BigNum TrashItemsSold    { get { return Resources[Units.TrashItemSold].Amount; } }
@@ -61,12 +62,13 @@ public class LootBoxModel : MonoBehaviour
     public BigNum Hype              { get { return Resources[Units.Hype].Amount; } }
     public BigNum CopiesSold        { get { return Resources[Units.CopySold].Amount; } }
     public BigNum DataAnalysts      { get { return Resources[Units.DataAnalyst].Amount; } }
-    public BigNum CustomerData      { get { return Resources[Units.CustomerData].Amount; } }
+    public BigNum AnalyticsData     { get { return Resources[Units.AnalyticsData].Amount; } }
     public BigNum ActivePlayers     { get { return Resources[Units.ActivePlayer].Amount; } }
 
 
     //Public
     public BigNum Customers         { get { return Resources[Units.Customer].Amount; } }
+    public BigNum CustomerData      { get { return Resources[Units.CustomerData].Amount; } }
     public BigNum Marketers         { get { return Resources[Units.Marketer].Amount; } }
     public BigNum Lobbyists         { get { return Resources[Units.Lobbyist].Amount; } }
     public BigNum Favor             { get { return Resources[Units.Favor].Amount; } }
@@ -224,6 +226,11 @@ public class LootBoxModel : MonoBehaviour
         if (type == Units.Money)
         {
             Resources[Units.TotalMoneyEarned].Amount += amount; //Keep Track of the total cash
+        }
+
+        if (type == Units.LootBox)
+        {
+            Resources[Units.TotalLootBoxes].Amount += amount; //Keep Track of the total loot boxes
         }
     }
 

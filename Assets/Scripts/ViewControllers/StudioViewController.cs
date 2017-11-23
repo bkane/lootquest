@@ -20,7 +20,7 @@ namespace Assets.Scripts.ViewControllers
 
         public TextMeshProUGUI DataAnalystsText;
         public TextMeshProUGUI DataAnalystsCostText;
-        public TextMeshProUGUI CustomerDataText;
+        public TextMeshProUGUI AnalyticsDataText;
 
         //Buttons
         public Button HireDeveloper;
@@ -55,7 +55,7 @@ namespace Assets.Scripts.ViewControllers
 
             DataAnalystsText.text = string.Format("Data Analysts: {0}", Model.DataAnalysts);
             DataAnalystsCostText.text = string.Format("Data Analyst Cost: ${0}/s", Model.Studio.DataAnalystCostPerTick() * 30);
-            CustomerDataText.text = string.Format("Customer Data: {0} GB", Model.CustomerData);
+            AnalyticsDataText.text = string.Format("Analytics Data: {0} GB", Model.AnalyticsData);
 
             MicrotransactionRevenueText.gameObject.SetActive(Model.UpgradeManager.IsActive(Scripts.Model.Upgrade.EUpgradeType.EnableMicrotransactions));
         }

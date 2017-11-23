@@ -11,6 +11,7 @@ namespace Assets.Scripts.ViewControllers
 
         //Labels
         public TextMeshProUGUI GrindProgressText;
+        public TextMeshProUGUI MacGuffinsUnlockedText;
         public TextMeshProUGUI LootBoxText;
         public TextMeshProUGUI ItemsText;
         public TextMeshProUGUI BotAccountsText;
@@ -38,11 +39,14 @@ namespace Assets.Scripts.ViewControllers
             LootBoxText.text = string.Format("Loot Boxes: {0}", Model.LootBoxes);
             ItemsText.text = string.Format("Trash Items: {0}", Model.TrashItems);
             BotAccountsText.text = string.Format("Bot Accounts: {0}", Model.NumBotAccounts);
+            MacGuffinsUnlockedText.text = string.Format("MacGuffins Unlocked: {0}", Model.MacGuffinUnlocked);
 
             BuyBotAccountButton.gameObject.SetActive(Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder));
             BotAccountsText.gameObject.SetActive(Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder));
 
             SellTrashItemButton.gameObject.SetActive(Model.LootBoxesOpened > 0);
+
+            GrindButton.GetComponentInChildren<Text>().text = Model.GrindsCompleted > 5 ? "Grind" : "Play";
         }
     }
 }
