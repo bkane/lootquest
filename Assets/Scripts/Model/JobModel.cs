@@ -6,8 +6,6 @@
 
         private LootBoxModel model;
 
-        public int TicksPerJobAutomation = 5;
-
         public JobModel(LootBoxModel model)
         {
             this.model = model;
@@ -53,11 +51,28 @@
             return baseValue;
         }
 
+        public BigNum TicksPerJobAutomation()
+        {
+            BigNum amount = 4;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.FasterComputer))
+            {
+                amount /= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.WatercooledComputer))
+            {
+                amount /= 2;
+            }
+
+            return amount;
+        }
+
         public void Tick()
         {
             if (!IsActive) { return; }
 
-            if (model.TickCount % TicksPerJobAutomation == 0 &&
+            if (model.TickCount % TicksPerJobAutomation() == 0 &&
                 model.UpgradeManager.IsActive(Upgrade.EUpgradeType.JobAutomationScript))
             {
                 DoJob(1);

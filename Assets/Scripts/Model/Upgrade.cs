@@ -15,6 +15,8 @@ namespace Assets.Scripts.Model
             DressForSuccess,
             JobAutomationScript,
             SecondJob,
+            FasterComputer,
+            WatercooledComputer,
 
             //MacGuffinQuest
             PurchaseMacGuffinQuest,

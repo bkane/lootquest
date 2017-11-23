@@ -108,6 +108,35 @@ namespace Assets.Scripts.Model
                 }
             });
 
+            Upgrades.Add(Upgrade.EUpgradeType.FasterComputer, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.FasterComputer,
+                Name = "Buy a better computer",
+                Description = "Invest in better hardware since it's the one doing all the work anyway.",
+                CommentOnBuy = "Gotta have the fastest rig for these spreadsheets!",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.JobCompleted, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.JobAutomationScript }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.WatercooledComputer, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.WatercooledComputer,
+                Name = "Get Water-cooling and overclock your rig",
+                Description = "Hardly seems worth it for the nominal increase in speed but who am I to judge?",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.FasterComputer }
+            });
+
             #endregion
 
 
