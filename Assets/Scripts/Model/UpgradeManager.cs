@@ -372,7 +372,7 @@ namespace Assets.Scripts.Model
                     {
                         Logger.Log("Sorry! MacGuffin Quest Regular Edition pre-orders are all sold out! We do still have Limited Editions available ironically.");
 
-                        Logger.Log("How is a pre-order out of stock?");
+                        Logger.Log(5, "How is a pre-order out of stock anyway?");
 
                         Model.Add(Units.Money, MCGCost); //money back, since it wasn't actually purchased
                     }

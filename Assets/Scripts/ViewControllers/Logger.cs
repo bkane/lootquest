@@ -14,7 +14,7 @@ public class Logger : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null) { Debug.LogError("Tried to instantiate a second logger!");  }
+        if (Instance != null) { Debug.LogError("Tried to instantiate a second logger!"); }
         Instance = this;
     }
 
@@ -30,5 +30,10 @@ public class Logger : MonoBehaviour
         Instance.Messages.Enqueue(message);
 
         Instance.LogText.text = string.Join("\n", Instance.Messages.Reverse().ToArray());
+    }
+
+    public static void Log(float delay, string message)
+    {
+        Instance.StartCoroutine(Util.DelayCall(delay, () => { Log(message); }));
     }
 }
