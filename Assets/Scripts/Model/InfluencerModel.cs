@@ -39,10 +39,16 @@
         {
             if (!IsActive) { return; }
 
-            model.Add(Units.Money, AdRevenuePerTick());
+            //Ad rev
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.GetPartnered))
+            {
+                model.Add(Units.Money, AdRevenuePerTick());
+            }
 
+            //Channel Growth
             model.Add(Units.Follower, model.PublishedVideos * FollowersPerVideoPerTick);
 
+            //Auto-video production
             if (model.TickCount % TicksPerVideoEditor == 0 &&
                 model.UpgradeManager.IsActive(Upgrade.EUpgradeType.HireVideoEditor))
             {

@@ -30,6 +30,9 @@ namespace Assets.Scripts.ViewControllers
             FollowersText.text = string.Format("Followers: {0}", Model.Followers);
             VideosText.text = string.Format("Published Videos: {0}", Model.PublishedVideos);
             AdRevenuePerSecondText.text = string.Format("Ad Rev: ${0}/s", Model.Influencer.AdRevenuePerTick() * 30);
+
+
+            AdRevenuePerSecondText.gameObject.SetActive(Model.UpgradeManager.IsActive(Scripts.Model.Upgrade.EUpgradeType.GetPartnered));
         }
     }
 }

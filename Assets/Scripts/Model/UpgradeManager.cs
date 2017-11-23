@@ -266,6 +266,22 @@ namespace Assets.Scripts.Model
                 }
             });
 
+            Upgrades.Add(Upgrade.EUpgradeType.GetPartnered, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.GetPartnered,
+                Name = "Get Partnered",
+                Description = "Start monetizing your content. Unlocks ad revenue.",
+                CommentOnBuy = "Not sure why I had to pay to become a partner but I'm sure it'll be a worthwhile investment.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.Follower, 100)
+                }
+            });
+
             Upgrades.Add(Upgrade.EUpgradeType.HireVideoEditor, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.HireVideoEditor,
