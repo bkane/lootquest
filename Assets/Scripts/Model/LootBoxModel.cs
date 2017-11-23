@@ -141,12 +141,27 @@ public class LootBoxModel : MonoBehaviour
         }
     }
 
-    public bool Consume(Resource resource)
+    public bool ConsumeExactly(Resource resource)
     {
-        return Consume(resource.Type, resource.Amount);
+        return ConsumeExactly(resource.Type, resource.Amount);
     }
 
-    public bool Consume(Units type, BigNum amount)
+    /// <summary>
+    /// Consume as much of this unit as possible, up to amount.
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    public BigNum ConsumeUpTo(Units type, BigNum amount)
+    {
+        BigNum amountConsumed = Mathf.Min(Resources[type].Amount, amount);
+
+        Resources[type].Amount -= amountConsumed;
+
+        return amountConsumed;
+    }
+
+    public bool ConsumeExactly(Units type, BigNum amount)
     {
         if (DollarBuys) { amount = 1; }
 
@@ -162,7 +177,7 @@ public class LootBoxModel : MonoBehaviour
         }
     }
 
-    public bool Consume(List<Resource> costs)
+    public bool ConsumeExactly(List<Resource> costs)
     {
         bool canAfford = true;
         for (int i = 0; i < costs.Count; i++)
@@ -180,31 +195,7 @@ public class LootBoxModel : MonoBehaviour
             //All necessary costs can be paid, so consume them all now
             for (int i = 0; i < costs.Count; i++)
             {
-                Consume(costs[i]);
-            }
-
-            return true;
-        }
-        else
-        {
-            //Not enough resources to fulfill all requirements
-            return false;
-        }
-    }
-
-    public bool Convert(Resource cost, Resource product)
-    {
-        return Convert(new List<Resource>() { cost }, new List<Resource>() { product });
-    }
-
-    public bool Convert(List<Resource> costs, List<Resource> products)
-    {
-        if (Consume(costs))
-        { 
-            //Then produce all the products
-            for(int i = 0; i < products.Count; i++)
-            {
-                Add(products[i]);
+                ConsumeExactly(costs[i]);
             }
 
             return true;

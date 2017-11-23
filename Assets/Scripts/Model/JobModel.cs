@@ -27,7 +27,7 @@
         {
             model.Add(Units.JobProgress, amount);
 
-            if (model.Consume(Units.JobProgress, 100))
+            if (model.ConsumeExactly(Units.JobProgress, 100))
             {
                 model.Add(Units.Money, MoneyPerJobCompleted());
                 model.Add(Units.JobCompleted, 1);

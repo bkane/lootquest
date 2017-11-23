@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.Model
+﻿using UnityEngine;
+
+namespace Assets.Scripts.Model
 {
     /// <summary>
     /// The game-with-in-a-game
@@ -22,13 +24,29 @@
             this.Model = model;
         }
 
+
         public void DoGrindClick()
         {
-            BigNum amount = 5;
+            DoGrind(ActionsPerClick() * 5);
+        }
+
+        public void OpenLootBoxClick()
+        {
+            OpenLootBox(ActionsPerClick());
+        }
+
+        public void SellTrashClick()
+        {
+            SellTrash(ActionsPerClick());
+        }
+
+        public BigNum ActionsPerClick()
+        {
+            BigNum amount = 1;
 
             if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SecondMouse))
-            { 
-                amount += 5;
+            {
+                amount += 1;
             }
 
             if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TieFiveMiceTogether))
@@ -36,8 +54,10 @@
                 amount *= 5;
             }
 
-            DoGrind(amount);
+            return amount;
         }
+
+
 
         public void DoGrind(BigNum amount)
         {
@@ -48,7 +68,8 @@
 
             Model.Add(Units.GrindProgress, amount);
 
-            if (Model.Consume(Units.GrindProgress, GrindProgressPerLootBox))
+            //TODO: this will cap at 30/s, but we should switch after that point anyway
+            if (Model.ConsumeExactly(Units.GrindProgress, GrindProgressPerLootBox))
             {
                 Model.Add(Units.LootBox, 1);
                 Model.Add(Units.GrindCompleted, 1);
@@ -57,50 +78,44 @@
 
         public void BuyLootBox()
         {
-            if (Model.Consume(Units.Money, MoneyPerLootBox))
+            if (Model.ConsumeExactly(Units.Money, MoneyPerLootBox))
             {
                 Model.Add(Units.LootBox, 1);
             }
         }
 
-        public void OpenLootBox()
+        public void OpenLootBox(BigNum amount)
         {
-            if (Model.Consume(Units.LootBox, 1))
+            BigNum lootBoxesOpened = Model.ConsumeUpTo(Units.LootBox, amount);
+
+            if (lootBoxesOpened > 0)
             {
                 //TODO: this is opening a lootbox! This will be exciting!
-                Model.Add(Units.TrashItem, 1);
-                Model.Add(Units.LootBoxOpened, 1);
+                Model.Add(Units.TrashItem, lootBoxesOpened);
+                Model.Add(Units.LootBoxOpened, lootBoxesOpened);
 
                 if (Model.Influencer.IsActive)
                 {
-                    Model.Add(Units.VideoContent, 1);
+                    Model.Add(Units.VideoContent, lootBoxesOpened);
                 }
             }
         }
 
-        public void SellTrash(bool isManualAction)
+        public void SellTrash(BigNum amount)
         {
-            if (Model.Consume(Units.TrashItem, 1))
+            BigNum itemsSold = Model.ConsumeUpTo(Units.TrashItem, amount);
+            if (itemsSold > 0)
             {
-                BigNum salePrice = 1;
-
-                if (isManualAction)
-                {
-                    salePrice *= ManualSellTrashEfficiency;
-                }
-                else
-                {
-                    salePrice *= AutoSellTrashEfficiency;
-                }
+                BigNum salePrice = itemsSold * 1;
 
                 Model.Add(Units.Money, salePrice);
-                Model.Add(Units.TrashItemSold, 1);
+                Model.Add(Units.TrashItemSold, itemsSold);
             }
         }
 
         public void BuyBotAccount()
         {
-            if (Model.Consume(Units.Money, 10))
+            if (Model.ConsumeExactly(Units.Money, 10))
             {
                 Model.Add(Units.BotAccount, 1);
             }
@@ -118,7 +133,7 @@
             if (Model.TickCount % AutoSellTicks == 0 &&
                 Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoSellTrashItems))
             {
-                SellTrash(false);
+                SellTrash(Model.NumBotAccounts);
             }
         }
     }

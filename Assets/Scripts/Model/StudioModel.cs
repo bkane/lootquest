@@ -22,7 +22,7 @@ namespace Assets.Scripts.Model
 
         public void HireDeveloper()
         {
-            if (model.Consume(Units.Money, 10))
+            if (model.ConsumeExactly(Units.Money, 10))
             {
                 model.Add(Units.Developer, 1);
             }
@@ -30,12 +30,12 @@ namespace Assets.Scripts.Model
 
         public void FireDeveloper()
         {
-            model.Consume(Units.Developer, 1);
+            model.ConsumeExactly(Units.Developer, 1);
         }
 
         public void HireDataAnalyst()
         {
-            if (model.Consume(Units.Money, 10))
+            if (model.ConsumeExactly(Units.Money, 10))
             {
                 model.Add(Units.DataAnalyst, 1);
             }
@@ -43,7 +43,7 @@ namespace Assets.Scripts.Model
 
         public void FireDataAnalyst()
         {
-            model.Consume(Units.DataAnalyst, 1);
+            model.ConsumeExactly(Units.DataAnalyst, 1);
         }
 
         public BigNum DevCostPerTick()
@@ -98,7 +98,7 @@ namespace Assets.Scripts.Model
 
         public void ReleaseGame()
         {
-            if (model.Consume(Units.DevHour, CostOfGameInDevHours()))
+            if (model.ConsumeExactly(Units.DevHour, CostOfGameInDevHours()))
             {
                 model.Add(Units.ReleasedGame, 1);
                 model.Add(Units.Hype, HypePerRelease());
@@ -118,7 +118,7 @@ namespace Assets.Scripts.Model
             if (!IsActive) { return; }
 
             //Game production
-            if (model.Consume(Units.Money, DevCostPerTick()))
+            if (model.ConsumeExactly(Units.Money, DevCostPerTick()))
             {
                 model.Add(Units.DevHour, model.Developers * DevHourPerDeveloperTick); //warning duplicated in Public
             }
@@ -126,11 +126,11 @@ namespace Assets.Scripts.Model
             {
                 //Not enough money to pay everybody!
                 //Drain the bank account but don't make any progress on the game
-                model.Consume(Units.Money, model.Money);
+                model.ConsumeExactly(Units.Money, model.Money);
             }
 
             //Customer Data production
-            if (model.Consume(Units.Money, DataAnalystCostPerTick()))
+            if (model.ConsumeExactly(Units.Money, DataAnalystCostPerTick()))
             {
                 model.Add(Units.CustomerData, model.DataAnalysts * CustomerDataPerDataAnalystTick); //warning duplicated in Public
             }
@@ -138,7 +138,7 @@ namespace Assets.Scripts.Model
             {
                 //Not enough money to pay everybody!
                 //Drain the bank account but don't accrue any customer data
-                model.Consume(Units.Money, model.Money);
+                model.ConsumeExactly(Units.Money, model.Money);
             }
 
             //Microtransactions
@@ -151,7 +151,7 @@ namespace Assets.Scripts.Model
             //Playerbase decay
             if (model.ActivePlayers > 0)
             {
-                model.Consume(Units.ActivePlayer, ActivePlayersDecayPerTick());
+                model.ConsumeExactly(Units.ActivePlayer, ActivePlayersDecayPerTick());
             }
         }
     }

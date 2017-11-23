@@ -19,11 +19,11 @@
 
         public void DoMakeVideo()
         {
-            if (model.Consume(Units.VideoContent, 1))
+            if (model.ConsumeExactly(Units.VideoContent, 1))
             {
                 model.Add(Units.VideoProgress, VideoProgressPerMakeVideoClick);
 
-                if (model.Consume(Units.VideoProgress, 100))
+                if (model.ConsumeExactly(Units.VideoProgress, 100))
                 {
                     model.Add(Units.PublishedVideo, 1);
                 }

@@ -371,7 +371,7 @@ namespace Assets.Scripts.Model
         {
             if (upgrade.State == Upgrade.EState.Visible)
             {
-                if (Model.Consume(upgrade.Costs))
+                if (Model.ConsumeExactly(upgrade.Costs))
                 {
                     DoUpgrade(upgrade);
                     return true;

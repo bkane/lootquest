@@ -26,9 +26,9 @@ namespace Assets.Scripts.ViewControllers
         private void Awake()
         {
             GrindButton.onClick.AddListener(Model.MacGuffinQuest.DoGrindClick);
-            SellTrashItemButton.onClick.AddListener(() => { Model.MacGuffinQuest.SellTrash(true); });
+            SellTrashItemButton.onClick.AddListener(Model.MacGuffinQuest.SellTrashClick);
             BuyLootBoxButton.onClick.AddListener(Model.MacGuffinQuest.BuyLootBox);
-            OpenLootBoxButton.onClick.AddListener(Model.MacGuffinQuest.OpenLootBox);
+            OpenLootBoxButton.onClick.AddListener(Model.MacGuffinQuest.OpenLootBoxClick);
             BuyBotAccountButton.onClick.AddListener(Model.MacGuffinQuest.BuyBotAccount);
         }
 

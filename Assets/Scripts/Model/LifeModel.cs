@@ -14,7 +14,7 @@
 
         public void DoBuyCoffee()
         {
-            if (model.Consume(Units.Money, 2))
+            if (model.ConsumeExactly(Units.Money, 2))
             {
                 model.Add(Units.Caffeine, 1);
                 Stats.Instance.CoffeeConsumed++;
