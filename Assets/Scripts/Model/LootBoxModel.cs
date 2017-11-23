@@ -30,9 +30,11 @@ public class LootBoxModel : MonoBehaviour
 
     //Short-hand
     //Life
+    public BigNum Money             { get { return Resources[Units.Money].Amount; } }
+    public BigNum TotalMoneyEarned  { get { return Resources[Units.TotalMoneyEarned].Amount; } }
 
     //Job
-    public BigNum Money             { get { return Resources[Units.Money].Amount; } }
+
     public BigNum JobProgress       { get { return Resources[Units.JobProgress].Amount; } }
     public BigNum JobsCompleted     { get { return Resources[Units.JobCompleted].Amount; } }
 
@@ -226,6 +228,11 @@ public class LootBoxModel : MonoBehaviour
         if (Resources[type].MaxValue > 0)
         {
             Resources[type].Amount = Mathf.Min(Resources[type].Amount, Resources[type].MaxValue);
+        }
+
+        if (type == Units.Money)
+        {
+            Resources[Units.TotalMoneyEarned].Amount += amount; //Keep Track of the total cash
         }
     }
 

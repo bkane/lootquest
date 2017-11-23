@@ -8,8 +8,11 @@ namespace Assets.Scripts.Model
         {
             //Life
             EnergyDrinks,
+            LearnToCode,
 
             //Job
+            WorkSmarter,
+            DressForSuccess,
             JobAutomationScript,
             SecondJob,
 
@@ -47,5 +50,6 @@ namespace Assets.Scripts.Model
         public List<Resource> Costs = new List<Resource>();
         public EState State = Upgrade.EState.Hidden;
         public List<Resource> UnlockThreshold = new List<Resource>();
+        public List<EUpgradeType> Requirements = new List<EUpgradeType>();
     }
 }

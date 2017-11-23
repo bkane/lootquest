@@ -13,6 +13,18 @@
             this.model = model;
         }
 
+        public void DoJobClick()
+        {
+            BigNum baseJobAmount = 10;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.WorkSmarter))
+            {
+                baseJobAmount += 10;
+            }
+
+            DoJob(baseJobAmount);
+        }
+
         public void DoJob(BigNum amount)
         {
             model.Add(Units.JobProgress, amount);
@@ -21,11 +33,6 @@
             {
                 model.Add(Units.Money, MoneyPerJobCompleted());
                 model.Add(Units.JobCompleted, 1);
-
-                if (model.JobsCompleted == 3)
-                {
-                    model.UpgradeManager.Unlock(Upgrade.EUpgradeType.JobAutomationScript);
-                }
             }
         }
 
@@ -33,9 +40,14 @@
         {
             BigNum baseValue = 5;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SecondJob))
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.DressForSuccess))
             {
                 baseValue += 5;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SecondJob))
+            {
+                baseValue *= 5;
             }
 
             return baseValue;

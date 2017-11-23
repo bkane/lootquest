@@ -29,10 +29,55 @@ namespace Assets.Scripts.Model
                 }
             });
 
+            Upgrades.Add(Upgrade.EUpgradeType.LearnToCode, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.LearnToCode,
+                Name = "Learn to code",
+                Description = "Looks like computers might be sticking around for a while. I should learn to talk to them.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.TotalMoneyEarned, 100)
+                }
+            });
+
             #endregion
 
 
             #region Job upgrades
+
+            Upgrades.Add(Upgrade.EUpgradeType.WorkSmarter, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.WorkSmarter,
+                Name = "Buy a book on life hacks",
+                Description = "Work smarter not harder! Get more work done with every click.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.JobCompleted, 3)
+                }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.DressForSuccess, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.DressForSuccess,
+                Name = "Dress for Success",
+                Description = "Dress for the job you want, and then get that job. Promotion means more money!",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.JobCompleted, 3)
+                }
+            });
 
             Upgrades.Add(Upgrade.EUpgradeType.JobAutomationScript, new Upgrade()
             {
@@ -43,10 +88,7 @@ namespace Assets.Scripts.Model
                 {
                     new Resource(Units.Money, 10)
                 },
-                UnlockThreshold = new List<Resource>()
-                {
-                    new Resource(Units.JobCompleted, 3)
-                }
+                Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.LearnToCode }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.SecondJob, new Upgrade()
@@ -316,18 +358,33 @@ namespace Assets.Scripts.Model
         {
             bool unlockThresholdMet = true;
 
-            for (int i = 0; i < upgrade.UnlockThreshold.Count; i++)
+            if (unlockThresholdMet)
             {
-                Resource resource = upgrade.UnlockThreshold[i];
-
-                if (Model.Resources[resource.Type].Amount < resource.Amount)
+                //Check pre-req upgrades
+                for (int i = 0; i < upgrade.Requirements.Count; i++)
                 {
-                    unlockThresholdMet = false;
-                    break;
+                    if (!IsActive(upgrade.Requirements[i]))
+                    {
+                        unlockThresholdMet = false;
+                        break;
+                    }
                 }
             }
 
-            //TODO: also implement pre-req upgrades
+            if (unlockThresholdMet)
+            {
+                //Check resources threshold
+                for (int i = 0; i < upgrade.UnlockThreshold.Count; i++)
+                {
+                    Resource resource = upgrade.UnlockThreshold[i];
+
+                    if (Model.Resources[resource.Type].Amount < resource.Amount)
+                    {
+                        unlockThresholdMet = false;
+                        break;
+                    }
+                }
+            }
 
             return unlockThresholdMet;
         }

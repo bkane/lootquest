@@ -41,6 +41,8 @@ namespace Assets.Scripts.ViewControllers
 
             BuyBotAccountButton.gameObject.SetActive(Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder));
             BotAccountsText.gameObject.SetActive(Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder));
+
+            SellTrashItemButton.gameObject.SetActive(Model.LootBoxesOpened > 0);
         }
     }
 }

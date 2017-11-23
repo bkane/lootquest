@@ -9,6 +9,7 @@
         JobProgress,
         JobCompleted,
         Money,
+        TotalMoneyEarned,
 
         //MacGuffin Quest
         GrindProgress,
