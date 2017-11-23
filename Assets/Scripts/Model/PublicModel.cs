@@ -78,7 +78,7 @@ namespace Assets.Scripts.Model
             if (!IsActive) { return; }
 
             //Set resources according to budget
-            float budget = 100; //TODO
+            float budget = model.Money / 1000000; //TODO
             model.Resources[Units.Developer].Amount     = budget * DevAllocation;
             model.Resources[Units.Marketer].Amount      = budget * MarketerAllocation;
             model.Resources[Units.DataAnalyst].Amount   = budget * DataAnalystAllocation;

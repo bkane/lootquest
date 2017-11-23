@@ -30,7 +30,8 @@ namespace Assets.Scripts.Model
 
 
             //Public
-            ExecuteIPO
+            ExecuteIPO,
+            PurchaseMacGuffinQuestSourceCode
         }
 
         public enum EState

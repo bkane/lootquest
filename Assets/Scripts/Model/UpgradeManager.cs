@@ -204,6 +204,21 @@ namespace Assets.Scripts.Model
                 }
             });
 
+            Upgrades.Add(Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode,
+                Name = "Purchase MacGuffin Quest source code",
+                Description = "I just need to flip a zero to a one and then I can finally play as MacGuffin.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.Customer, 7.6f)
+                }
+            });
+
             #endregion
         }
 
@@ -273,6 +288,11 @@ namespace Assets.Scripts.Model
                 case Upgrade.EUpgradeType.AutoGrinder:
                     {
                         Model.Add(Units.BotAccount, 1);
+                    }
+                    break;
+                case Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode:
+                    {
+                        Debug.Log("Game over!");
                     }
                     break;
             }
