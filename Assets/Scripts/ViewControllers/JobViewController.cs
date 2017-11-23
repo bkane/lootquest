@@ -12,6 +12,7 @@ namespace Assets.Scripts.ViewControllers
 
         //Labels
         public TextMeshProUGUI JobProgressText;
+        public TextMeshProUGUI WageText;
 
         //Buttons
         public Button DoJobButton;
@@ -24,6 +25,7 @@ namespace Assets.Scripts.ViewControllers
         private void Update()
         {
             JobProgressText.text = string.Format("Job Progress: {0}%", Model.JobProgress);
+            WageText.text = string.Format("Wage: ${0}", Model.Job.MoneyPerJobCompleted());
         }
     }
 }
