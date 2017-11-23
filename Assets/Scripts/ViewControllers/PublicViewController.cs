@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Assets.Scripts.Model;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,11 +19,28 @@ namespace Assets.Scripts.ViewControllers
 
         //Budget Allocation
         public TextMeshProUGUI DevAllocationText;
+        public Button DevPlus;
+        public Button DevMinus;
+
         public TextMeshProUGUI MarketerAllocationText;
+        public Button MarketingPlus;
+        public Button MarketingMinus;
+
         public TextMeshProUGUI DataAnalystAllocationText;
+        public Button DataAnalysisPlus;
+        public Button DataAnalysisMinus;
+
         public TextMeshProUGUI LobbyistAllocationText;
+        public Button LobbyingPlus;
+        public Button LobbyingMinus;
+
         public TextMeshProUGUI CPUAllocationText;
+        public Button MLPlus;
+        public Button MLMinus;
+
         public TextMeshProUGUI BioengineerAllocationText;
+        public Button BioPlus;
+        public Button BioMinus;
 
         //Employees
         public TextMeshProUGUI DeveloperText;
@@ -50,7 +68,23 @@ namespace Assets.Scripts.ViewControllers
 
         private void Awake()
         {
+            DevPlus.onClick.AddListener(() => Model.Public.Allocate(Units.Developer));
+            DevMinus.onClick.AddListener(() => Model.Public.Deallocate(Units.Developer));
 
+            MarketingPlus.onClick.AddListener(() => Model.Public.Allocate(Units.Marketer));
+            MarketingMinus.onClick.AddListener(() => Model.Public.Deallocate(Units.Marketer));
+
+            DataAnalysisPlus.onClick.AddListener(() => Model.Public.Allocate(Units.DataAnalyst));
+            DataAnalysisMinus.onClick.AddListener(() => Model.Public.Deallocate(Units.DataAnalyst));
+
+            LobbyingPlus.onClick.AddListener(() => Model.Public.Allocate(Units.Lobbyist));
+            LobbyingMinus.onClick.AddListener(() => Model.Public.Deallocate(Units.Lobbyist));
+
+            MLPlus.onClick.AddListener(() => Model.Public.Allocate(Units.CPU));
+            MLMinus.onClick.AddListener(() => Model.Public.Deallocate(Units.CPU));
+
+            BioPlus.onClick.AddListener(() => Model.Public.Allocate(Units.Bioengineer));
+            BioMinus.onClick.AddListener(() => Model.Public.Deallocate(Units.Bioengineer));
         }
 
         private void Update()
@@ -62,12 +96,12 @@ namespace Assets.Scripts.ViewControllers
             PercentWhoMonetizeText.text = string.Format("% customers monetize: {0}%", Model.Public.PercentWhoMonetize() * 100);
 
             //Budget
-            DevAllocationText.text = string.Format("DevAllocation: {0}", Model.Public.DevAllocation);
-            MarketerAllocationText.text = string.Format("MarketerAllocation: {0}", Model.Public.MarketerAllocation);
-            DataAnalystAllocationText.text = string.Format("DataAnalystAllocation: {0}", Model.Public.DataAnalystAllocation);
-            LobbyistAllocationText.text = string.Format("LobbyistAllocation: {0}", Model.Public.LobbyistAllocation);
-            CPUAllocationText.text = string.Format("CPUAllocation: {0}", Model.Public.CPUAllocation);
-            BioengineerAllocationText.text = string.Format("BioengineerAllocation: {0}", Model.Public.BioengineerAllocation);
+            DevAllocationText.text = string.Format("{0:0}%", Model.Public.DevAllocation * 100);
+            MarketerAllocationText.text = string.Format("{0:0}%", Model.Public.MarketerAllocation * 100);
+            DataAnalystAllocationText.text = string.Format("{0:0}%", Model.Public.DataAnalystAllocation * 100);
+            LobbyistAllocationText.text = string.Format("{0:0}%", Model.Public.LobbyistAllocation * 100);
+            CPUAllocationText.text = string.Format("{0:0}%", Model.Public.CPUAllocation * 100);
+            BioengineerAllocationText.text = string.Format("{0:0}%", Model.Public.BioengineerAllocation * 100);
 
 
             //Employees
@@ -93,4 +127,3 @@ namespace Assets.Scripts.ViewControllers
         }
     }
 }
-
