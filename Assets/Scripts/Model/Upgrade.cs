@@ -37,6 +37,9 @@ namespace Assets.Scripts.Model
             StartStreaming,
             DoSponsoredVideos,
             CompletelySellOut,
+            ChannelGrowthAnalytics,
+            OptimizeContentForChannelGrowth,
+            HireProVideoEditor,
 
             //Studio
             StartAStudio,

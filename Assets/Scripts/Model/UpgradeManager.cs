@@ -382,6 +382,56 @@ namespace Assets.Scripts.Model
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.DoSponsoredVideos }
             });
 
+            Upgrades.Add(Upgrade.EUpgradeType.ChannelGrowthAnalytics, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.ChannelGrowthAnalytics,
+                Name = "Track Channel Growth",
+                Description = "Do some analysis and figure out where all these followers are coming from.",
+                CommentOnBuy = "",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.PublishedVideo, 10)
+                }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.OptimizeContentForChannelGrowth, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.OptimizeContentForChannelGrowth,
+                Name = "Optimize Video Content for Channel Growth",
+                Description = "Perform exhaustive research and experimentation to determine the best ways to drive engagement to your channel.",
+                CommentOnBuy = "Smash that Like button!",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.PublishedVideo, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ChannelGrowthAnalytics }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.HireProVideoEditor, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.HireProVideoEditor,
+                Name = "Hire a Pro Video Editor",
+                Description = "I know someone who can churn out videos in half the time.",
+                CommentOnBuy = "Okay so the video quality isn't quite as good, but it's clips of a bot opening loot boxes. What do you expect?",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.PublishedVideo, 50)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.HireVideoEditor }
+            });
+
             #endregion
 
 

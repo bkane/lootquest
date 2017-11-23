@@ -12,6 +12,7 @@ namespace Assets.Scripts.ViewControllers
         public TextMeshProUGUI VideoContentText;
         public TextMeshProUGUI VideoProgressText;
         public TextMeshProUGUI FollowersText;
+        public TextMeshProUGUI FollowersPerSecondText;
         public TextMeshProUGUI VideosText;
         public TextMeshProUGUI AdRevenuePerSecondText;
 
@@ -30,8 +31,9 @@ namespace Assets.Scripts.ViewControllers
             FollowersText.text = string.Format("Followers: {0}", Model.Followers);
             VideosText.text = string.Format("Published Videos: {0}", Model.PublishedVideos);
             AdRevenuePerSecondText.text = string.Format("Ad Rev: ${0}/s", Model.Influencer.AdRevenuePerTick() * 30);
+            FollowersPerSecondText.text = string.Format("Channel Growth: {0}/s", Model.Influencer.FollowersPerTick() * 30);
 
-
+            FollowersPerSecondText.gameObject.SetActive(Model.UpgradeManager.IsActive(Scripts.Model.Upgrade.EUpgradeType.ChannelGrowthAnalytics));
             AdRevenuePerSecondText.gameObject.SetActive(Model.UpgradeManager.IsActive(Scripts.Model.Upgrade.EUpgradeType.GetPartnered));
         }
     }
