@@ -109,7 +109,7 @@ namespace Assets.Scripts.Model
                 model.Add(Units.ActivePlayer, unitsSold);
                 model.Add(Units.Money, revenue);
 
-                Debug.LogFormat("Game {0} released and sold {1} copies for ${2}", model.ReleasedGames, unitsSold, revenue);
+                Logger.Log(string.Format("Game {0} released and sold {1} copies for ${2}", model.ReleasedGames, unitsSold, revenue));
             }
         }
 

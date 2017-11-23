@@ -34,7 +34,9 @@ namespace Assets.Scripts.Model
             MakeVideoIntro,
             GetPartnered,
             HireVideoEditor,
-
+            StartStreaming,
+            DoSponsoredVideos,
+            CompletelySellOut,
 
             //Studio
             StartAStudio,

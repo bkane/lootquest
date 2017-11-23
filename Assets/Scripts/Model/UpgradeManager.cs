@@ -331,6 +331,57 @@ namespace Assets.Scripts.Model
                 Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.GetPartnered }
             });
 
+            Upgrades.Add(Upgrade.EUpgradeType.StartStreaming, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.StartStreaming,
+                Name = "Start live-streaming",
+                Description = "Live-stream the unboxings before you turn them into videos. More opportunities to gain followers!",
+                CommentOnBuy = "I wonder what this will do to my sleep schedule...",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.PublishedVideo, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.GetPartnered }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.DoSponsoredVideos, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.DoSponsoredVideos,
+                Name = "Do Sponsored Videos",
+                Description = "Get more revenue per video. ",
+                CommentOnBuy = "People <i>need</i> mattresses. Why shouldn't I get paid to give my opinion?",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.PublishedVideo, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.GetPartnered }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.CompletelySellOut, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.CompletelySellOut,
+                Name = "Completely Sell Out",
+                Description = "Sponsor anything and everything.",
+                CommentOnBuy = "Okay, maybe not <i>everybody</i> needs novelty glasses, but I need more money for loot boxes. Feed the beast!",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.PublishedVideo, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.DoSponsoredVideos }
+            });
+
             #endregion
 
 

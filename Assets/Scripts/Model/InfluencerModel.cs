@@ -4,11 +4,7 @@
     {
         public bool IsActive { get; set; }
 
-        public BigNum VideoProgressPerMakeVideoClick = 50;
         public int TicksPerVideoEditor = 30;
-        public BigNum MoneyPerFollowerPerTick = 0.001f;
-
-        public BigNum FollowersPerVideoPerTick = 1/30f;
 
         protected LootBoxModel model;
 
@@ -49,7 +45,31 @@
 
         public BigNum AdRevenuePerTick()
         {
-            return model.Followers * MoneyPerFollowerPerTick;
+            BigNum moneyPerFollowerPerTick = 0.0001f;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.DoSponsoredVideos))
+            {
+                moneyPerFollowerPerTick *= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.CompletelySellOut))
+            {
+                moneyPerFollowerPerTick *= 10;
+            }
+
+            return model.Followers * moneyPerFollowerPerTick;
+        }
+
+        public BigNum FollowersPerVideoPerTick()
+        {
+            BigNum amount = 1 / 30f;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.StartStreaming))
+            {
+                amount *= 2;
+            }
+
+            return amount;
         }
 
         public void Tick()
@@ -63,7 +83,7 @@
             }
 
             //Channel Growth
-            model.Add(Units.Follower, model.PublishedVideos * FollowersPerVideoPerTick);
+            model.Add(Units.Follower, model.PublishedVideos * FollowersPerVideoPerTick());
 
             //Auto-video production
             if (model.TickCount % TicksPerVideoEditor == 0 &&
