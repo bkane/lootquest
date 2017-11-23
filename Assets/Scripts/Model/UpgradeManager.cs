@@ -9,6 +9,8 @@ namespace Assets.Scripts.Model
         public LootBoxModel Model;
         public Dictionary<Upgrade.EUpgradeType, Upgrade> Upgrades;
 
+        private BigNum MCGCost = 30;
+
         public UpgradeManager(LootBoxModel model)
         {
             this.Model = model;
@@ -118,8 +120,20 @@ namespace Assets.Scripts.Model
                 Description = "Holy crap I can't wait.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, MCGCost)
                 }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.PurchaseMacGuffinQuestCollectors, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.PurchaseMacGuffinQuestCollectors,
+                Name = "Buy MacGuffin Quest Collector's Edition",
+                Description = "Well it's more expensive but at least it's in stock.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 80)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.PurchaseMacGuffinQuest }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.RemoveGameAnimations, new Upgrade()
@@ -349,6 +363,12 @@ namespace Assets.Scripts.Model
             switch(upgrade.Type)
             {
                 case Upgrade.EUpgradeType.PurchaseMacGuffinQuest:
+                    {
+                        Debug.Log("How is a pre-order out of stock?");
+                        Model.Add(Units.Money, MCGCost); //money back, since it wasn't actually purchased
+                    }
+                    break;
+                case Upgrade.EUpgradeType.PurchaseMacGuffinQuestCollectors:
                     {
                         Model.MacGuffinQuest.IsActive = true;
                     }

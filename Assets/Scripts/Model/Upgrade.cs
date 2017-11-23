@@ -18,6 +18,7 @@ namespace Assets.Scripts.Model
 
             //MacGuffinQuest
             PurchaseMacGuffinQuest,
+            PurchaseMacGuffinQuestCollectors,
             RemoveGameAnimations,
             SecondMouse,
             TieFiveMiceTogether,
