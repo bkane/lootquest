@@ -124,11 +124,12 @@ namespace Assets.Scripts.Model
                 }
             });
 
-            Upgrades.Add(Upgrade.EUpgradeType.PurchaseMacGuffinQuestCollectors, new Upgrade()
+            Upgrades.Add(Upgrade.EUpgradeType.PurchaseMacGuffinQuestLimitedEdition, new Upgrade()
             {
-                Type = Upgrade.EUpgradeType.PurchaseMacGuffinQuestCollectors,
-                Name = "Buy MacGuffin Quest Collector's Edition",
+                Type = Upgrade.EUpgradeType.PurchaseMacGuffinQuestLimitedEdition,
+                Name = "Buy MacGuffin Quest Deluxe Limited Edition",
                 Description = "Well it's more expensive but at least it's in stock.",
+                CommentOnBuy = "YESSSSS! Finally! Time to play MacGuffin Quest 2!",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 80)
@@ -360,15 +361,23 @@ namespace Assets.Scripts.Model
             Debug.LogFormat("Activated upgrade: {0}", upgrade.Name);
             upgrade.State = Upgrade.EState.Purchased;
 
+            if (!string.IsNullOrEmpty(upgrade.CommentOnBuy))
+            {
+                Logger.Log(upgrade.CommentOnBuy);
+            }
+
             switch(upgrade.Type)
             {
                 case Upgrade.EUpgradeType.PurchaseMacGuffinQuest:
                     {
-                        Debug.Log("How is a pre-order out of stock?");
+                        Logger.Log("Sorry! MacGuffin Quest Regular Edition pre-orders are all sold out! We do still have Limited Editions available ironically.");
+
+                        Logger.Log("How is a pre-order out of stock?");
+
                         Model.Add(Units.Money, MCGCost); //money back, since it wasn't actually purchased
                     }
                     break;
-                case Upgrade.EUpgradeType.PurchaseMacGuffinQuestCollectors:
+                case Upgrade.EUpgradeType.PurchaseMacGuffinQuestLimitedEdition:
                     {
                         Model.MacGuffinQuest.IsActive = true;
                     }

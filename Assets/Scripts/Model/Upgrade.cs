@@ -18,7 +18,7 @@ namespace Assets.Scripts.Model
 
             //MacGuffinQuest
             PurchaseMacGuffinQuest,
-            PurchaseMacGuffinQuestCollectors,
+            PurchaseMacGuffinQuestLimitedEdition,
             RemoveGameAnimations,
             SecondMouse,
             TieFiveMiceTogether,
@@ -55,5 +55,6 @@ namespace Assets.Scripts.Model
         public EState State = Upgrade.EState.Hidden;
         public List<Resource> UnlockThreshold = new List<Resource>();
         public List<EUpgradeType> Requirements = new List<EUpgradeType>();
+        public string CommentOnBuy;
     }
 }
