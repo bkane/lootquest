@@ -282,6 +282,39 @@ namespace Assets.Scripts.Model
                 }
             });
 
+            Upgrades.Add(Upgrade.EUpgradeType.BuyVideoEditingSoftware, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.BuyVideoEditingSoftware,
+                Name = "Buy Video Editing Software",
+                Description = "The software that came free with my cereal is lacking a few features. Reduce the work needed to produce videos.",
+                CommentOnBuy = "Whoa! This video editing program supports using a mouse! This'll make things a lot easier.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.PublishedVideo, 2)
+                }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.MakeVideoIntro, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.MakeVideoIntro,
+                Name = "Make re-useable video intros",
+                Description = "More re-usable footage means less effort to make videos.",
+                CommentOnBuy = "Now I don't have to say \"What's up guys!\" all the time.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.PublishedVideo, 5)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.BuyVideoEditingSoftware }
+            });
+
             Upgrades.Add(Upgrade.EUpgradeType.HireVideoEditor, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.HireVideoEditor,
@@ -293,8 +326,9 @@ namespace Assets.Scripts.Model
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.PublishedVideo, 1)
-                }
+                    new Resource(Units.PublishedVideo, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.GetPartnered }
             });
 
             #endregion

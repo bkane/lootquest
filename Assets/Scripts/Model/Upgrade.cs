@@ -30,6 +30,8 @@ namespace Assets.Scripts.Model
 
             //Influencer
             UnlockInfluencerCareer,
+            BuyVideoEditingSoftware,
+            MakeVideoIntro,
             GetPartnered,
             HireVideoEditor,
 

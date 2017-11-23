@@ -17,11 +17,28 @@
             this.model = model;
         }
 
+        public BigNum VideoProgressPerContent()
+        {
+            BigNum amount = 5;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.BuyVideoEditingSoftware))
+            {
+                amount *= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.MakeVideoIntro))
+            {
+                amount *= 2;
+            }
+
+            return amount;
+        }
+
         public void DoMakeVideo()
         {
             if (model.ConsumeExactly(Units.VideoContent, 1))
             {
-                model.Add(Units.VideoProgress, VideoProgressPerMakeVideoClick);
+                model.Add(Units.VideoProgress, VideoProgressPerContent());
 
                 if (model.ConsumeExactly(Units.VideoProgress, 100))
                 {

@@ -294,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DollarBuys: 0
   UnlockAllViews: 0
-  StartWithCash: 0
+  StartWithCash: 1000
 --- !u!4 &31805652
 Transform:
   m_ObjectHideFlags: 0
