@@ -22,8 +22,30 @@
             this.Model = model;
         }
 
+        public void DoGrindClick()
+        {
+            BigNum amount = 5;
+
+            if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SecondMouse))
+            { 
+                amount += 5;
+            }
+
+            if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TieFiveMiceTogether))
+            {
+                amount *= 5;
+            }
+
+            DoGrind(amount);
+        }
+
         public void DoGrind(BigNum amount)
         {
+            if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.RemoveGameAnimations))
+            {
+                amount *= 2;
+            }
+
             Model.Add(Units.GrindProgress, amount);
 
             if (Model.Consume(Units.GrindProgress, GrindProgressPerLootBox))

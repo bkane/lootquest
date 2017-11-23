@@ -18,6 +18,9 @@ namespace Assets.Scripts.Model
 
             //MacGuffinQuest
             PurchaseMacGuffinQuest,
+            RemoveGameAnimations,
+            SecondMouse,
+            TieFiveMiceTogether,
             AutoGrinder,
             AutoSellTrashItems,
             //pc upgrades, water cooling, gpu sli, etc

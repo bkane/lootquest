@@ -122,6 +122,51 @@ namespace Assets.Scripts.Model
                 }
             });
 
+            Upgrades.Add(Upgrade.EUpgradeType.RemoveGameAnimations, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.RemoveGameAnimations,
+                Name = "Hack MacGuffin Quest and remove all animations",
+                Description = "Use your newfound computer talents to remove those pesky animations slowing things down. Improves grinding efficiency.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.GrindCompleted, 3)
+                }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.SecondMouse, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.SecondMouse,
+                Name = "Buy a second mouse",
+                Description = "If I use both hands, I can grind twice as fast! I mean, have twice as much fun.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.GrindCompleted, 3)
+                }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.TieFiveMiceTogether, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.TieFiveMiceTogether,
+                Name = "Tape Five Mice Together",
+                Description = "I read about how, with a few minor adjustments, I can turn a regular mouse into five mice!",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.GrindCompleted, 3)
+                }
+            });
+
             Upgrades.Add(Upgrade.EUpgradeType.AutoGrinder, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.AutoGrinder,

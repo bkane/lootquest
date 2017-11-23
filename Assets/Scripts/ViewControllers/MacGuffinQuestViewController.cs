@@ -25,11 +25,11 @@ namespace Assets.Scripts.ViewControllers
 
         private void Awake()
         {
-            GrindButton.onClick.AddListener(() => { Model.MacGuffinQuest.DoGrind(10); });
+            GrindButton.onClick.AddListener(Model.MacGuffinQuest.DoGrindClick);
             SellTrashItemButton.onClick.AddListener(() => { Model.MacGuffinQuest.SellTrash(true); });
-            BuyLootBoxButton.onClick.AddListener(() => { Model.MacGuffinQuest.BuyLootBox(); });
-            OpenLootBoxButton.onClick.AddListener(() => { Model.MacGuffinQuest.OpenLootBox(); });
-            BuyBotAccountButton.onClick.AddListener(() => { Model.MacGuffinQuest.BuyBotAccount(); });
+            BuyLootBoxButton.onClick.AddListener(Model.MacGuffinQuest.BuyLootBox);
+            OpenLootBoxButton.onClick.AddListener(Model.MacGuffinQuest.OpenLootBox);
+            BuyBotAccountButton.onClick.AddListener(Model.MacGuffinQuest.BuyBotAccount);
         }
 
         private void Update()
