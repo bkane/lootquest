@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,12 @@ using UnityEngine;
 /// <summary>
 /// Game logic/model
 /// </summary>
-public class LootBoxModel : MonoBehaviour
+[JsonObject(MemberSerialization.OptIn)]
+public class LootBoxModel
 {
+    public static LootBoxModel Instance;
+
+    [JsonProperty]
     public Dictionary<Units, Resource> Resources { get; protected set; }
 
 #if DEBUG
@@ -17,15 +22,31 @@ public class LootBoxModel : MonoBehaviour
     public float StartWithCash = 0;
 #endif
 
-    public long TickCount { get; protected set; }
+    [JsonProperty]
+    public long TickCount                   { get; protected set; }
 
+    [JsonProperty]
     public UpgradeManager UpgradeManager    { get; protected set; }
+
+    [JsonProperty]
     public TimeModel Time                   { get; protected set; }
+
+    [JsonProperty]
     public LifeModel Life                   { get; protected set; }
+
+    [JsonProperty]
     public JobModel Job                     { get; protected set; }
+
+    [JsonProperty]
     public MacGuffinQuest MacGuffinQuest    { get; protected set; }
+
+    [JsonProperty]
     public InfluencerModel Influencer       { get; protected set; }
+
+    [JsonProperty]
     public StudioModel Studio               { get; protected set; }
+
+    [JsonProperty]
     public PublicModel Public               { get; protected set; }
 
     //Short-hand
@@ -78,8 +99,11 @@ public class LootBoxModel : MonoBehaviour
     public BigNum GenomeData        { get { return Resources[Units.GenomeData].Amount; } }
 
 
-    private void Awake()
+    public LootBoxModel()
     {
+        if (Instance != null) { Debug.LogWarning("Replacing the current model!"); }
+        Instance = this;
+
         List<Units> unitTypes = Enum.GetValues(typeof(Units)).Cast<Units>().ToList();
 
         Resources = new Dictionary<Units, Resource>();
@@ -234,12 +258,7 @@ public class LootBoxModel : MonoBehaviour
         }
     }
 
-    protected void FixedUpdate()
-    {
-        Tick();
-    }
-
-    protected void Tick()
+    public void Tick()
     {
         Time.Tick();
         Life.Tick();

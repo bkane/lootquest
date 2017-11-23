@@ -13,8 +13,6 @@ namespace Assets.Scripts
     /// </summary>
     public class DebugViewController : MonoBehaviour
     {
-        public LootBoxModel Model;
-
         public GameObject LayoutParent;
         public TextMeshProUGUI TextPrefab;
         public Button ButtonPrefab;
@@ -37,7 +35,7 @@ namespace Assets.Scripts
                 Units type = unitTypes[i];
                 TextMeshProUGUI label = Instantiate(TextPrefab, LayoutParent.transform);
                 label.name = "label_" + type;
-                label.text = string.Format("{0}: {1}", type, Model.Resources[type].Amount);
+                label.text = string.Format("{0}: {1}", type, LootBoxModel.Instance.Resources[type].Amount);
                 labels.Add(type, label);
             }
 
@@ -48,7 +46,7 @@ namespace Assets.Scripts
                 Button button = Instantiate(ButtonPrefab, LayoutParent.transform);
                 button.name = "button_" + type;
                 button.GetComponentInChildren<Text>().text = string.Format("Add {0}", type);
-                button.onClick.AddListener(() => Model.Add(type, 1));
+                button.onClick.AddListener(() => LootBoxModel.Instance.Add(type, 1));
             }
         }
 
@@ -57,7 +55,7 @@ namespace Assets.Scripts
             foreach(var kvp in labels)
             {
                 Units type = kvp.Key;
-                kvp.Value.text = string.Format("{0}: {1}", type, Model.Resources[type].Amount);
+                kvp.Value.text = string.Format("{0}: {1}", type, LootBoxModel.Instance.Resources[type].Amount);
             }
         }
     }

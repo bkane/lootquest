@@ -6,9 +6,7 @@ using UnityEngine.UI;
 namespace Assets.Scripts.ViewControllers
 {
     public class MacGuffinQuestViewController : MonoBehaviour
-    {
-        public LootBoxModel Model;
-
+    { 
         //Labels
         public TextMeshProUGUI GrindProgressText;
         public TextMeshProUGUI MacGuffinsUnlockedText;
@@ -26,27 +24,27 @@ namespace Assets.Scripts.ViewControllers
 
         private void Awake()
         {
-            GrindButton.onClick.AddListener(Model.MacGuffinQuest.DoGrindClick);
-            SellTrashItemButton.onClick.AddListener(Model.MacGuffinQuest.SellTrashClick);
-            BuyLootBoxButton.onClick.AddListener(Model.MacGuffinQuest.BuyLootBox);
-            OpenLootBoxButton.onClick.AddListener(Model.MacGuffinQuest.OpenLootBoxClick);
-            BuyBotAccountButton.onClick.AddListener(Model.MacGuffinQuest.BuyBotAccount);
+            GrindButton.onClick.AddListener(LootBoxModel.Instance.MacGuffinQuest.DoGrindClick);
+            SellTrashItemButton.onClick.AddListener(LootBoxModel.Instance.MacGuffinQuest.SellTrashClick);
+            BuyLootBoxButton.onClick.AddListener(LootBoxModel.Instance.MacGuffinQuest.BuyLootBox);
+            OpenLootBoxButton.onClick.AddListener(LootBoxModel.Instance.MacGuffinQuest.OpenLootBoxClick);
+            BuyBotAccountButton.onClick.AddListener(LootBoxModel.Instance.MacGuffinQuest.BuyBotAccount);
         }
 
         private void Update()
         {
-            GrindProgressText.text = string.Format("Grind: {0}%", Model.GrindProgress);
-            LootBoxText.text = string.Format("Loot Boxes: {0}", Model.LootBoxes);
-            ItemsText.text = string.Format("Trash Items: {0}", Model.TrashItems);
-            BotAccountsText.text = string.Format("Bot Accounts: {0}", Model.NumBotAccounts);
-            MacGuffinsUnlockedText.text = string.Format("MacGuffins Unlocked: {0}", Model.MacGuffinUnlocked);
+            GrindProgressText.text = string.Format("Grind: {0}%", LootBoxModel.Instance.GrindProgress);
+            LootBoxText.text = string.Format("Loot Boxes: {0}", LootBoxModel.Instance.LootBoxes);
+            ItemsText.text = string.Format("Trash Items: {0}", LootBoxModel.Instance.TrashItems);
+            BotAccountsText.text = string.Format("Bot Accounts: {0}", LootBoxModel.Instance.NumBotAccounts);
+            MacGuffinsUnlockedText.text = string.Format("MacGuffins Unlocked: {0}", LootBoxModel.Instance.MacGuffinUnlocked);
 
-            BuyBotAccountButton.gameObject.SetActive(Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder));
-            BotAccountsText.gameObject.SetActive(Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder));
+            BuyBotAccountButton.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder));
+            BotAccountsText.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder));
 
-            SellTrashItemButton.gameObject.SetActive(Model.LootBoxesOpened > 0);
+            SellTrashItemButton.gameObject.SetActive(LootBoxModel.Instance.LootBoxesOpened > 0);
 
-            GrindButton.GetComponentInChildren<Text>().text = Model.GrindsCompleted > 5 ? "Grind" : "Play";
+            GrindButton.GetComponentInChildren<Text>().text = LootBoxModel.Instance.GrindsCompleted > 5 ? "Grind" : "Play";
         }
     }
 }

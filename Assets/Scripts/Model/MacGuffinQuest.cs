@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Assets.Scripts.Model
+﻿namespace Assets.Scripts.Model
 {
     /// <summary>
     /// The game-with-in-a-game
@@ -11,13 +9,11 @@ namespace Assets.Scripts.Model
 
         public LootBoxModel Model;
 
-        public int MoneyPerLootBox = 5;
-        public int GrindProgressPerLootBox = 100;
+        private int MoneyPerLootBox = 5;
+        private int GrindProgressPerLootBox = 100;
 
         //Selling TrashItems
-        public int AutoSellTicks = 60;
-        public BigNum ManualSellTrashEfficiency = 1;
-        public BigNum AutoSellTrashEfficiency = 0.5f;
+        private int AutoSellTicks = 60;
 
         public MacGuffinQuest(LootBoxModel model)
         {

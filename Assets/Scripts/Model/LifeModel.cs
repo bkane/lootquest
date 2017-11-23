@@ -11,16 +11,6 @@
             this.model = model;
         }
 
-
-        public void DoBuyCoffee()
-        {
-            if (model.ConsumeExactly(Units.Money, 2))
-            {
-                model.Add(Units.Caffeine, 1);
-                Stats.Instance.CoffeeConsumed++;
-            }
-        }
-
         public void Tick()
         {
             if (!IsActive) { return; }

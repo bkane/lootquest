@@ -45,7 +45,7 @@
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SecondJob))
             {
-                baseValue *= 5;
+                baseValue *= 2;
             }
 
             return baseValue;

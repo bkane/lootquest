@@ -6,6 +6,11 @@
         public BigNum Amount;
         public BigNum MaxValue;
 
+        public Resource()
+            : this(Units.Invalid, 0)
+        {
+        }
+
         public Resource(Units type, BigNum amount)
             : this(type, amount, 0)
         {

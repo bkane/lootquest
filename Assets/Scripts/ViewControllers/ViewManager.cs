@@ -4,8 +4,6 @@ namespace Assets.Scripts
 {
     public class ViewManager : MonoBehaviour
     {
-        public LootBoxModel Model;
-
         public GameObject LifeView;
         public GameObject UpgradeView;
 
@@ -21,11 +19,11 @@ namespace Assets.Scripts
             LifeView.SetActive(true);
             UpgradeView.SetActive(true);
             
-            JobView.SetActive(Model.Job.IsActive);
-            MacGuffinQuestView.SetActive(Model.MacGuffinQuest.IsActive);
-            InfluencerView.SetActive(Model.Influencer.IsActive);
-            StudioView.SetActive(Model.Studio.IsActive);
-            PublicView.SetActive(Model.Public.IsActive);
+            JobView.SetActive(LootBoxModel.Instance.Job.IsActive);
+            MacGuffinQuestView.SetActive(LootBoxModel.Instance.MacGuffinQuest.IsActive);
+            InfluencerView.SetActive(LootBoxModel.Instance.Influencer.IsActive);
+            StudioView.SetActive(LootBoxModel.Instance.Studio.IsActive);
+            PublicView.SetActive(LootBoxModel.Instance.Public.IsActive);
         }
     }
 }

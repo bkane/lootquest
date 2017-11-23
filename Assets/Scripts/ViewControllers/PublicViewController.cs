@@ -7,10 +7,6 @@ namespace Assets.Scripts.ViewControllers
 {
     public class PublicViewController : MonoBehaviour
     {
-        public LootBoxModel Model;
-
-
-
         //Resources
         public TextMeshProUGUI CustomersText;
         public TextMeshProUGUI MicrotransactionRevenueText;
@@ -68,62 +64,62 @@ namespace Assets.Scripts.ViewControllers
 
         private void Awake()
         {
-            DevPlus.onClick.AddListener(() => Model.Public.Allocate(Units.Developer));
-            DevMinus.onClick.AddListener(() => Model.Public.Deallocate(Units.Developer));
+            DevPlus.onClick.AddListener(() => LootBoxModel.Instance.Public.Allocate(Units.Developer));
+            DevMinus.onClick.AddListener(() => LootBoxModel.Instance.Public.Deallocate(Units.Developer));
 
-            MarketingPlus.onClick.AddListener(() => Model.Public.Allocate(Units.Marketer));
-            MarketingMinus.onClick.AddListener(() => Model.Public.Deallocate(Units.Marketer));
+            MarketingPlus.onClick.AddListener(() => LootBoxModel.Instance.Public.Allocate(Units.Marketer));
+            MarketingMinus.onClick.AddListener(() => LootBoxModel.Instance.Public.Deallocate(Units.Marketer));
 
-            DataAnalysisPlus.onClick.AddListener(() => Model.Public.Allocate(Units.DataAnalyst));
-            DataAnalysisMinus.onClick.AddListener(() => Model.Public.Deallocate(Units.DataAnalyst));
+            DataAnalysisPlus.onClick.AddListener(() => LootBoxModel.Instance.Public.Allocate(Units.DataAnalyst));
+            DataAnalysisMinus.onClick.AddListener(() => LootBoxModel.Instance.Public.Deallocate(Units.DataAnalyst));
 
-            LobbyingPlus.onClick.AddListener(() => Model.Public.Allocate(Units.Lobbyist));
-            LobbyingMinus.onClick.AddListener(() => Model.Public.Deallocate(Units.Lobbyist));
+            LobbyingPlus.onClick.AddListener(() => LootBoxModel.Instance.Public.Allocate(Units.Lobbyist));
+            LobbyingMinus.onClick.AddListener(() => LootBoxModel.Instance.Public.Deallocate(Units.Lobbyist));
 
-            MLPlus.onClick.AddListener(() => Model.Public.Allocate(Units.CPU));
-            MLMinus.onClick.AddListener(() => Model.Public.Deallocate(Units.CPU));
+            MLPlus.onClick.AddListener(() => LootBoxModel.Instance.Public.Allocate(Units.CPU));
+            MLMinus.onClick.AddListener(() => LootBoxModel.Instance.Public.Deallocate(Units.CPU));
 
-            BioPlus.onClick.AddListener(() => Model.Public.Allocate(Units.Bioengineer));
-            BioMinus.onClick.AddListener(() => Model.Public.Deallocate(Units.Bioengineer));
+            BioPlus.onClick.AddListener(() => LootBoxModel.Instance.Public.Allocate(Units.Bioengineer));
+            BioMinus.onClick.AddListener(() => LootBoxModel.Instance.Public.Deallocate(Units.Bioengineer));
         }
 
         private void Update()
         {
             //Resources
-            CustomersText.text = string.Format("Customerbase: {0}", Model.Customers);
-            MicrotransactionRevenueText.text = string.Format("MTXN Rev: ${0}/s", Model.Public.MicrotransactionRevenuePerTick() * 30);
-            MicrotransactionRevenuePerCustomerPerTickText.text = string.Format("MTXN Spend Rate: ${0}/customer", Model.Public.MicrotransactionRevenuePerCustomerPerTick() * 30);
-            PercentWhoMonetizeText.text = string.Format("% customers monetize: {0}%", Model.Public.PercentWhoMonetize() * 100);
+            CustomersText.text = string.Format("Customerbase: {0}", LootBoxModel.Instance.Customers);
+            MicrotransactionRevenueText.text = string.Format("MTXN Rev: ${0}/s", LootBoxModel.Instance.Public.MicrotransactionRevenuePerTick() * 30);
+            MicrotransactionRevenuePerCustomerPerTickText.text = string.Format("MTXN Spend Rate: ${0}/customer", LootBoxModel.Instance.Public.MicrotransactionRevenuePerCustomerPerTick() * 30);
+            PercentWhoMonetizeText.text = string.Format("% customers monetize: {0}%", LootBoxModel.Instance.Public.PercentWhoMonetize() * 100);
 
             //Budget
-            DevAllocationText.text = string.Format("{0:0}%", Model.Public.DevAllocation * 100);
-            MarketerAllocationText.text = string.Format("{0:0}%", Model.Public.MarketerAllocation * 100);
-            DataAnalystAllocationText.text = string.Format("{0:0}%", Model.Public.DataAnalystAllocation * 100);
-            LobbyistAllocationText.text = string.Format("{0:0}%", Model.Public.LobbyistAllocation * 100);
-            CPUAllocationText.text = string.Format("{0:0}%", Model.Public.CPUAllocation * 100);
-            BioengineerAllocationText.text = string.Format("{0:0}%", Model.Public.BioengineerAllocation * 100);
+            DevAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.DevAllocation * 100);
+            MarketerAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.MarketerAllocation * 100);
+            DataAnalystAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.DataAnalystAllocation * 100);
+            LobbyistAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.LobbyistAllocation * 100);
+            CPUAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.CPUAllocation * 100);
+            BioengineerAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.BioengineerAllocation * 100);
 
 
             //Employees
-            DeveloperText.text = string.Format("Devs: {0}", Model.Developers);
-            DevHoursText.text = string.Format("Dev Hours: {0}", Model.DevHours);
+            DeveloperText.text = string.Format("Devs: {0}", LootBoxModel.Instance.Developers);
+            DevHoursText.text = string.Format("Dev Hours: {0}", LootBoxModel.Instance.DevHours);
 
-            DataAnalystsText.text = string.Format("Data Analysts: {0}", Model.DataAnalysts);
-            CustomerDataText.text = string.Format("Customer Data: {0} GB", Model.AnalyticsData);
+            DataAnalystsText.text = string.Format("Data Analysts: {0}", LootBoxModel.Instance.DataAnalysts);
+            CustomerDataText.text = string.Format("Customer Data: {0} GB", LootBoxModel.Instance.AnalyticsData);
 
-            MarketersText.text = string.Format("Marketers: {0}", Model.Marketers);
-            CustomerAcquisitionRateText.text = string.Format("Customer Aquisition: {0}/s", Model.Public.CustomerAcquisitionPerTick() * 30);
+            MarketersText.text = string.Format("Marketers: {0}", LootBoxModel.Instance.Marketers);
+            CustomerAcquisitionRateText.text = string.Format("Customer Aquisition: {0}/s", LootBoxModel.Instance.Public.CustomerAcquisitionPerTick() * 30);
 
-            LobbyistsText.text = string.Format("Lobbyists: {0}", Model.Lobbyists);
-            FavorText.text = string.Format("Gov't Favor: {0}", Model.Favor);
+            LobbyistsText.text = string.Format("Lobbyists: {0}", LootBoxModel.Instance.Lobbyists);
+            FavorText.text = string.Format("Gov't Favor: {0}", LootBoxModel.Instance.Favor);
 
-            CPUsText.text = string.Format("CPUs: {0}", Model.CPUs);
-            CyclesText.text = string.Format("CPU Cycles: {0}", Model.Cycles);
+            CPUsText.text = string.Format("CPUs: {0}", LootBoxModel.Instance.CPUs);
+            CyclesText.text = string.Format("CPU Cycles: {0}", LootBoxModel.Instance.Cycles);
 
-            BioengineersText.text = string.Format("BioEngineers: {0}", Model.Bioengineers);
-            GenomeDataText.text = string.Format("Genome Data: {0}GB", Model.GenomeData);
+            BioengineersText.text = string.Format("BioEngineers: {0}", LootBoxModel.Instance.Bioengineers);
+            GenomeDataText.text = string.Format("Genome Data: {0}GB", LootBoxModel.Instance.GenomeData);
 
-            MicrotransactionRevenueText.gameObject.SetActive(Model.UpgradeManager.IsActive(Scripts.Model.Upgrade.EUpgradeType.EnableMicrotransactions));
+            MicrotransactionRevenueText.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnableMicrotransactions));
         }
     }
 }

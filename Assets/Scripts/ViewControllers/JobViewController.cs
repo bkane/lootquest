@@ -8,8 +8,6 @@ namespace Assets.Scripts.ViewControllers
 {
     public class JobViewController : MonoBehaviour
     {
-        public LootBoxModel Model;
-
         //Labels
         public TextMeshProUGUI JobProgressText;
         public TextMeshProUGUI WageText;
@@ -19,13 +17,13 @@ namespace Assets.Scripts.ViewControllers
 
         private void Awake()
         {
-            DoJobButton.onClick.AddListener(Model.Job.DoJobClick);
+            DoJobButton.onClick.AddListener(LootBoxModel.Instance.Job.DoJobClick);
         }
 
         private void Update()
         {
-            JobProgressText.text = string.Format("Job Progress: {0}%", Model.JobProgress);
-            WageText.text = string.Format("Wage: ${0}", Model.Job.MoneyPerJobCompleted());
+            JobProgressText.text = string.Format("Job Progress: {0}%", LootBoxModel.Instance.JobProgress);
+            WageText.text = string.Format("Wage: ${0}", LootBoxModel.Instance.Job.MoneyPerJobCompleted());
         }
     }
 }

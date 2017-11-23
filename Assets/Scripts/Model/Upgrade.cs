@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Model
 {
     public class Upgrade
     {
+        [JsonConverter(typeof(StringEnumConverter))]
         public enum EUpgradeType
         {
             //Life
-            EnergyDrinks,
             LearnToCode,
 
             //Job
@@ -51,6 +53,7 @@ namespace Assets.Scripts.Model
             PurchaseMacGuffinQuestSourceCode
         }
 
+        [JsonConverter(typeof(StringEnumConverter))]
         public enum EState
         {
             Hidden,
@@ -62,7 +65,6 @@ namespace Assets.Scripts.Model
         public string Name;
         public string Description;
         public List<Resource> Costs = new List<Resource>();
-        public EState State = Upgrade.EState.Hidden;
         public List<Resource> UnlockThreshold = new List<Resource>();
         public List<EUpgradeType> Requirements = new List<EUpgradeType>();
         public string CommentOnBuy;

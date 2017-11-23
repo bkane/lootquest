@@ -1,13 +1,17 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Model
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class UpgradeManager
     {
         public LootBoxModel Model;
         public Dictionary<Upgrade.EUpgradeType, Upgrade> Upgrades;
+
+        [JsonProperty]
+        public Dictionary<Upgrade.EUpgradeType, Upgrade.EState> UpgradeStates;
 
         private BigNum MCGCost = 30;
 
@@ -15,21 +19,11 @@ namespace Assets.Scripts.Model
         {
             this.Model = model;
             Upgrades = new Dictionary<Upgrade.EUpgradeType, Upgrade>();
+            UpgradeStates = new Dictionary<Upgrade.EUpgradeType, Upgrade.EState>();
 
 
 
             #region Life upgrades
-            
-            Upgrades.Add(Upgrade.EUpgradeType.EnergyDrinks, new Upgrade()
-            {
-                Type = Upgrade.EUpgradeType.EnergyDrinks,
-                Name = "Switch to Energy Drinks",
-                Description = "Ditch coffee and go straight for the nectar of the gods.",
-                Costs = new List<Resource>()
-                {
-                    new Resource(Units.Money, 10)
-                }
-            });
 
             Upgrades.Add(Upgrade.EUpgradeType.LearnToCode, new Upgrade()
             {
@@ -502,25 +496,37 @@ namespace Assets.Scripts.Model
             });
 
             #endregion
+
+            foreach(var upgrade in Upgrades.Values)
+            {
+                UpgradeStates.Add(upgrade.Type, Upgrade.EState.Hidden);
+            }
         }
 
         public void Unlock(Upgrade.EUpgradeType type)
         {
-            if (Upgrades[type].State == Upgrade.EState.Hidden)
+            if (UpgradeStates[type] == Upgrade.EState.Hidden)
             {
-                Upgrades[type].State = Upgrade.EState.Visible;
+                UpgradeStates[type] = Upgrade.EState.Visible;
                 Debug.LogFormat("Upgrade {0} now available", Upgrades[type].Name);
             }
         }
 
         public bool IsActive(Upgrade.EUpgradeType type)
         {
-            return Upgrades[type].State == Upgrade.EState.Purchased;
+            if (UpgradeStates.ContainsKey(type))
+            {
+                return UpgradeStates[type] == Upgrade.EState.Purchased;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool PurchaseUpgrade(Upgrade upgrade)
         {
-            if (upgrade.State == Upgrade.EState.Visible)
+            if (UpgradeStates[upgrade.Type] == Upgrade.EState.Visible)
             {
                 if (Model.ConsumeExactly(upgrade.Costs))
                 {
@@ -530,7 +536,7 @@ namespace Assets.Scripts.Model
             }
             else
             {
-                Debug.LogErrorFormat("Tried to purchase upgrade {0} but state is {1}", upgrade.Name, upgrade.State);
+                Debug.LogErrorFormat("Tried to purchase upgrade {0} but state is {1}", upgrade.Name, UpgradeStates[upgrade.Type]);
             }
 
             return false;
@@ -539,7 +545,7 @@ namespace Assets.Scripts.Model
         protected void DoUpgrade(Upgrade upgrade)
         {
             Debug.LogFormat("Activated upgrade: {0}", upgrade.Name);
-            upgrade.State = Upgrade.EState.Purchased;
+            UpgradeStates[upgrade.Type] = Upgrade.EState.Purchased;
 
             if (!string.IsNullOrEmpty(upgrade.CommentOnBuy))
             {
@@ -597,13 +603,13 @@ namespace Assets.Scripts.Model
 
         public void Tick()
         {
-            foreach(var kvp in Upgrades)
+            foreach(var upgrade in Upgrades.Values)
             {
-                if (kvp.Value.State == Upgrade.EState.Hidden)
+                if (UpgradeStates[upgrade.Type] == Upgrade.EState.Hidden)
                 {
-                    if (IsUnlockThresholdMet(kvp.Value))
+                    if (IsUnlockThresholdMet(upgrade))
                     {
-                        Unlock(kvp.Value.Type);
+                        Unlock(upgrade.Type);
                     }
                 }
             }

@@ -1,9 +1,14 @@
-﻿namespace Assets.Scripts.Model
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace Assets.Scripts.Model
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum Units
     {
+        Invalid,
+
         //Life
-        Caffeine,
 
         //Job
         JobProgress,
