@@ -57,7 +57,16 @@ namespace Assets.Scripts.Model
 
         public BigNum MicrotransactionRevenuePerCustomerPerTick()
         {
-            return (model.Studio.MicrotransactionRevenuePerTick() + model.LootBoxTypes) / model.ActivePlayers;
+            BigNum amount = model.Studio.MicrotransactionRevenuePerTick();
+
+            amount += model.LootBoxTypes;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnforceWatchingAds))
+            {
+                amount *= 2;
+            }
+
+            return amount / model.ActivePlayers;
         }
 
         public BigNum PercentWhoMonetize()

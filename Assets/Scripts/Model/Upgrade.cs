@@ -78,6 +78,7 @@ namespace Assets.Scripts.Model
             ComputersMaintainGame,
             OptimizeRoAS,
             TargetedPersonalAds,
+            EnforceWatchingAds,
             PurchaseBelovedStudio,
             TargetChildren,
             UseDataBreach,

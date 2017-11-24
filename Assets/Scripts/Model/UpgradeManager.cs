@@ -983,6 +983,21 @@ namespace Assets.Scripts.Model
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.OptimizeRoAS }
             });
 
+
+            Upgrades.Add(Upgrade.EUpgradeType.EnforceWatchingAds, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.EnforceWatchingAds,
+                Name = "Force Customers to Actually Watch Ads",
+                Description = "Our facial recognition can now tell if somebody is paying attention to an ad. People will definitely pay to remove this feature!",
+                CommentOnBuy = "This one is definitely going to happen in real life :(",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10),
+                    new Resource(Units.Cycle, 10),
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.TargetedPersonalAds }
+            });
+
             Upgrades.Add(Upgrade.EUpgradeType.UnlockBioEngineering, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.UnlockBioEngineering,
