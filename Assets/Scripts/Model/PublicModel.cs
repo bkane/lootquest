@@ -66,6 +66,26 @@ namespace Assets.Scripts.Model
                 amount *= 2;
             }
 
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ReduceLootBoxOdds))
+            {
+                amount *= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ReduceLootBoxOddsToZero))
+            {
+                amount *= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EmitInaudibleSound))
+            {
+                amount *= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SellBuffsToOdds))
+            {
+                amount *= 2;
+            }
+
             return amount / model.ActivePlayers;
         }
 
@@ -130,7 +150,30 @@ namespace Assets.Scripts.Model
 
         public BigNum GetFines()
         {
-            return 0f;
+            BigNum amount = 0;
+            BigNum fineFraction = 0.8f;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ReduceFines))
+            {
+                fineFraction /= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.DiscloseOdds))
+            {
+                fineFraction /= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ReduceLootBoxOddsToZero))
+            {
+                amount = GetBudget() * fineFraction;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.RollBackBan))
+            {
+                amount = 0;
+            }
+
+            return amount;
         }
 
         public void UpdateMaxCustomers()

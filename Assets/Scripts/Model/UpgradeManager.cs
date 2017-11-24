@@ -832,7 +832,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.PurchaseBelovedStudio,
                 Name = "Purchase Beloved Independent Studio",
                 Description = "We've saturated our current customer base. Time to acquire new fans by acquiring a studio, hollowing it out, and discarding the husk that remains.",
-                CommentOnBuy = "Well, as long as we treat the source material with love and respect.",
+                CommentOnBuy = "Well, as long as we treat the newly acquired IP with love and respect.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 10)
@@ -884,11 +884,13 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Reminder: don't re-use your password on multiple sites.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 10),
+                    new Resource(Units.Favor, 10),
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.ActivePlayer, 10)
+                    new Resource(Units.ActivePlayer, 10),
+                    new Resource(Units.Favor, 10),
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.PurchaseBelovedStudio }
             });
@@ -902,7 +904,8 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Security breaches are inevitable. We're just giving the process a little boost.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 10),
+                    new Resource(Units.Favor, 10),
                 },
                 UnlockThreshold = new List<Resource>()
                 {
@@ -924,7 +927,7 @@ namespace Assets.Scripts.Model
                 {
                     new Resource(Units.ActivePlayer, 10)
                 },
-                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ExecuteIPO }
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ReduceLootBoxOddsToZero }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.UnlockCPU, new Upgrade()
@@ -998,6 +1001,101 @@ namespace Assets.Scripts.Model
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.TargetedPersonalAds }
             });
 
+            Upgrades.Add(Upgrade.EUpgradeType.ReduceLootBoxOdds, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.ReduceLootBoxOdds,
+                Name = "Reduce Loot Box Odds",
+                Description = "It's so obvious! If customers as less likely to get what they want in a loot box, then they'll buy more!",
+                CommentOnBuy = "It's not like slot machines have good odds. You'd never know if they did anyway.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10),
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.TargetMinnows }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.ReduceLootBoxOddsToZero, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.ReduceLootBoxOddsToZero,
+                Name = "Reduce Loot Box Odds to Zero",
+                Description = "What... what if we just make the odds of getting what you want zero?",
+                CommentOnBuy = "Technically there's no law against it...",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10),
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ReduceLootBoxOdds }
+            });
+
+
+            Upgrades.Add(Upgrade.EUpgradeType.ReduceFines, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.ReduceFines,
+                Name = "Lobby for Reduced Fines",
+                Description = "We're just a struggling company trying to stay afloat in a very competitive industry.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10),
+                    new Resource(Units.Favor, 10),
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                      new Resource(Units.Favor, 10),
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ReduceLootBoxOddsToZero }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.DiscloseOdds, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.DiscloseOdds,
+                Name = "Disclose Loot Box Odds",
+                Description = "Submit to regulation and disclose loot box odds to get a repreive from some of the bigger fines.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10),
+                    new Resource(Units.Favor, 10),
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                      new Resource(Units.Favor, 10),
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ReduceFines }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.SellBuffsToOdds, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.SellBuffsToOdds,
+                Name = "Sell Buffs for Loot Box Odds",
+                Description = "Now the customers know the odds, we can exploit their desire to see bigger numbers.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10),
+                    new Resource(Units.Favor, 10),
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                      new Resource(Units.Favor, 10),
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.DiscloseOdds }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.RollBackBan, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.RollBackBan,
+                Name = "Roll Back the Loot Box Ban",
+                Description = "It'll take some doing, but we can get this ban overturned. Something about a free marketplace ought to work.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10),
+                    new Resource(Units.Favor, 10),
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                      new Resource(Units.Favor, 10),
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ReduceFines }
+            });
+
             Upgrades.Add(Upgrade.EUpgradeType.UnlockBioEngineering, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.UnlockBioEngineering,
@@ -1031,6 +1129,20 @@ namespace Assets.Scripts.Model
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.UnlockBioEngineering, Upgrade.EUpgradeType.TargetMinnows, Upgrade.EUpgradeType.TargetChildren, Upgrade.EUpgradeType.PurchaseBelovedStudio, Upgrade.EUpgradeType.CauseDataBreach, Upgrade.EUpgradeType.UseDataBreach }
             });
 
+            Upgrades.Add(Upgrade.EUpgradeType.EmitInaudibleSound, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.EmitInaudibleSound,
+                Name = "Emit an Inaudible Sound When Not Monetizing",
+                Description = "If we can't make it more pleasant to buy loot boxes, we can certainly make it more unpleasant to <i>not</i> be buying them.",
+                CommentOnBuy = "My dog is going nuts.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10),
+                    new Resource(Units.GenomeData, 10),
+                    new Resource(Units.Cycle, 10),
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.DetermineDesires }
+            });
 
             Upgrades.Add(Upgrade.EUpgradeType.IsolateMicrotransactionGene, new Upgrade()
             {
@@ -1046,7 +1158,7 @@ namespace Assets.Scripts.Model
                 {
                     new Resource(Units.ActivePlayer, 10)
                 },
-                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.DetermineDesires }
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.EmitInaudibleSound }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.LaunchMeshNetwork, new Upgrade()
@@ -1080,7 +1192,7 @@ namespace Assets.Scripts.Model
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.ActivePlayer, 7e9f)
+                    new Resource(Units.ActivePlayer, 7.5e9f)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.LaunchMeshNetwork }
             });
@@ -1157,6 +1269,12 @@ namespace Assets.Scripts.Model
                 case Upgrade.EUpgradeType.PurchaseBelovedStudio:
                     {
                         Logger.Log(3, "Oh. Guess not.");
+                    }
+                    break;
+                case Upgrade.EUpgradeType.ReduceLootBoxOddsToZero:
+                    {
+                        Logger.Log(3, "<i>The Government has just declared loot boxes to be a form of gambling and thus subject to regulation.</i>");
+                        Logger.Log(6, "Uh oh. We're going to be paying some serious fines until we can take care of this.");
                     }
                     break;
                 case Upgrade.EUpgradeType.PurchaseMacGuffinQuestLimitedEdition:

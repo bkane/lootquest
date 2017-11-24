@@ -79,6 +79,9 @@ namespace Assets.Scripts.Model
             OptimizeRoAS,
             TargetedPersonalAds,
             EnforceWatchingAds,
+            ReduceLootBoxOdds,
+            ReduceLootBoxOddsToZero,
+            EmitInaudibleSound,
             PurchaseBelovedStudio,
             TargetChildren,
             UseDataBreach,
@@ -90,7 +93,10 @@ namespace Assets.Scripts.Model
             UnlockCPU,
             UnlockBioEngineering,
             IsolateMicrotransactionGene,
-
+            ReduceFines,
+            RollBackBan,
+            DiscloseOdds,
+            SellBuffsToOdds,
 
             //End game
             PurchaseMacGuffinQuestSourceCode
