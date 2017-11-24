@@ -460,6 +460,23 @@ namespace Assets.Scripts.Model
                     new Resource(Units.ReleasedGame, 1)
                 }
             });
+
+
+            Upgrades.Add(Upgrade.EUpgradeType.StartDistributionService, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.StartDistributionService,
+                Name = "Start our own Digital Distribution Services",
+                Description = "Cut out the middle man and the middle man's cut is ours! It'll need a catchy name, like Game Shovel, only not so stupid.",
+                CommentOnBuy = "Happy Game Shovel launch day everyone!",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ReleasedGame, 10)
+                }
+            });
             #endregion
 
 

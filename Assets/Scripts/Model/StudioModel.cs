@@ -88,12 +88,19 @@ namespace Assets.Scripts.Model
 
         public BigNum CostOfGameInDevHours()
         {
-            return 100;
+            return 100 * Mathf.Pow(1.17f, model.ReleasedGames);
         }
 
         public BigNum RevenuePerUnitSold()
         {
-            return 50;
+            BigNum amount = 40;
+
+            if (!model.UpgradeManager.IsActive(Upgrade.EUpgradeType.StartDistributionService))
+            {
+                amount *= 0.7f;
+            }
+
+            return amount;
         }
 
         public void ReleaseGame()

@@ -56,6 +56,7 @@ namespace Assets.Scripts.ViewControllers
             DataAnalystsCostText.text = string.Format("Data Analyst Cost: ${0}/s", LootBoxModel.Instance.Studio.DataAnalystCostPerTick() * 30);
             AnalyticsDataText.text = string.Format("Analytics Data: {0} GB", LootBoxModel.Instance.AnalyticsData);
 
+            ReleaseGame.GetComponentInChildren<Text>().text = string.Format("Release Game ({0})", LootBoxModel.Instance.Studio.CostOfGameInDevHours());
 
             bool microTxnActive = LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnableMicrotransactions);
             MicrotransactionRevenueText.gameObject.SetActive(microTxnActive);

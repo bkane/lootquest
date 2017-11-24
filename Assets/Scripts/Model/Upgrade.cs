@@ -46,6 +46,7 @@ namespace Assets.Scripts.Model
             //Studio
             StartAStudio,
             EnableMicrotransactions,
+            StartDistributionService,
 
 
             //Public
