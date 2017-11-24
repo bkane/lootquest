@@ -67,6 +67,8 @@ namespace Assets.Scripts.Model
             BuffsInBoxes,
             CoreGameInBoxes,
             WholeGameInBoxes,
+            MarketingCampaign,
+            LootBoxPreOrders,
 
 
             //Public

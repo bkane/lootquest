@@ -58,7 +58,19 @@ namespace Assets.Scripts.Model
 
         public BigNum HypePerRelease()
         {
-            return 100 * CostOfGameInDevHours();
+            BigNum baseHype = 100;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.MarketingCampaign))
+            {
+                baseHype *= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.LootBoxPreOrders))
+            {
+                baseHype *= 2;
+            }
+
+            return baseHype * CostOfGameInDevHours();
         }
 
         public BigNum ActivePlayersDecayPerTick()

@@ -595,7 +595,41 @@ namespace Assets.Scripts.Model
                 UnlockThreshold = new List<Resource>()
                 {
                     new Resource(Units.ReleasedGame, 3)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.MarketingCampaign }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.MarketingCampaign, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.MarketingCampaign,
+                Name = "Run Marketing Campaigns",
+                Description = "More people need to know about our game! Increases the number of sales when releasing a game.",
+                CommentOnBuy = "I bet we could get a celebrity to endorse our game. Actually, that might not be a good idea.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ReleasedGame, 1)
                 }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.LootBoxPreOrders, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.LootBoxPreOrders,
+                Name = "Sell Pre-Orders For Loot Boxes",
+                Description = "Why are we waiting until release to monetize players? Increases the number of sales when releasing a game.",
+                CommentOnBuy = "Pre-orders for plays on a virtual slot machine. I didn't think people would buy it, but here we are.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ReleasedGame, 1)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.EnableMicrotransactions, Upgrade.EUpgradeType.MarketingCampaign }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.AddGems, new Upgrade()
@@ -649,8 +683,6 @@ namespace Assets.Scripts.Model
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddCrystals }
             });
-
-
 
             Upgrades.Add(Upgrade.EUpgradeType.AddGoldBoxes, new Upgrade()
             {
