@@ -56,7 +56,14 @@ namespace Assets.Scripts.ViewControllers
             DataAnalystsCostText.text = string.Format("Data Analyst Cost: ${0}/s", LootBoxModel.Instance.Studio.DataAnalystCostPerTick() * 30);
             AnalyticsDataText.text = string.Format("Analytics Data: {0} GB", LootBoxModel.Instance.AnalyticsData);
 
-            MicrotransactionRevenueText.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnableMicrotransactions));
+
+            bool microTxnActive = LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnableMicrotransactions);
+            MicrotransactionRevenueText.gameObject.SetActive(microTxnActive);
+            DataAnalystsText.gameObject.SetActive(microTxnActive);
+            DataAnalystsCostText.gameObject.SetActive(microTxnActive);
+            AnalyticsDataText.gameObject.SetActive(microTxnActive);
+            HireDataAnalyst.gameObject.SetActive(microTxnActive);
+            FireDataAnalyst.gameObject.SetActive(microTxnActive);
         }
     }
 }

@@ -125,6 +125,9 @@ namespace Assets.Scripts.Model
             else
             {
                 //Not enough money to pay everybody!
+                Logger.Log(string.Format("Not enough money to pay everybody so {0} {1} quit!", model.Developers, model.Developers > 1 ? "developers" : "developer"));
+                model.ConsumeExactly(Units.Developer, model.Developers); //Everybody quits!
+                
                 //Drain the bank account but don't make any progress on the game
                 model.ConsumeExactly(Units.Money, model.Money);
             }
@@ -137,6 +140,9 @@ namespace Assets.Scripts.Model
             else
             {
                 //Not enough money to pay everybody!
+                Logger.Log(string.Format("Not enough money to pay everybody so {0} {1} quit!", model.DataAnalysts, model.DataAnalysts > 1 ? "data analysts" : "data analyst"));
+                model.ConsumeExactly(Units.DataAnalyst, model.DataAnalysts); //Everybody quits!
+
                 //Drain the bank account but don't accrue any customer data
                 model.ConsumeExactly(Units.Money, model.Money);
             }
