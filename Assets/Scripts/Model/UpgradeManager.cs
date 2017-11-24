@@ -847,7 +847,7 @@ namespace Assets.Scripts.Model
             {
                 Type = Upgrade.EUpgradeType.PurchaseBelovedStudio,
                 Name = "Purchase Beloved Independent Studio",
-                Description = "We've saturated our current customer base. Time to acquire new fans.",
+                Description = "We've saturated our current customer base. Time to acquire new fans by acquiring a studio, hollowing it out, and discarding the husk that remains.",
                 CommentOnBuy = "Well, as long as we treat the source material with love and respect.",
                 Costs = new List<Resource>()
                 {
@@ -858,6 +858,23 @@ namespace Assets.Scripts.Model
                     new Resource(Units.ActivePlayer, 10)
                 }
             });
+
+            Upgrades.Add(Upgrade.EUpgradeType.TargetChildren, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.TargetChildren,
+                Name = "Incentivize Diminished-Age Purchasers",
+                Description = "Target children with microtransactions. They play a lot and don't know the value of money yet.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ActivePlayer, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.PurchaseBelovedStudio }
+            });
+
 
             #endregion
 

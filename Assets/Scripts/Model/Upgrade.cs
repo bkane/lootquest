@@ -76,6 +76,7 @@ namespace Assets.Scripts.Model
             Layoffs,
             ContractEmployees,
             PurchaseBelovedStudio,
+            TargetChildren,
 
 
             //End game

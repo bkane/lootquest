@@ -111,9 +111,17 @@ namespace Assets.Scripts.Model
         {
             BigNum amount = 30e6f;
 
+            //Additions
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.PurchaseBelovedStudio))
             {
                 amount += 30e6f;
+            }
+
+
+            //Multiplications
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TargetChildren))
+            {
+                amount *= 2;
             }
 
             model.Resources[Units.ActivePlayer].MaxValue = amount;
