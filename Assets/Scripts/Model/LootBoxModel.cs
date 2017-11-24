@@ -88,9 +88,8 @@ public class LootBoxModel
 
 
     //Public
-    public BigNum Customers         { get { return Resources[Units.Customer].Amount; } }
-    public BigNum CustomerData      { get { return Resources[Units.CustomerData].Amount; } }
     public BigNum Marketers         { get { return Resources[Units.Marketer].Amount; } }
+    public BigNum LootBoxTypes      { get { return Resources[Units.LootBoxType].Amount; } }
     public BigNum Lobbyists         { get { return Resources[Units.Lobbyist].Amount; } }
     public BigNum Favor             { get { return Resources[Units.Favor].Amount; } }
     public BigNum CPUs              { get { return Resources[Units.CPU].Amount; } }

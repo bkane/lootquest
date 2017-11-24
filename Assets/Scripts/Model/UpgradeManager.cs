@@ -805,7 +805,7 @@ namespace Assets.Scripts.Model
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.Customer, 7.6f)
+                    new Resource(Units.ActivePlayer, 7.6f)
                 }
             });
 

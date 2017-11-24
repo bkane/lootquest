@@ -48,8 +48,7 @@ namespace Assets.Scripts.Model
 
 
         //Public
-        Customer,
-        CustomerData,
+        LootBoxType,
         Marketer,
         Lobbyist,
         Favor,
