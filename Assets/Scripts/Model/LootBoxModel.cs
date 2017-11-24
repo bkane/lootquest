@@ -136,6 +136,7 @@ public class LootBoxModel
 
         SetInitialState();
 
+#if DEBUG
         if (UnlockAllViews)
         {
             Life.IsActive = true;
@@ -145,6 +146,7 @@ public class LootBoxModel
             Studio.IsActive = true;
             Public.IsActive = true;
         }
+#endif
     }
 
     protected void SetInitialState()
@@ -189,7 +191,9 @@ public class LootBoxModel
 
     public bool ConsumeExactly(Units type, BigNum amount)
     {
+#if DEBUG
         if (DollarBuys) { amount = 1; }
+#endif
 
         if (Resources[type].Amount >= amount)
         {
