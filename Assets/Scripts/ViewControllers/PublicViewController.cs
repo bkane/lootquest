@@ -29,18 +29,21 @@ namespace Assets.Scripts.ViewControllers
         public Button MarketingPlus;
         public Button MarketingMinus;
 
-        public TextMeshProUGUI DataAnalystAllocationText;
-        public Button DataAnalysisPlus;
-        public Button DataAnalysisMinus;
+        //public TextMeshProUGUI DataAnalystAllocationText;
+        //public Button DataAnalysisPlus;
+        //public Button DataAnalysisMinus;
 
+        public GameObject LobbyistLineItem;
         public TextMeshProUGUI LobbyistAllocationText;
         public Button LobbyingPlus;
         public Button LobbyingMinus;
 
+        public GameObject CPULineItem;
         public TextMeshProUGUI CPUAllocationText;
         public Button MLPlus;
         public Button MLMinus;
 
+        public GameObject BioEngineerLineItem;
         public TextMeshProUGUI BioengineerAllocationText;
         public Button BioPlus;
         public Button BioMinus;
@@ -118,6 +121,22 @@ namespace Assets.Scripts.ViewControllers
 
             BioengineersText.text = string.Format("BioEngineers: {0}", LootBoxModel.Instance.Bioengineers);
             GenomeDataText.text = string.Format("Genome Data: {0}GB", LootBoxModel.Instance.GenomeData);
+
+            bool showLobby = LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.UnlockLobbying);
+            LobbyistLineItem.SetActive(showLobby);
+            LobbyistsText.gameObject.SetActive(showLobby);
+            FavorText.gameObject.SetActive(showLobby);
+
+            bool showCPU = LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.UnlockCPU);
+            CPULineItem.SetActive(showCPU);
+            CPUsText.gameObject.SetActive(showCPU);
+            CyclesText.gameObject.SetActive(showCPU);
+
+            bool showBio = LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.UnlockBioEngineering);
+            BioEngineerLineItem.SetActive(showBio);
+            BioengineersText.gameObject.SetActive(showBio);
+            GenomeDataText.gameObject.SetActive(showBio);
+
         }
     }
 }

@@ -77,6 +77,15 @@ namespace Assets.Scripts.Model
             ContractEmployees,
             PurchaseBelovedStudio,
             TargetChildren,
+            UseDataBreach,
+            CauseDataBreach,
+            TargetMinnows,
+            DetermineDesires,
+            LaunchMeshNetwork,
+            UnlockLobbying,
+            UnlockCPU,
+            UnlockBioEngineering,
+            IsolateMicrotransactionGene,
 
 
             //End game

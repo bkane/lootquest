@@ -109,6 +109,7 @@ namespace Assets.Scripts.Model
 
         public void UpdateMaxCustomers()
         {
+            //total should be 500M before multi
             BigNum amount = 30e6f;
 
             //Additions
@@ -117,11 +118,35 @@ namespace Assets.Scripts.Model
                 amount += 30e6f;
             }
 
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.UseDataBreach))
+            {
+                amount += 60e6f;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.CauseDataBreach))
+            {
+                amount += 120e6f;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TargetMinnows))
+            {
+                amount += 260e6f;
+            }
 
             //Multiplications
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TargetChildren))
             {
                 amount *= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.DetermineDesires))
+            {
+                amount *= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.LaunchMeshNetwork))
+            {
+                amount = 7.6e9f;
             }
 
             model.Resources[Units.ActivePlayer].MaxValue = amount;
@@ -130,6 +155,8 @@ namespace Assets.Scripts.Model
         public void Tick()
         {
             if (!IsActive) { return; }
+
+            UpdateMaxCustomers();
 
             //Set resources according to budget
             BigNum budget = GetBudget();

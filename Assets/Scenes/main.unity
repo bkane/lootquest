@@ -18476,15 +18476,15 @@ MonoBehaviour:
   MarketerAllocationText: {fileID: 322326754}
   MarketingPlus: {fileID: 951387894}
   MarketingMinus: {fileID: 415788645}
-  DataAnalystAllocationText: {fileID: 1041108301}
-  DataAnalysisPlus: {fileID: 1370903459}
-  DataAnalysisMinus: {fileID: 421746401}
+  LobbyistLineItem: {fileID: 1542258163}
   LobbyistAllocationText: {fileID: 2092631716}
   LobbyingPlus: {fileID: 643315262}
   LobbyingMinus: {fileID: 792543484}
+  CPULineItem: {fileID: 1668420227}
   CPUAllocationText: {fileID: 30602620}
   MLPlus: {fileID: 237785030}
   MLMinus: {fileID: 1001659700}
+  BioEngineerLineItem: {fileID: 878214961}
   BioengineerAllocationText: {fileID: 1966326805}
   BioPlus: {fileID: 397631125}
   BioMinus: {fileID: 1239472279}

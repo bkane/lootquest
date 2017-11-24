@@ -827,22 +827,6 @@ namespace Assets.Scripts.Model
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.Layoffs }
             });
 
-            Upgrades.Add(Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode, new Upgrade()
-            {
-                Type = Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode,
-                Name = "Purchase MacGuffin Quest source code",
-                Description = "I just need to flip a zero to a one and then I can finally play as MacGuffin.",
-                Costs = new List<Resource>()
-                {
-                    new Resource(Units.Money, 10)
-                },
-                UnlockThreshold = new List<Resource>()
-                {
-                    new Resource(Units.ActivePlayer, 7.6f)
-                }
-            });
-
-
             Upgrades.Add(Upgrade.EUpgradeType.PurchaseBelovedStudio, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.PurchaseBelovedStudio,
@@ -856,7 +840,24 @@ namespace Assets.Scripts.Model
                 UnlockThreshold = new List<Resource>()
                 {
                     new Resource(Units.ActivePlayer, 10)
-                }
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ExecuteIPO }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.TargetMinnows, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.TargetMinnows,
+                Name = "Target the Minnows",
+                Description = "Once all the whales have been hunted, it only makes sense to go after the smaller fish.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ActivePlayer, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.PurchaseBelovedStudio }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.TargetChildren, new Upgrade()
@@ -872,7 +873,161 @@ namespace Assets.Scripts.Model
                 {
                     new Resource(Units.ActivePlayer, 10)
                 },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.TargetMinnows }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.UseDataBreach, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.UseDataBreach,
+                Name = "Acquire Customer Data from Security Breach",
+                Description = "One of our competitors was careless with security. All of the data has been leaked anyway. Might as well use it!",
+                CommentOnBuy = "Reminder: don't re-use your password on multiple sites.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ActivePlayer, 10)
+                },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.PurchaseBelovedStudio }
+            });
+
+
+            Upgrades.Add(Upgrade.EUpgradeType.CauseDataBreach, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.CauseDataBreach,
+                Name = "Arrange a Security Breach",
+                Description = "That last security breach turned out really well for us. It'd be a shame if all our competitors experienced similar incidents.",
+                CommentOnBuy = "It's bound to happen eventually. We're just giving the process a little boost.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ActivePlayer, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.UseDataBreach }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.UnlockLobbying, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.UnlockLobbying,
+                Name = "Start up Government Lobbying Division",
+                Description = "We're going to need to change some policies.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ActivePlayer, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ExecuteIPO }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.UnlockCPU, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.UnlockCPU,
+                Name = "Start up Machine Learning Division",
+                Description = "Nobody seems quite sure what machine learning can be used for, but if it can make us more money then I want it.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ActivePlayer, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.UnlockLobbying }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.UnlockBioEngineering, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.UnlockBioEngineering,
+                Name = "Start up Bio-Engineering Division",
+                Description = "There are still some holdouts around the world. We need to figure out how to bring them in.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ActivePlayer, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.UnlockCPU }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.DetermineDesires, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.DetermineDesires,
+                Name = "Determine Individual's Deepest Desires",
+                Description = "Manipulate customers by understanding them at a fundamental level.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10),
+                    new Resource(Units.GenomeData, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ActivePlayer, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.UnlockBioEngineering, Upgrade.EUpgradeType.TargetMinnows, Upgrade.EUpgradeType.TargetChildren, Upgrade.EUpgradeType.PurchaseBelovedStudio, Upgrade.EUpgradeType.CauseDataBreach, Upgrade.EUpgradeType.UseDataBreach }
+            });
+
+
+            Upgrades.Add(Upgrade.EUpgradeType.IsolateMicrotransactionGene, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.IsolateMicrotransactionGene,
+                Name = "Isolate Microtransaction Gene",
+                Description = "Our engineers feel they can isolate what makes humans buy loot boxes at a genetic level. This could prove useful.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10),
+                    new Resource(Units.GenomeData, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ActivePlayer, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.DetermineDesires }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.LaunchMeshNetwork, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.LaunchMeshNetwork,
+                Name = "Launch Satellite Mesh Network",
+                Description = "Launch a network of micro-satellites to cover the entire globe and signal the microtransaction receptors in the remaining unmonetized population.",
+                CommentOnBuy = "No turning back from this one. But we have a duty to our shareholders.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10),
+                    new Resource(Units.GenomeData, 10),
+                    new Resource(Units.Cycle, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ActivePlayer, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.IsolateMicrotransactionGene }
+            });
+
+
+            Upgrades.Add(Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode,
+                Name = "Purchase MacGuffin Quest source code",
+                Description = "I just need to flip a zero to a one and then I can finally play as MacGuffin.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ActivePlayer, 7e9f)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.LaunchMeshNetwork }
             });
 
 
@@ -946,7 +1101,6 @@ namespace Assets.Scripts.Model
                     break;
                 case Upgrade.EUpgradeType.PurchaseBelovedStudio:
                     {
-                        Model.Public.UpdateMaxCustomers();
                         Logger.Log(3, "Oh. Guess not.");
                     }
                     break;
