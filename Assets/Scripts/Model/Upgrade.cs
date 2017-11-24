@@ -73,6 +73,11 @@ namespace Assets.Scripts.Model
 
             //Public
             ExecuteIPO,
+            Layoffs,
+            ContractEmployees,
+
+
+            //End game
             PurchaseMacGuffinQuestSourceCode
         }
 

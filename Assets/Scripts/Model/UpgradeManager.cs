@@ -794,6 +794,39 @@ namespace Assets.Scripts.Model
                 }
             });
 
+            Upgrades.Add(Upgrade.EUpgradeType.Layoffs, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.Layoffs,
+                Name = "Regularly Scheduled Layoffs",
+                Description = "The end of a project doesn't <i>have</i> to mean the end of a job. But we'll save a bundle if it does!",
+                CommentOnBuy = "And yet for some reason this industry is considered in demand.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.OperatingCost, 10)
+                }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.ContractEmployees, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.ContractEmployees,
+                Name = "Use Contract Employees instead of Full Time",
+                Description = "Less pay and benefits means more bottom line for us. And it's somehow legal!",
+                CommentOnBuy = "It's as if we automated the layoff process.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.OperatingCost, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.Layoffs }
+            });
+
             Upgrades.Add(Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode,

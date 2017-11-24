@@ -82,7 +82,19 @@ namespace Assets.Scripts.Model
 
         public BigNum GetBaseOperatingCosts()
         {
-            return GetBudget() * 0.5f;
+            float percent = 0.5f;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.Layoffs))
+            {
+                percent /= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ContractEmployees))
+            {
+                percent /= 2;
+            }
+
+            return GetBudget() * percent;
         }
 
         public BigNum GetFines()
@@ -96,6 +108,7 @@ namespace Assets.Scripts.Model
 
             //Set resources according to budget
             BigNum budget = GetBudget();
+            budget -= GetBaseOperatingCosts();
             budget -= GetFines();
 
             BigNum costPerResource = 10000; //TODO: everything costs the same
@@ -119,6 +132,9 @@ namespace Assets.Scripts.Model
 
             //Finally, make money
             model.Add(Units.Money, MicrotransactionRevenuePerTick());
+
+            //Make a note of the highest operating cost we've seen
+            model.Resources[Units.OperatingCost].Amount = Mathf.Max(model.HighestOperatingCost, GetBaseOperatingCosts());
         }
     }
 }

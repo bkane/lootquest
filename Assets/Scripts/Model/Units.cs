@@ -55,6 +55,7 @@ namespace Assets.Scripts.Model
         CPU,
         Cycle,
         Bioengineer,
-        GenomeData
+        GenomeData,
+        OperatingCost
     }
 }

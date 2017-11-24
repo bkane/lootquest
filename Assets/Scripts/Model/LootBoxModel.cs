@@ -96,6 +96,7 @@ public class LootBoxModel
     public BigNum Cycles            { get { return Resources[Units.Cycle].Amount; } }
     public BigNum Bioengineers      { get { return Resources[Units.Bioengineer].Amount; } }
     public BigNum GenomeData        { get { return Resources[Units.GenomeData].Amount; } }
+    public BigNum HighestOperatingCost { get { return Resources[Units.OperatingCost].Amount; } }
 
 
     public LootBoxModel()
