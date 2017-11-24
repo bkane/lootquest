@@ -82,7 +82,7 @@ namespace Assets.Scripts.Model
 
         public BigNum GetBaseOperatingCosts()
         {
-            return 100000f;
+            return GetBudget() * 0.5f;
         }
 
         public BigNum GetFines()
