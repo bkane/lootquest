@@ -899,7 +899,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.CauseDataBreach,
                 Name = "Arrange a Security Breach",
                 Description = "That last security breach turned out really well for us. It'd be a shame if all our competitors experienced similar incidents.",
-                CommentOnBuy = "It's bound to happen eventually. We're just giving the process a little boost.",
+                CommentOnBuy = "Security breaches are inevitable. We're just giving the process a little boost.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 10)
@@ -941,6 +941,46 @@ namespace Assets.Scripts.Model
                     new Resource(Units.ActivePlayer, 10)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.UnlockLobbying }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.ComputersMaintainGame, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.ComputersMaintainGame,
+                Name = "Teach Machines to Maintain the Game",
+                Description = "Remove the remaining operating costs by putting machines in charge of running the servers.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10),
+                    new Resource(Units.Cycle, 10),
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.UnlockCPU }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.OptimizeRoAS, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.OptimizeRoAS,
+                Name = "Optimize Return on Ad Spend",
+                Description = "Artificial Intelligence Marketing platform will significantly reduce churn and continuously optimize integrated player experiences based on the entire player data ecosystem.",
+                CommentOnBuy = "Wait, what exactly does this do?",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10),
+                    new Resource(Units.Cycle, 10),
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.UnlockCPU }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.TargetedPersonalAds, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.TargetedPersonalAds,
+                Name = "Automatic Targeted Ad Personalization",
+                Description = "By running millions of variations of slogans and creatives automatically, we can acquire users much more effectively.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10),
+                    new Resource(Units.Cycle, 10),
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.OptimizeRoAS }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.UnlockBioEngineering, new Upgrade()

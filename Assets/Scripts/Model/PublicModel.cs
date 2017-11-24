@@ -72,7 +72,19 @@ namespace Assets.Scripts.Model
 
         public BigNum CustomerAcquisitionPerTick()
         {
-            return model.Marketers;
+            BigNum rate = 1f;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.OptimizeRoAS))
+            {
+                rate *= 3;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TargetedPersonalAds))
+            {
+                rate *= 10;
+            }
+
+            return model.Marketers * rate;
         }
 
         public BigNum GetBudget()
@@ -97,6 +109,11 @@ namespace Assets.Scripts.Model
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ContractEmployees))
             {
                 percent /= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ComputersMaintainGame))
+            {
+                percent = 0;
             }
 
             return GetBudget() * percent;
