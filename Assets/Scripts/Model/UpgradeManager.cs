@@ -477,6 +477,94 @@ namespace Assets.Scripts.Model
                     new Resource(Units.ReleasedGame, 10)
                 }
             });
+
+            Upgrades.Add(Upgrade.EUpgradeType.AddWeeklyRewards, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.AddWeeklyRewards,
+                Name = "Add Weekly Rewards",
+                Description = "Our research shows we can keep players coming back to our games if we give them a token reward every now and then.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.AnalyticsData, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.EnableMicrotransactions }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.AddDailyRewards, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.AddDailyRewards,
+                Name = "Add Daily Rewards",
+                Description = "Further research reveals player retention can be improved with more frequent rewards.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.AddWeeklyRewards }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.AddConstantRewards, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.AddConstantRewards,
+                Name = "Add Constant Rewards",
+                Description = "Optimize the reward drip so completely that nobody ever stops playing. Even if they want to.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddDailyRewards }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.ChargeMore, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.ChargeMore,
+                Name = "Charge More For New Games",
+                Description = "Games are getting expensive to make, so we need to charge more to stay afloat.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.ChargeEvenMore, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.ChargeEvenMore,
+                Name = "Charge Even More for New Games",
+                Description = "When we raised prices, we made more money. I recommend doing that again.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ChargeMore }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.SellLimitedEditions, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.SellLimitedEditions,
+                Name = "Sell Limited Editions",
+                Description = "Market research shows people <i>want</i> to pay more, so we should offer more SKUs and let them.",
+                CommentOnBuy = "What does \"Limited\" refer to for a digital product anyway?",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ChargeEvenMore }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.SellCollectorEditions, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.SellCollectorEditions,
+                Name = "Sell Collector's Editions",
+                Description = "Bespoke, hand-craft, artisinal digital game keys.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.SellLimitedEditions }
+            });
             #endregion
 
 

@@ -58,12 +58,29 @@ namespace Assets.Scripts.Model
 
         public BigNum HypePerRelease()
         {
-            return 100;
+            return 100 * CostOfGameInDevHours();
         }
 
         public BigNum ActivePlayersDecayPerTick()
         {
-            return model.ActivePlayers * 0.005f / 30f;
+            BigNum decay = model.ActivePlayers * 0.04f / 30f;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddWeeklyRewards))
+            {
+                decay /= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddDailyRewards))
+            {
+                decay /= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddConstantRewards))
+            {
+                decay = 0;
+            }
+
+            return decay;
         }
 
         public BigNum PercentOfPlayersWhoMonetize()
@@ -93,7 +110,27 @@ namespace Assets.Scripts.Model
 
         public BigNum RevenuePerUnitSold()
         {
-            BigNum amount = 40;
+            BigNum amount = 20;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ChargeMore))
+            {
+                amount += 20;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ChargeEvenMore))
+            {
+                amount += 20;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SellLimitedEditions))
+            {
+                amount += 20;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SellCollectorEditions))
+            {
+                amount += 20;
+            }
 
             if (!model.UpgradeManager.IsActive(Upgrade.EUpgradeType.StartDistributionService))
             {

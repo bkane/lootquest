@@ -47,6 +47,13 @@ namespace Assets.Scripts.Model
             StartAStudio,
             EnableMicrotransactions,
             StartDistributionService,
+            AddWeeklyRewards,
+            AddDailyRewards,
+            AddConstantRewards,
+            ChargeMore,
+            ChargeEvenMore,
+            SellLimitedEditions,
+            SellCollectorEditions,
 
 
             //Public
