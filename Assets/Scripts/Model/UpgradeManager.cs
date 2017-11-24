@@ -584,6 +584,58 @@ namespace Assets.Scripts.Model
                 }
             });
 
+            Upgrades.Add(Upgrade.EUpgradeType.AddGems, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.AddGems,
+                Name = "Add Premium Currency: Gems",
+                Description = "Players will just <i>love</i> buying these shiny gems! Increases microtransaction spend.",
+                CommentOnBuy = "Not sure gems really fit in our games thematically, but I suppose it's an abstract concept.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.EnableMicrotransactions }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.AddGoldCoins, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.AddGoldCoins,
+                Name = "Add Premium Currency: Gold Coins",
+                Description = "Players will like buying these shiny gold coins! Increases microtransaction spend.",
+                CommentOnBuy = "Gold coins feels a bit on the nose, don't you think?",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.AddGems }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.AddCrystals, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.AddCrystals,
+                Name = "Add Premium Currency: Crystals",
+                Description = "Players will tolerate buying these crystals! Increases microtransaction spend.",
+                CommentOnBuy = "On the plus side, I don't think players even consciously acknowledge how out of place this stuff is anymore.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddGoldCoins }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.AddCards, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.AddCards,
+                Name = "Add Premium Currency: Cards",
+                Description = "Players will very reluctantly buy these cards! Increases microtransaction spend.",
+                CommentOnBuy = "A digital representation of an already random collectible. Might as well put a slot machine on the card and go full meta.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddCrystals }
+            });
+
             #endregion
 
 

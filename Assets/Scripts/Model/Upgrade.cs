@@ -55,6 +55,10 @@ namespace Assets.Scripts.Model
             SellLimitedEditions,
             SellCollectorEditions,
             EliminateUnderperformingFranchises,
+            AddGems,
+            AddGoldCoins,
+            AddCrystals,
+            AddCards,
 
 
             //Public

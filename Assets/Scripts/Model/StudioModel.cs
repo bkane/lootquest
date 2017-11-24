@@ -95,7 +95,29 @@ namespace Assets.Scripts.Model
 
         public BigNum RevenuePerMicrotransaction()
         {
-            return 0.25f;
+            BigNum amount = 0.25f;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddGems))
+            {
+                amount *= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddGoldCoins))
+            {
+                amount *= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddCrystals))
+            {
+                amount *= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddCards))
+            {
+                amount *= 2;
+            }
+
+            return amount;
         }
 
         public BigNum MicrotransactionRevenuePerTick()
