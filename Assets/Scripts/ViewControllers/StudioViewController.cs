@@ -7,24 +7,28 @@ namespace Assets.Scripts.ViewControllers
 {
     public class StudioViewController : MonoBehaviour
     {
-        //Labels
         public TextMeshProUGUI DeveloperText;
         public TextMeshProUGUI DevCostText;
         public TextMeshProUGUI DevHoursText;
         public TextMeshProUGUI ReleasedGameText;
         public TextMeshProUGUI HypeText;
         public TextMeshProUGUI CopiesSoldText;
+        
+
+        public GameObject AnalyticsPanel;
         public TextMeshProUGUI ActivePlayersText;
+        public TextMeshProUGUI PercentMonetizeText;
         public TextMeshProUGUI MicrotransactionRevenueText;
 
-        public TextMeshProUGUI DataAnalystsText;
-        public TextMeshProUGUI DataAnalystsCostText;
-        public TextMeshProUGUI AnalyticsDataText;
 
-        //Buttons
         public Button HireDeveloper;
         public Button FireDeveloper;
 
+
+        public GameObject DataAnalystsPanel;
+        public TextMeshProUGUI DataAnalystsText;
+        public TextMeshProUGUI DataAnalystsCostText;
+        public TextMeshProUGUI AnalyticsDataText;
         public Button HireDataAnalyst;
         public Button FireDataAnalyst;
 
@@ -49,8 +53,7 @@ namespace Assets.Scripts.ViewControllers
             ReleasedGameText.text = string.Format("Released Games: {0}", LootBoxModel.Instance.ReleasedGames);
             HypeText.text = string.Format("Hype: {0}", LootBoxModel.Instance.Hype);
             CopiesSoldText.text = string.Format("Total Copies Sold: {0}", LootBoxModel.Instance.CopiesSold);
-            ActivePlayersText.text = string.Format("Active Players: {0}", LootBoxModel.Instance.ActivePlayers);
-            MicrotransactionRevenueText.text = string.Format("MTXN Rev: ${0}/s", LootBoxModel.Instance.Studio.MicrotransactionRevenuePerTick() * 30);
+
 
             DataAnalystsText.text = string.Format("Data Analysts: {0}", LootBoxModel.Instance.DataAnalysts);
             DataAnalystsCostText.text = string.Format("Data Analyst Cost: ${0}/s", LootBoxModel.Instance.Studio.DataAnalystCostPerTick() * 30);
@@ -58,13 +61,12 @@ namespace Assets.Scripts.ViewControllers
 
             ReleaseGame.GetComponentInChildren<Text>().text = string.Format("Release Game ({0})", LootBoxModel.Instance.Studio.CostOfGameInDevHours());
 
-            bool microTxnActive = LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnableMicrotransactions);
-            MicrotransactionRevenueText.gameObject.SetActive(microTxnActive);
-            DataAnalystsText.gameObject.SetActive(microTxnActive);
-            DataAnalystsCostText.gameObject.SetActive(microTxnActive);
-            AnalyticsDataText.gameObject.SetActive(microTxnActive);
-            HireDataAnalyst.gameObject.SetActive(microTxnActive);
-            FireDataAnalyst.gameObject.SetActive(microTxnActive);
+            DataAnalystsPanel.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnableAnalytics));
+
+            AnalyticsPanel.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnableAnalytics));
+            ActivePlayersText.text = string.Format("Active Players: {0}", LootBoxModel.Instance.ActivePlayers);
+            PercentMonetizeText.text = string.Format("Players Monetized: {0}%", LootBoxModel.Instance.Studio.PercentOfPlayersWhoMonetize());
+            MicrotransactionRevenueText.text = string.Format("MTXN Rev: ${0}/s", LootBoxModel.Instance.Studio.MicrotransactionRevenuePerTick() * 30);
         }
     }
 }

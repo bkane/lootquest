@@ -45,6 +45,7 @@ namespace Assets.Scripts.Model
 
             //Studio
             StartAStudio,
+            EnableAnalytics,
             EnableMicrotransactions,
             StartDistributionService,
             AddWeeklyRewards,

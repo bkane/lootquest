@@ -85,6 +85,11 @@ namespace Assets.Scripts.Model
 
         public BigNum PercentOfPlayersWhoMonetize()
         {
+            if (!model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnableMicrotransactions))
+            {
+                return 0;
+            }
+
             return 0.01f;
         }
 

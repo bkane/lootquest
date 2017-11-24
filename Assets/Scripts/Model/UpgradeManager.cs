@@ -446,6 +446,23 @@ namespace Assets.Scripts.Model
                 }
             });
 
+
+            Upgrades.Add(Upgrade.EUpgradeType.EnableAnalytics, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.EnableAnalytics,
+                Name = "Enable Analytics",
+                Description = "Start gathering data about how players are playing our games. So we can improve the experience of course.",
+                CommentOnBuy = "No harm in keeping track of a few other things while we're at it. Might come in handy.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ReleasedGame, 1)
+                },
+            });
+
             Upgrades.Add(Upgrade.EUpgradeType.EnableMicrotransactions, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.EnableMicrotransactions,
@@ -455,10 +472,7 @@ namespace Assets.Scripts.Model
                 {
                     new Resource(Units.Money, 10)
                 },
-                UnlockThreshold = new List<Resource>()
-                {
-                    new Resource(Units.ReleasedGame, 1)
-                }
+                Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.EnableAnalytics }
             });
 
 
