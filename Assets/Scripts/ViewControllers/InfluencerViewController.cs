@@ -19,7 +19,7 @@ namespace Assets.Scripts.ViewControllers
 
         private void Awake()
         {
-            MakeVideoButton.onClick.AddListener(LootBoxModel.Instance.Influencer.DoMakeVideo);
+            MakeVideoButton.onClick.AddListener(LootBoxModel.Instance.Influencer.DoMakeVideoClick);
         }
 
         private void Update()

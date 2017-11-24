@@ -52,6 +52,7 @@ public class LootBoxModel
     //Short-hand
     //Life
     public BigNum Money             { get { return Resources[Units.Money].Amount; } }
+    public BigNum Clicks            { get { return Resources[Units.Click].Amount; } }
     public BigNum TotalMoneyEarned  { get { return Resources[Units.TotalMoneyEarned].Amount; } }
 
     //Job
@@ -120,7 +121,7 @@ public class LootBoxModel
         Life.IsActive = true;
 
         Job = new JobModel(this);
-        Job.IsActive = true;
+        Job.IsActive = false;
 
         MacGuffinQuest = new MacGuffinQuest(this);
         MacGuffinQuest.IsActive = false;
@@ -153,6 +154,7 @@ public class LootBoxModel
     {
         Resources[Units.GrindProgress].MaxValue = 100;
         Resources[Units.VideoProgress].MaxValue = 100;
+        Resources[Units.BotAccount].MaxValue = 30;
         Resources[Units.ActivePlayer].MaxValue  = 30000000;
 
 #if DEBUG

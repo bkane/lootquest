@@ -28,6 +28,12 @@
             return amount;
         }
 
+        public void DoMakeVideoClick()
+        {
+            model.Add(Units.Click, 1);
+            DoMakeVideo();
+        }
+
         public void DoMakeVideo()
         {
             if (model.ConsumeExactly(Units.VideoContent, 1))

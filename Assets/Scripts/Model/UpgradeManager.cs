@@ -32,11 +32,11 @@ namespace Assets.Scripts.Model
                 Description = "Looks like computers might be sticking around for a while. I should learn to talk to them.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 40)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.TotalMoneyEarned, 100)
+                    new Resource(Units.TotalMoneyEarned, 30)
                 }
             });
 
@@ -52,7 +52,7 @@ namespace Assets.Scripts.Model
                 Description = "Work smarter not harder! Get more work done with every click.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 16)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
@@ -67,11 +67,11 @@ namespace Assets.Scripts.Model
                 Description = "Dress for the job you want, and then get that job. Promotion means more money!",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 25)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.JobCompleted, 3)
+                    new Resource(Units.JobCompleted, 10)
                 }
             });
 
@@ -82,7 +82,7 @@ namespace Assets.Scripts.Model
                 Description = "It's going to happen anyway. Might as well do it myself while the paycheck still goes to me.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 40)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.LearnToCode }
             });
@@ -94,12 +94,13 @@ namespace Assets.Scripts.Model
                 Description = "I work from home anyway. Who's going to notice?",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 200)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.JobCompleted, 3)
-                }
+                    new Resource(Units.JobCompleted, 30)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.JobAutomationScript }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.FasterComputer, new Upgrade()
@@ -110,11 +111,7 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Gotta have the fastest rig for these spreadsheets!",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
-                },
-                UnlockThreshold = new List<Resource>()
-                {
-                    new Resource(Units.JobCompleted, 10)
+                    new Resource(Units.Money, 500)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.JobAutomationScript }
             });
@@ -126,7 +123,7 @@ namespace Assets.Scripts.Model
                 Description = "Hardly seems worth it for the nominal increase in speed but who am I to judge?",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 2000)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.FasterComputer }
             });
@@ -139,40 +136,29 @@ namespace Assets.Scripts.Model
             Upgrades.Add(Upgrade.EUpgradeType.PurchaseMacGuffinQuest, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.PurchaseMacGuffinQuest,
-                Name = "Pre-Order MacGuffin Quest",
+                Name = "Pre-Order <i>MacGuffin Quest 2</i>",
                 Description = "Holy crap I can't wait.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, MCGCost)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10) //just to prevent auto-unlocking
                 }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.PurchaseMacGuffinQuestLimitedEdition, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.PurchaseMacGuffinQuestLimitedEdition,
-                Name = "Buy MacGuffin Quest Deluxe Limited Edition",
+                Name = "Buy <i>MacGuffin Quest 2</i> Deluxe Limited Edition",
                 Description = "Well it's more expensive but at least it's in stock.",
-                CommentOnBuy = "YESSSSS! Finally! Time to play MacGuffin Quest 2!",
+                CommentOnBuy = "YESSSSS! Finally! Time to play <i>MacGuffin Quest 2</i>!",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 80)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.PurchaseMacGuffinQuest }
-            });
-
-            Upgrades.Add(Upgrade.EUpgradeType.RemoveGameAnimations, new Upgrade()
-            {
-                Type = Upgrade.EUpgradeType.RemoveGameAnimations,
-                Name = "Hack MacGuffin Quest and remove all animations",
-                Description = "Use your newfound computer talents to remove those pesky animations slowing things down. Improves grinding efficiency.",
-                Costs = new List<Resource>()
-                {
-                    new Resource(Units.Money, 10)
-                },
-                UnlockThreshold = new List<Resource>()
-                {
-                    new Resource(Units.GrindCompleted, 3)
-                }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.SecondMouse, new Upgrade()
@@ -182,7 +168,7 @@ namespace Assets.Scripts.Model
                 Description = "If I use both hands, I can grind twice as fast! I mean, have twice as much fun.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 20)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
@@ -197,12 +183,13 @@ namespace Assets.Scripts.Model
                 Description = "I read about how, with a few minor adjustments, I can turn a regular mouse into five mice!",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 100)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.GrindCompleted, 3)
-                }
+                    new Resource(Units.GrindCompleted, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.SecondMouse }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.AutoGrinder, new Upgrade()
@@ -212,12 +199,13 @@ namespace Assets.Scripts.Model
                 Description = "Use your newfound scripting talents to have your computer play MacGuffin Quest for you! Automatic fun!",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 250)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.GrindCompleted, 3)
-                }
+                    new Resource(Units.GrindCompleted, 50)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.LearnToCode }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.AutoSellTrashItems, new Upgrade()
@@ -227,14 +215,27 @@ namespace Assets.Scripts.Model
                 Description = "Selling items on the auction house feels like work and 'round here? We automate work. Gets the job done but doesn't get as good a return.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 100)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.TrashItemSold, 3)
-                }
+                    new Resource(Units.TrashItemSold, 20)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.LearnToCode }
             });
 
+
+            Upgrades.Add(Upgrade.EUpgradeType.RemoveGameAnimations, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.RemoveGameAnimations,
+                Name = "Hack MacGuffin Quest and remove all animations",
+                Description = "Use your newfound computer talents to remove those pesky animations slowing things down. Improves grinding efficiency.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 500)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.LearnToCode, Upgrade.EUpgradeType.AutoGrinder }
+            });
 
             #endregion
 
@@ -252,11 +253,11 @@ namespace Assets.Scripts.Model
                 Description = "Hey I bet people would watch me opening all these loot boxes.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 250)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.LootBoxOpened, 5)
+                    new Resource(Units.LootBoxOpened, 100)
                 }
             });
 
@@ -268,11 +269,11 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Not sure why I had to pay to become a partner but I'm sure it'll be a worthwhile investment.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 1000)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.Follower, 100)
+                    new Resource(Units.Follower, 1000)
                 }
             });
 
@@ -284,7 +285,7 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Whoa! This video editing program supports using a mouse! This'll make things a lot easier.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 1200)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
@@ -300,11 +301,11 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Now I don't have to say \"What's up guys!\" all the time.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 1000)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.PublishedVideo, 5)
+                    new Resource(Units.PublishedVideo, 10)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.BuyVideoEditingSoftware }
             });
@@ -316,13 +317,13 @@ namespace Assets.Scripts.Model
                 Description = "Hire an editor to convert your raw footage into compelling content. Your editor assures you they're worth every penny, given what they have to work with.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 2000)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
                     new Resource(Units.PublishedVideo, 10)
                 },
-                Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.GetPartnered }
+                Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.MakeVideoIntro }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.StartStreaming, new Upgrade()
@@ -333,11 +334,11 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "I wonder what this will do to my sleep schedule...",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 2000)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.PublishedVideo, 10)
+                    new Resource(Units.Follower, 5000)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.GetPartnered }
             });
@@ -350,13 +351,13 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "People <i>need</i> mattresses. Why shouldn't I get paid to give my opinion?",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Follower, 10)
+                    new Resource(Units.Follower, 5000)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.PublishedVideo, 10)
+                    new Resource(Units.Follower, 7500)
                 },
-                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.GetPartnered }
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.StartStreaming }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.CompletelySellOut, new Upgrade()
@@ -367,7 +368,7 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Okay, maybe not <i>everybody</i> needs novelty glasses, but I need more money for loot boxes. Feed the beast!",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Follower, 10)
+                    new Resource(Units.Follower, 10000)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
@@ -381,15 +382,15 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.ChannelGrowthAnalytics,
                 Name = "Track Channel Growth",
                 Description = "Do some analysis and figure out where all these followers are coming from.",
-                CommentOnBuy = "",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 500)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
                     new Resource(Units.PublishedVideo, 10)
-                }
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.GetPartnered }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.OptimizeContentForChannelGrowth, new Upgrade()
@@ -400,7 +401,7 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Smash that Like button!",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 2000)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
@@ -417,7 +418,7 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Okay so the video quality isn't quite as good, but it's clips of a bot opening loot boxes. What do you expect?",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 5000)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
@@ -438,11 +439,11 @@ namespace Assets.Scripts.Model
                 Description = "You know, I could probably do this myself.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 1e6f)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.Follower, 10)
+                    new Resource(Units.Follower, 10e6f)
                 }
             });
 
@@ -540,7 +541,8 @@ namespace Assets.Scripts.Model
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 10)
-                }
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ExecuteIPO }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.ChargeEvenMore, new Upgrade()
@@ -1259,7 +1261,7 @@ namespace Assets.Scripts.Model
             {
                 case Upgrade.EUpgradeType.PurchaseMacGuffinQuest:
                     {
-                        Logger.Log("Sorry! MacGuffin Quest Regular Edition pre-orders are all sold out! We do still have Limited Editions available ironically.");
+                        Logger.Log("Sorry! <i>MacGuffin Quest 2</i> Regular Edition pre-orders are all sold out! We do still have Limited Editions available ironically.");
 
                         Logger.Log(5, "How is a pre-order out of stock anyway?");
 

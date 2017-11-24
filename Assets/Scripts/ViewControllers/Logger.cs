@@ -16,6 +16,7 @@ public class Logger : MonoBehaviour
     {
         if (Instance != null) { Debug.LogError("Tried to instantiate a second logger!"); }
         Instance = this;
+        LogText.text = string.Empty;
     }
 
     public static void Log(string message)

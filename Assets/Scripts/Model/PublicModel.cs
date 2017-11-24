@@ -42,6 +42,7 @@ namespace Assets.Scripts.Model
                     case Units.Bioengineer: { BioengineerAllocation = Mathf.Clamp(BioengineerAllocation     + 10, 0, 100); } break;
                 }
             }
+            model.Add(Units.Click, 1);
         }
         public void Deallocate(Units type)
         {
@@ -53,6 +54,7 @@ namespace Assets.Scripts.Model
                     case Units.CPU:         { CPUAllocation         = Mathf.Clamp(CPUAllocation             - 10, 0, 100); } break;
                     case Units.Bioengineer: { BioengineerAllocation = Mathf.Clamp(BioengineerAllocation     - 10, 0, 100); } break;
             }
+            model.Add(Units.Click, 1);
         }
 
         public BigNum MicrotransactionRevenuePerCustomerPerTick()

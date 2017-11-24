@@ -9,8 +9,8 @@
 
         public LootBoxModel Model;
 
-        private int MoneyPerLootBox = 5;
         private int GrindProgressPerLootBox = 100;
+        public bool HideBotButton;
 
         //Selling TrashItems
         private int AutoSellTicks = 60;
@@ -20,20 +20,23 @@
             this.Model = model;
         }
 
-
         public void DoGrindClick()
         {
+            //TODO: on first plays, do a sequence about how you don't play as MacGuffin
             DoGrind(ActionsPerClick() * 5);
+            Model.Add(Units.Click, 1);
         }
 
         public void OpenLootBoxClick()
         {
             OpenLootBox(ActionsPerClick());
+            Model.Add(Units.Click, 1);
         }
 
         public void SellTrashClick()
         {
             SellTrash(ActionsPerClick());
+            Model.Add(Units.Click, 1);
         }
 
         public BigNum ActionsPerClick()
@@ -53,8 +56,6 @@
             return amount;
         }
 
-
-
         public void DoGrind(BigNum amount)
         {
             if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.RemoveGameAnimations))
@@ -72,12 +73,10 @@
             }
         }
 
-        public void BuyLootBox()
+        public void BuyLootBoxClick()
         {
-            if (Model.ConsumeExactly(Units.Money, MoneyPerLootBox))
-            {
-                Model.Add(Units.LootBox, 1);
-            }
+            Logger.Log("I refuse to sacrifice my sense of accomplishment by taking the easy way out.");
+            Model.Add(Units.Click, 1);
         }
 
         public void OpenLootBox(BigNum amount)
@@ -100,20 +99,31 @@
         public void SellTrash(BigNum amount)
         {
             BigNum itemsSold = Model.ConsumeUpTo(Units.TrashItem, amount);
+
             if (itemsSold > 0)
             {
-                BigNum salePrice = itemsSold * 1;
+                BigNum salePrice = itemsSold * 5;
 
                 Model.Add(Units.Money, salePrice);
                 Model.Add(Units.TrashItemSold, itemsSold);
+                Model.Add(Units.Click, 1);
             }
         }
 
-        public void BuyBotAccount()
+        public void BuyBotAccountClick()
         {
-            if (Model.ConsumeExactly(Units.Money, 10))
+            if (Model.NumBotAccounts < Model.Resources[Units.BotAccount].MaxValue)
             {
-                Model.Add(Units.BotAccount, 1);
+                if (Model.ConsumeExactly(Units.Money, 40))
+                {
+                    Model.Add(Units.BotAccount, 1);
+                    Model.Add(Units.Click, 1);
+                }
+            }
+            else
+            {
+                Logger.Log("The <i>MacGuffin Quest 2</i> developers have gotten wise and are banning any additional bot accounts.");
+                HideBotButton = true;
             }
         }
 

@@ -9,6 +9,7 @@ namespace Assets.Scripts.Model
         Invalid,
 
         //Life
+        Click,
 
         //Job
         JobProgress,

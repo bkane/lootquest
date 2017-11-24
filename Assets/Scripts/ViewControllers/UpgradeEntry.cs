@@ -42,6 +42,7 @@ namespace Assets.Scripts.ViewControllers
             {
                 OnClick();
             }
+            LootBoxModel.Instance.Add(Units.Click, 1);
         }
     }
 }

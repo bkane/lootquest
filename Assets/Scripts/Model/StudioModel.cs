@@ -26,11 +26,13 @@ namespace Assets.Scripts.Model
             {
                 model.Add(Units.Developer, 1);
             }
+            model.Add(Units.Click, 1);
         }
 
         public void FireDeveloper()
         {
             model.ConsumeExactly(Units.Developer, 1);
+            model.Add(Units.Click, 1);
         }
 
         public void HireDataAnalyst()
@@ -39,11 +41,13 @@ namespace Assets.Scripts.Model
             {
                 model.Add(Units.DataAnalyst, 1);
             }
+            model.Add(Units.Click, 1);
         }
 
         public void FireDataAnalyst()
         {
             model.ConsumeExactly(Units.DataAnalyst, 1);
+            model.Add(Units.Click, 1);
         }
 
         public BigNum DevCostPerTick()
@@ -216,6 +220,8 @@ namespace Assets.Scripts.Model
                     Logger.Log("These games are getting expensive to make.");
                 }
             }
+
+            model.Add(Units.Click, 1);
         }
 
         public void Tick()

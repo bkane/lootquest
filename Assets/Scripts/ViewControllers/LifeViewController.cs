@@ -10,6 +10,7 @@ namespace Assets.Scripts.ViewControllers
         //Labels
         public TextMeshProUGUI TimeText;
         public TextMeshProUGUI MoneyText;
+        public TextMeshProUGUI ClicksText;
 
         //Buttons
 
@@ -22,6 +23,7 @@ namespace Assets.Scripts.ViewControllers
         {
             TimeText.text = string.Format("Time: {0}", LootBoxModel.Instance.Time.GetTimeString());
             MoneyText.text = string.Format("Money: ${0}", LootBoxModel.Instance.Money);
+            ClicksText.text = string.Format("Clicks: {0}", LootBoxModel.Instance.Clicks);
         }
     }
 }

@@ -21,6 +21,8 @@
             }
 
             DoJob(baseJobAmount);
+
+            model.Add(Units.Click, 1);
         }
 
         public void DoJob(BigNum amount)
@@ -36,11 +38,11 @@
 
         public BigNum MoneyPerJobCompleted()
         {
-            BigNum baseValue = 5;
+            BigNum baseValue = 2;
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.DressForSuccess))
             {
-                baseValue += 5;
+                baseValue += 3;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SecondJob))
