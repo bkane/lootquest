@@ -60,6 +60,13 @@ namespace Assets.Scripts.Model
             AddGoldCoins,
             AddCrystals,
             AddCards,
+            AddGoldBoxes,
+            AddSeasonalBoxes,
+            AddLuteBoxes,
+            AddSkinnerBoxes,
+            BuffsInBoxes,
+            CoreGameInBoxes,
+            WholeGameInBoxes,
 
 
             //Public

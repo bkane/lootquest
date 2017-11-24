@@ -650,6 +650,98 @@ namespace Assets.Scripts.Model
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddCrystals }
             });
 
+
+
+            Upgrades.Add(Upgrade.EUpgradeType.AddGoldBoxes, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.AddGoldBoxes,
+                Name = "Add Gold Loot Boxes",
+                Description = "A whole new variety of purchasable loot boxes! This completely different product will entice more players to monetize.",
+                CommentOnBuy = "Gold loot boxes do sound pretty novel.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.EnableMicrotransactions }
+            });
+
+
+            Upgrades.Add(Upgrade.EUpgradeType.AddSeasonalBoxes, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.AddSeasonalBoxes,
+                Name = "Add Seasonal Loot Boxes",
+                Description = "Holiday loot boxes! Birthday loot boxes! Tuesday Afternoon loot boxes! More to buy means more will buy.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddGoldBoxes }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.AddLuteBoxes, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.AddLuteBoxes,
+                Name = "Add Lute Boxes",
+                Description = "Collectable lutes are all the rage. Well they will be once the marketing campaign kicks in.",
+                CommentOnBuy = "Players will applaud our creativity.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddSeasonalBoxes }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.AddSkinnerBoxes, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.AddSkinnerBoxes,
+                Name = "Add Skinner Boxes",
+                Description = "No sense pretending anymore.",
+                CommentOnBuy = "They're surprisingly effective, even when players know what they are.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddLuteBoxes }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.BuffsInBoxes, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.BuffsInBoxes,
+                Name = "Put Game Altering Buffs in Loot Boxes",
+                Description = "It's not pay to win. But paying does make winning a heck of a lot easier.",
+                CommentOnBuy = "When did video games become a cruel reflection of society?",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddGoldBoxes }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.CoreGameInBoxes, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.CoreGameInBoxes,
+                Name = "Put Core Game Elements in Loot Boxes",
+                Description = "Games these days are like slot machines. Nice to look at, but they don't do much until you pull the arm.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.BuffsInBoxes, Upgrade.EUpgradeType.AddLuteBoxes }
+            });
+
+            Upgrades.Add(Upgrade.EUpgradeType.WholeGameInBoxes, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.WholeGameInBoxes,
+                Name = "Put Entire Game in Loot Boxes",
+                Description = "What if you had a random chance to play at all? Then everybody would have to pay!",
+                CommentOnBuy = "I'd say we've gone to far, but people keep giving us money.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.CoreGameInBoxes, Upgrade.EUpgradeType.AddSkinnerBoxes }
+            });
+
             #endregion
 
 

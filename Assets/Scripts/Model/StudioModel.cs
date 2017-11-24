@@ -90,7 +90,17 @@ namespace Assets.Scripts.Model
                 return 0;
             }
 
-            return 0.01f;
+            BigNum percent = 0.004f;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddGoldBoxes))       { percent *= 2; }
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddSeasonalBoxes))   { percent *= 2; }
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddLuteBoxes))       { percent *= 2; }
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddSkinnerBoxes))    { percent *= 2; }
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.BuffsInBoxes))       { percent *= 2; }
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.CoreGameInBoxes))    { percent *= 2; }
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.WholeGameInBoxes))   { percent *= 2; }
+
+            return percent;
         }
 
         public BigNum MicrotransactionsPerTick()
