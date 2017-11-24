@@ -54,6 +54,7 @@ namespace Assets.Scripts.Model
             ChargeEvenMore,
             SellLimitedEditions,
             SellCollectorEditions,
+            EliminateUnderperformingFranchises,
 
 
             //Public

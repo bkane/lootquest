@@ -105,7 +105,14 @@ namespace Assets.Scripts.Model
 
         public BigNum CostOfGameInDevHours()
         {
-            return 100 * Mathf.Pow(1.17f, model.ReleasedGames);
+            float pow = 1.25f;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EliminateUnderperformingFranchises))
+            {
+                pow = 1.1f;
+            }
+
+            return 100 * Mathf.Pow(pow, model.ReleasedGames);
         }
 
         public BigNum RevenuePerUnitSold()

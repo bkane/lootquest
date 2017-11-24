@@ -566,6 +566,24 @@ namespace Assets.Scripts.Model
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.SellLimitedEditions }
             });
+
+
+            Upgrades.Add(Upgrade.EUpgradeType.EliminateUnderperformingFranchises, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.EliminateUnderperformingFranchises,
+                Name = "Eliminate Under-performing Franchises",
+                Description = "Reduce development cost of releasing new games.",
+                CommentOnBuy = "If it doesn't have the potential to be exploited every year, I don't want to hear about it.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ReleasedGame, 3)
+                }
+            });
+
             #endregion
 
 
