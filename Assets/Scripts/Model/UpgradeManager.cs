@@ -547,7 +547,7 @@ namespace Assets.Scripts.Model
             {
                 Type = Upgrade.EUpgradeType.ChargeEvenMore,
                 Name = "Charge Even More for New Games",
-                Description = "When we raised prices, we made more money. I recommend doing that again.",
+                Description = "When we raised prices, we made more money. I recommend we de-undermonetize by doing that again.",
                 CommentOnBuy = "If you factor for inflation, it's actually still really expensive.",
                 Costs = new List<Resource>()
                 {
