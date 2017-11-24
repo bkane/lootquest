@@ -842,9 +842,26 @@ namespace Assets.Scripts.Model
                 }
             });
 
+
+            Upgrades.Add(Upgrade.EUpgradeType.PurchaseBelovedStudio, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.PurchaseBelovedStudio,
+                Name = "Purchase Beloved Independent Studio",
+                Description = "We've saturated our current customer base. Time to acquire new fans.",
+                CommentOnBuy = "Well, as long as we treat the source material with love and respect.",
+                Costs = new List<Resource>()
+                {
+                    new Resource(Units.Money, 10)
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.ActivePlayer, 10)
+                }
+            });
+
             #endregion
 
-            foreach(var upgrade in Upgrades.Values)
+            foreach (var upgrade in Upgrades.Values)
             {
                 UpgradeStates.Add(upgrade.Type, Upgrade.EState.Hidden);
             }
@@ -908,6 +925,12 @@ namespace Assets.Scripts.Model
                         Logger.Log(5, "How is a pre-order out of stock anyway?");
 
                         Model.Add(Units.Money, MCGCost); //money back, since it wasn't actually purchased
+                    }
+                    break;
+                case Upgrade.EUpgradeType.PurchaseBelovedStudio:
+                    {
+                        Model.Public.UpdateMaxCustomers();
+                        Logger.Log(3, "Oh. Guess not.");
                     }
                     break;
                 case Upgrade.EUpgradeType.PurchaseMacGuffinQuestLimitedEdition:

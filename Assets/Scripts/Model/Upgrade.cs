@@ -75,6 +75,7 @@ namespace Assets.Scripts.Model
             ExecuteIPO,
             Layoffs,
             ContractEmployees,
+            PurchaseBelovedStudio,
 
 
             //End game

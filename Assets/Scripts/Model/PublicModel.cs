@@ -11,11 +11,11 @@ namespace Assets.Scripts.Model
 
         private LootBoxModel model;
 
-        public float DevAllocation          = 0f;
-        public float MarketerAllocation     = 0f;
-        public float LobbyistAllocation     = 0f;
-        public float CPUAllocation          = 0f;
-        public float BioengineerAllocation  = 0f;
+        public int DevAllocation          = 0;
+        public int MarketerAllocation     = 0;
+        public int LobbyistAllocation     = 0;
+        public int CPUAllocation          = 0;
+        public int BioengineerAllocation  = 0;
 
         public PublicModel(LootBoxModel model)
         {
@@ -29,17 +29,17 @@ namespace Assets.Scripts.Model
 
         public void Allocate(Units type)
         {
-            float availableBudget = 1 - UsedBudget();
+            float availableBudget = 100 - UsedBudget();
 
             if (availableBudget > 0)
             {
                 switch (type)
                 {
-                    case Units.Developer:   { DevAllocation         = Mathf.Clamp01(DevAllocation           + 0.1f); } break;
-                    case Units.Marketer:    { MarketerAllocation    = Mathf.Clamp01(MarketerAllocation      + 0.1f); } break;
-                    case Units.Lobbyist:    { LobbyistAllocation    = Mathf.Clamp01(LobbyistAllocation      + 0.1f); } break;
-                    case Units.CPU:         { CPUAllocation         = Mathf.Clamp01(CPUAllocation           + 0.1f); } break;
-                    case Units.Bioengineer: { BioengineerAllocation = Mathf.Clamp01(BioengineerAllocation   + 0.1f); } break;
+                    case Units.Developer:   { DevAllocation         = Mathf.Clamp(DevAllocation             + 10, 0, 100); } break;
+                    case Units.Marketer:    { MarketerAllocation    = Mathf.Clamp(MarketerAllocation        + 10, 0, 100); } break;
+                    case Units.Lobbyist:    { LobbyistAllocation    = Mathf.Clamp(LobbyistAllocation        + 10, 0, 100); } break;
+                    case Units.CPU:         { CPUAllocation         = Mathf.Clamp(CPUAllocation             + 10, 0, 100); } break;
+                    case Units.Bioengineer: { BioengineerAllocation = Mathf.Clamp(BioengineerAllocation     + 10, 0, 100); } break;
                 }
             }
         }
@@ -47,11 +47,11 @@ namespace Assets.Scripts.Model
         {
             switch (type)
             {
-                case Units.Developer:   { DevAllocation         = Mathf.Clamp01(DevAllocation           - 0.1f); } break;
-                case Units.Marketer:    { MarketerAllocation    = Mathf.Clamp01(MarketerAllocation      - 0.1f); } break;
-                case Units.Lobbyist:    { LobbyistAllocation    = Mathf.Clamp01(LobbyistAllocation      - 0.1f); } break;
-                case Units.CPU:         { CPUAllocation         = Mathf.Clamp01(CPUAllocation           - 0.1f); } break;
-                case Units.Bioengineer: { BioengineerAllocation = Mathf.Clamp01(BioengineerAllocation   - 0.1f); } break;
+                    case Units.Developer:   { DevAllocation         = Mathf.Clamp(DevAllocation             - 10, 0, 100); } break;
+                    case Units.Marketer:    { MarketerAllocation    = Mathf.Clamp(MarketerAllocation        - 10, 0, 100); } break;
+                    case Units.Lobbyist:    { LobbyistAllocation    = Mathf.Clamp(LobbyistAllocation        - 10, 0, 100); } break;
+                    case Units.CPU:         { CPUAllocation         = Mathf.Clamp(CPUAllocation             - 10, 0, 100); } break;
+                    case Units.Bioengineer: { BioengineerAllocation = Mathf.Clamp(BioengineerAllocation     - 10, 0, 100); } break;
             }
         }
 
@@ -80,6 +80,11 @@ namespace Assets.Scripts.Model
             return MicrotransactionRevenuePerTick();
         }
 
+        public BigNum GetMaxCustomers()
+        {
+            return model.Resources[Units.ActivePlayer].MaxValue;
+        }
+
         public BigNum GetBaseOperatingCosts()
         {
             float percent = 0.5f;
@@ -102,6 +107,18 @@ namespace Assets.Scripts.Model
             return 0f;
         }
 
+        public void UpdateMaxCustomers()
+        {
+            BigNum amount = 30e6f;
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.PurchaseBelovedStudio))
+            {
+                amount += 30e6f;
+            }
+
+            model.Resources[Units.ActivePlayer].MaxValue = amount;
+        }
+
         public void Tick()
         {
             if (!IsActive) { return; }
@@ -113,11 +130,11 @@ namespace Assets.Scripts.Model
 
             BigNum costPerResource = 10000; //TODO: everything costs the same
 
-            model.Resources[Units.Developer].Amount     = budget / costPerResource * DevAllocation;
-            model.Resources[Units.Marketer].Amount      = budget / costPerResource * MarketerAllocation;
-            model.Resources[Units.Lobbyist].Amount      = budget / costPerResource * LobbyistAllocation;
-            model.Resources[Units.CPU].Amount           = budget / costPerResource * CPUAllocation;
-            model.Resources[Units.Bioengineer].Amount   = budget / costPerResource * BioengineerAllocation;
+            model.Resources[Units.Developer].Amount     = budget / costPerResource * (DevAllocation / 100f);
+            model.Resources[Units.Marketer].Amount      = budget / costPerResource * (MarketerAllocation / 100f);
+            model.Resources[Units.Lobbyist].Amount      = budget / costPerResource * (LobbyistAllocation / 100f);
+            model.Resources[Units.CPU].Amount           = budget / costPerResource * (CPUAllocation / 100f);
+            model.Resources[Units.Bioengineer].Amount   = budget / costPerResource * (BioengineerAllocation / 100f);
 
 
             BigNum spent = budget * UsedBudget();

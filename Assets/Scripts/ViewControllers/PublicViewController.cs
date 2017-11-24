@@ -9,6 +9,7 @@ namespace Assets.Scripts.ViewControllers
     {
         //Resources
         public TextMeshProUGUI CustomersText;
+        public TextMeshProUGUI MaxCustomersText;
         public TextMeshProUGUI MicrotransactionRevenueText;
         public TextMeshProUGUI MicrotransactionRevenuePerCustomerPerTickText;
         public TextMeshProUGUI PercentWhoMonetizeText;
@@ -84,6 +85,7 @@ namespace Assets.Scripts.ViewControllers
         {
             //Resources
             CustomersText.text = string.Format("Customerbase: {0}", LootBoxModel.Instance.ActivePlayers);
+            MaxCustomersText.text = string.Format("Potential Customers: {0}", LootBoxModel.Instance.Public.GetMaxCustomers());
             MicrotransactionRevenueText.text = string.Format("Loot Box Rev: ${0}/s", LootBoxModel.Instance.Public.MicrotransactionRevenuePerTick() * 30);
             MicrotransactionRevenuePerCustomerPerTickText.text = string.Format("Loot Box Spend Rate: ${0}/customer", LootBoxModel.Instance.Public.MicrotransactionRevenuePerCustomerPerTick() * 30);
             PercentWhoMonetizeText.text = string.Format("Percent monetize: {0}%", LootBoxModel.Instance.Public.PercentWhoMonetize() * 100);
@@ -94,11 +96,11 @@ namespace Assets.Scripts.ViewControllers
             FinesAllocationText.text = string.Format("${0}", LootBoxModel.Instance.Public.GetFines());
             FinesLineItem.gameObject.SetActive(LootBoxModel.Instance.Public.GetFines() > 0);
 
-            DevAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.DevAllocation * 100);
-            MarketerAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.MarketerAllocation * 100);
-            LobbyistAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.LobbyistAllocation * 100);
-            CPUAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.CPUAllocation * 100);
-            BioengineerAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.BioengineerAllocation * 100);
+            DevAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.DevAllocation);
+            MarketerAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.MarketerAllocation);
+            LobbyistAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.LobbyistAllocation);
+            CPUAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.CPUAllocation);
+            BioengineerAllocationText.text = string.Format("{0:0}%", LootBoxModel.Instance.Public.BioengineerAllocation);
 
 
             //Employees

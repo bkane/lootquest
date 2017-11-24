@@ -153,6 +153,7 @@ public class LootBoxModel
     {
         Resources[Units.GrindProgress].MaxValue = 100;
         Resources[Units.VideoProgress].MaxValue = 100;
+        Resources[Units.ActivePlayer].MaxValue  = 30000000;
 
 #if DEBUG
         Resources[Units.Money].Amount = StartWithCash;
