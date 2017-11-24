@@ -116,7 +116,12 @@ namespace Assets.Scripts.Model
                 model.Add(Units.ActivePlayer, unitsSold);
                 model.Add(Units.Money, revenue);
 
-                Logger.Log(string.Format("Game {0} released and sold {1} copies for ${2}", model.ReleasedGames, unitsSold, revenue));
+                Logger.Log(string.Format("Game {0} released and sold {1} copies for ${2} in revenue.", model.ReleasedGames, unitsSold, revenue));
+
+                if (model.ReleasedGames == 5)
+                {
+                    Logger.Log("These games are getting expensive to make.");
+                }
             }
         }
 
