@@ -216,8 +216,10 @@ namespace Assets.Scripts.Model
                 BigNum unitsSold = HypePerRelease();
                 BigNum revenue = unitsSold * RevenuePerUnitSold();
                 model.Add(Units.CopySold, unitsSold);
-                model.Add(Units.ActivePlayer, unitsSold);
                 model.Add(Units.Money, revenue);
+
+                //prev: model.Add(Units.ActivePlayer, unitsSold);
+                model.Resources[Units.ActivePlayer].Amount = unitsSold;
 
                 Logger.Log(string.Format("Game {0} released and sold {1} copies for ${2} in profit.", model.ReleasedGames, unitsSold, revenue));
 
