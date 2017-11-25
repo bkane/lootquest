@@ -495,8 +495,8 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Happy Game Shovel launch day everyone!",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 100000),
-                    new Resource(Units.DevHour, 1000)
+                    new Resource(Units.Money, 100000000),
+                    new Resource(Units.DevHour, 50000)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
@@ -562,7 +562,7 @@ namespace Assets.Scripts.Model
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.TotalAnalyticsData, 2000)
+                    new Resource(Units.TotalAnalyticsData, 1000)
                 }
             });
 
@@ -588,7 +588,7 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "What does \"Limited\" refer to for a digital product anyway?",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 200000),
+                    new Resource(Units.Money, 300000),
                     new Resource(Units.AnalyticsData, 2000)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ChargeEvenMore }
@@ -601,7 +601,7 @@ namespace Assets.Scripts.Model
                 Description = "Bespoke, hand-craft, artisinal digital game keys.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 1000000),
+                    new Resource(Units.Money, 9000000),
                     new Resource(Units.AnalyticsData, 10000)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.SellLimitedEditions }
@@ -631,12 +631,12 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "If it doesn't have the potential to be exploited every year, I don't want to hear about it.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 200000),
-                    new Resource(Units.AnalyticsData, 3000),
+                    new Resource(Units.Money, 2000000),
+                    new Resource(Units.AnalyticsData, 30000),
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.ReleasedGame, 15)
+                    new Resource(Units.ReleasedGame, 7)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.MarketingCampaign }
             });
@@ -680,7 +680,7 @@ namespace Assets.Scripts.Model
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 100000),
-                    new Resource(Units.DevHour, 500),
+                    new Resource(Units.DevHour, 1000),
                     new Resource(Units.AnalyticsData, 500)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() {  Upgrade.EUpgradeType.AddGems }
@@ -694,9 +694,9 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "On the plus side, I don't think players even consciously acknowledge how out of place this stuff is anymore.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 200000),
-                    new Resource(Units.DevHour, 500),
-                    new Resource(Units.AnalyticsData, 2500)
+                    new Resource(Units.Money, 400000),
+                    new Resource(Units.DevHour, 2000),
+                    new Resource(Units.AnalyticsData, 5000)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddGoldCoins }
             });
@@ -709,9 +709,9 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "A digital representation of an already random collectible. Might as well put a slot machine on the card and go full meta.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 400000),
-                    new Resource(Units.DevHour, 500),
-                    new Resource(Units.AnalyticsData, 12500)
+                    new Resource(Units.Money, 1600000),
+                    new Resource(Units.DevHour, 4000),
+                    new Resource(Units.AnalyticsData, 50000)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddCrystals }
             });
@@ -724,9 +724,9 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Gold loot boxes do sound pretty novel.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 50000),
+                    new Resource(Units.Money, 50e3f),
                     new Resource(Units.DevHour, 500),
-                    new Resource(Units.AnalyticsData, 100)
+                    new Resource(Units.AnalyticsData, 500)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.EnableMicrotransactions }
             });
@@ -739,9 +739,9 @@ namespace Assets.Scripts.Model
                 Description = "Holiday loot boxes! Birthday loot boxes! Tuesday Afternoon loot boxes! More to buy means more will buy.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 100000),
-                    new Resource(Units.DevHour, 1500),
-                    new Resource(Units.AnalyticsData, 300)
+                    new Resource(Units.Money, 500e3f),
+                    new Resource(Units.DevHour, 2500),
+                    new Resource(Units.AnalyticsData, 2500)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddGoldBoxes }
             });
@@ -754,9 +754,9 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Players will applaud our creativity.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 200000),
-                    new Resource(Units.DevHour, 4500),
-                    new Resource(Units.AnalyticsData, 900)
+                    new Resource(Units.Money, 5e6f),
+                    new Resource(Units.DevHour, 12500),
+                    new Resource(Units.AnalyticsData, 12500)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddSeasonalBoxes }
             });
@@ -769,9 +769,9 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "They're surprisingly effective, even when players know what they are.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 400000),
-                    new Resource(Units.DevHour, 13500),
-                    new Resource(Units.AnalyticsData, 2700)
+                    new Resource(Units.Money, 50e6f),
+                    new Resource(Units.DevHour, 62500),
+                    new Resource(Units.AnalyticsData, 62500)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddLuteBoxes, Upgrade.EUpgradeType.AddCards }
             });
@@ -784,9 +784,9 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "When did video games become a cruel reflection of society?",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 200000),
-                    new Resource(Units.DevHour, 2000),
-                    new Resource(Units.AnalyticsData, 5000)
+                    new Resource(Units.Money, 200e3f),
+                    new Resource(Units.DevHour, 20e3f),
+                    new Resource(Units.AnalyticsData, 50e3f)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.AddGoldBoxes }
             });
@@ -798,9 +798,9 @@ namespace Assets.Scripts.Model
                 Description = "Games these days are like slot machines. Nice to look at, but they don't do much until you pull the arm.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 400000),
-                    new Resource(Units.DevHour, 4000),
-                    new Resource(Units.AnalyticsData, 10000)
+                    new Resource(Units.Money, 10e6f),
+                    new Resource(Units.DevHour, 40e3f),
+                    new Resource(Units.AnalyticsData, 100e3f)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.BuffsInBoxes, Upgrade.EUpgradeType.AddLuteBoxes }
             });
@@ -813,9 +813,9 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "I'd say we've gone to far, but people keep giving us money.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 2000000),
-                    new Resource(Units.DevHour, 20000),
-                    new Resource(Units.AnalyticsData, 50000)
+                    new Resource(Units.Money, 500e6f),
+                    new Resource(Units.DevHour, 20e3f),
+                    new Resource(Units.AnalyticsData, 50e3f)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.CoreGameInBoxes, Upgrade.EUpgradeType.AddSkinnerBoxes }
             });
@@ -832,11 +832,7 @@ namespace Assets.Scripts.Model
                 Description = "Time to take this to the next level.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 100000000)
-                },
-                UnlockThreshold = new List<Resource>()
-                {
-                    new Resource(Units.TotalMoneyEarned, 1000000)
+                    new Resource(Units.Money, 10e9f)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.WholeGameInBoxes }
             });
@@ -849,12 +845,9 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "And yet for some reason this industry is considered in demand.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10)
+                    new Resource(Units.Money, 50e9f)
                 },
-                UnlockThreshold = new List<Resource>()
-                {
-                    new Resource(Units.OperatingCost, 10)
-                }
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ExecuteIPO }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.ContractEmployees, new Upgrade()
@@ -939,7 +932,7 @@ namespace Assets.Scripts.Model
                     new Resource(Units.ActivePlayer, 10),
                     new Resource(Units.Favor, 10),
                 },
-                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.PurchaseBelovedStudio }
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.TargetChildren }
             });
 
 

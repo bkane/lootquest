@@ -17,33 +17,27 @@ namespace Assets.Scripts.Model
             this.model = model;
         }
 
-        public void HireDeveloper()
+        public void HireDeveloper(int num)
         {
-            if (model.ConsumeExactly(Units.Money, 10))
-            {
-                model.Add(Units.Developer, 1);
-            }
+            model.Add(Units.Developer, num);
             model.Add(Units.Click, 1);
         }
 
-        public void FireDeveloper()
+        public void FireDeveloper(int num)
         {
-            model.ConsumeExactly(Units.Developer, 1);
+            model.ConsumeUpTo(Units.Developer, num);
             model.Add(Units.Click, 1);
         }
 
-        public void HireDataAnalyst()
+        public void HireDataAnalyst(int num)
         {
-            if (model.ConsumeExactly(Units.Money, 10))
-            {
-                model.Add(Units.DataAnalyst, 1);
-            }
+            model.Add(Units.DataAnalyst, num);
             model.Add(Units.Click, 1);
         }
 
-        public void FireDataAnalyst()
+        public void FireDataAnalyst(int num)
         {
-            model.ConsumeExactly(Units.DataAnalyst, 1);
+            model.ConsumeUpTo(Units.DataAnalyst, num);
             model.Add(Units.Click, 1);
         }
 
@@ -69,7 +63,7 @@ namespace Assets.Scripts.Model
 
         public BigNum HypePerRelease()
         {
-            BigNum baseHype = 100;
+            BigNum baseHype = 100000;
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.MarketingCampaign))
             {
@@ -81,7 +75,7 @@ namespace Assets.Scripts.Model
                 baseHype *= 2;
             }
 
-            return baseHype * CostOfGameInDevHours();
+            return baseHype * Mathf.Log10(CostOfGameInDevHours());
         }
 
         public BigNum ActivePlayersDecayPerTick()
@@ -121,7 +115,7 @@ namespace Assets.Scripts.Model
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddSkinnerBoxes))    { percent *= 2; }
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.BuffsInBoxes))       { percent *= 2; }
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.CoreGameInBoxes))    { percent *= 2; }
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.WholeGameInBoxes))   { percent *= 2; }
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.WholeGameInBoxes))   { percent = 1; }
 
             return percent;
         }
@@ -181,22 +175,22 @@ namespace Assets.Scripts.Model
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ChargeMore))
             {
-                amount += 2;
+                amount *= 1.25f;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ChargeEvenMore))
             {
-                amount += 2;
+                amount *= 1.25f;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SellLimitedEditions))
             {
-                amount += 2;
+                amount *= 1.25f;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SellCollectorEditions))
             {
-                amount += 2;
+                amount *= 1.25f;
             }
 
             if (!model.UpgradeManager.IsActive(Upgrade.EUpgradeType.StartDistributionService))

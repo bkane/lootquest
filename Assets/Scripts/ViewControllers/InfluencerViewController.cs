@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Assets.Scripts.Model;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,8 +29,8 @@ namespace Assets.Scripts.ViewControllers
             VideoProgressText.text = string.Format("Video Progress: {0}%", LootBoxModel.Instance.VideoProgress);
             FollowersText.text = string.Format("Followers: {0}", LootBoxModel.Instance.Followers);
             VideosText.text = string.Format("Published Videos: {0}", LootBoxModel.Instance.PublishedVideos);
-            AdRevenuePerSecondText.text = string.Format("Ad Rev: ${0}/s", LootBoxModel.Instance.Influencer.AdRevenuePerTick() * 30);
-            FollowersPerSecondText.text = string.Format("Channel Growth: {0}/s", LootBoxModel.Instance.Influencer.FollowersPerTick() * 30);
+            AdRevenuePerSecondText.text = string.Format("Ad Rev: ${0}/s", (BigNum)(LootBoxModel.Instance.Influencer.AdRevenuePerTick() * 30));
+            FollowersPerSecondText.text = string.Format("Channel Growth: {0}/s", (BigNum)(LootBoxModel.Instance.Influencer.FollowersPerTick() * 30));
 
             FollowersPerSecondText.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive(Scripts.Model.Upgrade.EUpgradeType.ChannelGrowthAnalytics));
             AdRevenuePerSecondText.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive(Scripts.Model.Upgrade.EUpgradeType.GetPartnered));

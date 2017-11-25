@@ -231,8 +231,8 @@ namespace Assets.Scripts.Model
 
             //Set resources according to budget
             BigNum budget = GetBudget();
-            budget -= GetBaseOperatingCosts();
-            budget -= GetFines();
+            BigNum overhead = GetBaseOperatingCosts() + GetFines();
+            budget -= overhead;
 
             BigNum costPerResource = 10000; //TODO: everything costs the same
 
@@ -243,8 +243,11 @@ namespace Assets.Scripts.Model
             model.Resources[Units.Bioengineer].Amount   = budget / costPerResource * (BioengineerAllocation / 100f);
 
 
-            BigNum spent = budget * UsedBudget();
+            BigNum spent = overhead + (budget * UsedBudget() / 100);
             model.ConsumeUpTo(Units.Money, spent);
+
+            //Make money
+            model.Add(Units.Money, MicrotransactionRevenuePerTick());
 
             //Generate resources
             model.Add(Units.LootBoxType, model.Developers);
@@ -252,9 +255,6 @@ namespace Assets.Scripts.Model
             model.Add(Units.Favor, model.Lobbyists);
             model.Add(Units.Cycle, model.CPUs);
             model.Add(Units.GenomeData, model.Bioengineers);
-
-            //Finally, make money
-            model.Add(Units.Money, MicrotransactionRevenuePerTick());
 
             //Make a note of the highest operating cost we've seen
             model.Resources[Units.OperatingCost].Amount = Mathf.Max(model.HighestOperatingCost, GetBaseOperatingCosts());

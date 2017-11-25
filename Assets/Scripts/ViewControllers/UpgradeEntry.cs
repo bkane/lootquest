@@ -30,7 +30,7 @@ namespace Assets.Scripts.ViewControllers
 
             foreach(Resource cost in upgrade.Costs)
             {
-                costStr += cost.ToString();
+                costStr += cost.ToString() + "  ";
             }
 
             Cost.text = costStr;

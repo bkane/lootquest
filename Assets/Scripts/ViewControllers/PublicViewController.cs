@@ -89,7 +89,7 @@ namespace Assets.Scripts.ViewControllers
             //Resources
             CustomersText.text = string.Format("Customerbase: {0}", LootBoxModel.Instance.ActivePlayers);
             MaxCustomersText.text = string.Format("Potential Customers: {0}", LootBoxModel.Instance.Public.GetMaxCustomers());
-            MicrotransactionRevenueText.text = string.Format("Loot Box Rev: ${0}/s", LootBoxModel.Instance.Public.MicrotransactionRevenuePerTick() * 30);
+            MicrotransactionRevenueText.text = string.Format("Loot Box Rev: ${0}/s", (BigNum)(LootBoxModel.Instance.Public.MicrotransactionRevenuePerTick() * 30));
             MicrotransactionRevenuePerCustomerPerTickText.text = string.Format("Loot Box Spend Rate: ${0}/customer", (BigNum) (LootBoxModel.Instance.Public.MicrotransactionRevenuePerCustomerPerTick() * 30));
             PercentWhoMonetizeText.text = string.Format("Percent monetize: {0}%", LootBoxModel.Instance.Public.PercentWhoMonetize() * 100);
 
@@ -111,7 +111,7 @@ namespace Assets.Scripts.ViewControllers
             MTXNImprovementText.text = string.Format("Types of Loot Boxes: {0}", LootBoxModel.Instance.LootBoxTypes);
 
             MarketersText.text = string.Format("Marketers: {0}", LootBoxModel.Instance.Marketers);
-            CustomerAcquisitionRateText.text = string.Format("Customer Aquisition: {0}/s", LootBoxModel.Instance.Public.CustomerAcquisitionPerTick() * 30);
+            CustomerAcquisitionRateText.text = string.Format("Customer Aquisition: {0}/s", (BigNum)(LootBoxModel.Instance.Public.CustomerAcquisitionPerTick() * 30));
 
             LobbyistsText.text = string.Format("Lobbyists: {0}", LootBoxModel.Instance.Lobbyists);
             FavorText.text = string.Format("Gov't Favor: {0}", LootBoxModel.Instance.Favor);
@@ -120,7 +120,7 @@ namespace Assets.Scripts.ViewControllers
             CyclesText.text = string.Format("CPU Cycles: {0}", LootBoxModel.Instance.Cycles);
 
             BioengineersText.text = string.Format("BioEngineers: {0}", LootBoxModel.Instance.Bioengineers);
-            GenomeDataText.text = string.Format("Genome Data: {0}GB", LootBoxModel.Instance.GenomeData);
+            GenomeDataText.text = string.Format("Genome Data: {0}", LootBoxModel.Instance.GenomeData);
 
             bool showLobby = LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.UnlockLobbying);
             LobbyistLineItem.SetActive(showLobby);
