@@ -61,7 +61,7 @@ namespace Assets.Scripts.Model
         {
             BigNum amount = model.Studio.MicrotransactionRevenuePerTick() / model.ActivePlayers;
 
-            amount += model.LootBoxTypes / 1000f;
+            amount += model.LootBoxTypes / 100000f;
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnforceWatchingAds))
             {
@@ -103,7 +103,12 @@ namespace Assets.Scripts.Model
 
         public BigNum CustomerAcquisitionPerTick()
         {
-            BigNum rate = 1f;
+            if (model.ActivePlayers == model.Resources[Units.ActivePlayer].MaxValue)
+            {
+                return 0;
+            }
+
+            BigNum rate = 2f;
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.OptimizeRoAS))
             {
@@ -153,7 +158,7 @@ namespace Assets.Scripts.Model
         public BigNum GetFines()
         {
             BigNum amount = 0;
-            BigNum fineFraction = 0.8f;
+            BigNum fineFraction = 0.45f;
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ReduceFines))
             {
@@ -167,7 +172,7 @@ namespace Assets.Scripts.Model
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ReduceLootBoxOddsToZero))
             {
-                amount = (GetBudget() - GetBaseOperatingCosts() )* fineFraction;
+                amount = GetBudget() * fineFraction;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.RollBackBan))
@@ -178,6 +183,21 @@ namespace Assets.Scripts.Model
             return amount;
         }
 
+        public BigNum FavorPerTick()
+        {
+            return model.Lobbyists / 5000f;
+        }
+
+        public BigNum CyclesPerTick()
+        {
+            return model.CPUs * 1000f;
+        }
+
+        public BigNum GenomePerTick()
+        {
+            return model.Bioengineers / 1e6f;
+        }
+
         public void UpdateMaxCustomers()
         {
             //total should be 500M before multi
@@ -186,22 +206,22 @@ namespace Assets.Scripts.Model
             //Additions
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.PurchaseBelovedStudio))
             {
-                amount += 30e6f;
-            }
-
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.UseDataBreach))
-            {
-                amount += 60e6f;
-            }
-
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.CauseDataBreach))
-            {
-                amount += 120e6f;
+                amount *= 2;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TargetMinnows))
             {
-                amount += 260e6f;
+                amount *= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.UseDataBreach))
+            {
+                amount *= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.CauseDataBreach))
+            {
+                amount *= 2;
             }
 
             //Multiplications
@@ -246,7 +266,7 @@ namespace Assets.Scripts.Model
 
             BigNum lobbyBudget = (budget * (LobbyistAllocation / 100f));
             BigNum numLobby = 0;
-            if (lobbyBudget > 0) { numLobby = Mathf.Pow(lobbyBudget, 0.5f) / 10; }
+            if (lobbyBudget > 0) { numLobby = Mathf.Pow(lobbyBudget, 0.5f) / 10e3f; }
             model.Resources[Units.Lobbyist].Amount = numLobby;
 
             BigNum cpuBudget = (budget * (CPUAllocation / 100f));
@@ -268,10 +288,10 @@ namespace Assets.Scripts.Model
 
             //Generate resources
             model.Add(Units.LootBoxType, model.Developers);
-            model.Add(Units.ActivePlayer, CustomerAcquisitionPerTick()); //TODO: cap
-            model.Add(Units.Favor, model.Lobbyists);
-            model.Add(Units.Cycle, model.CPUs);
-            model.Add(Units.GenomeData, model.Bioengineers);
+            model.Add(Units.ActivePlayer, CustomerAcquisitionPerTick());
+            model.Add(Units.Favor, FavorPerTick());
+            model.Add(Units.Cycle, CyclesPerTick());
+            model.Add(Units.GenomeData, GenomePerTick());
 
             //Make a note of the highest operating cost we've seen
             model.Resources[Units.OperatingCost].Amount = Mathf.Max(model.HighestOperatingCost, GetBaseOperatingCosts());

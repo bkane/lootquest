@@ -22,6 +22,7 @@ public class Logger : MonoBehaviour
     public void Clear()
     {
         LogText.text = string.Empty;
+        Messages = new Queue<string>();
     }
 
     public static void Log(string message)
