@@ -167,7 +167,7 @@ namespace Assets.Scripts.Model
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ReduceLootBoxOddsToZero))
             {
-                amount = GetBudget() * fineFraction;
+                amount = (GetBudget() - GetBaseOperatingCosts() )* fineFraction;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.RollBackBan))
