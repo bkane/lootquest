@@ -363,13 +363,13 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "People <i>need</i> mattresses. Why shouldn't I get paid to give my opinion?",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Follower, 5000)
+                    new Resource(Units.Follower, 10000)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.Follower, 7500)
+                    new Resource(Units.Follower, 5000)
                 },
-                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.StartStreaming }
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.GetPartnered }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.CompletelySellOut, new Upgrade()
@@ -380,11 +380,11 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Okay, maybe not <i>everybody</i> needs novelty glasses, but I need more money for loot boxes. Feed the beast!",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Follower, 100000)
+                    new Resource(Units.Follower, 200000)
                 },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.Follower, 50000)
+                    new Resource(Units.Follower, 100000)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.DoSponsoredVideos }
             });
@@ -430,7 +430,7 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Okay so the video quality isn't quite as good, but it's clips of a bot opening loot boxes. What do you expect?",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 50000)
+                    new Resource(Units.Money, 30000)
                 },
                 UnlockThreshold = new List<Resource>()
                 {

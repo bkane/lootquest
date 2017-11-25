@@ -53,12 +53,12 @@
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.DoSponsoredVideos))
             {
-                moneyPerFollowerPerTick *= 2;
+                moneyPerFollowerPerTick *= 1.5f;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.CompletelySellOut))
             {
-                moneyPerFollowerPerTick *= 10;
+                moneyPerFollowerPerTick *= 2f;
             }
 
             return model.Followers * moneyPerFollowerPerTick;
@@ -83,11 +83,11 @@
 
         public int TicksPerVideoEditor()
         {
-            int ticks = 30;
+            int ticks = 20;
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.HireProVideoEditor))
             {
-                ticks /= 2;
+                ticks /= 4;
             }
 
             return ticks;

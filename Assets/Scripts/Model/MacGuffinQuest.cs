@@ -12,6 +12,8 @@ namespace Assets.Scripts.Model
         public LootBoxModel Model;
 
         private int GrindProgressPerLootBox = 100;
+        private int TicksPerSell = 10;
+        private int TicksPerOpen = 10;
         public bool HideBotButton;
 
 
@@ -142,16 +144,17 @@ namespace Assets.Scripts.Model
                 DoGrind(Model.NumBotAccounts);
             }
 
-            if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoSellTrashItems))
+            if (Model.TickCount % TicksPerSell == 0 &&
+                Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoSellTrashItems))
             {
                 SellTrash(Model.NumBotAccounts);
             }
 
-            if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoOpenBoxes))
+            if (Model.TickCount % TicksPerOpen == 0 && 
+                Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoOpenBoxes))
             {
                 OpenLootBox(Model.NumBotAccounts);
             }
-            
         }
     }
 }
