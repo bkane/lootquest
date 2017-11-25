@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.Model
+﻿using UnityEngine;
+
+namespace Assets.Scripts.Model
 {
     /// <summary>
     /// The game-with-in-a-game
@@ -12,8 +14,6 @@
         private int GrindProgressPerLootBox = 100;
         public bool HideBotButton;
 
-        //Selling TrashItems
-        private int AutoSellTicks = 60;
 
         public MacGuffinQuest(LootBoxModel model)
         {
@@ -106,15 +106,21 @@
 
                 Model.Add(Units.Money, salePrice);
                 Model.Add(Units.TrashItemSold, itemsSold);
-                Model.Add(Units.Click, 1);
             }
+        }
+
+        public BigNum CostPerBot()
+        {
+            float pow = 1.7f;
+
+            return 80 + 100 * Mathf.Pow(pow, Model.NumBotAccounts);
         }
 
         public void BuyBotAccountClick()
         {
             if (Model.NumBotAccounts < Model.Resources[Units.BotAccount].MaxValue)
             {
-                if (Model.ConsumeExactly(Units.Money, 40))
+                if (Model.ConsumeExactly(Units.Money, CostPerBot()))
                 {
                     Model.Add(Units.BotAccount, 1);
                     Model.Add(Units.Click, 1);
@@ -136,11 +142,16 @@
                 DoGrind(Model.NumBotAccounts);
             }
 
-            if (Model.TickCount % AutoSellTicks == 0 &&
-                Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoSellTrashItems))
+            if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoSellTrashItems))
             {
                 SellTrash(Model.NumBotAccounts);
             }
+
+            if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoOpenBoxes))
+            {
+                OpenLootBox(Model.NumBotAccounts);
+            }
+            
         }
     }
 }

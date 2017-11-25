@@ -28,6 +28,7 @@ namespace Assets.Scripts.Model
             TieFiveMiceTogether,
             AutoGrinder,
             AutoSellTrashItems,
+            AutoOpenBoxes,
             //pc upgrades, water cooling, gpu sli, etc
 
             //Influencer

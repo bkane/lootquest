@@ -77,7 +77,7 @@
             if (model.TickCount % TicksPerJobAutomation() == 0 &&
                 model.UpgradeManager.IsActive(Upgrade.EUpgradeType.JobAutomationScript))
             {
-                DoJob(1);
+                DoJob(5);
             }
         }
     }

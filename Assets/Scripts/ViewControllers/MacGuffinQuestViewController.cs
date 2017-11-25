@@ -41,6 +41,7 @@ namespace Assets.Scripts.ViewControllers
 
             BuyBotAccountButton.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder) && !LootBoxModel.Instance.MacGuffinQuest.HideBotButton);
             BotAccountsText.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder));
+            BuyBotAccountButton.GetComponentInChildren<Text>().text = string.Format("Buy Bot Account (${0})", LootBoxModel.Instance.MacGuffinQuest.CostPerBot());
 
             bool showLoot = LootBoxModel.Instance.TotalLootBoxes > 0;
             LootBoxText.gameObject.SetActive(showLoot);
@@ -50,7 +51,11 @@ namespace Assets.Scripts.ViewControllers
             ItemsText.gameObject.SetActive(showTrash);
             SellTrashItemButton.gameObject.SetActive(showTrash);
 
-            GrindButton.GetComponentInChildren<Text>().text = LootBoxModel.Instance.GrindsCompleted > 5 ? "Grind" : "Play";
+            int actions = (int) LootBoxModel.Instance.MacGuffinQuest.ActionsPerClick();
+            string actionsString = actions == 1 ? string.Empty : string.Format("(x{0})", actions);
+            GrindButton.GetComponentInChildren<Text>().text = string.Format("{0} {1}", LootBoxModel.Instance.GrindsCompleted > 5 ? "Grind" : "Play", actionsString);
+            OpenLootBoxButton.GetComponentInChildren<Text>().text = string.Format("Open Loot Box {0}", actionsString);
+            SellTrashItemButton.GetComponentInChildren<Text>().text = string.Format("Sell Trash Items on Auction House {0}", actionsString);
         }
     }
 }

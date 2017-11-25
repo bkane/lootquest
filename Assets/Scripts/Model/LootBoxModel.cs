@@ -154,7 +154,7 @@ public class LootBoxModel
     {
         Resources[Units.GrindProgress].MaxValue = 100;
         Resources[Units.VideoProgress].MaxValue = 100;
-        Resources[Units.BotAccount].MaxValue = 30;
+        Resources[Units.BotAccount].MaxValue = 5;
         Resources[Units.ActivePlayer].MaxValue  = 30000000;
 
 #if DEBUG

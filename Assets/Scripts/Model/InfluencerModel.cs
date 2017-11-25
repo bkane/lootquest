@@ -49,7 +49,7 @@
 
         public BigNum AdRevenuePerTick()
         {
-            BigNum moneyPerFollowerPerTick = 0.0001f;
+            BigNum moneyPerFollowerPerTick = 0.00001f;
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.DoSponsoredVideos))
             {
@@ -66,7 +66,7 @@
 
         public BigNum FollowersPerTick()
         {
-            BigNum amount = 1 / 30f;
+            BigNum amount = 10 / 30f;
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.StartStreaming))
             {
