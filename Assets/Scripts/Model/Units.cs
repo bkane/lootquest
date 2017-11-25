@@ -41,6 +41,7 @@ namespace Assets.Scripts.Model
         DevHour,
         DataAnalyst,
         AnalyticsData,
+        TotalAnalyticsData,
         ReleasedGame,
         Hype,
         CopySold,

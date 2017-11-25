@@ -9,10 +9,7 @@ namespace Assets.Scripts.Model
 
         protected LootBoxModel model;
 
-        public BigNum CostPerDeveloperPerTick = 1;
         public static BigNum DevHourPerDeveloperTick = 0.1f;
-
-        public BigNum CostPerDataAnalystPerTick = 1;
         public static BigNum CustomerDataPerDataAnalystTick = 0.1f;
 
         public StudioModel(LootBoxModel model)
@@ -50,14 +47,24 @@ namespace Assets.Scripts.Model
             model.Add(Units.Click, 1);
         }
 
+        public BigNum GetCostPerDeveloperPerTick()
+        {
+            return 100;// * Mathf.Pow(1.7f, model.Developers);
+        }
+
+        public BigNum GetCostPerDataAnalystPerTick()
+        {
+            return 100;// * Mathf.Pow(1.7f, model.DataAnalysts);
+        }
+
         public BigNum DevCostPerTick()
         {
-            return model.Developers * CostPerDeveloperPerTick;
+            return model.Developers * GetCostPerDeveloperPerTick();
         }
 
         public BigNum DataAnalystCostPerTick()
         {
-            return model.DataAnalysts * CostPerDataAnalystPerTick;
+            return model.DataAnalysts * GetCostPerDataAnalystPerTick();
         }
 
         public BigNum HypePerRelease()
@@ -79,7 +86,7 @@ namespace Assets.Scripts.Model
 
         public BigNum ActivePlayersDecayPerTick()
         {
-            BigNum decay = model.ActivePlayers * 0.04f / 30f;
+            BigNum decay = model.ActivePlayers * 0.02f / 30f;
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddWeeklyRewards))
             {
@@ -106,7 +113,7 @@ namespace Assets.Scripts.Model
                 return 0;
             }
 
-            BigNum percent = 0.004f;
+            BigNum percent = 0.01f;
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddGoldBoxes))       { percent *= 2; }
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddSeasonalBoxes))   { percent *= 2; }
@@ -126,7 +133,7 @@ namespace Assets.Scripts.Model
 
         public BigNum RevenuePerMicrotransaction()
         {
-            BigNum amount = 0.25f;
+            BigNum amount = 1.99f;
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddGems))
             {
@@ -165,31 +172,31 @@ namespace Assets.Scripts.Model
                 pow = 1.1f;
             }
 
-            return 100 * Mathf.Pow(pow, model.ReleasedGames);
+            return 500 * Mathf.Pow(pow, model.ReleasedGames);
         }
 
         public BigNum RevenuePerUnitSold()
         {
-            BigNum amount = 20;
+            BigNum amount = 2;
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ChargeMore))
             {
-                amount += 20;
+                amount += 2;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ChargeEvenMore))
             {
-                amount += 20;
+                amount += 2;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SellLimitedEditions))
             {
-                amount += 20;
+                amount += 2;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SellCollectorEditions))
             {
-                amount += 20;
+                amount += 2;
             }
 
             if (!model.UpgradeManager.IsActive(Upgrade.EUpgradeType.StartDistributionService))
@@ -205,15 +212,14 @@ namespace Assets.Scripts.Model
             if (model.ConsumeExactly(Units.DevHour, CostOfGameInDevHours()))
             {
                 model.Add(Units.ReleasedGame, 1);
-                model.Add(Units.Hype, HypePerRelease());
 
-                BigNum unitsSold = model.Hype;
+                BigNum unitsSold = HypePerRelease();
                 BigNum revenue = unitsSold * RevenuePerUnitSold();
                 model.Add(Units.CopySold, unitsSold);
                 model.Add(Units.ActivePlayer, unitsSold);
                 model.Add(Units.Money, revenue);
 
-                Logger.Log(string.Format("Game {0} released and sold {1} copies for ${2} in revenue.", model.ReleasedGames, unitsSold, revenue));
+                Logger.Log(string.Format("Game {0} released and sold {1} copies for ${2} in profit.", model.ReleasedGames, unitsSold, revenue));
 
                 if (model.ReleasedGames == 5)
                 {

@@ -85,6 +85,7 @@ public class LootBoxModel
     public BigNum CopiesSold        { get { return Resources[Units.CopySold].Amount; } }
     public BigNum DataAnalysts      { get { return Resources[Units.DataAnalyst].Amount; } }
     public BigNum AnalyticsData     { get { return Resources[Units.AnalyticsData].Amount; } }
+    public BigNum TotalAnalytics    { get { return Resources[Units.TotalAnalyticsData].Amount; } }
     public BigNum ActivePlayers     { get { return Resources[Units.ActivePlayer].Amount; } }
 
 
@@ -262,6 +263,11 @@ public class LootBoxModel
         if (type == Units.LootBox)
         {
             Resources[Units.TotalLootBoxes].Amount += amount; //Keep Track of the total loot boxes
+        }
+
+        if (type == Units.AnalyticsData)
+        {
+            Resources[Units.TotalAnalyticsData].Amount += amount; //Keep Track of the TotalAnalyticsData
         }
     }
 

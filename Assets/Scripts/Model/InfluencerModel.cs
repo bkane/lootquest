@@ -70,12 +70,12 @@
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.StartStreaming))
             {
-                amount *= 2;
+                amount *= 1.3f;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.OptimizeContentForChannelGrowth))
             {
-                amount *= 2;
+                amount *= 1.5f;
             }
 
             return amount * model.PublishedVideos;
