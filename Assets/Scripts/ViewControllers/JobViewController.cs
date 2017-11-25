@@ -14,6 +14,7 @@ namespace Assets.Scripts.ViewControllers
 
         //Buttons
         public Button DoJobButton;
+        public Slider JobProgress;
 
         private void Awake()
         {
@@ -22,7 +23,7 @@ namespace Assets.Scripts.ViewControllers
 
         private void Update()
         {
-            JobProgressText.text = string.Format("Job Progress: {0}%", LootBoxModel.Instance.JobProgress);
+            JobProgress.value = LootBoxModel.Instance.JobProgress / 100f;
             WageText.text = string.Format("Wage: ${0}", LootBoxModel.Instance.Job.MoneyPerJobCompleted());
         }
     }

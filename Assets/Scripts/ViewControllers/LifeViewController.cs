@@ -29,7 +29,7 @@ namespace Assets.Scripts.ViewControllers
         private void Update()
         {
             TimeText.text = string.Format("Time: {0}", LootBoxModel.Instance.Time.GetTimeString());
-            MoneyText.text = string.Format("Money: ${0}", LootBoxModel.Instance.Money);
+            MoneyText.text = string.Format("${0}", LootBoxModel.Instance.Money);
             ClicksText.text = string.Format("Clicks: {0}", LootBoxModel.Instance.Clicks);
 
 #if DEBUG
