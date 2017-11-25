@@ -1256,6 +1256,25 @@ namespace Assets.Scripts.Model
             }
         }
 
+        public bool CanAfford(Upgrade.EUpgradeType type)
+        {
+            bool canAfford = true;
+
+            if (UpgradeStates[type] == Upgrade.EState.Visible)
+            {
+                foreach(var cost in Upgrades[type].Costs)
+                {
+                    if (Model.Resources[cost.Type].Amount < cost.Amount)
+                    {
+                        canAfford = false;
+                        break;
+                    }
+                }
+            }
+
+            return canAfford;
+        }
+
         public bool PurchaseUpgrade(Upgrade upgrade)
         {
             if (UpgradeStates[upgrade.Type] == Upgrade.EState.Visible)
