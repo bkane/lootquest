@@ -118,5 +118,6 @@ namespace Assets.Scripts.Model
         public List<Resource> UnlockThreshold = new List<Resource>();
         public List<EUpgradeType> Requirements = new List<EUpgradeType>();
         public string CommentOnBuy;
+        public string MessageOnUnlock;
     }
 }

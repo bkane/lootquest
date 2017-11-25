@@ -63,11 +63,6 @@ namespace Assets.Scripts.Model
 
             amount += model.LootBoxTypes / 100000f;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnforceWatchingAds))
-            {
-                amount *= 1.2f;
-            }
-
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ReduceLootBoxOdds))
             {
                 amount *= 1.2f;
@@ -78,14 +73,29 @@ namespace Assets.Scripts.Model
                 amount *= 1.2f;
             }
 
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnforceWatchingAds))
+            {
+                amount *= 2f;
+            }
+
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EmitInaudibleSound))
             {
-                amount *= 1.2f;
+                amount *= 2f;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SellBuffsToOdds))
             {
-                amount *= 1.2f;
+                amount *= 2f;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.OptimizeRoAS))
+            {
+                amount *= 2f;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TargetedPersonalAds))
+            {
+                amount *= 2f;
             }
 
             return amount;
@@ -109,16 +119,6 @@ namespace Assets.Scripts.Model
             }
 
             BigNum rate = 2f;
-
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.OptimizeRoAS))
-            {
-                rate *= 1.2f;
-            }
-
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TargetedPersonalAds))
-            {
-                rate *= 1.2f;
-            }
 
             return model.Marketers * rate;
         }
@@ -195,7 +195,7 @@ namespace Assets.Scripts.Model
 
         public BigNum GenomePerTick()
         {
-            return model.Bioengineers / 1e6f;
+            return model.Bioengineers / 1e5f;
         }
 
         public void UpdateMaxCustomers()
@@ -203,7 +203,6 @@ namespace Assets.Scripts.Model
             //total should be 500M before multi
             BigNum amount = 30e6f;
 
-            //Additions
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.PurchaseBelovedStudio))
             {
                 amount *= 2;
@@ -224,13 +223,17 @@ namespace Assets.Scripts.Model
                 amount *= 2;
             }
 
-            //Multiplications
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TargetChildren))
             {
                 amount *= 2;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.DetermineDesires))
+            {
+                amount *= 2;
+            }
+
+            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.IsolateMicrotransactionGene))
             {
                 amount *= 2;
             }
@@ -276,7 +279,7 @@ namespace Assets.Scripts.Model
 
             BigNum bioBudget = (budget * (BioengineerAllocation / 100f));
             BigNum numBio = 0;
-            if (bioBudget > 0) { numBio = Mathf.Pow(bioBudget, 0.5f) / 10; }
+            if (bioBudget > 0) { numBio = Mathf.Pow(bioBudget, 0.5f) / 10e4f; }
             model.Resources[Units.Bioengineer].Amount = numBio;
 
 

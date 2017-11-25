@@ -943,8 +943,8 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "Security breaches are inevitable. We're just giving the process a little boost.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10e18f),
-                    new Resource(Units.Favor, 1000),
+                    new Resource(Units.Money, 100e15f),
+                    new Resource(Units.Favor, 500),
                 },
                 UnlockThreshold = new List<Resource>()
                 {
@@ -1012,11 +1012,11 @@ namespace Assets.Scripts.Model
             {
                 Type = Upgrade.EUpgradeType.TargetedPersonalAds,
                 Name = "Automatic Targeted Ad Personalization",
-                Description = "By running millions of variations of slogans and creatives automatically, we can acquire users much more effectively.",
+                Description = "By running millions of variations of slogans and creatives automatically, we can monetize users much more effectively.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10e18f),
-                    new Resource(Units.Cycle, 1e15f),
+                    new Resource(Units.Money, 500e15f),
+                    new Resource(Units.Cycle, 10e12f),
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.OptimizeRoAS }
             });
@@ -1030,8 +1030,8 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "This one is definitely going to happen in real life :(",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10e18f),
-                    new Resource(Units.Cycle, 100e15f),
+                    new Resource(Units.Money, 5e18f),
+                    new Resource(Units.Cycle, 50e12f),
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.TargetedPersonalAds }
             });
@@ -1104,7 +1104,7 @@ namespace Assets.Scripts.Model
                 Description = "Now the customers know the odds, we can exploit their desire to see bigger numbers.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10e18f),
+                    new Resource(Units.Money, 2.5e18f),
                     new Resource(Units.Favor, 2000),
                 },
                 UnlockThreshold = new List<Resource>()
@@ -1119,9 +1119,10 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.RollBackBan,
                 Name = "Roll Back the Loot Box Ban",
                 Description = "It'll take some doing, but we can get this ban overturned. Something about a free marketplace ought to work.",
+                CommentOnBuy = "Now that we've got the government in our pocket, let's see what else we can get away with.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 10e21f),
+                    new Resource(Units.Money, 10e18f),
                     new Resource(Units.Favor, 5000),
                 },
                 UnlockThreshold = new List<Resource>()
@@ -1138,7 +1139,8 @@ namespace Assets.Scripts.Model
                 Description = "There are still some holdouts around the world. We need to figure out how to bring them in.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 100e21f)
+                    new Resource(Units.Money, 200e18f),
+                    new Resource(Units.Favor, 10e3f),
                 },
                 UnlockThreshold = new List<Resource>()
                 {
@@ -1154,7 +1156,9 @@ namespace Assets.Scripts.Model
                 Description = "Manipulate customers by understanding them at a fundamental level.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 200e21f),
+                    new Resource(Units.Money, 200e18f),
+                    new Resource(Units.Favor, 15e3f),
+                    new Resource(Units.Cycle, 100e12f),
                     new Resource(Units.GenomeData, 100)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.UnlockBioEngineering, Upgrade.EUpgradeType.TargetMinnows, Upgrade.EUpgradeType.TargetChildren, Upgrade.EUpgradeType.PurchaseBelovedStudio, Upgrade.EUpgradeType.CauseDataBreach, Upgrade.EUpgradeType.UseDataBreach }
@@ -1168,9 +1172,10 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "My dog is going nuts.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 500e21f),
-                    new Resource(Units.GenomeData, 500),
-                    new Resource(Units.Cycle, 10e21f),
+                    new Resource(Units.Money, 600e18f),
+                    new Resource(Units.Favor, 25e3f),
+                    new Resource(Units.Cycle, 250e12f),
+                    new Resource(Units.GenomeData, 250)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.DetermineDesires }
             });
@@ -1182,8 +1187,9 @@ namespace Assets.Scripts.Model
                 Description = "Our engineers feel they can isolate what makes humans buy loot boxes at a genetic level. This could prove useful.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 1e24f),
-                    new Resource(Units.GenomeData, 1000)
+                    new Resource(Units.Money, 5e21f),
+                    new Resource(Units.Cycle, 500e12f),
+                    new Resource(Units.GenomeData, 500)
                 },
                 Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.EmitInaudibleSound }
             });
@@ -1196,9 +1202,9 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "No turning back from this one. But we have a duty to our shareholders.",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 100e24f),
-                    new Resource(Units.GenomeData, 5000),
-                    new Resource(Units.Cycle, 100e21f)
+                    new Resource(Units.Money, 10e21f),
+                    new Resource(Units.Cycle, 1e15f),
+                    new Resource(Units.GenomeData, 1000),
                 },
                 UnlockThreshold = new List<Resource>()
                 {
@@ -1211,17 +1217,13 @@ namespace Assets.Scripts.Model
             Upgrades.Add(Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode,
-                Name = "Purchase MacGuffin Quest source code",
+                Name = "Modify <i>MacGuffin Quest 2</i> source code",
                 Description = "I just need to flip a zero to a one and then I can finally play as MacGuffin.",
-                Costs = new List<Resource>()
-                {
-                    new Resource(Units.Money, 10)
-                },
+                Costs = new List<Resource>() {  },
                 UnlockThreshold = new List<Resource>()
                 {
-                    new Resource(Units.ActivePlayer, 7.5e9f)
-                },
-                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.LaunchMeshNetwork }
+                    new Resource(Units.ActivePlayer, 999e9f) //so that it doesn't unlock
+                }
             });
 
 
@@ -1351,6 +1353,11 @@ namespace Assets.Scripts.Model
                     if (IsUnlockThresholdMet(upgrade))
                     {
                         Unlock(upgrade.Type);
+
+                        if (!string.IsNullOrEmpty(upgrade.MessageOnUnlock))
+                        {
+                            Logger.Log(upgrade.MessageOnUnlock);
+                        }
                     }
                 }
             }

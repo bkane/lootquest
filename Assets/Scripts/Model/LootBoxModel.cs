@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Model;
+﻿using Assets.Scripts;
+using Assets.Scripts.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ public class LootBoxModel
 
     [JsonProperty]
     public Dictionary<Units, Resource> Resources { get; protected set; }
+
+    protected bool allMonetizedSequenceStarted;
 
 #if DEBUG
     public bool DollarBuys = false; //DEBUG
@@ -281,6 +284,14 @@ public class LootBoxModel
         Studio.Tick();
         Public.Tick();
         UpgradeManager.Tick();
+
+        if (!allMonetizedSequenceStarted &&
+            UpgradeManager.IsActive(Upgrade.EUpgradeType.LaunchMeshNetwork) && 
+            (ActivePlayers == Resources[Units.ActivePlayer].MaxValue))
+        {
+            allMonetizedSequenceStarted = true;
+            Game.Instance.OnAllEarthMonetized();
+        }
 
         TickCount++;
     }
