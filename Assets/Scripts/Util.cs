@@ -49,6 +49,8 @@ public class Util
 
             JsonConvert.PopulateObject(json, LootBoxModel.Instance);
 
+            Logger.Instance.Clear();
+
             Debug.LogFormat("{0} Load successful.", DateTime.Now.ToLocalTime().ToString());
         }
         catch (Exception e)

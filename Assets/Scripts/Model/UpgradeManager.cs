@@ -996,7 +996,7 @@ namespace Assets.Scripts.Model
                     new Resource(Units.Money, 10),
                     new Resource(Units.Cycle, 10),
                 },
-                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.UnlockCPU }
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.UnlockCPU, Upgrade.EUpgradeType.ContractEmployees }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.OptimizeRoAS, new Upgrade()

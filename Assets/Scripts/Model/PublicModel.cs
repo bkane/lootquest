@@ -59,36 +59,36 @@ namespace Assets.Scripts.Model
 
         public BigNum MicrotransactionRevenuePerCustomerPerTick()
         {
-            BigNum amount = model.Studio.MicrotransactionRevenuePerTick();
+            BigNum amount = model.Studio.MicrotransactionRevenuePerTick() / model.ActivePlayers;
 
-            amount += model.LootBoxTypes;
+            amount += model.LootBoxTypes / 1000f;
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnforceWatchingAds))
             {
-                amount *= 2;
+                amount *= 1.2f;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ReduceLootBoxOdds))
             {
-                amount *= 2;
+                amount *= 1.2f;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ReduceLootBoxOddsToZero))
             {
-                amount *= 2;
+                amount *= 1.2f;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EmitInaudibleSound))
             {
-                amount *= 2;
+                amount *= 1.2f;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SellBuffsToOdds))
             {
-                amount *= 2;
+                amount *= 1.2f;
             }
 
-            return amount / model.ActivePlayers;
+            return amount;
         }
 
         public BigNum PercentWhoMonetize()
@@ -107,12 +107,12 @@ namespace Assets.Scripts.Model
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.OptimizeRoAS))
             {
-                rate *= 3;
+                rate *= 1.2f;
             }
 
             if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TargetedPersonalAds))
             {
-                rate *= 10;
+                rate *= 1.2f;
             }
 
             return model.Marketers * rate;
@@ -234,16 +234,33 @@ namespace Assets.Scripts.Model
             BigNum overhead = GetBaseOperatingCosts() + GetFines();
             budget -= overhead;
 
-            BigNum costPerResource = 10000; //TODO: everything costs the same
+            BigNum devBudget = (budget * (DevAllocation / 100f));
+            BigNum numDevs = 0;
+            if (devBudget > 0) { numDevs = Mathf.Pow(devBudget, 0.5f) / 10; }
+            model.Resources[Units.Developer].Amount = numDevs;
 
-            model.Resources[Units.Developer].Amount     = budget / costPerResource * (DevAllocation / 100f);
-            model.Resources[Units.Marketer].Amount      = budget / costPerResource * (MarketerAllocation / 100f);
-            model.Resources[Units.Lobbyist].Amount      = budget / costPerResource * (LobbyistAllocation / 100f);
-            model.Resources[Units.CPU].Amount           = budget / costPerResource * (CPUAllocation / 100f);
-            model.Resources[Units.Bioengineer].Amount   = budget / costPerResource * (BioengineerAllocation / 100f);
+            BigNum marketBudget = (budget * (MarketerAllocation / 100f));
+            BigNum numMarketers = 0;
+            if (marketBudget > 0) { numMarketers = Mathf.Pow(marketBudget, 0.5f) / 10; }
+            model.Resources[Units.Marketer].Amount = numMarketers;
+
+            BigNum lobbyBudget = (budget * (LobbyistAllocation / 100f));
+            BigNum numLobby = 0;
+            if (lobbyBudget > 0) { numLobby = Mathf.Pow(lobbyBudget, 0.5f) / 10; }
+            model.Resources[Units.Lobbyist].Amount = numLobby;
+
+            BigNum cpuBudget = (budget * (CPUAllocation / 100f));
+            BigNum numCPU = 0;
+            if (cpuBudget > 0) { numCPU = Mathf.Pow(cpuBudget, 0.5f) / 10; }
+            model.Resources[Units.CPU].Amount = numCPU;
+
+            BigNum bioBudget = (budget * (BioengineerAllocation / 100f));
+            BigNum numBio = 0;
+            if (bioBudget > 0) { numBio = Mathf.Pow(bioBudget, 0.5f) / 10; }
+            model.Resources[Units.Bioengineer].Amount = numBio;
 
 
-            BigNum spent = overhead + (budget * UsedBudget() / 100);
+            BigNum spent = overhead + devBudget + marketBudget + lobbyBudget + cpuBudget + bioBudget;
             model.ConsumeUpTo(Units.Money, spent);
 
             //Make money
