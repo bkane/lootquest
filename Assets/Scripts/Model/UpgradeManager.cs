@@ -1323,6 +1323,7 @@ namespace Assets.Scripts.Model
                 if (Model.ConsumeExactly(upgrade.Costs))
                 {
                     DoUpgrade(upgrade);
+                    CheckForAllUpgradeAchievement();
                     return true;
                 }
             }
@@ -1332,6 +1333,24 @@ namespace Assets.Scripts.Model
             }
 
             return false;
+        }
+
+        protected void CheckForAllUpgradeAchievement()
+        {
+            bool boughtEverything = true;
+            foreach(var kvp in UpgradeStates)
+            {
+                if (kvp.Value != Upgrade.EState.Purchased)
+                {
+                    boughtEverything = false;
+                    break;
+                }
+            }
+
+            if (boughtEverything)
+            {
+                Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_PRIDE);
+            }
         }
 
         protected void DoUpgrade(Upgrade upgrade)

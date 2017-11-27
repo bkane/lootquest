@@ -263,16 +263,80 @@ public class LootBoxModel
         if (type == Units.Money)
         {
             Resources[Units.TotalMoneyEarned].Amount += amount; //Keep Track of the total cash
-        }
 
-        if (type == Units.LootBox)
+            if (Resources[Units.TotalMoneyEarned].Amount > 1000)
+            {
+                Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_EARN_1K);
+            }
+
+            if (Resources[Units.TotalMoneyEarned].Amount > 1000000)
+            {
+                Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_EARN_1M);
+            }
+
+            if (Resources[Units.TotalMoneyEarned].Amount > 1.3e12f)
+            {
+                Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_EARN_CANADA);
+            }
+        }
+        else if (type == Units.LootBox)
         {
             Resources[Units.TotalLootBoxes].Amount += amount; //Keep Track of the total loot boxes
         }
-
-        if (type == Units.AnalyticsData)
+        else if (type == Units.AnalyticsData)
         {
             Resources[Units.TotalAnalyticsData].Amount += amount; //Keep Track of the TotalAnalyticsData
+        }
+        else if (type == Units.Click)
+        {
+            if (Resources[Units.Click].Amount > 250)
+            {
+                Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_CLICK_250);
+            }
+
+            if (Resources[Units.Click].Amount > 1000)
+            {
+                Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_CLICK_1000);
+            }
+
+            if (Resources[Units.Click].Amount > 5000)
+            {
+                Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_CLICK_5000);
+            }
+        }
+        else if (type == Units.Follower)
+        {
+            if (Resources[Units.Follower].Amount > 1000)
+            {
+                Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_FOLLOWERS_1000);
+            }
+
+            if (Resources[Units.Follower].Amount > 100000)
+            {
+                Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_FOLLOWERS_100K);
+            }
+
+            if (Resources[Units.Follower].Amount > 1000000)
+            {
+                Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_FOLLOWERS_1M);
+            }
+        }
+        else if (type == Units.ReleasedGame)
+        {
+            if (Resources[Units.ReleasedGame].Amount > 10)
+            {
+                Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_GAMES_10);
+            }
+
+            if (Resources[Units.ReleasedGame].Amount > 25)
+            {
+                Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_GAMES_25);
+            }
+
+            if (Resources[Units.ReleasedGame].Amount > 50)
+            {
+                Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_GAMES_50);
+            }
         }
     }
 

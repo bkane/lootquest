@@ -14,6 +14,7 @@ namespace Assets.Scripts
         public bool UnlockAll;
 #endif
 
+        public SteamManager SteamManager;
         public ViewManager ViewManager;
         public PlayerSettings Settings;
 
@@ -72,7 +73,7 @@ namespace Assets.Scripts
 #endif
             yield return new WaitForSecondsRealtime(time);
 
-            Logger.Log("Hey, it's been about 90 mins since you started playing. If you wanted a refund, you might still be eligible. If you're having fun, cool! Thanks! -Ben");
+            Logger.Log("Hey, it's been about 90 mins since you started playing. If you wanted a refund, you might still be eligible. If you're having fun, that's great! Thanks and enjoy! -Ben");
         }
 
         protected IEnumerator AutoSaveRoutine()
@@ -194,6 +195,8 @@ namespace Assets.Scripts
 
         public void OnMacGuffinQuestSourcePurchase()
         {
+            SteamManager.UnlockAchievement(SteamManager.ACH_ACCOMPLISHMENT);
+
             LootBoxModel.Instance.Life.IsActive = false;
             LootBoxModel.Instance.Job.IsActive = false;
             LootBoxModel.Instance.Influencer.IsActive = false;

@@ -243,6 +243,8 @@ namespace Assets.Scripts.Model
                 
                 //Drain the bank account but don't make any progress on the game
                 model.ConsumeExactly(Units.Money, model.Money);
+
+                Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_QUITTERS);
             }
 
             //Customer Data production
