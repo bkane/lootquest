@@ -89,7 +89,7 @@ namespace Assets.Scripts.ViewControllers
             //Resources
             CustomersText.text = string.Format("Customerbase: {0}", LootBoxModel.Instance.ActivePlayers);
             MaxCustomersText.text = string.Format("Potential Customers: {0}", LootBoxModel.Instance.Public.GetMaxCustomers());
-            MicrotransactionRevenueText.text = string.Format("Loot Box Rev: ${0}/s", (BigNum)(LootBoxModel.Instance.Public.MicrotransactionRevenuePerTick() * 30));
+            MicrotransactionRevenueText.text = string.Format("Loot Box Rev: ${0}/min", (BigNum)(LootBoxModel.Instance.Public.MicrotransactionRevenuePerTick() * 30 * 60));
             MicrotransactionRevenuePerCustomerPerTickText.text = string.Format("Loot Box Spend Rate: ${0}/customer", (BigNum) (LootBoxModel.Instance.Public.MicrotransactionRevenuePerCustomerPerTick() * 30));
             PercentWhoMonetizeText.text = string.Format("Percent monetize: {0}%", LootBoxModel.Instance.Public.PercentWhoMonetize() * 100);
 
