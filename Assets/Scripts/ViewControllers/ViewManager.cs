@@ -5,6 +5,7 @@ namespace Assets.Scripts
     public class ViewManager : MonoBehaviour
     {
         public GameObject OptionsUI;
+        public GameObject OptionsPanel;
 
         public GameObject LifeView;
         public GameObject UpgradeView;

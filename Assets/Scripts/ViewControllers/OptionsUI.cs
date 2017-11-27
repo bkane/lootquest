@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class OptionsUI : MonoBehaviour
 {
+    public Button OpenOptionsPanel;
     public Button SaveButton;
     public Button LoadButton;
 
@@ -11,11 +13,13 @@ public class OptionsUI : MonoBehaviour
 
     void Awake()
     {
-        SaveButton.onClick.AddListener(Util.Save);
-        LoadButton.onClick.AddListener(Util.Load);
+        OpenOptionsPanel.onClick.AddListener(Game.Instance.OpenOptionsPanel);
 
-        Music_PlayButton.onClick.AddListener(PlayMusic);
-        Music_NextButton.onClick.AddListener(Next);
+        //SaveButton.onClick.AddListener(Util.Save);
+        //LoadButton.onClick.AddListener(Util.Load);
+
+        //Music_PlayButton.onClick.AddListener(PlayMusic);
+        //Music_NextButton.onClick.AddListener(Next);
     }
 
     protected void PlayMusic()

@@ -21,8 +21,12 @@ namespace Assets.Scripts
         {
             Time.fixedDeltaTime = 1 / 30f;
 
-            //TODO: auto-load saved game
-            StartCoroutine(NewGameRoutine());
+            Util.Load();
+
+            if (LootBoxModel.Instance.UpgradeManager.UpgradeStates[Upgrade.EUpgradeType.PurchaseMacGuffinQuest] == Upgrade.EState.Hidden)
+            {
+                StartCoroutine(NewGameRoutine());
+            }
         }
 
         protected IEnumerator NewGameRoutine()
@@ -30,7 +34,7 @@ namespace Assets.Scripts
             float delay = 3;
 
 #if DEBUG
-            delay = 0.01f;
+            //delay = 0.01f;
 #endif
 
             yield return new WaitForSeconds(delay);
@@ -47,6 +51,43 @@ namespace Assets.Scripts
         protected void FixedUpdate()
         {
             LootBoxModel.Instance.Tick();
+        }
+
+        public void OpenOptionsPanel()
+        {
+            ViewManager.OptionsPanel.SetActive(true);
+            UnityEngine.Time.timeScale = 0;
+        }
+
+        public void CloseOptionsPanel()
+        {
+            ViewManager.OptionsPanel.SetActive(false);
+            UnityEngine.Time.timeScale = 1;
+        }
+
+        public void SaveAndQuit()
+        {
+            Debug.Log("SaveAndQuit");
+            Util.Save();
+            Quit();
+        }
+
+        public void Quit()
+        { 
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+        }
+
+        public void ResetProgress()
+        {
+            Debug.Log("ResetProgress");
+            //TODO: confirmation?
+            new LootBoxModel();
+            Logger.Instance.Clear();
+            StartCoroutine(NewGameRoutine());
         }
 
         public void OnAllEarthMonetized()
@@ -135,7 +176,7 @@ namespace Assets.Scripts
 
         public void EndGame()
         {
-            Application.Quit();
+            Quit();
         }
     }
 }

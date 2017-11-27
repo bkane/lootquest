@@ -38,7 +38,7 @@ public class Util
         }
     }
 
-    public static void Load()
+    public static bool Load()
     {
 
         Debug.LogFormat("{0} Loading game.", DateTime.Now.ToLocalTime().ToString());
@@ -52,10 +52,13 @@ public class Util
             Logger.Instance.Clear();
 
             Debug.LogFormat("{0} Load successful.", DateTime.Now.ToLocalTime().ToString());
+
+            return true;
         }
         catch (Exception e)
         {
             Debug.LogErrorFormat("Load failed: {0}", e.Message);
+            return false;
         }
     }
 }
