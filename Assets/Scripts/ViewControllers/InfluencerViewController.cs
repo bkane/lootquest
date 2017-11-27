@@ -9,7 +9,7 @@ namespace Assets.Scripts.ViewControllers
     {
         //Labels
         public TextMeshProUGUI VideoContentText;
-        public TextMeshProUGUI VideoProgressText;
+        public Slider VideoProgress;
         public TextMeshProUGUI FollowersText;
         public TextMeshProUGUI FollowersPerSecondText;
         public TextMeshProUGUI VideosText;
@@ -26,7 +26,7 @@ namespace Assets.Scripts.ViewControllers
         private void Update()
         {
             VideoContentText.text = string.Format("Unboxing Footage: {0}", LootBoxModel.Instance.VideoContent);
-            VideoProgressText.text = string.Format("Video Progress: {0}%", LootBoxModel.Instance.VideoProgress);
+            VideoProgress.value = LootBoxModel.Instance.VideoProgress / 100f;
             FollowersText.text = string.Format("Followers: {0}", LootBoxModel.Instance.Followers);
             VideosText.text = string.Format("Published Videos: {0}", LootBoxModel.Instance.PublishedVideos);
             AdRevenuePerSecondText.text = string.Format("Ad Rev: ${0}/s", (BigNum)(LootBoxModel.Instance.Influencer.AdRevenuePerTick() * 30));
