@@ -27,11 +27,47 @@ namespace Assets.Scripts.Model
             this.Model = model;
         }
 
-        public void DoGrindClick()
+        public static void DoGrindClick()
         {
-            DoGrind(ActionsPerClick() * 5);
-            Model.Add(Units.Click, 1);
+            LootBoxModel.Instance.MacGuffinQuest.DoGrind(LootBoxModel.Instance.MacGuffinQuest.ActionsPerClick() * 5);
+            LootBoxModel.Instance.Add(Units.Click, 1);
         }
+
+        public static void OpenLootBoxClick()
+        {
+            LootBoxModel.Instance.MacGuffinQuest.OpenLootBox(LootBoxModel.Instance.MacGuffinQuest.ActionsPerClick());
+            LootBoxModel.Instance.Add(Units.Click, 1);
+        }
+
+        public static void SellTrashClick()
+        {
+            LootBoxModel.Instance.MacGuffinQuest.SellTrash(LootBoxModel.Instance.MacGuffinQuest.ActionsPerClick());
+            LootBoxModel.Instance.Add(Units.Click, 1);
+        }
+
+        public static void BuyBotAccountClick()
+        {
+            if (LootBoxModel.Instance.NumBotAccounts < LootBoxModel.Instance.Resources[Units.BotAccount].MaxValue)
+            {
+                if (LootBoxModel.Instance.ConsumeExactly(Units.Money, LootBoxModel.Instance.MacGuffinQuest.CostPerBot()))
+                {
+                    LootBoxModel.Instance.Add(Units.BotAccount, 1);
+                    LootBoxModel.Instance.Add(Units.Click, 1);
+                }
+            }
+            else
+            {
+                Logger.Log("The <i>MacGuffin Quest 2</i> developers have gotten wise and are banning any additional bot accounts.");
+                LootBoxModel.Instance.MacGuffinQuest.HideBotButton = true;
+            }
+        }
+
+        public static void BuyLootBoxClick()
+        {
+            Logger.Log("I refuse to sacrifice my sense of accomplishment by taking the easy way out.");
+            LootBoxModel.Instance.Add(Units.Click, 1);
+        }
+
 
         protected void OnPlayComplete()
         {
@@ -91,19 +127,6 @@ namespace Assets.Scripts.Model
             }
         }
 
-
-        public void OpenLootBoxClick()
-        {
-            OpenLootBox(ActionsPerClick());
-            Model.Add(Units.Click, 1);
-        }
-
-        public void SellTrashClick()
-        {
-            SellTrash(ActionsPerClick());
-            Model.Add(Units.Click, 1);
-        }
-
         public BigNum ActionsPerClick()
         {
             if (EndGameStart)
@@ -158,12 +181,6 @@ namespace Assets.Scripts.Model
             }
         }
 
-        public void BuyLootBoxClick()
-        {
-            Logger.Log("I refuse to sacrifice my sense of accomplishment by taking the easy way out.");
-            Model.Add(Units.Click, 1);
-        }
-
         public void OpenLootBox(BigNum amount)
         {
             BigNum lootBoxesOpened = Model.ConsumeUpTo(Units.LootBox, amount);
@@ -199,23 +216,6 @@ namespace Assets.Scripts.Model
             float pow = 1.7f;
 
             return 80 + 100 * Mathf.Pow(pow, Model.NumBotAccounts);
-        }
-
-        public void BuyBotAccountClick()
-        {
-            if (Model.NumBotAccounts < Model.Resources[Units.BotAccount].MaxValue)
-            {
-                if (Model.ConsumeExactly(Units.Money, CostPerBot()))
-                {
-                    Model.Add(Units.BotAccount, 1);
-                    Model.Add(Units.Click, 1);
-                }
-            }
-            else
-            {
-                Logger.Log("The <i>MacGuffin Quest 2</i> developers have gotten wise and are banning any additional bot accounts.");
-                HideBotButton = true;
-            }
         }
 
         public void DoEndGame()

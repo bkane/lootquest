@@ -18,7 +18,12 @@ namespace Assets.Scripts.ViewControllers
 
         private void Awake()
         {
-            DoJobButton.onClick.AddListener(LootBoxModel.Instance.Job.DoJobClick);
+            DoJobButton.onClick.AddListener(DoJobClick);
+        }
+
+        private void DoJobClick()
+        {
+            LootBoxModel.Instance.Job.DoJobClick();
         }
 
         private void Update()

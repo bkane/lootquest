@@ -31,11 +31,11 @@ namespace Assets.Scripts.ViewControllers
 
         private void Awake()
         {
-            GrindButton.onClick.AddListener(LootBoxModel.Instance.MacGuffinQuest.DoGrindClick);
-            SellTrashItemButton.onClick.AddListener(LootBoxModel.Instance.MacGuffinQuest.SellTrashClick);
-            BuyLootBoxButton.onClick.AddListener(LootBoxModel.Instance.MacGuffinQuest.BuyLootBoxClick);
-            OpenLootBoxButton.onClick.AddListener(LootBoxModel.Instance.MacGuffinQuest.OpenLootBoxClick);
-            BuyBotAccountButton.onClick.AddListener(LootBoxModel.Instance.MacGuffinQuest.BuyBotAccountClick);
+            GrindButton.onClick.AddListener(MacGuffinQuest.DoGrindClick);
+            SellTrashItemButton.onClick.AddListener(MacGuffinQuest.SellTrashClick);
+            BuyLootBoxButton.onClick.AddListener(MacGuffinQuest.BuyLootBoxClick);
+            OpenLootBoxButton.onClick.AddListener(MacGuffinQuest.OpenLootBoxClick);
+            BuyBotAccountButton.onClick.AddListener(MacGuffinQuest.BuyBotAccountClick);
         }
 
         private void Update()

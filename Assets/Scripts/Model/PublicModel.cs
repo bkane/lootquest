@@ -27,34 +27,34 @@ namespace Assets.Scripts.Model
             return (DevAllocation + MarketerAllocation + LobbyistAllocation + CPUAllocation + BioengineerAllocation);
         }
 
-        public void Allocate(Units type)
+        public static void Allocate(Units type)
         {
-            float availableBudget = 100 - UsedBudget();
+            float availableBudget = 100 - LootBoxModel.Instance.Public.UsedBudget();
 
             if (availableBudget > 0)
             {
                 switch (type)
                 {
-                    case Units.Developer:   { DevAllocation         = Mathf.Clamp(DevAllocation             + 10, 0, 100); } break;
-                    case Units.Marketer:    { MarketerAllocation    = Mathf.Clamp(MarketerAllocation        + 10, 0, 100); } break;
-                    case Units.Lobbyist:    { LobbyistAllocation    = Mathf.Clamp(LobbyistAllocation        + 10, 0, 100); } break;
-                    case Units.CPU:         { CPUAllocation         = Mathf.Clamp(CPUAllocation             + 10, 0, 100); } break;
-                    case Units.Bioengineer: { BioengineerAllocation = Mathf.Clamp(BioengineerAllocation     + 10, 0, 100); } break;
+                    case Units.Developer:   { LootBoxModel.Instance.Public.DevAllocation         = Mathf.Clamp(LootBoxModel.Instance.Public.DevAllocation             + 10, 0, 100); } break;
+                    case Units.Marketer:    { LootBoxModel.Instance.Public.MarketerAllocation    = Mathf.Clamp(LootBoxModel.Instance.Public.MarketerAllocation        + 10, 0, 100); } break;
+                    case Units.Lobbyist:    { LootBoxModel.Instance.Public.LobbyistAllocation    = Mathf.Clamp(LootBoxModel.Instance.Public.LobbyistAllocation        + 10, 0, 100); } break;
+                    case Units.CPU:         { LootBoxModel.Instance.Public.CPUAllocation         = Mathf.Clamp(LootBoxModel.Instance.Public.CPUAllocation             + 10, 0, 100); } break;
+                    case Units.Bioengineer: { LootBoxModel.Instance.Public.BioengineerAllocation = Mathf.Clamp(LootBoxModel.Instance.Public.BioengineerAllocation     + 10, 0, 100); } break;
                 }
             }
-            model.Add(Units.Click, 1);
+            LootBoxModel.Instance.Add(Units.Click, 1);
         }
-        public void Deallocate(Units type)
+        public static void Deallocate(Units type)
         {
             switch (type)
             {
-                    case Units.Developer:   { DevAllocation         = Mathf.Clamp(DevAllocation             - 10, 0, 100); } break;
-                    case Units.Marketer:    { MarketerAllocation    = Mathf.Clamp(MarketerAllocation        - 10, 0, 100); } break;
-                    case Units.Lobbyist:    { LobbyistAllocation    = Mathf.Clamp(LobbyistAllocation        - 10, 0, 100); } break;
-                    case Units.CPU:         { CPUAllocation         = Mathf.Clamp(CPUAllocation             - 10, 0, 100); } break;
-                    case Units.Bioengineer: { BioengineerAllocation = Mathf.Clamp(BioengineerAllocation     - 10, 0, 100); } break;
+                    case Units.Developer:   { LootBoxModel.Instance.Public.DevAllocation         = Mathf.Clamp(LootBoxModel.Instance.Public.DevAllocation             - 10, 0, 100); } break;
+                    case Units.Marketer:    { LootBoxModel.Instance.Public.MarketerAllocation    = Mathf.Clamp(LootBoxModel.Instance.Public.MarketerAllocation        - 10, 0, 100); } break;
+                    case Units.Lobbyist:    { LootBoxModel.Instance.Public.LobbyistAllocation    = Mathf.Clamp(LootBoxModel.Instance.Public.LobbyistAllocation        - 10, 0, 100); } break;
+                    case Units.CPU:         { LootBoxModel.Instance.Public.CPUAllocation         = Mathf.Clamp(LootBoxModel.Instance.Public.CPUAllocation             - 10, 0, 100); } break;
+                    case Units.Bioengineer: { LootBoxModel.Instance.Public.BioengineerAllocation = Mathf.Clamp(LootBoxModel.Instance.Public.BioengineerAllocation     - 10, 0, 100); } break;
             }
-            model.Add(Units.Click, 1);
+            LootBoxModel.Instance.Add(Units.Click, 1);
         }
 
         public BigNum MicrotransactionRevenuePerCustomerPerTick()

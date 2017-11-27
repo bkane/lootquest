@@ -42,17 +42,17 @@ namespace Assets.Scripts.ViewControllers
 
         private void Awake()
         {
-            HireDeveloper.onClick.AddListener(() => { LootBoxModel.Instance.Studio.HireDeveloper(1); });
-            HireDeveloper10.onClick.AddListener(() => { LootBoxModel.Instance.Studio.HireDeveloper(10); });
-            FireDeveloper.onClick.AddListener(() => { LootBoxModel.Instance.Studio.FireDeveloper(1); });
-            FireDeveloper10.onClick.AddListener(() => { LootBoxModel.Instance.Studio.FireDeveloper(10); });
+            HireDeveloper.onClick.AddListener(() => { StudioModel.HireDeveloper(1); });
+            HireDeveloper10.onClick.AddListener(() => { StudioModel.HireDeveloper(10); });
+            FireDeveloper.onClick.AddListener(() => { StudioModel.FireDeveloper(1); });
+            FireDeveloper10.onClick.AddListener(() => { StudioModel.FireDeveloper(10); });
 
-            HireDataAnalyst.onClick.AddListener(() => { LootBoxModel.Instance.Studio.HireDataAnalyst(1); });
-            HireDataAnalyst10.onClick.AddListener(() => { LootBoxModel.Instance.Studio.HireDataAnalyst(10); });
-            FireDataAnalyst.onClick.AddListener(() => { LootBoxModel.Instance.Studio.FireDataAnalyst(1); });
-            FireDataAnalyst10.onClick.AddListener(() => { LootBoxModel.Instance.Studio.FireDataAnalyst(10); });
+            HireDataAnalyst.onClick.AddListener(() => { StudioModel.HireDataAnalyst(1); });
+            HireDataAnalyst10.onClick.AddListener(() => { StudioModel.HireDataAnalyst(10); });
+            FireDataAnalyst.onClick.AddListener(() => { StudioModel.FireDataAnalyst(1); });
+            FireDataAnalyst10.onClick.AddListener(() => { StudioModel.FireDataAnalyst(10); });
 
-            ReleaseGame.onClick.AddListener(LootBoxModel.Instance.Studio.ReleaseGame);
+            ReleaseGame.onClick.AddListener(StudioModel.ReleaseGame);
         }
 
         private void Update()

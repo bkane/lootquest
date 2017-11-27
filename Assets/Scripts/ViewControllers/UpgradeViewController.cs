@@ -16,6 +16,16 @@ namespace Assets.Scripts.ViewControllers
             entries = new Dictionary<Upgrade.EUpgradeType, UpgradeEntry>();
         }
 
+        public void Reset()
+        {
+            foreach(var kvp in entries)
+            {
+                Destroy(kvp.Value.gameObject);
+            }
+
+            entries.Clear();
+        }
+
         private void Update()
         {
             foreach(var kvp in LootBoxModel.Instance.UpgradeManager.UpgradeStates)
@@ -47,7 +57,10 @@ namespace Assets.Scripts.ViewControllers
                             }
 
                             //Make sure it's enabled
-                            entries[type].gameObject.SetActive(true);
+                            if (!entries[type].gameObject.activeSelf)
+                            {
+                                entries[type].gameObject.SetActive(true);
+                            }
 
                             //TODO: set its state based on whether it can be afforded
                         }

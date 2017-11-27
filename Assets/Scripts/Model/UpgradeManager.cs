@@ -268,10 +268,6 @@ namespace Assets.Scripts.Model
             #endregion
 
 
-
-
-
-
             #region Influencer Upgrades
 
             Upgrades.Add(Upgrade.EUpgradeType.UnlockInfluencerCareer, new Upgrade()

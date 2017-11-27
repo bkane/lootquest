@@ -68,20 +68,20 @@ namespace Assets.Scripts.ViewControllers
 
         private void Awake()
         {
-            DevPlus.onClick.AddListener(() => LootBoxModel.Instance.Public.Allocate(Units.Developer));
-            DevMinus.onClick.AddListener(() => LootBoxModel.Instance.Public.Deallocate(Units.Developer));
+            DevPlus.onClick.AddListener(() => PublicModel.Allocate(Units.Developer));
+            DevMinus.onClick.AddListener(() => PublicModel.Deallocate(Units.Developer));
 
-            MarketingPlus.onClick.AddListener(() => LootBoxModel.Instance.Public.Allocate(Units.Marketer));
-            MarketingMinus.onClick.AddListener(() => LootBoxModel.Instance.Public.Deallocate(Units.Marketer));
+            MarketingPlus.onClick.AddListener(() => PublicModel.Allocate(Units.Marketer));
+            MarketingMinus.onClick.AddListener(() => PublicModel.Deallocate(Units.Marketer));
 
-            LobbyingPlus.onClick.AddListener(() => LootBoxModel.Instance.Public.Allocate(Units.Lobbyist));
-            LobbyingMinus.onClick.AddListener(() => LootBoxModel.Instance.Public.Deallocate(Units.Lobbyist));
+            LobbyingPlus.onClick.AddListener(() => PublicModel.Allocate(Units.Lobbyist));
+            LobbyingMinus.onClick.AddListener(() => PublicModel.Deallocate(Units.Lobbyist));
 
-            MLPlus.onClick.AddListener(() => LootBoxModel.Instance.Public.Allocate(Units.CPU));
-            MLMinus.onClick.AddListener(() => LootBoxModel.Instance.Public.Deallocate(Units.CPU));
+            MLPlus.onClick.AddListener(() => PublicModel.Allocate(Units.CPU));
+            MLMinus.onClick.AddListener(() => PublicModel.Deallocate(Units.CPU));
 
-            BioPlus.onClick.AddListener(() => LootBoxModel.Instance.Public.Allocate(Units.Bioengineer));
-            BioMinus.onClick.AddListener(() => LootBoxModel.Instance.Public.Deallocate(Units.Bioengineer));
+            BioPlus.onClick.AddListener(() => PublicModel.Allocate(Units.Bioengineer));
+            BioMinus.onClick.AddListener(() => PublicModel.Deallocate(Units.Bioengineer));
         }
 
         private void Update()

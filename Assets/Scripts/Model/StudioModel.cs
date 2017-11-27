@@ -17,28 +17,53 @@ namespace Assets.Scripts.Model
             this.model = model;
         }
 
-        public void HireDeveloper(int num)
+        public static void HireDeveloper(int num)
         {
-            model.Add(Units.Developer, num);
-            model.Add(Units.Click, 1);
+            LootBoxModel.Instance.Add(Units.Developer, num);
+            LootBoxModel.Instance.Add(Units.Click, 1);
         }
 
-        public void FireDeveloper(int num)
+        public static void FireDeveloper(int num)
         {
-            model.ConsumeUpTo(Units.Developer, num);
-            model.Add(Units.Click, 1);
+            LootBoxModel.Instance.ConsumeUpTo(Units.Developer, num);
+            LootBoxModel.Instance.Add(Units.Click, 1);
         }
 
-        public void HireDataAnalyst(int num)
+        public static void HireDataAnalyst(int num)
         {
-            model.Add(Units.DataAnalyst, num);
-            model.Add(Units.Click, 1);
+            LootBoxModel.Instance.Add(Units.DataAnalyst, num);
+            LootBoxModel.Instance.Add(Units.Click, 1);
         }
 
-        public void FireDataAnalyst(int num)
+        public static void FireDataAnalyst(int num)
         {
-            model.ConsumeUpTo(Units.DataAnalyst, num);
-            model.Add(Units.Click, 1);
+            LootBoxModel.Instance.ConsumeUpTo(Units.DataAnalyst, num);
+            LootBoxModel.Instance.Add(Units.Click, 1);
+        }
+
+        public static void ReleaseGame()
+        {
+            if (LootBoxModel.Instance.ConsumeExactly(Units.DevHour, LootBoxModel.Instance.Studio.CostOfGameInDevHours()))
+            {
+                LootBoxModel.Instance.Add(Units.ReleasedGame, 1);
+
+                BigNum unitsSold = LootBoxModel.Instance.Studio.HypePerRelease();
+                BigNum revenue = unitsSold * LootBoxModel.Instance.Studio.RevenuePerUnitSold();
+                LootBoxModel.Instance.Add(Units.CopySold, unitsSold);
+                LootBoxModel.Instance.Add(Units.Money, revenue);
+
+                //prev: model.Add(Units.ActivePlayer, unitsSold);
+                LootBoxModel.Instance.Resources[Units.ActivePlayer].Amount = unitsSold;
+
+                Logger.Log(string.Format("Game {0} released and sold {1} copies for ${2} in profit.", LootBoxModel.Instance.ReleasedGames, unitsSold, revenue));
+
+                if (LootBoxModel.Instance.ReleasedGames == 5)
+                {
+                    Logger.Log("These games are getting expensive to make.");
+                }
+            }
+
+            LootBoxModel.Instance.Add(Units.Click, 1);
         }
 
         public BigNum GetCostPerDeveloperPerTick()
@@ -199,31 +224,6 @@ namespace Assets.Scripts.Model
             }
 
             return amount;
-        }
-
-        public void ReleaseGame()
-        {
-            if (model.ConsumeExactly(Units.DevHour, CostOfGameInDevHours()))
-            {
-                model.Add(Units.ReleasedGame, 1);
-
-                BigNum unitsSold = HypePerRelease();
-                BigNum revenue = unitsSold * RevenuePerUnitSold();
-                model.Add(Units.CopySold, unitsSold);
-                model.Add(Units.Money, revenue);
-
-                //prev: model.Add(Units.ActivePlayer, unitsSold);
-                model.Resources[Units.ActivePlayer].Amount = unitsSold;
-
-                Logger.Log(string.Format("Game {0} released and sold {1} copies for ${2} in profit.", model.ReleasedGames, unitsSold, revenue));
-
-                if (model.ReleasedGames == 5)
-                {
-                    Logger.Log("These games are getting expensive to make.");
-                }
-            }
-
-            model.Add(Units.Click, 1);
         }
 
         public void Tick()

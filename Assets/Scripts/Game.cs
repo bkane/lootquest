@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Model;
+using Assets.Scripts.ViewControllers;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -39,7 +40,7 @@ namespace Assets.Scripts
 
             Util.LoadIntoObject(Util.SAVE_FILENAME, LootBoxModel.Instance);
 
-            if (LootBoxModel.Instance.UpgradeManager.UpgradeStates[Upgrade.EUpgradeType.PurchaseMacGuffinQuest] == Upgrade.EState.Hidden)
+            if (LootBoxModel.Instance.UpgradeManager.UpgradeStates[Upgrade.EUpgradeType.GetJob] == Upgrade.EState.Hidden)
             {
                 StartCoroutine(NewGameRoutine());
             }
@@ -135,6 +136,7 @@ namespace Assets.Scripts
             //TODO: confirmation?
             new LootBoxModel();
             Logger.Instance.Clear();
+            ViewManager.UpgradeView.GetComponent<UpgradeViewController>().Reset();
             StartCoroutine(NewGameRoutine());
         }
 
