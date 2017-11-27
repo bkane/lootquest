@@ -132,6 +132,16 @@ namespace Assets.Scripts
             SaveSettings();
         }
 
+        public void OpenRestartPopup()
+        {
+            ViewManager.ConfirmRestartPopup.SetActive(true);
+        }
+
+        public void CloseRestartPopup()
+        {
+            ViewManager.ConfirmRestartPopup.SetActive(false);
+        }
+
         public void SaveAndQuit()
         {
             Debug.Log("SaveAndQuit");
@@ -151,7 +161,8 @@ namespace Assets.Scripts
         public void ResetProgress()
         {
             Debug.Log("ResetProgress");
-            //TODO: confirmation?
+            CloseRestartPopup();
+            CloseOptionsPanel();
             new LootBoxModel();
             Logger.Instance.Clear();
             ViewManager.UpgradeView.GetComponent<UpgradeViewController>().Reset();

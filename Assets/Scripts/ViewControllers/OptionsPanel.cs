@@ -20,7 +20,7 @@ public class OptionsPanel : MonoBehaviour
         CloseOptionsPanel.onClick.AddListener(Game.Instance.CloseOptionsPanel);
 
         SaveAndQuitButton.onClick.AddListener(Game.Instance.SaveAndQuit);
-        ResetProgressButton.onClick.AddListener(Game.Instance.ResetProgress);
+        ResetProgressButton.onClick.AddListener(Game.Instance.OpenRestartPopup);
 
         AutoSaveToggle.onValueChanged.AddListener(UpdateAutoSave);
     }

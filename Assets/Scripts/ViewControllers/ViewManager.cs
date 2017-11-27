@@ -6,6 +6,7 @@ namespace Assets.Scripts
     {
         public GameObject OptionsUI;
         public GameObject OptionsPanel;
+        public GameObject ConfirmRestartPopup;
 
         public GameObject LifeView;
         public GameObject UpgradeView;
