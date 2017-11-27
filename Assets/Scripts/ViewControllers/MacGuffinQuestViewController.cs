@@ -40,7 +40,7 @@ namespace Assets.Scripts.ViewControllers
         {
             GrindProgress.value = LootBoxModel.Instance.GrindProgress / 100f;
 
-            LootBoxText.text = string.Format("Loot Boxes: {0}", LootBoxModel.Instance.LootBoxes);
+            LootBoxText.text = string.Format("{0}", LootBoxModel.Instance.LootBoxes);
             ItemsText.text = string.Format("{0}", LootBoxModel.Instance.TrashItems);
             BotAccountsText.text = string.Format("{0}", LootBoxModel.Instance.NumBotAccounts);
             //MacGuffinsUnlockedText.text = string.Format("MacGuffins Unlocked: {0}", LootBoxModel.Instance.MacGuffinUnlocked);
