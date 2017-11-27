@@ -9,6 +9,7 @@ namespace Assets.Scripts
         public static Game Instance;
 
         public ViewManager ViewManager;
+        public PlayerSettings Settings;
 
         private void Awake()
         {
@@ -21,12 +22,43 @@ namespace Assets.Scripts
         {
             Time.fixedDeltaTime = 1 / 30f;
 
-            Util.Load();
+            Settings = new PlayerSettings();
+            bool foundSettings = Util.LoadIntoObject(Util.OPTIONS_FILENAME, Settings);
+
+            if (!foundSettings)
+            {
+                SaveSettings();
+            }
+
+            //TODO: update music, sfx volumes
+
+            Util.LoadIntoObject(Util.SAVE_FILENAME, LootBoxModel.Instance);
 
             if (LootBoxModel.Instance.UpgradeManager.UpgradeStates[Upgrade.EUpgradeType.PurchaseMacGuffinQuest] == Upgrade.EState.Hidden)
             {
                 StartCoroutine(NewGameRoutine());
             }
+
+            StartCoroutine(AutoSaveRoutine());
+        }
+
+        protected IEnumerator AutoSaveRoutine()
+        {
+            while(true)
+            {
+                yield return new WaitForSeconds(3);
+
+                if (Settings.AutoSave)
+                {
+                    Debug.Log("Autosaving");
+                    Util.Save(Util.SAVE_FILENAME, LootBoxModel.Instance);
+                }
+            }
+        }
+
+        protected void SaveSettings()
+        {
+            Util.Save(Util.OPTIONS_FILENAME, Settings);
         }
 
         protected IEnumerator NewGameRoutine()
@@ -63,12 +95,13 @@ namespace Assets.Scripts
         {
             ViewManager.OptionsPanel.SetActive(false);
             UnityEngine.Time.timeScale = 1;
+            SaveSettings();
         }
 
         public void SaveAndQuit()
         {
             Debug.Log("SaveAndQuit");
-            Util.Save();
+            Util.Save(Util.SAVE_FILENAME, LootBoxModel.Instance);
             Quit();
         }
 

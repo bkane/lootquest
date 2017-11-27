@@ -12,13 +12,12 @@ public class Util
         onComplete();
     }
 
-    private static string SAVE_FILENAME = "save.json";
+    public static string SAVE_FILENAME = "save.json";
+    public static string OPTIONS_FILENAME = "settings.json";
 
-    public static void Save()
+    public static void Save(string filename, object obj)
     {
-        LootBoxModel model = LootBoxModel.Instance;
-
-        Debug.LogFormat("{0} Saving game.", DateTime.Now.ToLocalTime().ToString());
+        Debug.LogFormat("{0} Saving {1}", DateTime.Now.ToLocalTime().ToString(), filename);
 
         try
         {
@@ -26,38 +25,38 @@ public class Util
             
             settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
-            string json = JsonConvert.SerializeObject(model, settings);
+            string json = JsonConvert.SerializeObject(obj, settings);
 
-            File.WriteAllText(Path.Combine(Application.persistentDataPath, SAVE_FILENAME), json);
+            File.WriteAllText(Path.Combine(Application.persistentDataPath, filename), json);
 
-            Debug.LogFormat("{0} Saving successful.", DateTime.Now.ToLocalTime().ToString());
+            Debug.LogFormat("{0} Save {1} successful.", DateTime.Now.ToLocalTime().ToString(), filename);
         }
         catch (Exception e)
         {
-            Debug.LogErrorFormat("Save failed: {0}", e.Message);
+            Debug.LogErrorFormat("Save {0} failed: {1}", filename, e.Message);
         }
     }
 
-    public static bool Load()
+    public static bool LoadIntoObject(string filename, object obj)
     {
 
         Debug.LogFormat("{0} Loading game.", DateTime.Now.ToLocalTime().ToString());
 
         try
         {
-            string json = File.ReadAllText(Path.Combine(Application.persistentDataPath, SAVE_FILENAME));
+            string json = File.ReadAllText(Path.Combine(Application.persistentDataPath, filename));
 
-            JsonConvert.PopulateObject(json, LootBoxModel.Instance);
+            JsonConvert.PopulateObject(json, obj);
 
             Logger.Instance.Clear();
 
-            Debug.LogFormat("{0} Load successful.", DateTime.Now.ToLocalTime().ToString());
+            Debug.LogFormat("{0} Load {1} successful.", DateTime.Now.ToLocalTime().ToString(), filename);
 
             return true;
         }
         catch (Exception e)
         {
-            Debug.LogErrorFormat("Load failed: {0}", e.Message);
+            Debug.LogErrorFormat("Load {0} failed: {1}", filename, e.Message);
             return false;
         }
     }
