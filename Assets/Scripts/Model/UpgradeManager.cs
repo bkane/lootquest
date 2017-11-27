@@ -45,6 +45,21 @@ namespace Assets.Scripts.Model
 
             #region Job upgrades
 
+            Upgrades.Add(Upgrade.EUpgradeType.GetJob, new Upgrade()
+            {
+                Type = Upgrade.EUpgradeType.GetJob,
+                Name = "Get a Job",
+                Description = "Money can be exchanged for goods and services. If I want to play <i>MacGuffin Quest 2</i>, I'll need to become un-unemployed.",
+                CommentOnBuy = "Getting a job was super easy! Suspiciously easy. I hope working doesn't suck.",
+                Costs = new List<Resource>()
+                { 
+                },
+                UnlockThreshold = new List<Resource>()
+                {
+                    new Resource(Units.JobCompleted, 50) //to prevent auto-unlock
+                }
+            });
+
             Upgrades.Add(Upgrade.EUpgradeType.WorkSmarter, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.WorkSmarter,
@@ -1305,6 +1320,11 @@ namespace Assets.Scripts.Model
 
             switch(upgrade.Type)
             {
+                case Upgrade.EUpgradeType.GetJob:
+                    {
+                        Model.Job.IsActive = true;
+                    }
+                    break;
                 case Upgrade.EUpgradeType.PurchaseMacGuffinQuest:
                     {
                         Logger.Log("Sorry! <i>MacGuffin Quest 2</i> Regular Edition pre-orders are all sold out! We do still have Limited Editions available ironically.");

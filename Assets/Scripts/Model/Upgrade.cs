@@ -13,6 +13,7 @@ namespace Assets.Scripts.Model
             LearnToCode,
 
             //Job
+            GetJob,
             WorkSmarter,
             DressForSuccess,
             JobAutomationScript,

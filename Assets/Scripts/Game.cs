@@ -41,7 +41,7 @@ namespace Assets.Scripts
             yield return new WaitForSeconds(delay);
             Logger.Log("I NEED this game. Time to get a job.");
             yield return new WaitForSeconds(delay);
-            LootBoxModel.Instance.Job.IsActive = true;
+            LootBoxModel.Instance.UpgradeManager.Unlock(Upgrade.EUpgradeType.GetJob);
         }
 
         protected void FixedUpdate()

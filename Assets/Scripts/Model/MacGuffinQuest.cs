@@ -15,7 +15,8 @@ namespace Assets.Scripts.Model
         private int TicksPerSell = 10;
         private int TicksPerOpen = 10;
         public bool HideBotButton;
-
+        public int NumPlays;
+        public bool GrindStart;
 
         public MacGuffinQuest(LootBoxModel model)
         {
@@ -24,9 +25,33 @@ namespace Assets.Scripts.Model
 
         public void DoGrindClick()
         {
-            //TODO: on first plays, do a sequence about how you don't play as MacGuffin
             DoGrind(ActionsPerClick() * 5);
             Model.Add(Units.Click, 1);
+        }
+
+        protected void OnPlayComplete()
+        {
+            string[] messages = new string[]
+            {
+                "Hey wait, I don't get to play as MacGuffin??",
+                "What the heck! This is <u>MacGuffin's</u> quest!",
+                "I can only play as Bumblo, the bumbling sidekick?",
+                "Bumblo can't even jump!",
+                "\"Earn loot boxes for a chance to unlock and play as MacGuffin!\"",
+                "Fair enough. I'm sure this won't take long, and it'll feel good to have earned it.... probably."
+            };
+
+            int index = NumPlays - 1;
+
+            if (index >= 0 && index < messages.Length)
+            {
+                Logger.Log(messages[index]);
+            }
+            
+            if (index >= messages.Length - 1)
+            {
+                GrindStart = true;
+            }
         }
 
         public void OpenLootBoxClick()
@@ -70,8 +95,16 @@ namespace Assets.Scripts.Model
             //TODO: this will cap at 30/s, but we should switch after that point anyway
             if (Model.ConsumeExactly(Units.GrindProgress, GrindProgressPerLootBox))
             {
-                Model.Add(Units.LootBox, 1);
-                Model.Add(Units.GrindCompleted, 1);
+                if (GrindStart)
+                {
+                    Model.Add(Units.LootBox, 1);
+                    Model.Add(Units.GrindCompleted, 1);
+                }
+                else
+                {
+                    NumPlays++;
+                    OnPlayComplete();
+                }
             }
         }
 

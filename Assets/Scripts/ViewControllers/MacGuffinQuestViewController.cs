@@ -53,7 +53,7 @@ namespace Assets.Scripts.ViewControllers
             LootBoxPanel.SetActive(showLoot);
             
             bool showTrash = LootBoxModel.Instance.LootBoxesOpened > 0;
-            SellItemsPanel.SetActive(showLoot);
+            SellItemsPanel.SetActive(showTrash);
 
             bool showBots = LootBoxModel.Instance.NumBotAccounts > 0;
             BotsPanel.SetActive(showBots);
@@ -62,7 +62,7 @@ namespace Assets.Scripts.ViewControllers
             string actionsString = actions == 1 ? string.Empty : string.Format("(x{0})", actions);
 
             //TODO: have an indicator of actions count
-            //GrindButtonText.text = string.Format("{0} {1}", LootBoxModel.Instance.GrindsCompleted > 5 ? "Grind" : "Play", actionsString);
+            GrindButtonText.text = string.Format("{0}", LootBoxModel.Instance.MacGuffinQuest.GrindStart ? "Grind" : "Play");
             //OpenLootBoxButton.GetComponentInChildren<TextMeshProUGUI>().text = string.Format("Open Loot Box {0}", actionsString);
             //SellTrashItemButton.GetComponentInChildren<TextMeshProUGUI>().text = string.Format("Sell Trash Items {0}", actionsString);
         }
