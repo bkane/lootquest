@@ -38,7 +38,7 @@ namespace Assets.Scripts
 
             //TODO: update music, sfx volumes
 
-            Util.LoadIntoObject(Util.SAVE_FILENAME, LootBoxModel.Instance);
+            bool foundSave = Util.LoadIntoObject(Util.SAVE_FILENAME, LootBoxModel.Instance);
 
             if (LootBoxModel.Instance.UpgradeManager.UpgradeStates[Upgrade.EUpgradeType.GetJob] == Upgrade.EState.Hidden)
             {
@@ -46,6 +46,11 @@ namespace Assets.Scripts
             }
 
             StartCoroutine(AutoSaveRoutine());
+
+            if (!foundSave)
+            {
+                StartCoroutine(GGGameDevRoutine());
+            }
 
 #if DEBUG
             if (UnlockAll)
@@ -58,11 +63,23 @@ namespace Assets.Scripts
 #endif
         }
 
+        protected IEnumerator GGGameDevRoutine()
+        {
+            float time = 60 * 90;
+
+#if DEBUG
+            time = 10;
+#endif
+            yield return new WaitForSecondsRealtime(time);
+
+            Logger.Log("Hey, it's been about 90 mins since you started playing. If you wanted a refund, you might still be eligible. If you're having fun, cool! Thanks! -Ben");
+        }
+
         protected IEnumerator AutoSaveRoutine()
         {
             while(true)
             {
-                yield return new WaitForSeconds(3);
+                yield return new WaitForSeconds(30);
 
                 if (Settings.AutoSave)
                 {
