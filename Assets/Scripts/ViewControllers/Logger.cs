@@ -29,7 +29,7 @@ public class Logger : MonoBehaviour
     {
         Debug.LogFormat("Logger: \"{0}\"", message);
 
-        if (Instance.Messages.Count() >= 5)
+        if (Instance.Messages.Count() >= 6)
         {
             Instance.Messages.Dequeue();
         }
