@@ -7,6 +7,7 @@ namespace Assets.Scripts.Model
     [JsonObject(MemberSerialization.OptIn)]
     public class UpgradeManager
     {
+        public bool IsActive;
         public LootBoxModel Model;
         public Dictionary<Upgrade.EUpgradeType, Upgrade> Upgrades;
 
@@ -1144,7 +1145,7 @@ namespace Assets.Scripts.Model
                 {
                       new Resource(Units.Favor, 1000),
                 },
-                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.ReduceFines }
+                Requirements = new List<Upgrade.EUpgradeType>() { Upgrade.EUpgradeType.DiscloseOdds }
             });
 
             Upgrades.Add(Upgrade.EUpgradeType.UnlockBioEngineering, new Upgrade()
@@ -1234,6 +1235,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode,
                 Name = "Modify <i>MacGuffin Quest 2</i> source code",
                 Description = "I just need to flip a zero to a one and then I can finally play as MacGuffin.",
+                CommentOnBuy = "Turning off the bots so I can play again. I hope I remember how.",
                 Costs = new List<Resource>() {  },
                 UnlockThreshold = new List<Resource>()
                 {
@@ -1259,7 +1261,7 @@ namespace Assets.Scripts.Model
             }
         }
 
-        public bool IsActive(Upgrade.EUpgradeType type)
+        public bool IsPurchased(Upgrade.EUpgradeType type)
         {
             if (UpgradeStates.ContainsKey(type))
             {
@@ -1377,7 +1379,8 @@ namespace Assets.Scripts.Model
                 case Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode:
                     {
                         Model.Add(Units.MacGuffinUnlocked, 1);
-                        Debug.Log("Game over!");
+
+                        Game.Instance.OnMacGuffinQuestSourcePurchase();
                     }
                     break;
             }
@@ -1411,7 +1414,7 @@ namespace Assets.Scripts.Model
                 //Check pre-req upgrades
                 for (int i = 0; i < upgrade.Requirements.Count; i++)
                 {
-                    if (!IsActive(upgrade.Requirements[i]))
+                    if (!IsPurchased(upgrade.Requirements[i]))
                     {
                         unlockThresholdMet = false;
                         break;

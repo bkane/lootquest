@@ -65,12 +65,12 @@ namespace Assets.Scripts.Model
         {
             BigNum baseHype = 100000;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.MarketingCampaign))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.MarketingCampaign))
             {
                 baseHype *= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.LootBoxPreOrders))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.LootBoxPreOrders))
             {
                 baseHype *= 2;
             }
@@ -82,17 +82,17 @@ namespace Assets.Scripts.Model
         {
             BigNum decay = model.ActivePlayers * 0.02f / 30f;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddWeeklyRewards))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AddWeeklyRewards))
             {
                 decay /= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddDailyRewards))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AddDailyRewards))
             {
                 decay /= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddConstantRewards))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AddConstantRewards))
             {
                 decay = 0;
             }
@@ -102,20 +102,20 @@ namespace Assets.Scripts.Model
 
         public BigNum PercentOfPlayersWhoMonetize()
         {
-            if (!model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnableMicrotransactions))
+            if (!model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.EnableMicrotransactions))
             {
                 return 0;
             }
 
             BigNum percent = 0.01f;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddGoldBoxes))       { percent *= 2; }
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddSeasonalBoxes))   { percent *= 2; }
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddLuteBoxes))       { percent *= 2; }
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddSkinnerBoxes))    { percent *= 2; }
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.BuffsInBoxes))       { percent *= 2; }
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.CoreGameInBoxes))    { percent *= 2; }
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.WholeGameInBoxes))   { percent = 1; }
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AddGoldBoxes))       { percent *= 2; }
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AddSeasonalBoxes))   { percent *= 2; }
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AddLuteBoxes))       { percent *= 2; }
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AddSkinnerBoxes))    { percent *= 2; }
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.BuffsInBoxes))       { percent *= 2; }
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.CoreGameInBoxes))    { percent *= 2; }
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.WholeGameInBoxes))   { percent = 1; }
 
             return percent;
         }
@@ -129,22 +129,22 @@ namespace Assets.Scripts.Model
         {
             BigNum amount = 1.99f;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddGems))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AddGems))
             {
                 amount *= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddGoldCoins))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AddGoldCoins))
             {
                 amount *= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddCrystals))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AddCrystals))
             {
                 amount *= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AddCards))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AddCards))
             {
                 amount *= 2;
             }
@@ -161,7 +161,7 @@ namespace Assets.Scripts.Model
         {
             float pow = 1.25f;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EliminateUnderperformingFranchises))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.EliminateUnderperformingFranchises))
             {
                 pow = 1.1f;
             }
@@ -173,27 +173,27 @@ namespace Assets.Scripts.Model
         {
             BigNum amount = 2;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ChargeMore))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.ChargeMore))
             {
                 amount *= 1.25f;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ChargeEvenMore))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.ChargeEvenMore))
             {
                 amount *= 1.25f;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SellLimitedEditions))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.SellLimitedEditions))
             {
                 amount *= 1.25f;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SellCollectorEditions))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.SellCollectorEditions))
             {
                 amount *= 1.25f;
             }
 
-            if (!model.UpgradeManager.IsActive(Upgrade.EUpgradeType.StartDistributionService))
+            if (!model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.StartDistributionService))
             {
                 amount *= 0.7f;
             }
@@ -261,7 +261,7 @@ namespace Assets.Scripts.Model
             }
 
             //Microtransactions
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnableMicrotransactions))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.EnableMicrotransactions))
             {
                 model.Add(Units.Microtransaction, MicrotransactionsPerTick());
                 model.Add(Units.Money, MicrotransactionRevenuePerTick());

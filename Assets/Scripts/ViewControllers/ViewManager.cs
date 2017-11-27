@@ -4,6 +4,8 @@ namespace Assets.Scripts
 {
     public class ViewManager : MonoBehaviour
     {
+        public GameObject OptionsUI;
+
         public GameObject LifeView;
         public GameObject UpgradeView;
 
@@ -13,12 +15,13 @@ namespace Assets.Scripts
         public GameObject StudioView;
         public GameObject PublicView;
 
+        public GameObject EndGameView;
+
         public void Update()
         {
             //TODO: it's lazy to do this in Update
-            LifeView.SetActive(true);
-            UpgradeView.SetActive(true);
-            
+            LifeView.SetActive(LootBoxModel.Instance.Life.IsActive);
+            UpgradeView.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive);
             JobView.SetActive(LootBoxModel.Instance.Job.IsActive);
             MacGuffinQuestView.SetActive(LootBoxModel.Instance.MacGuffinQuest.IsActive);
             InfluencerView.SetActive(LootBoxModel.Instance.Influencer.IsActive);

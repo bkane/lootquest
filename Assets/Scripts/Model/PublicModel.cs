@@ -63,37 +63,37 @@ namespace Assets.Scripts.Model
 
             amount += model.LootBoxTypes / 100000f;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ReduceLootBoxOdds))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.ReduceLootBoxOdds))
             {
                 amount *= 1.2f;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ReduceLootBoxOddsToZero))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.ReduceLootBoxOddsToZero))
             {
                 amount *= 1.2f;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EnforceWatchingAds))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.EnforceWatchingAds))
             {
                 amount *= 2f;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.EmitInaudibleSound))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.EmitInaudibleSound))
             {
                 amount *= 2f;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SellBuffsToOdds))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.SellBuffsToOdds))
             {
                 amount *= 2f;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.OptimizeRoAS))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.OptimizeRoAS))
             {
                 amount *= 2f;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TargetedPersonalAds))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.TargetedPersonalAds))
             {
                 amount *= 2f;
             }
@@ -137,17 +137,17 @@ namespace Assets.Scripts.Model
         {
             float percent = 0.5f;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.Layoffs))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.Layoffs))
             {
                 percent /= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ContractEmployees))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.ContractEmployees))
             {
                 percent /= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ComputersMaintainGame))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.ComputersMaintainGame))
             {
                 percent = 0;
             }
@@ -160,22 +160,22 @@ namespace Assets.Scripts.Model
             BigNum amount = 0;
             BigNum fineFraction = 0.45f;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ReduceFines))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.ReduceFines))
             {
                 fineFraction /= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.DiscloseOdds))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.DiscloseOdds))
             {
                 fineFraction /= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.ReduceLootBoxOddsToZero))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.ReduceLootBoxOddsToZero))
             {
                 amount = GetBudget() * fineFraction;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.RollBackBan))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.RollBackBan))
             {
                 amount = 0;
             }
@@ -203,42 +203,42 @@ namespace Assets.Scripts.Model
             //total should be 500M before multi
             BigNum amount = 30e6f;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.PurchaseBelovedStudio))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.PurchaseBelovedStudio))
             {
                 amount *= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TargetMinnows))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.TargetMinnows))
             {
                 amount *= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.UseDataBreach))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.UseDataBreach))
             {
                 amount *= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.CauseDataBreach))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.CauseDataBreach))
             {
                 amount *= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TargetChildren))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.TargetChildren))
             {
                 amount *= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.DetermineDesires))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.DetermineDesires))
             {
                 amount *= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.IsolateMicrotransactionGene))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.IsolateMicrotransactionGene))
             {
                 amount *= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.LaunchMeshNetwork))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.LaunchMeshNetwork))
             {
                 amount = 7.6e9f;
             }

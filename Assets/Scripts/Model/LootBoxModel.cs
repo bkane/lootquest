@@ -119,6 +119,7 @@ public class LootBoxModel
         }
 
         UpgradeManager = new UpgradeManager(this);
+        UpgradeManager.IsActive = true;
         Time = new TimeModel(this);
 
         Life = new LifeModel(this);
@@ -145,6 +146,7 @@ public class LootBoxModel
         if (UnlockAllViews)
         {
             Life.IsActive = true;
+            UpgradeManager.IsActive = true;
             Job.IsActive = true;
             MacGuffinQuest.IsActive = true;
             Influencer.IsActive = true;
@@ -286,7 +288,7 @@ public class LootBoxModel
         UpgradeManager.Tick();
 
         if (!allMonetizedSequenceStarted &&
-            UpgradeManager.IsActive(Upgrade.EUpgradeType.LaunchMeshNetwork) && 
+            UpgradeManager.IsPurchased(Upgrade.EUpgradeType.LaunchMeshNetwork) &&
             (ActivePlayers == Resources[Units.ActivePlayer].MaxValue))
         {
             allMonetizedSequenceStarted = true;

@@ -32,8 +32,8 @@ namespace Assets.Scripts.ViewControllers
             AdRevenuePerSecondText.text = string.Format("Ad Rev: ${0}/s", (BigNum)(LootBoxModel.Instance.Influencer.AdRevenuePerTick() * 30));
             FollowersPerSecondText.text = string.Format("Channel Growth: {0}/s", (BigNum)(LootBoxModel.Instance.Influencer.FollowersPerTick() * 30));
 
-            FollowersPerSecondText.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive(Scripts.Model.Upgrade.EUpgradeType.ChannelGrowthAnalytics));
-            AdRevenuePerSecondText.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive(Scripts.Model.Upgrade.EUpgradeType.GetPartnered));
+            FollowersPerSecondText.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsPurchased(Scripts.Model.Upgrade.EUpgradeType.ChannelGrowthAnalytics));
+            AdRevenuePerSecondText.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsPurchased(Scripts.Model.Upgrade.EUpgradeType.GetPartnered));
         }
     }
 }

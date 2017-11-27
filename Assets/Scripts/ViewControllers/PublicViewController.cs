@@ -90,7 +90,7 @@ namespace Assets.Scripts.ViewControllers
             CustomersText.text = string.Format("Customerbase: {0}", LootBoxModel.Instance.ActivePlayers);
             MaxCustomersText.text = string.Format("Potential Customers: {0}", LootBoxModel.Instance.Public.GetMaxCustomers());
             MicrotransactionRevenueText.text = string.Format("Loot Box Rev: ${0}/min", (BigNum)(LootBoxModel.Instance.Public.MicrotransactionRevenuePerTick() * 30 * 60));
-            MicrotransactionRevenuePerCustomerPerTickText.text = string.Format("Loot Box Spend Rate: ${0}/customer", (BigNum) (LootBoxModel.Instance.Public.MicrotransactionRevenuePerCustomerPerTick() * 30));
+            MicrotransactionRevenuePerCustomerPerTickText.text = string.Format("Per Customer: ${0}", (BigNum) (LootBoxModel.Instance.Public.MicrotransactionRevenuePerCustomerPerTick() * 30));
             PercentWhoMonetizeText.text = string.Format("Percent monetize: {0}%", LootBoxModel.Instance.Public.PercentWhoMonetize() * 100);
 
             //Budget
@@ -122,17 +122,17 @@ namespace Assets.Scripts.ViewControllers
             BioengineersText.text = string.Format("BioEngineers: {0}", LootBoxModel.Instance.Bioengineers);
             GenomeDataText.text = string.Format("Genome Data: {0}", LootBoxModel.Instance.GenomeData);
 
-            bool showLobby = LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.UnlockLobbying);
+            bool showLobby = LootBoxModel.Instance.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.UnlockLobbying);
             LobbyistLineItem.SetActive(showLobby);
             LobbyistsText.gameObject.SetActive(showLobby);
             FavorText.gameObject.SetActive(showLobby);
 
-            bool showCPU = LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.UnlockCPU);
+            bool showCPU = LootBoxModel.Instance.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.UnlockCPU);
             CPULineItem.SetActive(showCPU);
             CPUsText.gameObject.SetActive(showCPU);
             CyclesText.gameObject.SetActive(showCPU);
 
-            bool showBio = LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.UnlockBioEngineering);
+            bool showBio = LootBoxModel.Instance.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.UnlockBioEngineering);
             BioEngineerLineItem.SetActive(showBio);
             BioengineersText.gameObject.SetActive(showBio);
             GenomeDataText.gameObject.SetActive(showBio);

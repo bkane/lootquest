@@ -14,9 +14,13 @@ namespace Assets.Scripts.Model
         private int GrindProgressPerLootBox = 100;
         private int TicksPerSell = 10;
         private int TicksPerOpen = 10;
+
         public bool HideBotButton;
         public int NumPlays;
         public bool GrindStart;
+
+        public bool EndGameStart;
+        public bool EndGameFinished;
 
         public MacGuffinQuest(LootBoxModel model)
         {
@@ -54,6 +58,40 @@ namespace Assets.Scripts.Model
             }
         }
 
+        protected void OnPlayCompleteWithMacGuffin()
+        {
+            string[] messages = new string[]
+            {
+                "...",
+                "...",
+                "... ... ...",
+                "Eh, this is alright.",
+                "...",
+                "...",
+                "Not as good as the first <i>MacGuffin Quest</i>.",
+                "...",
+                "Annnnd...",
+                "Done.",
+            };
+
+            int index = NumPlays - 1;
+
+            if (index >= 0 && index < messages.Length)
+            {
+                Logger.Log(messages[index]);
+            }
+
+            if (index >= messages.Length - 1)
+            {
+                if (!EndGameFinished)
+                {
+                    EndGameFinished = true;
+                    Game.Instance.OnMacGuffinQuestFinished();
+                }
+            }
+        }
+
+
         public void OpenLootBoxClick()
         {
             OpenLootBox(ActionsPerClick());
@@ -68,24 +106,31 @@ namespace Assets.Scripts.Model
 
         public BigNum ActionsPerClick()
         {
-            BigNum amount = 1;
-
-            if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SecondMouse))
+            if (EndGameStart)
             {
-                amount += 1;
+                return 1;
             }
-
-            if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.TieFiveMiceTogether))
+            else
             {
-                amount *= 5;
-            }
+                BigNum amount = 1;
 
-            return amount;
+                if (Model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.SecondMouse))
+                {
+                    amount += 1;
+                }
+
+                if (Model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.TieFiveMiceTogether))
+                {
+                    amount *= 5;
+                }
+
+                return amount;
+            }
         }
 
         public void DoGrind(BigNum amount)
         {
-            if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.RemoveGameAnimations))
+            if (Model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.RemoveGameAnimations))
             {
                 amount *= 2;
             }
@@ -95,15 +140,20 @@ namespace Assets.Scripts.Model
             //TODO: this will cap at 30/s, but we should switch after that point anyway
             if (Model.ConsumeExactly(Units.GrindProgress, GrindProgressPerLootBox))
             {
-                if (GrindStart)
+                if (EndGameStart)
                 {
-                    Model.Add(Units.LootBox, 1);
-                    Model.Add(Units.GrindCompleted, 1);
+                    NumPlays++;
+                    OnPlayCompleteWithMacGuffin();
                 }
-                else
+                else if (!GrindStart)
                 {
                     NumPlays++;
                     OnPlayComplete();
+                }
+                else
+                {
+                    Model.Add(Units.LootBox, 1);
+                    Model.Add(Units.GrindCompleted, 1);
                 }
             }
         }
@@ -168,25 +218,35 @@ namespace Assets.Scripts.Model
             }
         }
 
+        public void DoEndGame()
+        {
+            EndGameStart = true;
+            NumPlays = 0;
+            Model.Resources[Units.GrindProgress].Amount = 0;
+        }
+
         public void Tick()
         {
             if (!IsActive) { return; }
 
-            if (Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder))
+            if (!EndGameStart)
             {
-                DoGrind(Model.NumBotAccounts);
-            }
+                if (Model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AutoGrinder))
+                {
+                    DoGrind(Model.NumBotAccounts);
+                }
 
-            if (Model.TickCount % TicksPerSell == 0 &&
-                Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoSellTrashItems))
-            {
-                SellTrash(Model.NumBotAccounts);
-            }
+                if (Model.TickCount % TicksPerSell == 0 &&
+                    Model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AutoSellTrashItems))
+                {
+                    SellTrash(Model.NumBotAccounts);
+                }
 
-            if (Model.TickCount % TicksPerOpen == 0 && 
-                Model.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoOpenBoxes))
-            {
-                OpenLootBox(Model.NumBotAccounts);
+                if (Model.TickCount % TicksPerOpen == 0 &&
+                    Model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AutoOpenBoxes))
+                {
+                    OpenLootBox(Model.NumBotAccounts);
+                }
             }
         }
     }

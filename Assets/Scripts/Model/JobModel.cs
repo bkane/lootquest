@@ -15,7 +15,7 @@
         {
             BigNum baseJobAmount = 10;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.WorkSmarter))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.WorkSmarter))
             {
                 baseJobAmount += 10;
             }
@@ -40,12 +40,12 @@
         {
             BigNum baseValue = 2;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.DressForSuccess))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.DressForSuccess))
             {
                 baseValue += 3;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.SecondJob))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.SecondJob))
             {
                 baseValue *= 2;
             }
@@ -57,12 +57,12 @@
         {
             BigNum amount = 4;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.FasterComputer))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.FasterComputer))
             {
                 amount /= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.WatercooledComputer))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.WatercooledComputer))
             {
                 amount /= 2;
             }
@@ -75,7 +75,7 @@
             if (!IsActive) { return; }
 
             if (model.TickCount % TicksPerJobAutomation() == 0 &&
-                model.UpgradeManager.IsActive(Upgrade.EUpgradeType.JobAutomationScript))
+                model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.JobAutomationScript))
             {
                 DoJob(5);
             }

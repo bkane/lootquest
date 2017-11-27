@@ -51,7 +51,10 @@ namespace Assets.Scripts
 
         public void OnAllEarthMonetized()
         {
-            StartCoroutine(OnAllEarthMonetizedRoutine());
+            if (LootBoxModel.Instance.UpgradeManager.UpgradeStates[Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode] == Upgrade.EState.Hidden)
+            {
+                StartCoroutine(OnAllEarthMonetizedRoutine());
+            }
         }
 
         protected IEnumerator OnAllEarthMonetizedRoutine()
@@ -79,6 +82,60 @@ namespace Assets.Scripts
             yield return new WaitForSeconds(delay);
 
             LootBoxModel.Instance.UpgradeManager.Unlock(Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode);
+        }
+
+        public void OnMacGuffinQuestSourcePurchase()
+        {
+            LootBoxModel.Instance.Life.IsActive = false;
+            LootBoxModel.Instance.Job.IsActive = false;
+            LootBoxModel.Instance.Influencer.IsActive = false;
+            LootBoxModel.Instance.Studio.IsActive = false;
+            LootBoxModel.Instance.Public.IsActive = false;
+            LootBoxModel.Instance.UpgradeManager.IsActive = false;
+
+            ViewManager.OptionsUI.SetActive(false);
+
+            LootBoxModel.Instance.MacGuffinQuest.DoEndGame();
+        }
+
+        public void OnMacGuffinQuestFinished()
+        {
+            StartCoroutine(OnGameCompleteRoutine());
+        }
+
+        protected IEnumerator OnGameCompleteRoutine()
+        {
+            float delay = 5f;
+
+            LootBoxModel.Instance.MacGuffinQuest.IsActive = false;
+
+            yield return new WaitForSeconds(delay);
+
+            Logger.Log("I'd give it a 7/10.");
+            yield return new WaitForSeconds(delay);
+
+            Logger.Log("...");
+            yield return new WaitForSeconds(delay);
+
+            Logger.Log("I wonder when the next one comes out.");
+            yield return new WaitForSeconds(delay);
+
+            Logger.Log("Oh right, the entire industry collapsed.");
+            yield return new WaitForSeconds(delay);
+
+            Logger.Log("....");
+            yield return new WaitForSeconds(delay);
+
+            Logger.Log("Maybe I should go outside.");
+            yield return new WaitForSeconds(delay * 2);
+
+            Logger.Instance.gameObject.SetActive(false);
+            ViewManager.EndGameView.SetActive(true);
+        }
+
+        public void EndGame()
+        {
+            Application.Quit();
         }
     }
 }

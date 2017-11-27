@@ -7,6 +7,7 @@ namespace Assets.Scripts.ViewControllers
 {
     public class MacGuffinQuestViewController : MonoBehaviour
     {
+
         //Labels
         public Slider GrindProgress;
         public TextMeshProUGUI GrindButtonText;
@@ -25,6 +26,7 @@ namespace Assets.Scripts.ViewControllers
         public Button BuyLootBoxButton;
         public Button OpenLootBoxButton;
         public Button BuyBotAccountButton;
+        public TextMeshProUGUI BotCostText;
 
 
         private void Awake()
@@ -45,24 +47,26 @@ namespace Assets.Scripts.ViewControllers
             BotAccountsText.text = string.Format("{0}", LootBoxModel.Instance.NumBotAccounts);
             //MacGuffinsUnlockedText.text = string.Format("MacGuffins Unlocked: {0}", LootBoxModel.Instance.MacGuffinUnlocked);
 
-            BuyBotAccountButton.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder) && !LootBoxModel.Instance.MacGuffinQuest.HideBotButton);
-            BotAccountsText.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsActive(Upgrade.EUpgradeType.AutoGrinder));
-            BuyBotAccountButton.GetComponentInChildren<TextMeshProUGUI>().text = string.Format("Buy Bot Account (${0})", LootBoxModel.Instance.MacGuffinQuest.CostPerBot());
+            BuyBotAccountButton.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AutoGrinder) && !LootBoxModel.Instance.MacGuffinQuest.HideBotButton);
+            BotAccountsText.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.AutoGrinder));
+            BotCostText.text = string.Format("(${0})", LootBoxModel.Instance.MacGuffinQuest.CostPerBot());
 
-            bool showLoot = LootBoxModel.Instance.TotalLootBoxes > 0;
+            bool isEndGame = LootBoxModel.Instance.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode);
+
+            bool showLoot = LootBoxModel.Instance.TotalLootBoxes > 0 && !isEndGame;
             LootBoxPanel.SetActive(showLoot);
             
-            bool showTrash = LootBoxModel.Instance.LootBoxesOpened > 0;
+            bool showTrash = LootBoxModel.Instance.LootBoxesOpened > 0 && !isEndGame;
             SellItemsPanel.SetActive(showTrash);
 
-            bool showBots = LootBoxModel.Instance.NumBotAccounts > 0;
+            bool showBots = LootBoxModel.Instance.NumBotAccounts > 0 && !isEndGame;
             BotsPanel.SetActive(showBots);
 
             int actions = (int) LootBoxModel.Instance.MacGuffinQuest.ActionsPerClick();
             string actionsString = actions == 1 ? string.Empty : string.Format("(x{0})", actions);
 
             //TODO: have an indicator of actions count
-            GrindButtonText.text = string.Format("{0}", LootBoxModel.Instance.MacGuffinQuest.GrindStart ? "Grind" : "Play");
+            GrindButtonText.text = string.Format("{0}", (LootBoxModel.Instance.MacGuffinQuest.GrindStart && !isEndGame) ? "Grind" : "Play");
             //OpenLootBoxButton.GetComponentInChildren<TextMeshProUGUI>().text = string.Format("Open Loot Box {0}", actionsString);
             //SellTrashItemButton.GetComponentInChildren<TextMeshProUGUI>().text = string.Format("Sell Trash Items {0}", actionsString);
         }

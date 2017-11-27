@@ -15,12 +15,12 @@
         {
             BigNum amount = 5;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.BuyVideoEditingSoftware))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.BuyVideoEditingSoftware))
             {
                 amount *= 2;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.MakeVideoIntro))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.MakeVideoIntro))
             {
                 amount *= 2;
             }
@@ -51,12 +51,12 @@
         {
             BigNum moneyPerFollowerPerTick = 0.00001f;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.DoSponsoredVideos))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.DoSponsoredVideos))
             {
                 moneyPerFollowerPerTick *= 1.5f;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.CompletelySellOut))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.CompletelySellOut))
             {
                 moneyPerFollowerPerTick *= 2f;
             }
@@ -68,12 +68,12 @@
         {
             BigNum amount = 10 / 30f;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.StartStreaming))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.StartStreaming))
             {
                 amount *= 1.3f;
             }
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.OptimizeContentForChannelGrowth))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.OptimizeContentForChannelGrowth))
             {
                 amount *= 1.5f;
             }
@@ -85,7 +85,7 @@
         {
             int ticks = 20;
 
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.HireProVideoEditor))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.HireProVideoEditor))
             {
                 ticks /= 4;
             }
@@ -98,7 +98,7 @@
             if (!IsActive) { return; }
 
             //Ad rev
-            if (model.UpgradeManager.IsActive(Upgrade.EUpgradeType.GetPartnered))
+            if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.GetPartnered))
             {
                 model.Add(Units.Money, AdRevenuePerTick());
             }
@@ -108,7 +108,7 @@
 
             //Auto-video production
             if (model.TickCount % TicksPerVideoEditor() == 0 &&
-                model.UpgradeManager.IsActive(Upgrade.EUpgradeType.HireVideoEditor))
+                model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.HireVideoEditor))
             {
                 DoMakeVideo();
             }
