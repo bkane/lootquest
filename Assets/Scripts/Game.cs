@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Model;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -7,6 +8,10 @@ namespace Assets.Scripts
     public class Game : MonoBehaviour
     {
         public static Game Instance;
+
+#if DEBUG
+        public bool UnlockAll;
+#endif
 
         public ViewManager ViewManager;
         public PlayerSettings Settings;
@@ -40,6 +45,16 @@ namespace Assets.Scripts
             }
 
             StartCoroutine(AutoSaveRoutine());
+
+#if DEBUG
+            if (UnlockAll)
+            {
+                foreach(var kvp in LootBoxModel.Instance.UpgradeManager.Upgrades)
+                {
+                    LootBoxModel.Instance.UpgradeManager.Unlock(kvp.Key);
+                }
+            }
+#endif
         }
 
         protected IEnumerator AutoSaveRoutine()

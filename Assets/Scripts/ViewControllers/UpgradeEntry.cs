@@ -52,7 +52,12 @@ namespace Assets.Scripts.ViewControllers
 
         protected void RefreshState()
         {
-            Button.interactable = LootBoxModel.Instance.UpgradeManager.CanAfford(upgrade.Type);
+            bool canAfford = LootBoxModel.Instance.UpgradeManager.CanAfford(upgrade.Type);
+
+            if (Button.interactable != canAfford)
+            {
+                Button.interactable = canAfford;
+            }
         }
 
         private void FixedUpdate()
