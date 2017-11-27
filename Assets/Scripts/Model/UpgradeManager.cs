@@ -29,8 +29,9 @@ namespace Assets.Scripts.Model
             Upgrades.Add(Upgrade.EUpgradeType.LearnToCode, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.LearnToCode,
-                Name = "Learn to code",
+                Name = "Learn to Code",
                 Description = "Looks like computers might be sticking around for a while. I should learn to talk to them.",
+                CommentOnBuy = "Now I get all those binary jokes!",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 40)
@@ -64,8 +65,9 @@ namespace Assets.Scripts.Model
             Upgrades.Add(Upgrade.EUpgradeType.WorkSmarter, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.WorkSmarter,
-                Name = "Buy a book on life hacks",
+                Name = "Buy a Book on Life Hacks",
                 Description = "Work smarter not harder! Get more work done with every click.",
+                CommentOnBuy = "I can save time by eating all my meals in the shower. Nice!",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 16)
@@ -81,6 +83,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.DressForSuccess,
                 Name = "Dress for Success",
                 Description = "Dress for the job you want, and then get that job. Promotion means more money!",
+                CommentOnBuy = "Jogging pants might be holding me back professionally.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 25)
@@ -96,6 +99,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.JobAutomationScript,
                 Name = "Write Script to Automate Job",
                 Description = "It's going to happen anyway. Might as well do it myself while the paycheck still goes to me.",
+                CommentOnBuy = "while(true) { doJob(); } //This was way easier than I thought",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 40)
@@ -106,8 +110,9 @@ namespace Assets.Scripts.Model
             Upgrades.Add(Upgrade.EUpgradeType.SecondJob, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.SecondJob,
-                Name = "Get a second job",
+                Name = "Get a Second Job",
                 Description = "I work from home anyway. Who's going to notice?",
+                CommentOnBuy = "I'll have to put my cat's name down as a reference and hope they don't check.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 250)
@@ -122,7 +127,7 @@ namespace Assets.Scripts.Model
             Upgrades.Add(Upgrade.EUpgradeType.FasterComputer, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.FasterComputer,
-                Name = "Buy a better computer",
+                Name = "Buy a Better Computer",
                 Description = "Invest in better hardware since it's the one doing all the work anyway.",
                 CommentOnBuy = "Gotta have the fastest rig for these spreadsheets!",
                 Costs = new List<Resource>()
@@ -135,8 +140,9 @@ namespace Assets.Scripts.Model
             Upgrades.Add(Upgrade.EUpgradeType.WatercooledComputer, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.WatercooledComputer,
-                Name = "Get Water-cooling and overclock your rig",
+                Name = "Get Liquid-cooling and Overclock your Rig",
                 Description = "Hardly seems worth it for the nominal increase in speed but who am I to judge?",
+                CommentOnBuy = "I can never look at documents at less than 4K 120Hz ever again.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 500)
@@ -182,6 +188,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.SecondMouse,
                 Name = "Become Ambidextrous",
                 Description = "If I buy another mouse and use both hands, I can grind twice as fast! I mean, have twice as much fun.",
+                CommentOnBuy = "If I can just get one of those drink hat things then I'll be set for life.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 50)
@@ -197,6 +204,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.TieFiveMiceTogether,
                 Name = "Tape Five Mice Together",
                 Description = "I read about how, with a few minor adjustments, I can turn a regular mouse into five mice!",
+                CommentOnBuy = "Wait, or is it five mice into one mice? And I already had two, so it's really ten.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 400)
@@ -212,7 +220,8 @@ namespace Assets.Scripts.Model
             {
                 Type = Upgrade.EUpgradeType.AutoGrinder,
                 Name = "Write Auto-Grind Script",
-                Description = "Use your newfound scripting talents to have your computer play MacGuffin Quest for you! Automatic fun!",
+                Description = "Use your newfound scripting talents to have your computer play <i>MacGuffin Quest 2</i> for you! Automatic fun!",
+                CommentOnBuy = "I'll come back and play just as soon as the script gets the MacGuffin unlock in one of these loot boxes. Shouldn't take long.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 1000)
@@ -229,6 +238,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.AutoSellTrashItems,
                 Name = "Write Auto-Auction Script",
                 Description = "Selling items on the auction house feels like work and 'round here? We automate work.",
+                CommentOnBuy = "It's just bots selling to other bots. Humans have no place here.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 1500)
@@ -245,7 +255,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.AutoOpenBoxes,
                 Name = "Write Auto-Open Loot Boxes Script",
                 Description = "Loot boxes can be openly more efficiently by machine.",
-                CommentOnBuy = "It pains me to automate this task, but I'll come back to <i>MacGuffin Quest 2</i> the instant I unlock MacGuffin.",
+                CommentOnBuy = "It pains me to automate this since opening loot boxes is <i>so much fun</i>, but I'll come back to <i>MacGuffin Quest 2</i> the instant MacGuffin is unlocked.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 5000)
@@ -256,8 +266,9 @@ namespace Assets.Scripts.Model
             Upgrades.Add(Upgrade.EUpgradeType.RemoveGameAnimations, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.RemoveGameAnimations,
-                Name = "Hack MacGuffin Quest and remove all animations",
+                Name = "Hack <i>MacGuffin Quest 2</i> and Remove All Animations",
                 Description = "Use your newfound computer talents to remove those pesky animations slowing things down. Improves grinding efficiency.",
+                CommentOnBuy = "Sorry artists but sacrifices must be made. For loot boxes.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 2000)
@@ -274,7 +285,8 @@ namespace Assets.Scripts.Model
             {
                 Type = Upgrade.EUpgradeType.UnlockInfluencerCareer,
                 Name = "Buy a Capture Card",
-                Description = "Hey I bet people would watch me opening all these loot boxes.",
+                Description = "Hey, I bet people would watch me opening all these loot boxes.",
+                CommentOnBuy = "What's up folks! Welcome to my loot box unboxing channel. Hit that subscribe button! DAE like loot boxes? Leave a comment and let me know!",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 2000)
@@ -306,7 +318,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.BuyVideoEditingSoftware,
                 Name = "Buy Video Editing Software",
                 Description = "The software that came free with my cereal is lacking a few features. Reduce the work needed to produce videos.",
-                CommentOnBuy = "Whoa! This video editing program supports using a mouse! This'll make things a lot easier.",
+                CommentOnBuy = "Whoa! This video editing program supports more than 256 colors! This'll make things a lot easier.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 3500)
@@ -320,9 +332,9 @@ namespace Assets.Scripts.Model
             Upgrades.Add(Upgrade.EUpgradeType.MakeVideoIntro, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.MakeVideoIntro,
-                Name = "Make re-useable video intros",
+                Name = "Make Re-useable Video Intros",
                 Description = "More re-usable footage means less effort to make videos.",
-                CommentOnBuy = "Now I don't have to say \"What's up guys!\" all the time.",
+                CommentOnBuy = "Now I don't have to say \"What's up folks!\" all the time.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 5000)
@@ -339,6 +351,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.HireVideoEditor,
                 Name = "Hire Video Editor",
                 Description = "Hire an editor to convert your raw footage into compelling content. Your editor assures you they're worth every penny, given what they have to work with.",
+                CommentOnBuy = "I can't believe nobody wanted to do the job in exchange for exposure. They all wanted money!",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 10000)
@@ -353,7 +366,7 @@ namespace Assets.Scripts.Model
             Upgrades.Add(Upgrade.EUpgradeType.StartStreaming, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.StartStreaming,
-                Name = "Start live-streaming",
+                Name = "Start Live-Streaming",
                 Description = "Live-stream the unboxings before you turn them into videos. More opportunities to gain followers!",
                 CommentOnBuy = "I wonder what this will do to my sleep schedule...",
                 Costs = new List<Resource>()
@@ -406,6 +419,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.ChannelGrowthAnalytics,
                 Name = "Track Channel Growth",
                 Description = "Do some analysis and figure out where all these followers are coming from.",
+                CommentOnBuy = "Without data, I'm just fumbling around in the dark.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 1000)
@@ -422,7 +436,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.OptimizeContentForChannelGrowth,
                 Name = "Optimize Video Content for Channel Growth",
                 Description = "Perform exhaustive research and experimentation to determine the best ways to drive engagement to your channel.",
-                CommentOnBuy = "Smash that Like button!",
+                CommentOnBuy = "Huh, turns out that saying, \"Smash that Like button!\" really <i>is</i> the most effective thing to do.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 4000)
@@ -459,8 +473,9 @@ namespace Assets.Scripts.Model
             Upgrades.Add(Upgrade.EUpgradeType.StartAStudio, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.StartAStudio,
-                Name = "Start a studio",
+                Name = "Start a Game Dev Studio",
                 Description = "You know, I could probably do this myself.",
+                CommentOnBuy = "Now that I'm in charge, I vow never to go down the dark road of microtransactions. Unless I really need to.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 250000)
@@ -489,7 +504,7 @@ namespace Assets.Scripts.Model
             {
                 Type = Upgrade.EUpgradeType.EnableMicrotransactions,
                 Name = "Add Microtransactions",
-                Description = "Just for cosmetic items.",
+                Description = "Just for cosmetic items of course.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 25000),
@@ -502,7 +517,7 @@ namespace Assets.Scripts.Model
             Upgrades.Add(Upgrade.EUpgradeType.StartDistributionService, new Upgrade()
             {
                 Type = Upgrade.EUpgradeType.StartDistributionService,
-                Name = "Start our own Digital Distribution Services",
+                Name = "Start our own Digital Distribution Service",
                 Description = "Cut out the middle man and the middle man's cut is ours! It'll need a catchy name, like Game Shovel, only not so stupid.",
                 CommentOnBuy = "Happy Game Shovel launch day everyone!",
                 Costs = new List<Resource>()
@@ -673,7 +688,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.AddGems,
                 Name = "Add Premium Currency: Gems",
                 Description = "Players will just <i>love</i> buying these shiny gems! Increases microtransaction spend.",
-                CommentOnBuy = "Not sure gems really fit in our games thematically, but I suppose it's an abstract concept.",
+                CommentOnBuy = "Gems don't really fit in our games thematically, but I suppose it's an abstract concept.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 50000),
@@ -778,7 +793,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.AddSkinnerBoxes,
                 Name = "Add Skinner Boxes",
                 Description = "No sense pretending anymore.",
-                CommentOnBuy = "They're surprisingly effective, even when players know what they are.",
+                CommentOnBuy = "Skinner Boxes are surprisingly effective, even when players know what they are.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 50e6f),
@@ -808,6 +823,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.CoreGameInBoxes,
                 Name = "Put Core Game Elements in Loot Boxes",
                 Description = "Games these days are like slot machines. Nice to look at, but they don't do much until you pull the arm.",
+                CommentOnBuy = "It's like a normal progression system in a game, but the reward for player effort is entirely random! And thus more fun.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 10e6f),
@@ -842,6 +858,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.ExecuteIPO,
                 Name = "Execute IPO",
                 Description = "Time to take this to the next level.",
+                CommentOnBuy = "We need to focus on our bottom line and allocate resources to effectively stimulate company growth and industry dominance.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 10e9f)
@@ -901,6 +918,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.TargetMinnows,
                 Name = "Target the Minnows",
                 Description = "Once all the whales have been hunted, it only makes sense to go after the smaller fish.",
+                CommentOnBuy = "Our tools are so refined and powerful at this point that the hunting metaphor is misleading. 'Obliterating from orbit' is closer to reality.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 500e12f)
@@ -917,6 +935,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.TargetChildren,
                 Name = "Incentivize Diminished-Age Purchasers",
                 Description = "Target children with microtransactions. They play a lot and don't know the value of money yet.",
+                CommentOnBuy = "Don't feel bad. It's not their money they're spending.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 1e15f)
@@ -982,6 +1001,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.UnlockCPU,
                 Name = "Start up Machine Learning Division",
                 Description = "Nobody seems quite sure what machine learning can be used for, but if it can make us more money then I want it.",
+                CommentOnBuy = "Customers are ultimately just buckets of statistics. Computers are really good at dealing with numbers.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 10e15f)
@@ -998,6 +1018,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.ComputersMaintainGame,
                 Name = "Teach Machines to Maintain the Game",
                 Description = "Remove the remaining operating costs by putting machines in charge of running the servers.",
+                CommentOnBuy = "All creative work has long since faded away or been taken over by machines. This day was inevitable.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 60e15f),
@@ -1025,6 +1046,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.TargetedPersonalAds,
                 Name = "Automatic Targeted Ad Personalization",
                 Description = "By running millions of variations of slogans and creatives automatically, we can monetize users much more effectively.",
+                CommentOnBuy = "The machines know people better than the people know themselves. And the machines can manipulate things they know.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 500e15f),
@@ -1080,6 +1102,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.ReduceFines,
                 Name = "Lobby for Reduced Fines",
                 Description = "We're just a struggling company trying to stay afloat in a very competitive industry.",
+                CommentOnBuy = "An industry that both gets bigger and has fewer competitors every day.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 10e15f),
@@ -1097,6 +1120,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.DiscloseOdds,
                 Name = "Disclose Loot Box Odds",
                 Description = "Submit to regulation and disclose loot box odds to get a repreive from some of the bigger fines.",
+                CommentOnBuy = "Thankfully humans have a very poor intuitive understanding of statistics, so knowing the odds changes nothing.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 1e18f),
@@ -1114,6 +1138,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.SellBuffsToOdds,
                 Name = "Sell Buffs for Loot Box Odds",
                 Description = "Now the customers know the odds, we can exploit their desire to see bigger numbers.",
+                CommentOnBuy = "Gambler's Fallacy is going to win Employee of the Month.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 2.5e18f),
@@ -1149,6 +1174,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.UnlockBioEngineering,
                 Name = "Start up Bio-Engineering Division",
                 Description = "There are still some holdouts around the world. We need to figure out how to bring them in.",
+                CommentOnBuy = "A video game company starting a bio-engineering division should be cause for concern. Thankfully nobody is paying attention.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 200e18f),
@@ -1166,6 +1192,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.DetermineDesires,
                 Name = "Determine Individual's Deepest Desires",
                 Description = "Manipulate customers by understanding them at a fundamental level.",
+                CommentOnBuy = "Same thing we've been doing all along. Just a little more direct.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 200e18f),
@@ -1196,7 +1223,8 @@ namespace Assets.Scripts.Model
             {
                 Type = Upgrade.EUpgradeType.IsolateMicrotransactionGene,
                 Name = "Isolate Microtransaction Gene",
-                Description = "Our engineers feel they can isolate what makes humans buy loot boxes at a genetic level. This could prove useful.",
+                Description = "Our engineers feel they can isolate what makes humans buy loot boxes at a genetic level.",
+                CommentOnBuy = "This could prove useful.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 5e21f),
