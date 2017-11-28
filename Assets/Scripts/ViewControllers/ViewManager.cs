@@ -5,6 +5,8 @@ namespace Assets.Scripts
 {
     public class ViewManager : MonoBehaviour
     {
+        public GameObject TitleScreen;
+
         public GameObject OptionsUI;
         public GameObject OptionsPanel;
         public GameObject ConfirmRestartPopup;

@@ -22,11 +22,15 @@ public class OptionsUI : MonoBehaviour
         if (MasterAudio.MixerMuted)
         {
             MasterAudio.MixerMuted = false;
+            MasterAudio.PlaylistsMuted = false;
+            MasterAudio.OnlyPlaylistController.UnpausePlaylist();
             MuteButton.GetComponent<Image>().sprite = NotMutedIcon;
         }
         else
         {
             MasterAudio.MixerMuted = true;
+            MasterAudio.PlaylistsMuted = true;
+            MasterAudio.OnlyPlaylistController.PausePlaylist();
             MuteButton.GetComponent<Image>().sprite = MutedIcon;
         }
     }

@@ -2,6 +2,7 @@
 using Assets.Scripts.ViewControllers;
 using System.Collections;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -41,9 +42,9 @@ namespace Assets.Scripts
 
             bool foundSave = Util.LoadIntoObject(Util.SAVE_FILENAME, LootBoxModel.Instance);
 
-            if (LootBoxModel.Instance.UpgradeManager.UpgradeStates[Upgrade.EUpgradeType.GetJob] == Upgrade.EState.Hidden)
+            if (foundSave)
             {
-                StartCoroutine(NewGameRoutine());
+                ViewManager.TitleScreen.GetComponent<TitleScreen>().StartGame.GetComponentInChildren<TextMeshProUGUI>().text = "Resume Game";
             }
 
             StartCoroutine(AutoSaveRoutine());
@@ -116,7 +117,10 @@ namespace Assets.Scripts
 
         protected void FixedUpdate()
         {
-            LootBoxModel.Instance.Tick();
+            if (!ViewManager.TitleScreen.activeSelf)
+            {
+                LootBoxModel.Instance.Tick();
+            }
         }
 
         public void OpenOptionsPanel()
@@ -158,6 +162,21 @@ namespace Assets.Scripts
 #endif
         }
 
+        public void StartGameClicked()
+        {
+            ViewManager.TitleScreen.SetActive(false);
+
+            if (LootBoxModel.Instance.UpgradeManager.UpgradeStates[Upgrade.EUpgradeType.GetJob] == Upgrade.EState.Hidden)
+            {
+                StartCoroutine(NewGameRoutine());
+            }
+        }
+
+        public void QuitGameClicked()
+        {
+            Quit();
+        }
+
         public void ResetProgress()
         {
             Debug.Log("ResetProgress");
@@ -166,6 +185,8 @@ namespace Assets.Scripts
             new LootBoxModel();
             Logger.Instance.Clear();
             ViewManager.UpgradeView.GetComponent<UpgradeViewController>().Reset();
+            ViewManager.TitleScreen.SetActive(true);
+            ViewManager.TitleScreen.GetComponent<TitleScreen>().StartGame.GetComponentInChildren<TextMeshProUGUI>().text = "Start Game";
             StartCoroutine(NewGameRoutine());
         }
 
