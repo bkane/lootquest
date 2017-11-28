@@ -28396,7 +28396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab01a06ac2c20645b77c535dfbf3f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnlockAll: 1
+  UnlockAll: 0
   SteamManager: {fileID: 1770953254}
   ViewManager: {fileID: 1563341662}
 --- !u!4 &1912663635
