@@ -1,0 +1,17 @@
+"DepotBuildConfig"
+{
+  "DepotID" "758501"
+
+	// include all files recursively
+  "FileMapping"
+  {
+    "LocalPath" "*"
+    "DepotPath" "."
+    "recursive" "1"
+  }
+
+	// but exclude all symbol + log files  
+  "FileExclusion" "*.pdb"
+  "FileExclusion" "*/output_log.txt"
+  "FileExclusion" "logs/*"
+}
