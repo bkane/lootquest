@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
@@ -18,6 +19,14 @@ namespace Assets.Scripts
         public GameObject PublicView;
 
         public GameObject EndGameView;
+
+        private void Start()
+        {
+            foreach(var button in GameObject.FindObjectsOfType<Button>())
+            {
+                button.onClick.AddListener(() => { DarkTonic.MasterAudio.MasterAudio.PlaySound("click"); });
+            }
+        }
 
         public void Update()
         {

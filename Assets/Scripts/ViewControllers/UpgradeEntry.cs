@@ -47,6 +47,7 @@ namespace Assets.Scripts.ViewControllers
             {
                 OnClick();
             }
+            DarkTonic.MasterAudio.MasterAudio.PlaySound("click");
             LootBoxModel.Instance.Add(Units.Click, 1);
         }
 

@@ -1,25 +1,34 @@
 ﻿using Assets.Scripts;
+using DarkTonic.MasterAudio;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class OptionsUI : MonoBehaviour
 {
     public Button OpenOptionsPanel;
-    public Button SaveButton;
-    public Button LoadButton;
+    public Button MuteButton;
 
-    public Button Music_PlayButton;
-    public Button Music_NextButton;
+    public Sprite MutedIcon;
+    public Sprite NotMutedIcon;
 
     void Awake()
     {
         OpenOptionsPanel.onClick.AddListener(Game.Instance.OpenOptionsPanel);
+        MuteButton.onClick.AddListener(ToggleAudio);
+    }
 
-        //SaveButton.onClick.AddListener(Util.Save);
-        //LoadButton.onClick.AddListener(Util.Load);
-
-        //Music_PlayButton.onClick.AddListener(PlayMusic);
-        //Music_NextButton.onClick.AddListener(Next);
+    protected void ToggleAudio()
+    {
+        if (MasterAudio.MixerMuted)
+        {
+            MasterAudio.MixerMuted = false;
+            MuteButton.GetComponent<Image>().sprite = NotMutedIcon;
+        }
+        else
+        {
+            MasterAudio.MixerMuted = true;
+            MuteButton.GetComponent<Image>().sprite = MutedIcon;
+        }
     }
 
     protected void PlayMusic()
