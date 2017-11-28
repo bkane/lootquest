@@ -5009,6 +5009,234 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 335646505}
+--- !u!1 &348153649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 348153653}
+  - component: {fileID: 348153652}
+  - component: {fileID: 348153651}
+  - component: {fileID: 348153650}
+  m_Layer: 0
+  m_Name: PlaylistController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &348153650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 348153649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aee0c42cfbeb2b45b09ce685ab0323c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPlaylistOnAwake: 1
+  isShuffle: 1
+  isAutoAdvance: 1
+  loopPlaylist: 1
+  _playlistVolume: 1
+  isMuted: 0
+  startPlaylistName: Default
+  syncGroupNum: -1
+  mixerChannel: {fileID: 0}
+  spatialBlendType: 0
+  spatialBlend: 0
+  initializedEventExpanded: 0
+  initializedCustomEvent: 
+  crossfadeStartedExpanded: 0
+  crossfadeStartedCustomEvent: 
+  songChangedEventExpanded: 0
+  songChangedCustomEvent: 
+  songEndedEventExpanded: 0
+  songEndedCustomEvent: 
+  songLoopedEventExpanded: 0
+  songLoopedCustomEvent: 
+  playlistStartedEventExpanded: 0
+  playlistStartedCustomEvent: 
+  playlistEndedEventExpanded: 0
+  playlistEndedCustomEvent: 
+  _frames: 0
+--- !u!82 &348153651
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 348153649}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 0
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &348153652
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 348153649}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 0
+  DopplerLevel: 1
+  MinDistance: 10
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!4 &348153653
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 348153649}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &352398658
 GameObject:
   m_ObjectHideFlags: 0
@@ -11927,6 +12155,14 @@ Prefab:
       propertyPath: groupBuses.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11993,10 +12229,154 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
       propertyPath: playListExpanded
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
       propertyPath: mixerSpatialBlendType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: areGroupsExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].isExpanded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].playlistName
+      value: Default
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].songTransitionType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].crossFadeTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].resourceClipsAllLoadAsync
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e96e6b0bacae5a548bd8478c2a0fc9ad, type: 3}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[0].songName
+      value: bcc-031814-electric-chill-399
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[0].isExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 326d7d950b1f02c4a9446aa0313a61fb, type: 3}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[1].songName
+      value: deep-chill-full_z1IKi-Vd
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[1].isExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f1ae23783d4ca247b77c05ee3300c1b, type: 3}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[2].songName
+      value: groove-chilling-bbc-1215-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[2].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[2].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[2].isExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b814eba233f4c74da00bca5a21fa569, type: 3}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[3].songName
+      value: industrial-electro-jam_zko1jN4O
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[3].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[3].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[3].isExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f59d4c1145373854085e6df58366bee4, type: 3}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[4].songName
+      value: jdl-091216-music-JDJ_Prodigy_160
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[4].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[4].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[4].isExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e932e26b6328b74895a6cd227aad8ba, type: 3}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[5].songName
+      value: jdl-091216-music-JDJ_Software_135
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[5].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[5].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 22734cefa1ebd4708a3a96afe4eb03ba, type: 2}
+      propertyPath: musicPlaylists.Array.data[0].MusicSettings.Array.data[5].isExpanded
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
