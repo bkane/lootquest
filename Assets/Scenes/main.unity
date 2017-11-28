@@ -2139,7 +2139,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2163,7 +2163,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!81 &138467513
 AudioListener:
   m_ObjectHideFlags: 0
@@ -8770,25 +8770,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114396203247996884, guid: 94fcd856081560c46a7ae7771c2d1a48,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114178073238797170, guid: 94fcd856081560c46a7ae7771c2d1a48,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114377143055194774, guid: 94fcd856081560c46a7ae7771c2d1a48,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1884179676335128, guid: 94fcd856081560c46a7ae7771c2d1a48, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94fcd856081560c46a7ae7771c2d1a48, type: 2}
@@ -28415,7 +28396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab01a06ac2c20645b77c535dfbf3f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnlockAll: 0
+  UnlockAll: 1
   SteamManager: {fileID: 1770953254}
   ViewManager: {fileID: 1563341662}
 --- !u!4 &1912663635
