@@ -83,7 +83,7 @@ public class OptionsUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (SteamManager.Client.IsValid)
+        if (SteamManager.Client != null && SteamManager.Client.IsValid)
         {
             SteamManager.Client.Music.Pause();
         }
