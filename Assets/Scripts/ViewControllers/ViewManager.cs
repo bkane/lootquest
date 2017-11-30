@@ -22,14 +22,6 @@ namespace Assets.Scripts
 
         public GameObject EndGameView;
 
-        private void Start()
-        {
-            foreach(var button in GameObject.FindObjectsOfType<Button>())
-            {
-                button.onClick.AddListener(() => { DarkTonic.MasterAudio.MasterAudio.PlaySound("click"); });
-            }
-        }
-
         public void Update()
         {
             //TODO: it's lazy to do this in Update
