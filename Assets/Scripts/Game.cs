@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Model;
 using Assets.Scripts.ViewControllers;
+using DarkTonic.MasterAudio;
 using System.Collections;
 using System.Linq;
 using TMPro;
@@ -38,7 +39,7 @@ namespace Assets.Scripts
                 SaveSettings();
             }
 
-            //TODO: update music, sfx volumes
+            UpdateMusicSettings();
 
             bool foundSave = Util.LoadIntoObject(Util.SAVE_FILENAME, LootBoxModel.Instance);
 
@@ -63,6 +64,24 @@ namespace Assets.Scripts
                 }
             }
 #endif
+        }
+
+        public void UpdateMusicSettings()
+        {
+            if (Settings.UseSteamMusic && SteamManager.Client.IsValid)
+            {
+                SteamManager.Client.Music.Play();
+                MasterAudio.OnlyPlaylistController.StopPlaylist();
+            }
+            else
+            {
+                if (SteamManager.Client.IsValid)
+                {
+                    SteamManager.Client.Music.Pause();
+                }
+
+                MasterAudio.OnlyPlaylistController.StartPlaylist("Default");
+            }
         }
 
         protected IEnumerator GGGameDevRoutine()

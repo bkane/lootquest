@@ -7,53 +7,85 @@ public class OptionsUI : MonoBehaviour
 {
     public Button OpenOptionsPanel;
     public Button MuteButton;
+    public Button NextTrackButton;
 
     public Sprite MutedIcon;
     public Sprite NotMutedIcon;
+
+    protected bool isMuted;
 
     void Awake()
     {
         OpenOptionsPanel.onClick.AddListener(Game.Instance.OpenOptionsPanel);
         MuteButton.onClick.AddListener(ToggleAudio);
+        NextTrackButton.onClick.AddListener(NextTrack);
+    }
+
+    public void SetMute(bool isMuted)
+    {
+        this.isMuted = isMuted;
+
+        if (isMuted)
+        {
+            MuteButton.GetComponent<Image>().sprite = MutedIcon;
+            MasterAudio.OnlyPlaylistController.PausePlaylist();
+
+            if (Game.Instance.Settings.UseSteamMusic)
+            {
+                if (SteamManager.Client.IsValid)
+                {
+                    SteamManager.Client.Music.Pause();
+                }
+            }
+
+            MasterAudio.MixerMuted = true;
+            MasterAudio.PlaylistsMuted = true;
+        }
+        else
+        {
+            MasterAudio.MixerMuted = false;
+            MuteButton.GetComponent<Image>().sprite = NotMutedIcon;
+
+            if (Game.Instance.Settings.UseSteamMusic && SteamManager.Client.IsValid)
+            {
+                SteamManager.Client.Music.Play();
+            }
+            else
+            {    
+                MasterAudio.PlaylistsMuted = false;
+                MasterAudio.OnlyPlaylistController.UnpausePlaylist();   
+            }
+        }
     }
 
     protected void ToggleAudio()
     {
-        if (MasterAudio.MixerMuted)
+        SetMute(!isMuted);
+    }
+
+    protected void NextTrack()
+    {
+        if (isMuted) { return; }
+
+        if (Game.Instance.Settings.UseSteamMusic)
         {
-            MasterAudio.MixerMuted = false;
-            MasterAudio.PlaylistsMuted = false;
-            MasterAudio.OnlyPlaylistController.UnpausePlaylist();
-            MuteButton.GetComponent<Image>().sprite = NotMutedIcon;
+            if (SteamManager.Client.IsValid)
+            {
+                SteamManager.Client.Music.Next();
+            }
         }
         else
         {
-            MasterAudio.MixerMuted = true;
-            MasterAudio.PlaylistsMuted = true;
-            MasterAudio.OnlyPlaylistController.PausePlaylist();
-            MuteButton.GetComponent<Image>().sprite = MutedIcon;
+            MasterAudio.OnlyPlaylistController.PlayNextSong();
         }
     }
 
-    protected void PlayMusic()
-    {
-        if (SteamManager.Client.Music.GetPlayback() == Facepunch.Steamworks.Music.AudioPlaybackStatus.Playing)
-        {
-            SteamManager.Client.Music.Pause();
-        }
-        else
-        {
-            SteamManager.Client.Music.Play();
-        }
-    }
-
-    protected void Next()
-    {
-        SteamManager.Client.Music.Next();
-    }
 
     private void OnDestroy()
     {
-        SteamManager.Client.Music.Pause();
+        if (SteamManager.Client.IsValid)
+        {
+            SteamManager.Client.Music.Pause();
+        }
     }
 }

@@ -68,6 +68,11 @@ public class SteamManager : MonoBehaviour
     {
         if (Client != null)
         {
+            if (Client.IsValid)
+            {
+                Client.Music.Pause();
+            }
+
             Client.Dispose();
             Client = null;
         }
