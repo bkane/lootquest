@@ -61,7 +61,7 @@ namespace Assets.Scripts.Model
         {
             BigNum amount = model.Studio.MicrotransactionRevenuePerTick() / model.ActivePlayers;
 
-            amount += model.LootBoxTypes / 100000f;
+            amount += model.LootBoxTypes / 100f;
 
             if (model.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.ReduceLootBoxOdds))
             {
@@ -290,7 +290,7 @@ namespace Assets.Scripts.Model
             model.Add(Units.Money, MicrotransactionRevenuePerTick());
 
             //Generate resources
-            model.Add(Units.LootBoxType, model.Developers);
+            model.Add(Units.LootBoxType, model.Developers / 1000f);
             model.Add(Units.ActivePlayer, CustomerAcquisitionPerTick());
             model.Add(Units.Favor, FavorPerTick());
             model.Add(Units.Cycle, CyclesPerTick());
