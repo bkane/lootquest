@@ -951,7 +951,7 @@ namespace Assets.Scripts.Model
             {
                 Type = Upgrade.EUpgradeType.UseDataBreach,
                 Name = "Acquire Customer Data from Security Breach",
-                Description = "One of our competitors was careless with security. All of the data has been leaked anyway. Might as well use it!",
+                Description = "One of our competitors was careless with security. All of the data has been already leaked. Might as well use it, no?",
                 CommentOnBuy = "Reminder: don't re-use your password on multiple sites.",
                 Costs = new List<Resource>()
                 {
@@ -989,6 +989,7 @@ namespace Assets.Scripts.Model
                 Type = Upgrade.EUpgradeType.UnlockLobbying,
                 Name = "Start up Government Lobbying Division",
                 Description = "We're going to need to change some policies.",
+                CommentOnBuy = "Time to start currying favor with the bureaucrats.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 5e15f)
@@ -1119,7 +1120,7 @@ namespace Assets.Scripts.Model
             {
                 Type = Upgrade.EUpgradeType.DiscloseOdds,
                 Name = "Disclose Loot Box Odds",
-                Description = "Submit to regulation and disclose loot box odds to get a repreive from some of the bigger fines.",
+                Description = "Submit to regulation and disclose loot box odds to get a reprieve from some of the bigger fines.",
                 CommentOnBuy = "Thankfully humans have a very poor intuitive understanding of statistics, so knowing the odds changes nothing.",
                 Costs = new List<Resource>()
                 {
