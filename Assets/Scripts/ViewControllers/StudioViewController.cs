@@ -69,7 +69,7 @@ namespace Assets.Scripts.ViewControllers
             DataAnalystsCostText.text = string.Format("Analyst Cost: ${0}/s", (BigNum)(LootBoxModel.Instance.Studio.DataAnalystCostPerTick() * 30));
             AnalyticsDataText.text = string.Format("Analytics Data: {0}", LootBoxModel.Instance.AnalyticsData);
 
-            GameCostText.text = string.Format("({0})", LootBoxModel.Instance.Studio.CostOfGameInDevHours());
+            GameCostText.text = string.Format("({0} DevHours)", LootBoxModel.Instance.Studio.CostOfGameInDevHours());
 
             DataAnalystsPanel.gameObject.SetActive(LootBoxModel.Instance.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.EnableAnalytics));
 
