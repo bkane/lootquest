@@ -870,7 +870,7 @@ namespace Assets.Scripts.Model
             {
                 Type = Upgrade.EUpgradeType.Layoffs,
                 Name = "Regularly Scheduled Layoffs",
-                Description = "The end of a project doesn't <i>have</i> to mean the end of a job. But we'll save a bundle if it does!",
+                Description = "The end of a project doesn't <i>have</i> to mean the end of a job. But we'll save a bundle on operating costs!",
                 CommentOnBuy = "And yet for some reason this industry is considered in demand.",
                 Costs = new List<Resource>()
                 {
@@ -883,8 +883,8 @@ namespace Assets.Scripts.Model
             {
                 Type = Upgrade.EUpgradeType.ContractEmployees,
                 Name = "Use Contract Employees instead of Full Time",
-                Description = "Less pay and benefits means more bottom line for us. And it's somehow legal!",
-                CommentOnBuy = "It's as if we automated the layoff process.",
+                Description = "Less pay and benefits means more bottom line for us. And it's somehow legal! Lowers operating costs.",
+                CommentOnBuy = "It's as if we automated the layoff process. Automation is the best!",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 200e9f)
@@ -1074,8 +1074,8 @@ namespace Assets.Scripts.Model
             {
                 Type = Upgrade.EUpgradeType.ReduceLootBoxOdds,
                 Name = "Reduce Loot Box Odds",
-                Description = "It's so obvious! If customers as less likely to get what they want in a loot box, then they'll buy more!",
-                CommentOnBuy = "It's not like slot machines have good odds. You'd never know if they did anyway.",
+                Description = "It's so obvious! If customers are less likely to get what they want in a loot box, then they'll buy more loot boxes!",
+                CommentOnBuy = "It's not like anybody will really ever know what we did.",
                 Costs = new List<Resource>()
                 {
                     new Resource(Units.Money, 2e12f),
@@ -1381,7 +1381,7 @@ namespace Assets.Scripts.Model
                     break;
                 case Upgrade.EUpgradeType.PurchaseBelovedStudio:
                     {
-                        Logger.Log(3, "Oh. Guess not.");
+                        Logger.Log(3, "Haha just kidding.");
                     }
                     break;
                 case Upgrade.EUpgradeType.ReduceLootBoxOddsToZero:
