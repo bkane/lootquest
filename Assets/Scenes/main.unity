@@ -16100,7 +16100,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 90.575, y: -87.2}
+  m_AnchoredPosition: {x: 81.8, y: -87.2}
   m_SizeDelta: {x: -181.15, y: 128.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1049968082
@@ -26010,7 +26010,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Loot Box Rev: $1.23M/min'
+  m_text: 'Loot Box Rev: $999.23Quad/min'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f92e9a837e92e9c4d9b202c95e8a3581, type: 2}
   m_sharedMaterial: {fileID: 21717811606596240, guid: f92e9a837e92e9c4d9b202c95e8a3581,
@@ -26078,7 +26078,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1622151074}
-    characterCount: 24
+    characterCount: 29
     spriteCount: 0
     spaceCount: 3
     wordCount: 6
