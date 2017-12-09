@@ -111,7 +111,7 @@ namespace Assets.Scripts.Model
             {
                 Type = Upgrade.EUpgradeType.SecondJob,
                 Name = "Get a Second Job",
-                Description = "I work from home anyway. Who's going to notice?",
+                Description = "I work from home. Who's going to notice?",
                 CommentOnBuy = "I'll have to put my cat's name down as a reference and hope they don't check.",
                 Costs = new List<Resource>()
                 {
@@ -254,7 +254,7 @@ namespace Assets.Scripts.Model
             {
                 Type = Upgrade.EUpgradeType.AutoOpenBoxes,
                 Name = "Write Auto-Open Loot Boxes Script",
-                Description = "Loot boxes can be openly more efficiently by machine.",
+                Description = "Loot boxes can be opened more efficiently by machine.",
                 CommentOnBuy = "It pains me to automate this since opening loot boxes is <i>so much fun</i>, but I'll come back to <i>MacGuffin Quest 2</i> the instant MacGuffin is unlocked.",
                 Costs = new List<Resource>()
                 {

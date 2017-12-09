@@ -30598,7 +30598,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Fonts licensed under the SIL Opten Font License, Version 1.1
+  m_text: 'Fonts licensed under the SIL Open Font License, Version 1.1
 
     Copyright (c) 2011-2012, Jovanny Lemonad (jovanny.ru), with Reserved Font Name
     "Russo"
