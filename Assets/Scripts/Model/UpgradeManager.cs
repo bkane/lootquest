@@ -811,7 +811,7 @@ namespace Assets.Scripts.Model
                 CommentOnBuy = "When did video games become a cruel reflection of society?",
                 Costs = new List<Resource>()
                 {
-                    new Resource(Units.Money, 200e3f),
+                    new Resource(Units.Money, 2e6f),
                     new Resource(Units.DevHour, 20e3f),
                     new Resource(Units.AnalyticsData, 50e3f)
                 },
