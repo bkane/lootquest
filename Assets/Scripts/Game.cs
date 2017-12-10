@@ -88,9 +88,6 @@ namespace Assets.Scripts
         {
             float time = 60 * 90;
 
-#if DEBUG
-            time = 10;
-#endif
             yield return new WaitForSecondsRealtime(time);
 
             Logger.Log("Hey, it's been about 90 mins since you started playing. If you wanted a refund, you might still be eligible. If you're having fun, that's great! Thanks and enjoy! -Ben");
@@ -117,6 +114,9 @@ namespace Assets.Scripts
 
         protected IEnumerator NewGameRoutine()
         {
+            Logger.Instance.gameObject.SetActive(true);
+            ViewManager.EndGameView.SetActive(false);
+
             float delay = 3;
 
 #if DEBUG
@@ -183,11 +183,27 @@ namespace Assets.Scripts
 
         public void StartGameClicked()
         {
+            //Remove the title screen
             ViewManager.TitleScreen.SetActive(false);
 
+            //If we're not resuming a game that at least got to the Job phase, start up the new game sequence
             if (LootBoxModel.Instance.UpgradeManager.UpgradeStates[Upgrade.EUpgradeType.GetJob] == Upgrade.EState.Hidden)
             {
                 StartCoroutine(NewGameRoutine());
+            }
+
+            //If the game has already been finished, shortcut to the end-game "Go Outside" state
+            if (LootBoxModel.Instance.UpgradeManager.IsPurchased(Upgrade.EUpgradeType.PurchaseMacGuffinQuestSourceCode))
+            {
+                LootBoxModel.Instance.Life.IsActive = false;
+                LootBoxModel.Instance.Job.IsActive = false;
+                LootBoxModel.Instance.Influencer.IsActive = false;
+                LootBoxModel.Instance.Studio.IsActive = false;
+                LootBoxModel.Instance.Public.IsActive = false;
+                LootBoxModel.Instance.UpgradeManager.IsActive = false;
+                Logger.Instance.gameObject.SetActive(false);
+                ViewManager.EndGameView.SetActive(true);
+                SteamManager.UnlockAchievement(SteamManager.ACH_ACCOMPLISHMENT);
             }
         }
 
@@ -206,7 +222,6 @@ namespace Assets.Scripts
             ViewManager.UpgradeView.GetComponent<UpgradeViewController>().Reset();
             ViewManager.TitleScreen.SetActive(true);
             ViewManager.TitleScreen.GetComponent<TitleScreen>().StartGame.GetComponentInChildren<TextMeshProUGUI>().text = "Start Game";
-            StartCoroutine(NewGameRoutine());
         }
 
         public void OnAllEarthMonetized()
@@ -246,8 +261,6 @@ namespace Assets.Scripts
 
         public void OnMacGuffinQuestSourcePurchase()
         {
-            SteamManager.UnlockAchievement(SteamManager.ACH_ACCOMPLISHMENT);
-
             LootBoxModel.Instance.Life.IsActive = false;
             LootBoxModel.Instance.Job.IsActive = false;
             LootBoxModel.Instance.Influencer.IsActive = false;
@@ -255,7 +268,7 @@ namespace Assets.Scripts
             LootBoxModel.Instance.Public.IsActive = false;
             LootBoxModel.Instance.UpgradeManager.IsActive = false;
 
-            ViewManager.OptionsUI.SetActive(false);
+            //ViewManager.OptionsUI.SetActive(false);
 
             LootBoxModel.Instance.MacGuffinQuest.DoEndGame();
         }
@@ -270,6 +283,8 @@ namespace Assets.Scripts
             float delay = 5f;
 
             LootBoxModel.Instance.MacGuffinQuest.IsActive = false;
+
+            SteamManager.UnlockAchievement(SteamManager.ACH_ACCOMPLISHMENT);
 
             yield return new WaitForSeconds(delay);
 
