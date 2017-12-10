@@ -16,7 +16,7 @@ public class SteamManager : MonoBehaviour
     public static readonly string ACH_EARN_CANADA = "ACH_EARN_CANADA";
 
     public static readonly string ACH_FOLLOWERS_1000 = "ACH_FOLLOWERS_1000";
-    public static readonly string ACH_FOLLOWERS_100K = "ACH_FOLLOWERS_1000K";
+    public static readonly string ACH_FOLLOWERS_100K = "ACH_FOLLOWERS_100K";
     public static readonly string ACH_FOLLOWERS_1M = "ACH_FOLLOWERS_1M";
 
     public static readonly string ACH_GAMES_10 = "ACH_GAMES_10";
