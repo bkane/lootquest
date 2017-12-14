@@ -22,6 +22,7 @@ namespace Assets.Scripts
 
         private void Awake()
         {
+            Debug.LogFormat("Application Version: {0}", Application.version);
             if (Instance != null) { Debug.LogError("Tried to instantiate a second Game!"); }
             Instance = this;
             new LootBoxModel();
