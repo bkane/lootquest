@@ -22,6 +22,11 @@ namespace Assets.Scripts
 
         public GameObject EndGameView;
 
+        private void Awake()
+        {
+            TitleScreen.SetActive(true);
+        }
+
         public void Update()
         {
             //TODO: it's lazy to do this in Update
