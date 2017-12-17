@@ -1336,7 +1336,7 @@ namespace Assets.Scripts.Model
             return false;
         }
 
-        protected void CheckForAllUpgradeAchievement()
+        public void CheckForAllUpgradeAchievement()
         {
             bool boughtEverything = true;
             foreach(var kvp in UpgradeStates)

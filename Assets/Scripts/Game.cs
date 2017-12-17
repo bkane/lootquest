@@ -47,6 +47,7 @@ namespace Assets.Scripts
             if (foundSave)
             {
                 ViewManager.TitleScreen.GetComponent<TitleScreen>().StartGame.GetComponentInChildren<TextMeshProUGUI>().text = "Resume Game";
+                SteamManager.CheckAchievements();
             }
 
             StartCoroutine(AutoSaveRoutine());
@@ -313,7 +314,7 @@ namespace Assets.Scripts
 
         public void EndGame()
         {
-            Quit();
+            SaveAndQuit();
         }
     }
 }

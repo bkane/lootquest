@@ -7,6 +7,8 @@ namespace Assets.Scripts.Model
     {
         public bool IsActive { get; set; }
 
+        public bool DidDevsQuit;
+
         protected LootBoxModel model;
 
         public static BigNum DevHourPerDeveloperTick = 0.1f;
@@ -245,6 +247,7 @@ namespace Assets.Scripts.Model
                 model.ConsumeExactly(Units.Money, model.Money);
 
                 Game.Instance.SteamManager.UnlockAchievement(SteamManager.ACH_QUITTERS);
+                DidDevsQuit = true;
             }
 
             //Customer Data production
